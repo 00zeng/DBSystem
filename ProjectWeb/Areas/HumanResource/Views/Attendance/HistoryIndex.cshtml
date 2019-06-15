@@ -1,0 +1,58 @@
+﻿@* 员工考勤 *@
+@{
+    ViewBag.Title = "导入历史";
+    Layout = "~/Views/Shared/_Index_v2.cshtml";
+}
+
+<style>
+.lineheight34{line-height:34px;}   
+</style>
+
+<div class="panel-body" style="padding-bottom:0px;">
+
+	<div id="toolbar" class="btn-group">
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalQuery">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>搜索
+        </button>
+    </div>
+
+    <div>
+        <table id="gridList"></table>
+    </div>
+
+</div>
+
+<div class="modal fade" id="modalQuery" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">
+                    按条件搜索
+                    <button id="clear" type="button" class="btn btn-warning btn-xs">清空</button>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form id="queryForm">
+                    <div class="row">                 
+                        <div class="col-sm-12 margin-bottom">
+                            <span for="end_date" class="col-sm-2 text-right lineheight34">考勤月份</span>
+                            <div class="input-group col-sm-9">
+                                <input id="start_date" type="text" class='form-control' readonly="readonly" onfocus="WdatePicker({dateFmt: 'yyyy-MM', maxDate: '#F{$dp.$D(\'end_date\')}' });">
+                                <span class="input-group-addon">-</span>
+                                <input id="end_date" type="text" class='form-control' readonly="readonly" onfocus="WdatePicker({dateFmt: 'yyyy-MM', minDate: '#F{$dp.$D(\'start_date\')}' });">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" id="querySubmit" class="btn btn-primary">搜索</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Content/js/detail/humanResource/attendance/history_index.js"></script>

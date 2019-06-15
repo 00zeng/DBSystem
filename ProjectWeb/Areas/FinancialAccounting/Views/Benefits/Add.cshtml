@@ -1,0 +1,150 @@
+﻿@{
+    ViewBag.Title = "福利";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<link href="~/Content/js/bootstrap-duallistbox/bootstrap-duallistbox.min.css" rel="stylesheet" />
+<style type="text/css">
+    tbody table td {
+        padding: 0;
+    }
+
+    .radio + .radio {
+        margin-top: 10px;
+    }
+
+    .table-bordered {
+        border-radius: 4px;
+    }
+</style>
+<form id="form1">
+    <div class="box-header">
+        <div class="col-xs-12 col-sm-4 col-lg-3" id="division" style="display:none">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">机构：</span>
+                <select type="text" id="company_id" class="form-control required"></select>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-lg-3" id="branch" style="display:none">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">机构：</span>
+                <span type="text" id="company_name" class="form-control required"></span>
+            </div>
+        </div>
+    </div>
+    <div class="box-body" style="padding-bottom:0px;">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-lg-6">
+                <div class="box box-warning">
+                    <div class="box-header">
+                        <h3 class="box-title">发放对象</h3><h6 class="inline margin">共<span class="margin" id="emp_count">0</span>人</h6>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div style="height: 40px">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEmp">选择员工</button>
+                        </div>
+                        <table id="targetEmp"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title">福利</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="form-group">
+                    <table id="benefit_table" class="table table-bordered text-center">
+                        <tr>
+                            <th style="width: 15%">名称</th>
+                            <th style="width: 12%">发放形式</th>
+                            <th style="width: 10%">金额（元）</th>
+                            <th style="width: 15%">发放月份</th>
+                            <th style="width: 38%">备注说明</th>
+                            <th style="width: 10%"></th>
+                        </tr>
+                        <tr>
+                            <td>
+							<div class="input-single formValue">
+                                <input class="form-control required text-center" type="text" name="name" />
+							</div>
+                            </td>
+                            <td>
+                                <select class="form-control" onchange="setType(this)" name="paid_type">
+                                    <option value="2">礼品</option>
+                                    <option value="1">工资</option>
+                                    <option value="3">现金</option>
+                                    <option value="4">其他形式</option>
+                                </select>
+                            </td>
+                            <td>
+							<div class="input-single formValue">
+                                <input class="form-control required number text-center" type="text" name="amount"/>
+							</div>
+                            </td>
+                            <td name="time1">
+							<div class="input-single formValue">
+                                <input type="text" class="form-control required text-center" readonly="readonly" onfocus="WdatePicker({dateFmt:'yyyy-MM'});" name="paid_date1" />
+                            </div>
+							</td>
+                            <td name="time2" style="display:none">
+                                <input type="text" class="form-control required text-center" readonly="readonly" onfocus="WdatePicker({dateFmt:'yyyy-MM' });" name="paid_date2" />
+                            </td>
+                            <td>
+                                <input type="text" class="form-control text-center" name="note"/>
+                            </td>
+                            <td>
+                                <i onclick="addRow(this)" class="fa fa-plus-circle fa-lg margin text-blue "></i>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="box-footer">
+    <button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+    <a type="submit" class="btn btn-default pull-right" href="/FinancialAccounting/Benefits/Index">返回</a>
+</div>
+
+
+<div class="modal fade" id="modalEmp" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">
+                    请从左侧选择员工
+                </h4>
+                <span class="checkbox  ">
+                    <label>
+                        <input type="checkbox" id="exclude_emp_status">已转正
+                    </label>
+                </span>
+                <span class="checkbox ">
+                    <label>
+                        <input type="checkbox" id="exclude_entry_date">入职时间在<input type="text" id="entry_date" readonly="readonly" onfocus="WdatePicker({onpicked:change_by_date});" style="width:120px;" />（含）之前
+                    </label>
+                </span>
+            </div>
+            <div class="modal-body">
+                <select multiple="multiple" size="10" id="duallistEmp"></select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/js/bootstrap-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<script src="~/Content/js/detail/FinancialAccounting/benefits/add.js"></script>

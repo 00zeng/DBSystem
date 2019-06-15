@@ -1,0 +1,96 @@
+﻿@* 离职申请 *@
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Form_dinf.cshtml";
+}
+
+<header class="panel-heading">
+    <span style="color:#ffffff">离职申请</span>
+</header>
+<div class="panel-body" style="background:white;">
+    <div class="row">
+        <div class="col-xs-1">
+        </div>
+        <div class="col-xs-10" style="min-width:1000px">
+        <div class="form">
+            <form id="form1">
+                <div class="main-title main-title2">
+                    <div class="main-title2-type">
+                        请选择类型：
+                        <select id="type" name="holiday_type" style="display:inline">
+                            <option value="1">主动离职</option>
+                            <option value="2">辞退</option>
+                            <option value="3">自离</option>
+                        </select>
+                    </div>
+                </div>
+
+                @* 上传证明按钮 *@
+                <div class="prove">
+                    <div><input id="" type="file" /></div>
+                </div>
+                <table class="normal-z" style="white-space:nowrap">
+                    <tr>
+                        <th>工号</th>
+                        <td><span id="work_number"></span></td>
+                        <th>姓名</th>
+                        <td><span id="name"></span></td>
+                        <th>性别</th>
+                        <td><span id="gender"></span></td>
+                        <th>最高学历</th>
+                        <td><span id="education"></span></td>
+                    </tr>
+                    <tr>
+                        <th>部门</th>
+                        <td><span id="dept_name"></span></td>
+                        <th>区域</th>
+                        <td><span id="area_name"></span></td>
+                        <th>职位</th>
+                        <td><span id="position_name"></span></td>
+                        <th>等级</th>
+                        <td><span id="grade"></span></td>
+                    </tr>
+                    <tr>
+                        <th>入职时间</th>
+                        <td><span id="entry_date" class="format_date"></span></td>
+                        <th>离职时间</th>
+                        <td><input id="request_date" class="Wdate" readonly="readonly" onfocus="WdatePicker();" /></td>
+                        <th>发起人</th>
+                        <td><span id=""></span></td>
+                        <th>发起时间</th>
+                        <td><span id=""></span></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="10">
+                            @*一、离职原因<br />
+                        <textarea id="content" name="content"></textarea>*@
+                            <span>一、离职原因</span><br />
+                            <textarea id="content_reason" class="resign-textarea" rows="4"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="10">
+                            <span>二、后续发展安排</span><br />
+                            <textarea id="content_arrangement" class="resign-textarea" rows="4"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="10">
+                            <span>三、请对公司提3点宝贵意见/建议</span><br />
+                            <textarea id="content_opinion" class="resign-textarea" rows="4"></textarea>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <div class="main-submit">
+                <a class="btn-return" href="javascript:history.go(-1);"> 返回 </a>
+                <a class="btn-submit" id="btnEdit" onclick="submitForm()">提交</a>
+            </div>
+			</div>
+			</div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/js/detail/humanResource/resignation/add.js"></script>

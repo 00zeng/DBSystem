@@ -1,0 +1,83 @@
+﻿@* 销假详情 *@
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Form_dinf.cshtml";
+}
+
+<header class="panel-heading">
+    <span style="color:#ffffff">请假详情</span>
+</header>
+<div class="panel-body" style="background:white;">
+    <div class="row">
+        <div class="col-xs-1">
+        </div>
+        <div class="col-xs-10" style="min-width:1000px">
+            <div class="form">
+                <form id="form1">
+                    <div class="main-title main-title2">
+                        <div class="main-title2-type">
+                            请假类型：<span id="holiday_type" name="holiday_type" style="margin-right:60px"></span>
+                            实际请假时间：<span id="create_time1" class="format_date" name="times" style="margin-right:60px"></span> 
+                            审核状态：<span id="approve_status" name="approve_status"></span>
+                        </div>
+                    </div>
+                    @* 上传证明按钮 *@
+                    <div class="prove" style="float:right;padding-bottom:10px">
+                        <div><input id="" value="病假条" type="file" /></div>
+                    </div>
+                    <table class="normal-leave" style="white-space:nowrap">
+                        <tr>
+                            <th>工号</th>
+                            <td><span id="work_number"></span></td>
+                            <th>姓名</th>
+                            <td><span id="creator_name1" ></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="10">
+                                【<span id="company_name"></span>】&nbsp;【<span id="dept_name"></span> 】 &nbsp;【<span id="position_name" name="position_name"></span>】 ，<br /><br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我因&nbsp;<span id="content_reason"></span>
+                                需请假 <span id="days" ></span> 天，
+                                请假期间相关工作已交接&nbsp;<span id="substitute"></span> 代办，请批准！<br /><br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>实际开始时间</th>
+                            <td><span id="begin_time"></span></td>
+                            <th>实际结束时间</th>
+                            <td><span id="end_time"></span></td>
+                        </tr>
+                    </table>
+                    <div class="mid-title-wrap">
+                        <div class="mid-title">审批</div>
+                    </div>
+                    <table class="normal-approve" id="approve" style="white-space:nowrap">
+                        <tr>
+                            <th>操作类型</th>
+                            <th>操作人</th>
+                            <th>操作人职位</th>
+                            <th>时间</th>
+                            <th>结果</th>
+                            <th>意见</th>
+                        </tr>
+                        <tr>
+                            <td>发起申请</td>
+                            <td><span id="creator_name"></span></td>
+                            <td><span id="creator_position_name"></span></td>
+                            <td><span id="create_time"></span></td>
+                            <td><span id=""></span></td>
+                            <td><span id=""></span></td>
+                        </tr>
+                    </table>
+                </form>
+                <div class="main-submit">
+                    <a class="btn-return" href="javascript:history.go(-1);"> 返回 </a>
+                    <input id="btnEdit" class="btn-submit" type="button" value="审批" onclick="approval()" style="display:none" />
+                    <input id="btnDel" class="btn-submit" type="button" value="撤回" onclick='delForm()' style="display:none" />
+                    <input id="btnLeavingCancel" class="btn-submit" type="button" value="销假" onclick='LeavingCancel()' style="display:none"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/js/detail/humanResource/leaving/show.js"></script>

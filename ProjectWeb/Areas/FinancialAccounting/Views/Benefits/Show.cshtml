@@ -1,0 +1,110 @@
+﻿@{
+    ViewBag.Title = "福利";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<style type="text/css">
+    tbody table td {
+        padding: 0;
+    }
+
+    .radio + .radio {
+        margin-top: 10px;
+    }
+
+    .table-bordered {
+        border-radius: 4px;
+    }
+</style>
+<form id="form1">
+    <div class="box-header">
+        <h4>机构：<span id="company_name"></span></h4>
+    </div>
+    <div class="box-body" style="padding-bottom:0px;">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-lg-6">
+                <div class="box box-warning">
+                    <div class="box-header">
+                        <h3 class="box-title">发放对象</h3><h6 class="inline margin">共<span class="margin" id="emp_count">0</span>人</h6>
+                        <div class="checkbox" id="status" style="display:none">
+                            <label>
+                                <input type="checkbox" id="exclude_emp_status" disabled>已转正
+                            </label>
+                        </div>
+                        <div class="checkbox" id="date"  style="display:none">
+                            <label>
+                                <input type="checkbox" id="entry_date" disabled>入职时间在<span type="text" id="exclude_entry_date"  class="format_date"></span>（含）之前
+                            </label>
+                        </div> 
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>   
+                    </div>
+                    <div class="box-body">
+                        <table id="targetEmp"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title">福利</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="form-group">
+                    <table id="table_list" class="table table-bordered text-center">
+                        <tr>
+                            <th style="width: 20%">名称</th>
+                            <th style="width: 15%">发放形式</th>
+                            <th style="width: 10%">金额（元）</th>
+                            <th style="width: 15%">发放日期</th>
+                            <th style="width: 40%">备注说明</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="box box-default">
+            <div class="box-header widt-border">
+                <h3 class="box-title">审批</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <table class="table table-bordered text-center" id="approve">
+                    <tbody>
+                        <tr>
+                            <th>操作类型</th>
+                            <th>操作人</th>
+                            <th>操作人职位</th>
+                            <th>时间</th>
+                            <th>结果</th>
+                            <th>意见</th>
+                        </tr>
+                        <tr>
+                            <td>发起申请</td>
+                            <td><span id="creator_name"></span></td>
+                            <td><span id="creator_position_name"></span></td>
+                            <td><span id="create_time"></span></td>
+                            <td><span id="">--</span></td>
+                            <td><span id="">--</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="box-footer">
+    <a type="submit" class="btn btn-default pull-right" href="/FinancialAccounting/Benefits/Index">返回</a>
+</div>
+<script src="~/Content/js/detail/FinancialAccounting/benefits/show.js"></script>

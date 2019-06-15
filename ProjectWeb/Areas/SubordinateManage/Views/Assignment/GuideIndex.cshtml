@@ -1,0 +1,17 @@
+﻿@*导购员指派*@
+@{
+    ViewBag.Title = "导购员指派";
+    Layout = "~/Views/Shared/_Index_v2.cshtml";
+}
+<div class="panel-body" style="padding-bottom:0px;">
+    <div id="toolbar" class="btn-group">
+        <div class="btn btn-primary" >
+           <input id="ShowAll" type="checkbox"/>
+           <label for="ShowAll">显示全部</label> 
+        </div>
+    </div>
+    <div>
+        <table id="gridList" style="table-layout:fixed"></table>
+    </div>
+</div>
+<script src="~/Content/js/detail/subordinate/assignment/guideIndex.js"></script>

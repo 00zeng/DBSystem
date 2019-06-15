@@ -1,0 +1,58 @@
+﻿@* 行政工资 *@
+@{
+    ViewBag.Title = "行政工资";
+    Layout = "~/Views/Shared/_Index_v2.cshtml";
+}
+<div class="panel-body" style="padding-bottom:0px;">
+
+    <div id="toolbar" class="btn-group">
+        <button id="exportExcel" type="button" class="btn btn-warning">
+            <span class="glyphicon glyphicon-export" aria-hidden="true"></span>导出
+        </button>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalQuery">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>更多搜索
+        </button>
+		<div class="input-group">
+			<input class="form-control" id="name" type="text" placeholder="请输入姓名"></input>
+		</div>
+    </div>
+    <div>
+        <table id="gridList" style="table-layout:fixed"></table>
+    </div>
+
+</div>
+
+<div class="modal fade" id="modalQuery" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">按条件搜索
+				<button id="clear" type="button" class="btn btn-warning btn-xs">清空</button>
+				</h4>
+            </div>
+            <div class="modal-body">
+                <form id="queryForm" class="form-horizontal">
+                    <div class="form-group">
+                        <span for="position_name" class="col-sm-2 control-label">职位</span>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="position_name">
+                        </div>
+                    </div>
+					<div class="form-group">
+                        <span for="company_id" class="col-sm-2 control-label">机构</span>
+                        <div class="col-sm-9">
+                            <select type="text" class="form-control" id="company_id"></select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" id="querySubmit" class="btn btn-primary">搜索</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/js/detail/SalaryCalculate/PayrollOffice/history_index.js"></script>

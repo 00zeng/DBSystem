@@ -1,0 +1,253 @@
+﻿@{
+    ViewBag.Title = "其他设置";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<style type="text/css">
+    tbody table td {
+        padding: 0;
+    }
+
+    .radio + .radio {
+        margin-top: 10px;
+    }
+
+    .table-bordered {
+        border-radius: 4px;
+    }
+</style>
+
+<link href="~/Content/js/bootstrap-duallistbox/bootstrap-duallistbox.min.css" rel="stylesheet" />
+
+<form id="form1">
+    <div class="box-header widt-border">
+        <div class="margin-bottom">
+            <h3 class="box-title">其他设置</h3>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 ">
+                <div class="input-group margin-bottom">
+                    <span class="input-group-addon no-border"> 机构类型</span>
+                    <select id="category" class="form-control"></select>
+                </div>
+            </div>
+            <div class="col-sm-4" id="company">
+                <div class="input-group margin-bottom">
+                    <span class="input-group-addon no-border"> 机构</span>
+                    <span id="company_id" class="form-control"></span>
+                </div>
+            </div>
+            <div class="col-sm-4" style="display:none" id="template">
+                <div class="input-group margin-bottom" style="width:100%">
+                    <span class="input-group-addon no-border"> 公版设置</span>
+                    <select id="is_template" class="form-control">
+                        <option value="1">设为公版且覆盖已有分公司设置</option>
+                        <option value="2">设为公版但不覆盖已有分公司设置</option>
+                        <option value="3" selected>不设为公版</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="input-group margin-bottom">
+                    <span class="input-group-addon no-border">生效时间</span>
+                    <input id="effect_date" class="form-control" readonly="readonly" onfocus="WdatePicker({dateFmt: 'yyyy-MM' });" />
+                    <div class="checkbox input-group-addon no-border">
+                        <label>
+                            <input type="checkbox" id="effect_now" title="审批通过后立即生效" onclick="Effective(this)" />立即生效
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 " id="selectCompanyDiv" style="display:none">
+                <div class="col-sm-4 col-lg-2  margin-bottom">
+                    <button type="button" class="btn btn-primary pull-left" data-toggle="modal" data-target="#modalCompany" id="selectCompany">选择分公司</button>
+                    <h6 class="inline margin pull-left">共<span class="margin" id="emp_count">0</span>个</h6>
+                </div>
+                <div class="col-sm-12">
+                    <div id="ShowCompany" class="form-control"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="box-body">
+        <div class="col-sm-12 col-lg-6">
+            <div class="box box-danger">
+                <div class="box-header">
+
+                    <h3 class="box-title">工龄工资</h3>
+                    <div class="box-tools">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+
+                </div>
+                <div class="box-body">
+                    <div class="form-group col-md-12">
+                        <table id="seniorityWage_table" class="table table-bordered text-center">
+                            <tr>
+                                <th class="col-sm-6">工龄（年）</th>
+                                <th class="col-sm-4">工龄工资（元/月）</th>
+                                <th class="col-sm-2"></th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="input-group">
+                                        <input class="form-control text-center" value="0" name="year_min" disabled>
+                                        <span class="input-group-addon">-</span>
+                                        <input class="form-control text-center" value="0" onchange="seniorityWage()" name="year_max">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="input-group">
+                                        <input class="form-control text-center" value="0" name="salary">
+                                    </div>
+
+                                </td>
+                                <td>
+                                    <i class="fa fa-plus-circle fa-lg margin text-blue " onclick="addRow(this)"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="input-group">
+                                        <input class="form-control text-center" value="1" name="year_min" disabled>
+                                        <span class="input-group-addon">-</span>
+                                        <input class="form-control text-center" value="1" onchange="seniorityWage()" name="year_max">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="input-group">
+                                        <input class="form-control text-center" value="100" name="salary">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="row">
+                                        <i onclick="addRow(this)" class="fa fa-plus-circle fa-lg   text-blue "></i>
+                                        <i onclick="deleteRow(this)" class="fa fa-minus-circle fa-lg   text-red"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="input-group">
+                                        <input class="form-control text-center" value="2" name="year_min" disabled>
+                                        <span class="input-group-addon">-</span>
+                                        <input class="form-control text-center" value="2" onchange="seniorityWage()" name="year_max">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="input-group">
+                                        <input class="form-control text-center" value="200" name="salary">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="row">
+                                        <i onclick="addRow(this)" class="fa fa-plus-circle fa-lg   text-blue "></i>
+                                        <i onclick="deleteRow(this)" class="fa fa-minus-circle fa-lg   text-red"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="input-group">
+                                        <input class="form-control text-center" value="3" disabled name="year_min">
+                                        <span class="input-group-addon">-</span>
+                                        <input class="form-control text-center" name="year_max" value="以上" disabled>
+
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="input-group">
+                                        <input class="form-control text-center" value="300" name="salary">
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-lg-6">
+            <div class="box box-warning">
+                <div class="box-header">
+                    <div class="input-group col-sm-5 col-lg-3">
+                        <h3 class="box-title input-group-addon no-border">其他</h3>
+                        <div class="checkbox input-group-addon no-border">
+                            <label class="text-red">
+                                <input type="checkbox" id="other_setting" />将所有个人设置重置为此方案
+                            </label>
+                        </div>
+                    </div>
+                    <div class="box-tools">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body" style="height:235px">
+                    <div class="row margin-bottom">
+                        <div class="col-sm-2 "><span class="form-control no-border"><strong>实习工资</strong></span></div>
+                        <div class="col-sm-5 col-lg-5">
+                            <div class="input-group">
+                                <span class="input-group-addon radio no-border" style="text-align:left">
+                                    <label>
+                                        <input id="intern_salary_type" name="intern_salary_type" type="radio" value="1" checked>按总工资比例
+                                    </label>
+                                </span>
+                                    <input type="text" name="ratio_hidden" id="intern_ratio_salary" class="form-control text-center">
+                                <span name="ratio_hidden" class="input-group-addon">% </span>
+                            </div>
+                        </div>
+                        <div class="col-sm-5 col-lg-5">
+                            <div class="input-group">
+                                <span class="input-group-addon radio no-border" style="text-align:left">
+                                    <label>
+                                        <input name="intern_salary_type" type="radio" value="2">按固定金额
+                                    </label>
+                                </span>
+                                    <input type="text" name="salary_hidden" id="intern_fix_salary" class="form-control  text-center" style="display:none">
+                                <span name="salary_hidden" class="input-group-addon" style="display:none">元/月</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2"><span class="form-control no-border "><strong>离职押金</strong></span></div>
+                        <div class="col-sm-5 col-lg-5">
+                            <div class="input-group">
+								<div class="formValue">
+									<input id="resign_deposit" name="" class="form-control text-center required number" />
+								</div>
+                                <span class="input-group-addon">元/月</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="box-footer">
+    <button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+</div>
+
+<div class="modal fade" id="modalCompany" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">请从左侧选择分公司</h4>
+            </div>
+            <div class="modal-body">
+                <select multiple="multiple" size="10" id="duallistCompany"></select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/js/bootstrap-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<script src="~/Content/js/detail/FinancialAccounting/PositionSalary/other_setting.js"></script>

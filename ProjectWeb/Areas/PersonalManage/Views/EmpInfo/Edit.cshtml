@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "创建用户";
+    Layout = "~/Views/Shared/_Pop.cshtml";
+}
+<div class="row">
+    <div class="col-xs-12">
+        <form id="form1" role="form">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group formValue">
+                        <label for="phone">电话号码</label>
+                        <input id="phone" name="phone" type="text" class="form-control required" />
+                    </div>
+                </div>
+                <div id="role" class="col-xs-6">
+                    <div class="form-group formValue">
+                        <label for="wechat">微信号</label>
+                        <input id="wechat" name="wechat"   type="text"  class="form-control required"/>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group formValue">
+                        <label for="emergency_contact">紧急联系人</label>
+                        <input id="emergency_contact" name="emergency_contact" type="text" class="form-control required" />
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group formValue">
+                        <label for="emergency_contact_phone">紧急联系电话</label>
+                        <input id="emergency_contact_phone" name="emergency_contact_phone" type="text" class="form-control required" />
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group formValue">
+                        <label for="marriage">婚姻状况</label>
+                        <select id="marriage" class="form-control required">
+                            <option value="0">未婚</option>
+                            <option value="1">已婚</option>
+                            <option value="2">离异</option>
+                            <option value="3">丧偶</option>
+                            <option value="4">其他</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="~/Content/js/detail/personalManage/empInfo/edit.js"></script>

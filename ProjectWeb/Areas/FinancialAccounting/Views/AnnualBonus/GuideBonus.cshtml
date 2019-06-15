@@ -1,0 +1,88 @@
+﻿@*年终奖设置*@
+@{
+    ViewBag.Title = "年终奖设置";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<form id="form1">
+    <div class="box-header widt-border">
+
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group margin-bottom formValue">
+                <span class="input-group-addon no-border">机构</span>
+                <select id="company_id" name="company_id" class="form-control required"></select>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group margin-bottom formValue">
+                <span class="input-group-addon no-border">经理片区</span>
+                <select id="area_l1_id" name="area_l1_id" class="form-control required"></select>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group margin-bottom formValue">
+                <span class="input-group-addon no-border">业务片区</span>
+                <select id="area_l2_id" name="area_l2_id" class="form-control required"></select>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border">发放月份</span>
+                <input id="month" class="form-control" readonly="readonly" onfocus="WdatePicker({dateFmt: 'yyyy-MM' });" />
+            </div>
+        </div>
+    </div>
+    <div class="box-body">
+        <div class="box box-danger">
+            <div class="box-header widt-border">
+                <h3 class="box-title">年终奖设置</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body" style="background-color:#ecf0f5" id="bigBox">
+                @*<div class="box box-widget">
+                    <div class="box-header">
+                        <span style="margin-left:28px;">张三</span>
+                        <span style="margin-left:36px;">总经理</span>
+                        <span style="margin-left:36px;">E1</span>
+                        <span style="margin-left:36px;">入职时间：2019-11-12</span>
+                    </div>
+                    <div class="box-body">
+                        <div class="col-xs-12 col-sm-5 col-lg-2">
+                            <div class="input-group margin-bottom formValue">
+                                <span class="input-group-addon no-border">年终奖金</span>
+                                <input type="text" id="amount" name="amount" class="form-control" />
+                                <span class="input-group-addon">元</span>
+                            </div>
+                        </div>
+                        <div class="col-xs-10 col-sm-5 col-lg-6">
+                            <div class="input-group margin-bottom formValue">
+                                <span class="input-group-addon no-border">奖金说明</span>
+                                <input type="text" id="note" name="note" class="form-control required">
+                            </div>
+                        </div>
+                        <div class="col-xs-2 col-sm-2 col-lg-2">
+                            <a class="label label-primary btnDetailTag"  data-href="/FinancialAccounting/AnnualBonus/GuideBonusDetail" data-id=""  data-btndetail="导购员年终奖核对">导购员年终奖核对</a>
+                        </div>
+                    </div>
+                </div>*@
+                <div class="box box-widget " id="orgBox">
+                    <div class="box-body">
+                        <br />
+                        <div class="col-sm-12 col-md-12  text-center  margin-bottom">
+                            <label class="text-red" id="warningMsg">请选择业务片区</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="box-footer">
+    <button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+    @*<a class="btn btn-default pull-right" href="/FinancialAccounting/AnnualBonus/GuideIndex">返回</a>*@
+</div>
+
+<script src="~/Content/js/detail/FinancialAccounting/AnnualBonus/guide_bonus.js"></script>

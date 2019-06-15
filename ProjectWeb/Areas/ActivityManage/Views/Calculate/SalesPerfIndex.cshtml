@@ -1,0 +1,83 @@
+﻿@*经销商管理*@
+@{
+    ViewBag.Title = "经销商管理";
+    Layout = "~/Views/Shared/_Index_v2.cshtml";
+}
+
+<style>
+    .lineheight34 {
+        line-height: 34px;
+    }
+</style>
+
+<div class="panel-body" style="padding-bottom:0px;">
+
+    <div id="toolbar" class="btn-group">
+        <button type="button" id="exportExcel" class="btn btn-warning">
+            <span class="glyphicon glyphicon-export" aria-hidden="true"></span>导出
+        </button>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalQuery">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>搜索
+        </button>
+		<span style="margin-left:20px">统计时间：</span>
+		<input id="startTime1" type="text" class='text-center' style="height:30px;width:100px" readonly="readonly" onfocus="WdatePicker({ maxDate: '#F{$dp.$D(\'startTime2\')||\'%y-%M-%d\'}' });">
+		至
+		<input id="startTime2" type="text" class='text-center' style="height:30px;width:100px" readonly="readonly" onfocus="WdatePicker({ minDate: '#F{$dp.$D(\'startTime1\')}',maxDate: '%y-%M-%d'  });">
+        <i style="margin-left:8px" class='fa fa-search text-blue' id="querySubmit1" title="搜索统计时间"></i>
+    </div>
+
+    <div>
+        <table id="gridList" data-reorderable-columns="true" data-use-row-attr-func="true" data-reorderable-rows="true" style="table-layout:fixed"></table>
+    </div>
+
+</div>
+
+
+<div class="modal fade" id="modalQuery" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">
+                    按条件搜索
+                    <button id="clear" type="button" class="btn btn-warning btn-xs">清空</button>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form id="queryForm">
+                    <div class="row">
+                        <div class="col-sm-12 margin-bottom">
+                            <span for="name" class="col-sm-2 text-right lineheight34">姓名</span>
+                            <div class="input-group col-sm-9">
+                                <input id="name" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="col-sm-12 margin-bottom">
+                            <span for="emp_category" class="col-sm-2 text-right lineheight34">员工类型</span>
+                            <div class="input-group col-sm-9">
+                                <select class="form-control" id="emp_category">
+                                    <option value="">--请选择员工类型--</option>
+                                    <option value="3">--导购员--</option>
+                                    <option value="20">--业务员--</option>
+                                    <option value="21">--业务经理--</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 margin-bottom">
+                            <span for="company_id" class="col-sm-2 text-right lineheight34">机构</span>
+                            <div class="input-group col-sm-9">
+                                <select class="form-control" id="company_id"></select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" id="querySubmit" class="btn btn-primary">搜索</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/js/detail/ActivityManage/Calculate/sales_perf_index.js"></script>

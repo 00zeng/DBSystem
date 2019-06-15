@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Form_dinf.cshtml";
+}
+<header class="panel-heading">
+    <span style="color:#ffffff">员工信息</span>
+</header>
+<div class="panel-body" style="background:white;">
+    <div class="row">
+        <div class="col-xs-1">
+        </div>
+        <div class="col-xs-10" style="min-width:1000px">
+            <div class="form">
+                <div class="main-title main-title2">
+                    <div class="main-title2-type">职务信息</div>
+                </div>
+
+                <form id="main-form">
+                    <div class="main-section">
+                        @*<div class="mid-title-wrap">
+                            <div class="mid-title">职务信息</div>
+                        </div>*@
+                        <table id="jobInfo" class="normal" style="white-space:nowrap;">
+                            <tr>
+                                <th>工号</th>
+                                <td><span id="work_number" name="work_number"></span></td>
+                                <th>姓名</th>
+                                <td><span id="name" name="name"></span></td>
+                            </tr>
+                            <tr>
+                                <th>所属机构</th>
+                                <td><span id="company_name" name="company_name"></span></td>
+                                <th>部门</th>
+                                <td><span id="dept_name" name="dept_name"></span></td>
+                            </tr>
+                            <tr>
+                                <th>职位</th>
+                                <td><span id="position_name"></span></td>
+                                <th>职级</th>
+                                <td><span id="grade"></span></td>
+                            </tr>
+                            <tr>
+                                <th>上级主管姓名</th>
+                                <td><span id="supervisor_name" name="supervisor_name"></span></td>
+                                <th>雇员类别</th>
+                                <td><span id="emp_category" name="emp_category"></span></td>
+                            </tr>
+                            <tr>
+                                <th>入职时间</th>
+                                <td><span id="entry_date" class="convert_date"></span></td>
+                                <th>工作地点</th>
+                                <td><span id="work_addr"></span></td>
+                            </tr>
+                            <tr>
+                                <th>纳税单位</th>
+                                <td><span id="tax_unit" name="tax_unit"></span></td>
+                                <th>是否已购买社保</th>
+                                <td><span id="insurance_paid" name="insurance_paid"></span></td>
+                            </tr>
+                            <tr>
+                                <th>合同签署日期</th>
+                                <td><span id="cur_contract_sign" class="convert_date" name="cur_contract_sign"></span></td>
+                                <th>合同到期日期</th>
+                                <td><span id="cur_contract_expire" class="convert_date" name="cur_contract_expire"></span></td>
+                            </tr>
+                            <tr id="Guide_tr" style="display:none">
+                                <th>导购员类别</th>
+                                <td><span id="guide_category"></span></td>
+                                <th>介绍人</th>
+                                <td><span id="introducer_name"></span></td>
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+                <div class="col-sm-pull-2 form-group">
+                    <label>照片：</label><br />
+                    <div class="row mg-t" id="picture"></div>
+                </div>
+                <div class="main-submit" style="margin-top:20px;">
+                    <a class="btn-return" href="javascript:history.go(-1);"> 返回 </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/js/detail/subordinate/subordinate/show.js"></script>

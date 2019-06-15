@@ -1,0 +1,245 @@
+﻿@{
+    ViewBag.Title = "培训薪资查看";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+
+<style type="text/css">
+    tbody table td {
+        padding: 0;
+    }
+
+    .radio + .radio {
+        margin-top: 10px;
+    }
+
+    .table-bordered {
+        border-radius: 4px;
+    }
+</style>
+
+<link href="~/Content/js/bootstrap-duallistbox/bootstrap-duallistbox.min.css" rel="stylesheet" />
+
+<form id="form1">
+
+    <div class="box-header">
+        <h3 class="box-title">培训薪资查看</h3>
+        <div class="row margin">
+          <div class="row">
+			<div class="col-xs-12 col-sm-6">
+				<div class="input-group formValue margin-bottom">
+					<span class="input-group-addon no-border">分公司：</span>
+					<span id="company_name" class="form-control "></span>
+				</div>
+			</div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="input-group margin-bottom">
+                    <span class="input-group-addon no-border"> 生效时间</span>
+                    <span id="effect_date" class="form-control"></span>
+                </div>
+            </div>          
+		  </div>            
+        </div>
+    </div>
+
+<div class="box-body"  id="trainerManage">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-lg-12">
+                <div class="box box-danger">
+                    <div class="box-header">
+                        <h3 class="box-title">培训经理</h3>
+                        <div class="box-tools">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="box-body" style="background-color:#ecf0f5">
+                        <div class="row">                   
+                            <div class="col-xs-12 col-sm-12 col-lg-12">
+                                <div class="box box-widget">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">KPI</h3>
+                                        <div class="box-tools">
+                                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="box-body">
+										<h4 class="box-title">导购人均产值</h4>
+                                        <table class="table table-bordered text-center">
+                                            <tr>
+                                                <th class="bg-gray-light" width="25%">标准金额</th>
+                                                <th class="bg-gray-light" width="25%">标准台数</th>
+                                                <th class="bg-gray-light" width="50%">KPI（元）<span style="color:red">KPI为负值时不扣款</span></th>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+													<div class="input-group">
+                                                        <span class="form-control text-center" id="average_standard_money"></span>
+                                                        <span class="input-group-addon no-border">元</span>
+                                                    </div>
+                                                </td>
+												<td>
+													<div class="input-group">
+                                                        <span class="form-control text-center" id="average_standard_number"></span>
+                                                        <span class="input-group-addon no-border">台</span>
+                                                    </div>
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    <span>(导购产生销量 / 产生销量导购人数) / 标准台数 * 100% * 标准金额</span>
+                                                </td>
+                                            </tr>
+                                        </table>
+										
+										<h4 class="box-title">导购离职率</h4>
+										<table class="table table-bordered text-center">
+                                            <tr>
+                                                <th class="bg-gray-light" width="25%">标准金额</th>
+                                                <th class="bg-gray-light" width="25%">标准比率</th>
+                                                <th class="bg-gray-light" width="50%">KPI（元）<span style="color:red">KPI为负值时不扣款</span></th>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+													<div class="input-group">
+                                                        <span class="form-control text-center" id="resign_standard_money"></span>
+                                                        <span class="input-group-addon no-border">元</span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="input-group">
+                                                        <span class="form-control text-center" id="resign_standard_ratio"></span>
+                                                        <span class="input-group-addon no-border">%</span>
+                                                    </div>
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    <span>{ 1 - [ 离职人数 / (月底人数 + 离职人数) - 标准比率 ] * 5 } * 标准金额</span>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+										<h4 class="box-title">高端机占比</h4>
+										<table class="table table-bordered text-center">
+                                            <tr>
+                                                <th class="bg-gray-light" width="20%">标准金额</th>
+                                                <th class="bg-gray-light" width="20%">标准比率</th>
+                                                <th class="bg-gray-light" width="40%">KPI（元）<span style="color:red">KPI为负值时不扣款</span></th>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+													<div class="input-group">
+                                                        <span class="form-control text-center" id="product_expensive_money"></span>
+                                                        <span class="input-group-addon no-border">元</span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="input-group">
+                                                        <span class="form-control text-center" id="product_expensive_ratio"></span>
+                                                        <span class="input-group-addon no-border">%</span>
+                                                    </div>
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    <span> [ 1 - ( 标准比率 - 整个区域实销高端机占比 ) * 5 ] * 标准金额</span>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</div>
+		</div>
+    </div>
+			
+	<div class="box-body">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-lg-12">
+				<div class="box box-success">
+                    <div class="box-header">
+                        <div class="row">
+                            <div class="input-group col-sm-5 col-lg-3">
+                                <h3 class="box-title input-group-addon no-border">交通补贴</h3>
+                                <div class="checkbox input-group-addon no-border">
+                                    <label class="text-red">
+                                        <input type="checkbox" id="assessment_setting" disabled/>将所有个人设置重置为此方案
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-tools">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="row margin-bottom">
+                            <div class="col-sm-2 col-lg-1"><span class="form-control no-border">补贴金额</span></div>
+                            <div class="col-sm-3 col-lg-3">
+                                <div class="input-group">
+									<div class="formValue">
+										<span class="form-control text-center required number" id="traffic_subsidy"></span>
+									</div>
+										<span class="input-group-addon ">元</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+
+<div class="box-body">
+  <div class="row">
+	<div class="col-xs-12 col-sm-12 col-lg-12">
+            <div class="box box-default  collapsed-box">
+                <div class="box-header widt-border">
+                    <h3 class="box-title">审批</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <table class="table table-bordered text-center" id="approve">
+                        <tbody>
+                            <tr>
+                                <th width="150px">操作类型</th>
+                                <th width="150px">操作人</th>
+                                <th width="150px">操作人职位</th>
+                                <th width="200px">时间</th>
+                                <th width="200px">结果</th>
+                                <th width="200px">意见</th>
+                            </tr>
+                            <tr>
+                                <td>发起申请</td>
+                                <td><span id="creator_name"></span></td>
+                                <td><span id="creator_position_name"></span></td>
+                                <td><span id="create_time"></span></td>
+                                <td><span id="">--</span></td>
+                                <td><span id="">--</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+		</div>
+	 </div>
+ </div>
+
+</form>
+
+<div class="box-footer">
+    <button type="submit" class="btn btn-default pull-right" onclick="javascript:history.back(-1);">返回</button>
+</div>
+
+<script src="~/Content/js/detail/FinancialAccounting/PositionSalary/trainer_manage_show.js"></script>

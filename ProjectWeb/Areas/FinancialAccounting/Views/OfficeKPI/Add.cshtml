@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "KPI评分";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<form id="form1">
+    <div class="box-header">
+        <h4><span id="position_name"></span>KPI评分</h4>
+        <div class="box-body">
+            <div class="col-xs-12 col-sm-4 col-lg-4">
+                <div class="input-group formValue margin-bottom">
+                    <span class="input-group-addon no-border">姓名：</span>
+                    <span type="text" id="name" class="form-control required"></span>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-lg-4">
+                <div class="input-group formValue margin-bottom">
+                    <span class="input-group-addon no-border">等级：</span>
+                    <span type="text" id="grade" class="form-control required"></span>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-lg-4">
+                <div class="input-group formValue margin-bottom">
+                    <span class="input-group-addon no-border">考核周期:</span>
+                    <input id="month" class="form-control" readOnly="readOnly" onfocus="WdatePicker({dateFmt: 'yyyy-MM', maxDate: '%y-%M'});" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="box-body">
+        <div class="box box-danger">
+            <div class="box-header widt-border">
+                <h3 class="box-title">KPI评分</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body" style="background-color:#ecf0f5">
+                <div class="col-xs-12 col-sm-12 col-lg-6">
+                    <div class="box box-widget">
+                        <div class="box-header">
+                            <div class="input-group col-sm-5 col-lg-3">
+                                <h3 class="box-title input-group-addon no-border">@*KPI评分*@</h3>
+                            </div>
+                            <div class="box-tools">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="row margin-bottom ">
+                                <div class="col-sm-2"><span class="form-control no-border text-right"><strong>KPI分数</strong></span></div>
+                                <div class="col-sm-4">
+                                    <div class="input-group formValue margin-bottom">
+                                        <input id="kpi" class="form-control required number">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <span class="label label-primary">KPI分数应小于100</span>
+                                </div>
+                            </div>
+
+                            <div class="row margin-bottom">
+                                <div class="col-sm-2"><span class="form-control no-border text-right"><strong>评分说明</strong></span></div>
+                                <div class="col-sm-8">
+                                    <textarea id="note" class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="box-footer">
+    <button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+    <button type="submit" class="btn btn-default pull-right" onclick="javascript:history.back(-1);">返回</button>
+</div>
+
+<script src="~/Content/js/detail/FinancialAccounting/OfficeKPI/add.js"></script>

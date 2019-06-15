@@ -1,0 +1,143 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<div style="margin-top: 20%;">
+    <center><h1>道本工资</h1></center>
+    <center><h1></h1></center>
+    <center><h3>管理系统</h3></center>
+</div>
+@*<style>
+    .row{margin-right:0;margin-top:15px;}
+    .flex{width:30%;display:inline-block;font-size:4.2em;min-height:10px;}
+    .flex2{width:70%;display:inline-block;vertical-align:bottom;font-weight:bolder;font-size:18px;}
+    .flex2 p:nth-child(2n){font-size:14px;}
+    .flex2 p:nth-child(2n+1){line-height:2.5em;}
+    .col-sm-3{padding-right:0;margin-bottom:15px;}
+    .div-container{background-color:#85a4c3;border:1px solid #ddd;padding-left:5%;color:blanchedalmond;padding-right:5%;}
+    .badge{margin-left:2%;vertical-align:inherit;}
+</style>
+
+<div class="row" id="things_list">
+	<div class="col-sm-3" data-href="/DocumentaryManage/DDetailBrand/Index" data-code="1001" title="品牌跟单&nbsp;&nbsp;">
+		<div class="div-container">
+			<span class="flex" style="float: left;">
+				<i class="fa fa-gavel icon"></i>
+			</span>
+		<div class="flex2" style="text-align: right;">
+		<p>品牌跟单&nbsp;&nbsp;</p>
+		<p>待审核数<span class="badge" style="background-color: lightslategray;">1</span></p>
+		</div>
+	    </div>
+    </div>
+
+	<div class="col-sm-3" data-href="/DocumentaryManage/DDetailOrder/Index" data-code="1002" title="订单跟单&nbsp;&nbsp;">
+		<div class="div-container" style="background-color: rgb(223, 129, 92); color: bisque;">
+			<span class="flex" style="float: right;">
+				<i class="fa fa-gavel icon"></i>
+			</span>
+		<div class="flex2">
+		<p>订单跟单&nbsp;&nbsp;</p>
+		<p>待审核数<span class="badge" style="background-color: rgb(189, 90, 56);">0</span></p>
+		</div>
+		</div>
+	</div>
+
+	<div class="col-sm-3" data-href="/OrderManage/DiamondOrder/Index" data-code="2001" title="无框钻石定制">
+		<div class="div-container">
+			<span class="flex" style="float: left;">
+				<i class="fa fa-phone icon"></i>
+			</span>
+		<div class="flex2" style="text-align: right;">
+		<p>无框钻石定制</p>
+		<p>待审核数<span class="badge" style="background-color: lightslategray;">1</span></p>
+		</div>
+		</div>
+	</div>
+
+	<div class="col-sm-3" data-href="/OrderManage/DiamondOrderNon/Index" data-code="2002" title="无框钻石非定制">
+		<div class="div-container" style="background-color: rgb(223, 129, 92); color: bisque;">
+			<span class="flex" style="float: right;">
+				<i class="fa fa-phone icon"></i>
+			</span>
+		<div class="flex2">
+		<p>无框钻石非定制</p>
+		<p>待审核数<span class="badge" style="background-color: rgb(189, 90, 56);">0</span></p>
+		</div>
+		</div>
+	</div>
+
+	<div class="col-sm-3" data-href="/OrderManage/Order/Index" data-code="2003" title="订单管理&nbsp;&nbsp;">
+		<div class="div-container">	
+				<span class="flex" style="float: left;">
+					<i class="fa fa-phone icon"></i>
+				</span>
+		<div class="flex2" style="text-align: right;">
+		<p>订单管理&nbsp;&nbsp;</p>
+		<p>待审核数<span class="badge" style="background-color: lightslategray;">1</span></p>
+		</div>
+		</div>
+	</div>
+
+	<div class="col-sm-3" data-href="/DocumentaryManage/SampleOrder/Index" data-code="2007" title="样品管理&nbsp;&nbsp;">
+		<div class="div-container" style="background-color: rgb(223, 129, 92); color: bisque;">
+			<span class="flex" style="float: right;">
+				<i class="fa fa-phone icon"></i>
+			</span>
+		<div class="flex2">
+		<p>样品管理&nbsp;&nbsp;</p>
+		<p>待审核数<span class="badge" style="background-color: rgb(189, 90, 56);">0</span></p>
+		</div>
+		</div>
+	</div>
+
+	<div class="col-sm-3" data-href="/OrderManage/MaterialOrder/Index" data-code="2008" title="物料订单&nbsp;&nbsp;">
+		<div class="div-container">
+			<span class="flex" style="float: left;">
+				<i class="fa fa-phone icon"></i>	
+			</span>
+			<div class="flex2" style="text-align: right;">
+			<p>物料订单&nbsp;&nbsp;</p>
+			<p>待审核数<span class="badge" style="background-color: lightslategray;">0</span></p>
+			</div>
+			</div>
+	</div>
+
+	<div class="col-sm-3" data-href="/OrderManage/ReturnOrder/Index" data-code="2009" title="退货管理&nbsp;&nbsp;">
+		<div class="div-container" style="background-color: rgb(223, 129, 92); color: bisque;">
+				<span class="flex" style="float: right;">
+					<i class="fa fa-phone icon"></i>
+				</span>
+		<div class="flex2">
+		<p>退货管理&nbsp;&nbsp;</p>
+		<p>待审核数<span class="badge" style="background-color: rgb(189, 90, 56);">0</span></p>
+		</div>
+		</div>
+	</div>
+
+	<div class="col-sm-3" data-href="/OrderManage/ExchangeOrder/Index" data-code="2010" title="换货订单&nbsp;&nbsp;">
+		<div class="div-container">
+			<span class="flex" style="float: left;">
+				<i class="fa fa-phone icon"></i>
+			</span>
+		<div class="flex2" style="text-align: right;">
+		<p>换货订单&nbsp;&nbsp;</p>
+		<p>待审核数<span class="badge" style="background-color: lightslategray;">1</span></p>
+		</div>
+		</div>
+	</div>
+
+	<div class="col-sm-3" data-href="/WarehouseManage/Product/WarehouseIndex" data-code="6001" title="产品入库&nbsp;&nbsp;">
+		<div class="div-container" style="background-color: rgb(223, 129, 92); color: bisque;">
+			<span class="flex" style="float: right;">
+				<i class="fa fa-home icon"></i>
+			</span>
+		<div class="flex2">
+		<p>产品入库&nbsp;&nbsp;</p>
+		<p>待入库单数<span class="badge" style="background-color: rgb(189, 90, 56);">0</span></p>
+		</div>
+		</div>
+	</div>
+
+</div>*@
+<script src="~/Content/js/detail/home/home_index.js"></script>

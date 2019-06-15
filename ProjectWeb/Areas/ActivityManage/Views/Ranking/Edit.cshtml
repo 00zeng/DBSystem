@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "修改结束时间";
+    Layout = "~/Views/Shared/_Pop.cshtml";
+}
+<div class="row">
+    <div class="col-xs-12">
+        <form id="form1" role="form">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group formValue">
+                        <label for="alterDate">修改结束时间</label>
+                        <input id="alterDate" name="alterDate" type="text" class="form-control required" readonly="readonly" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd', minDate: '#F{$dp.$D(\'start_date\')}' });"/>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group formValue">
+                        <label>活动时间</label>
+                        <div class="input-group">
+                            <input id="start_date" class="form-control format_date" readonly="readonly">
+                            <span class="input-group-addon ">-</span>
+                            <input id="end_date" class="form-control format_date" readonly="readonly">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="~/Content/js/detail/activityManage/Ranking/edit.js"></script>

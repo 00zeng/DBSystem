@@ -1,0 +1,41 @@
+﻿@*统计分析*@
+@{
+    ViewBag.Title = "统计分析";
+    Layout = "~/Views/Shared/_Index_v2.cshtml";
+}
+<div class="box-header widt-border">
+    <h3 class="box-title"><i class="fa fa-bar-chart"></i> 利润分析</h3>
+    <h4 class="box-title">(单型号利润/利润率，分公司单型号利润/利润率，各分公司利润率的对比图)</h4>
+</div>
+<div class="box-header">
+    <div class="row">       
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border">分公司：</span>
+                <select id="company_l2_id" class="form-control" type="text"></select>
+            </div>
+        </div>                
+        <div class="col-xs-12 col-sm-5 col-lg-5">
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border">统计时间：</span>
+                <input placeholder="开始统计" id="start_date" name="start_date" type="text" class="form-control" readonly="readonly" onfocus="WdatePicker({ maxDate: '#F{$dp.$D(\'end_date\')|| \'%y-%M-%d\' }', minDate: '#F{$dp.$D(\'end_date\',{M:-3})}' });">
+                <span class="input-group-addon">-</span>
+                <input placeholder="结束统计" id="end_date" name="end_date" type="text" class="form-control" readonly="readonly" onfocus="WdatePicker({ maxDate: '#F{$dp.$D(\'start_date\',{M:3}) && \'%y-%M-%d\' }', minDate: '#F{$dp.$D(\'start_date\')}' });">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-1 col-lg-1">
+            <button type="button" id="querySubmit" class="btn btn-primary">查询</button>
+        </div>
+    </div>
+</div>
+<div class="box-body">
+    <div class="row">        
+        <div class="col-sm-12 col-lg-6 margin-bottom" id="chart1" style="height: 500px;"></div>
+        <div class="col-sm-12 col-lg-6 margin-bottom" id="chart2" style="height: 500px;"></div>
+        <div class="chart col-sm-12 margin-bottom" id="chart3" style="height: 500px;"></div>
+       
+       
+    </div>
+</div>
+
+<script src="~/Content/js/detail/Statistics/ProfitAnalysis/index.js"></script>

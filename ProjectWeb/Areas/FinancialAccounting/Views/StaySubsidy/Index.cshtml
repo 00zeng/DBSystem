@@ -1,0 +1,24 @@
+﻿@* 留守补助 *@
+@{
+    ViewBag.Title = "留守补助列表";
+    Layout = "~/Views/Shared/_Index_v2.cshtml";
+}
+<div class="panel-body" style="padding-bottom:0px;">
+
+    <div id="toolbar" class="btn-group">
+		<button id="btn_add" type="button" class="btn btn-primary" onclick="window.location.href='Add'">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+        </button>
+		<div class="input-group">
+			<select class="form-control" id="company_id">
+			</select>
+		</div>
+    </div>
+
+    <div>
+        <table id="gridList" style="table-layout:fixed"></table>
+    </div>
+
+</div>
+
+<script src="~/Content/js/detail/FinancialAccounting/StaySubsidy/index.js"></script>

@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Pop.cshtml";
+}
+<link href="~/Content/css/validate_pop.css" rel="stylesheet" />
+<div class="row">
+    <div class="col-xs-12">
+        <form id="form1" role="form">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group formValue">
+                        <label for="name">角色名称</label>
+                        <input id="name" name="name" type="text" class="form-control required" placeholder="请输入角色名称" maxlength="32" />
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group formValue">
+                        <label for="role_desc">角色描述</label>
+                        <textarea class="form-control required"  id="role_desc" rows="3" placeholder="请输入角色描述" maxlength="128"></textarea>
+                    </div>
+                </div>
+                
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="~/Content/js/detail/SystemManage/MsRole/edit.js"></script>

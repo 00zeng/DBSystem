@@ -1,0 +1,69 @@
+﻿/*#form1{margin-left:8px}
+.input-group .distance{margin-left:57px}
+.input-group .single{width:250px;display:inline-block;text-align:right}
+.input-group .single span{color:white;padding-right:5px}
+.input-group .single input{width: 150px; height: 20px}
+.input-group .more{width:300px;display:inline;text-align:right}
+.input-group .more span{color:white;padding-right:5px}
+.input-group .more select{width: 150px; height: 24px}*/
+
+/*#form1{margin-left:8px}
+.input-group .single{width:15%;display:inline-block;text-align:right}
+.input-group .single span{color:white;padding-right:5px}
+.input-group .single input{width: 150px; height: 20px}
+.input-group .single select{width:150px;height:24px}*/
+
+.input-group .checkboxs{vertical-align:-2px;margin-right:5px}
+.input-group .distance{margin-left:50px}
+.input-group .single{width:15%;display:inline}
+.input-group .single span{color:white;padding-right:5px}
+.input-group .single input{width: 150px; height: 20px}
+.input-group .single select{width:150px;height:24px}
+
+.modal-content {border-radius: 5px;}
+/*多标签*/
+@media (min-width:0px) {
+    .content-tabs{position:relative;height:42px;line-height:39.5px;background:#fafafa;border-bottom:solid 2px #ddd;font-size:12px;border-top: 1px solid #3c8dbc;}
+    .content-tabs .roll-nav,.page-tabs-list{position:absolute;width:40px;height:39px;text-align:center;color:#475059;z-index:2;top:0}
+    .content-tabs .roll-left{left:0;border-right:solid 1px #ddd}
+    .content-tabs .roll-right{right:0;border-left:solid 1px #ddd}
+    .content-tabs button{background:#fff;border:0;height:39px;line-height:39px;width:40px;outline:0}
+    .content-tabs button:hover{background:#fafafa}
+    .content-tabs button i{color: #999;}
+    .content-tabs nav.page-tabs{margin-left:40px;width:100000px;height:40px;overflow:hidden}
+    .content-tabs nav.page-tabs .page-tabs-content{float:left}
+    .content-tabs .page-tabs a{display:block;float:left;border-right:solid 0px #ddd;padding:0 15px;padding-right:8px;text-decoration:none;color:#475059;}
+    .content-tabs .page-tabs a:first-child{padding-right:15px;}
+    .content-tabs .page-tabs a.active{background: #3c8dbc;color: #fff;border-right: solid 1px #3c8dbc;}
+    .content-tabs .page-tabs a i{margin-top:-10px;right: 0px;position: relative;color: #999;}
+    .content-tabs .page-tabs a i:hover{color:#c00 !important;}
+    .content-tabs .page-tabs a.active i:hover{color:#fff !important;}
+    .content-tabs .roll-right.tabRight{right:120px}
+    .content-tabs .roll-right.btn-group{right:40px;width:80px;padding:0}
+    .content-tabs .roll-right.btn-group button{width:80px}
+    .content-tabs .roll-right.tabExit{background:#fff;height:39px;width:40px;outline:0} 
+}
+.theme-blue-gradient .content-tabs{border-bottom:solid 2px #2c3e50;background:#fff !important;height:41px;border-top:none;}
+.theme-greenSea .content-tabs{border-bottom:solid 2px #e7ebee;background:#fff !important;border-top:none;height:41px;}
+.theme-greenSea .content-tabs .page-tabs a.active{background:whitesmoke;color:#484848 !important;border-right: solid 1px #e7ebee;}
+.theme-greenSea .content-tabs .roll-left{border-right: solid 1px #e7ebee;}
+.theme-greenSea .content-tabs .roll-right{border-left: solid 1px #e7ebee;}
+/*滚动条样式*/
+.sidebar::-webkit-scrollbar  
+{  
+    width: 8px;    
+    background-color: #fff;  
+}  
+.sidebar::-webkit-scrollbar-track  
+{  
+    -webkit-box-shadow: inset 0 0 6px rgba(178,178,178,1);  
+    border-radius: 10px;  
+    background-color: rgba(234,234,234,1);  
+
+}  
+.sidebar::-webkit-scrollbar-thumb  
+{  
+    border-radius: 10px;  
+    -webkit-box-shadow: inset 0 0 6px rgba(178,178,178,1);  
+    background-color: rgba(178,178,178,1);  
+} 

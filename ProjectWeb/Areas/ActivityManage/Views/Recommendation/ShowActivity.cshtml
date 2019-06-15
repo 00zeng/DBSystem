@@ -1,0 +1,270 @@
+﻿@{
+    ViewBag.Title = "达量";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<link href="~/Content/js/bootstrap-duallistbox/bootstrap-duallistbox.min.css" rel="stylesheet" />
+<style type="text/css">
+    tbody table td {
+        padding: 0;
+    }
+
+    .radio + .radio {
+        margin-top: 10px;
+    }
+
+    .table-bordered {
+        border-radius: 4px;
+    }
+</style>
+<form id="form1">
+    <div class="box-header">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-lg-3">
+                <div class="input-group margin-bottom">
+                    <label class="input-group-addon no-border">活动名称：</label>
+                    <span type="text" id="name" class="form-control"></span>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-3">
+                <div class="input-group margin-bottom">
+                    <span class="input-group-addon no-border">分公司：</span>
+                    <span id="company_name" class="form-control" tabindex="-1" aria-hidden="true"></span>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-3">
+                <div class="input-group margin-bottom">
+                    <span class="input-group-addon no-border">活动时间：</span>
+                    <span id="start_date" class="form-control format_date"></span>
+                    <span class="input-group-addon">-</span>
+                    <span id="end_date" class="form-control format_date"></span>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-3">
+                <div class="input-group">
+                    <span class="input-group-addon no-border">统计时间：</span>
+                    <span id="start_time" name="startTime1" class="form-control format_date"></span>
+                    <span class="input-group-addon">-</span>
+                    <span id="end_time" name="startTime2" class="form-control format_date"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box-body" style="padding-bottom:0px;">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-lg-6">
+                <div class="box box-danger">
+                    <div class="box-header">
+                        <h3 class="box-title" id="emp_category"></h3>
+						<h6 class="inline margin">共<span class="margin" id="emp_count">0</span>个</h6>
+						<span style="margin-left:20px">活动状态：<label class="label label-default" id="activity_status"></label></span>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div style="margin-top: 40px;">
+                            <table id="targetEmp"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12  col-lg-6">
+                <div class="box box-warning">
+                    <div class="box-header">
+                        <h3 class="box-title">活动机型</h3>
+                        <h6 id="productCountWrap" class="inline margin" hidden>共<span class="margin" id="product_count">0</span>款</h6>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div style="height: 40px">
+                            <div class="radio col-sm-3">
+                                <label>
+                                    <input name="product_scope" id="product_scope" type="radio" value="1" disabled>全部机型
+                                </label>
+                            </div>
+                            <div class="radio col-sm-3">
+                                <label>
+                                    <input name="product_scope" type="radio" value="2" disabled>指定机型
+                                </label>
+                            </div>
+                        </div>
+                        <div id="targetProductWrap" hidden>
+                            <table id="targetProduct"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box box-success  collapsed-box">
+            <div class="box-header with-border">
+                <h3 class="box-title">奖励政策</h3>
+                <h6 class="label label-danger ">买断机、特价机算量不算钱</h6>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="col-sm-12 col-lg-6">
+                    <div class="form-group col-sm-12">
+                        <label>计量方式</label>
+                        <div>
+                            <div class="radio col-sm-3">
+                                <label>
+                                    <input id="target_content" name="target_content" type="radio" value="1" disabled>按实销量
+                                </label>
+                            </div>
+                            <div class="radio col-sm-3">
+                                <label>
+                                    <input name="target_content" type="radio" value="2" disabled>按下货量
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-sm-12">
+                        <label>奖励模式</label>
+                        <div>
+                            <div class="radio col-sm-3">
+                                <label>
+                                    <input id="target_mode" name="target_mode" type="radio" value="1" disabled>按完成率
+                                </label>
+                            </div>
+                            <div class="radio col-sm-3">
+                                <label>
+                                    <input name="target_mode" type="radio" value="2" disabled>按台数
+                                </label>
+                            </div>
+                            <div class="radio col-sm-3">
+                                <label>
+                                    <input name="target_mode" type="radio" value="3" disabled>按零售价
+                                </label>
+                            </div>
+                            <div class="radio col-sm-3">
+                                <label>
+                                    <input name="target_mode" type="radio" value="5" disabled>按批发价
+                                </label>
+                            </div>
+                            <div class="radio col-sm-3">
+                                <label>
+                                    <input name="target_mode" type="radio" value="4" disabled>按型号
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-sm-12">
+                        <label>奖励金额</label>
+                        <div>
+                            <div class="radio col-sm-3">
+                                <label>
+                                    <input id="rebate_mode" name="rebate_mode" type="radio" value="1" disabled>每台固定金额
+                                </label>
+                            </div>
+                            <div class="radio col-sm-3">
+                                <label>
+                                    <input name="rebate_mode" type="radio" value="2" disabled>每台批发价比例
+                                </label>
+                            </div>
+                            <div class="radio col-sm-3">
+                                <label>
+                                    <input name="rebate_mode" type="radio" value="3" disabled>每台零售价比例
+                                </label>
+                            </div>
+                            <div class="radio col-sm-3">
+                                <label>
+                                    <input name="rebate_mode" type="radio" value="4" disabled>固定总金额
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="forTargetMode1" class="form-group col-sm-12">
+                        <label>目标销量</label>
+                        <div class="input-group col-sm-3">
+                            <span id="activity_target" class="form-control"></span>
+                            <span class="input-group-addon">台</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-sm-12">
+                        <label>备注说明</label>
+                        <textarea class="form-control" rows="3" name="note" id="note" disabled></textarea>
+                    </div>
+                </div>
+                <div class="form-group col-lg-6">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <table id="rebateMode1" class="table table-bordered text-center" hidden>
+                                <thead style="display: table;width: 99%;table-layout: fixed;">
+                                    <tr>
+                                        <th class="col-md-6"><span name="target_mode_change"></span></th>
+                                        <th class="col-md-6"><span name="rebate_mode_change"></span></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <table id="rebateMode4" class="table table-bordered text-center" hidden>
+                                <thead style="display: table;width: 99%;table-layout: fixed;">
+                                    <tr>
+                                        <th style="text-align:center;vertical-align:middle;" class="col-md-3">型号</th>
+                                        <th style="text-align:center;vertical-align:middle;" class="col-md-2">颜色</th>
+                                        <th style="text-align:center;vertical-align:middle;" class="col-md-2">批发价(元/台)</th>
+                                        <th style="text-align:center;vertical-align:middle;" class="col-md-5"><span name="rebate_mode_change">奖励金额</span></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box box-default  collapsed-box">
+            <div class="box-header widt-border">
+                <h3 class="box-title">审批</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <table class="table table-bordered text-center" id="approve">
+                    <tbody>
+                        <tr>
+                            <th>操作类型</th>
+                            <th>操作人</th>
+                            <th>操作人职位</th>
+                            <th>时间</th>
+                            <th>结果</th>
+                            <th>意见</th>
+                        </tr>
+                        <tr>
+                            <td>发起申请</td>
+                            <td><span id="creator_name"></span></td>
+                            <td><span id="creator_position_name"></span></td>
+                            <td><span id="create_time"></span></td>
+                            <td><span id="">--</span></td>
+                            <td><span id="">--</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</form>
+<div class="box-footer">
+    <a type="submit" class="btn btn-default pull-right" href="/ActivityManage/Recommendation/Index">返回</a>
+</div>
+
+
+<script src="~/Content/js/bootstrap-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<script src="~/Content/js/detail/activityManage/Recommendation/showActivity.js"></script>

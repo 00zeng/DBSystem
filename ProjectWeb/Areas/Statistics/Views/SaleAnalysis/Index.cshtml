@@ -1,0 +1,42 @@
+﻿@*统计分析*@
+@{
+    ViewBag.Title = "统计分析";
+    Layout = "~/Views/Shared/_Index_v2.cshtml";
+}
+<div class="box-header widt-border">
+    <h3 class="box-title"><i class="fa fa-bar-chart"></i> 销售分析</h3>
+    <h5 class="box-title">单型号销售占比/各分公司单型号销售占比对比图/人均产值/无促销门店平均产值/单个导购员全年均产/单业务员全年均产/单区域人员均产</h5>
+</div>
+<div class="box-header">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border">分公司：</span>
+                <select id="company_l2_id" class="form-control" type="text"></select>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-5 col-lg-5">
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border">统计时间：</span>
+                <input placeholder="开始统计" id="start_date" name="start_date" type="text" class="form-control" readonly="readonly" onfocus="WdatePicker({ maxDate: '#F{$dp.$D(\'end_date\')|| \'%y-%M-%d\' }', minDate: '#F{$dp.$D(\'end_date\',{M:-3})}' });">
+                <span class="input-group-addon">-</span>
+                <input placeholder="结束统计" id="end_date" name="end_date" type="text" class="form-control" readonly="readonly" onfocus="WdatePicker({ maxDate: '#F{$dp.$D(\'start_date\',{M:3}) && \'%y-%M-%d\' }', minDate: '#F{$dp.$D(\'start_date\')}' });">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-1 col-lg-1">
+            <button type="button" id="querySubmit" class="btn btn-primary">查询</button>
+        </div>
+    </div>
+</div>
+<div class="box-body">
+    <div class="row">        
+        <div class="col-sm-12 col-lg-6" id="chart1" style="height: 500px;"></div>
+        <div class="col-sm-12 col-lg-6" id="chart2" style="height: 500px;"></div>
+        <div class="chart col-sm-12" id="chart3" style="height: 500px;"></div>
+        <div class="chart col-sm-6" id="chart4" style="height: 500px;"></div>
+        <div class="chart col-sm-6" id="chart5" style="height: 500px;"></div>
+        <div class="chart col-sm-6" id="chart6" style="height: 800px;"></div>        
+    </div>
+</div>
+
+<script src="~/Content/js/detail/Statistics/SaleAnalysis/index.js"></script>

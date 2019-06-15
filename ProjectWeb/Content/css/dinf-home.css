@@ -1,0 +1,28 @@
+﻿html, body {
+    font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif !important;
+}
+.main-header .breadcrumb {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 15px;
+    list-style: none;
+    float: left;
+    font-size: 12px;
+    background-color: transparent;
+}
+.main-header .breadcrumb a,.main-header .breadcrumb {
+    color:#fff;
+}
+.main-header .breadcrumb a .fa{
+    margin-right:5px;
+}
+.main-header .breadcrumb li+li:before{
+    content: '';
+    color:#fff;
+}
+
+
+/* 弹出层 */
+.layui-layer-title{background:white !important;}
+.layui-layer-btn a{width:100px;text-align:center; vertical-align: middle; font-size: 14px}
+.layui-layer-iframe iframe{display: block;width: 100%;border-bottom: 1px solid;border-top: 1px solid;border-color: rgb(204,204,204);}

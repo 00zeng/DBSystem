@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="~/Content/js/jquery/jquery-3.1.1.js"></script>
+    <script src="~/Content/js/layer/layer.js"></script>
+
+
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="~/Content/js/bootstrap/css/bootstrap.min.css">
+    <script src="~/Content/js/bootstrap/js/bootstrap.min.js"></script>
+    <link href="~/Content/js/bootstrap-table/bootstrap-table.css" rel="stylesheet" />
+    <script src="~/Content/js/bootstrap-table/bootstrap-table.js"></script>
+    <script src="~/Content/js/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+   
+     <!-- Bootstrap fileinput -->
+    <link href="~/Content/js/bootstrap-fileinput/css/fileinput.min.css" rel="stylesheet" />
+    <script src="~/Content/js/bootstrap-fileinput/js/fileinput.min.js"></script>
+    <script src="~/Content/js/bootstrap-fileinput/js/locales/zh.js"></script>
+
+    <script src="~/Content/js/excel/shim.js"></script>
+    <script src="~/Content/js/excel/xlsx.full.min.js"></script>
+    <script src="~/Content/js/excel/utils.js"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Content/css/font-awesome.min.css">
+    <link href="~/Content/js/select2/select2.min.css" rel="stylesheet" />
+    <script src="~/Content/js/select2/select2.min.js"></script>
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Content/js/adminlte/css/AdminLTE.min.css">
+    <script src="~/Content/js/adminlte/js/adminlte.min.js"></script>
+
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="~/Content/js/adminlte/css/skins/skin-blue.min.css">
+
+    <link href="~/Content/js/datepicker/skin/WdatePicker.css" rel="stylesheet" />
+    <script src="~/Content/js/datepicker/WdatePicker.js"></script>
+    <script src="~/Content/js/datepicker/lang/zh-cn.js"></script>
+    <script src="~/Content/js/validate/jquery.validate.min.js"></script>
+    <link rel="stylesheet" href="~/Content/css/dinf-common.css">
+    <link rel="stylesheet" href="~/Content/css/dinf-form.css">
+    @*<script src="~/Content/js/deepinf/dinf-base.js"></script>
+    <script src="~/Content/js/deepinf/dinf-form.js"></script>*@
+    <script src="~/Content/js/deepinf/dinf-base-preload.js"></script>
+    <script src="~/Content/js/deepinf/dinf-indextab.js"></script>
+
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+
+</head>
+@*<body style="background:rgb(244,244,244)">*@
+<body>
+    @RenderBody()
+    @Html.AntiForgeryToken()
+</body>
+</html>
+<script src="~/Content/js/deepinf/dinf-base-postload.js"></script>

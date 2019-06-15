@@ -1,0 +1,130 @@
+﻿@{
+    ViewBag.Title = "商品信息";
+    Layout = "~/Views/Shared/_Index.cshtml";
+}
+<style>
+    #myTab li {
+        margin-left: -3px;
+    }
+
+        #myTab li a {
+            line-height: 12px;
+            font-size: 14px;
+            border: 1px solid rgba(121, 121, 121, 1);
+            border-bottom: none;
+            color: white;
+        }
+
+        #myTab li.active a {
+            color: black;
+        }
+
+    #myTab a:hover {
+        color: black;
+    }
+</style>
+<div id="list_area">
+    <header class="panel-heading">
+        <div style="height:22px;">
+            <span style="color:#ffffff;float:left;line-height:20px;font-size:16px;">离职信息</span>
+            <ul id="myTab" class="nav nav-tabs" style="float:left;border-bottom:none;margin-left:20px;">
+                <li class="active">
+                    <a href="#All" data-toggle="tab">
+                        查看所有
+                    </a>
+                </li>
+                <li>
+                    <a href="#myApproval" data-toggle="tab">
+                        我的审批
+                    </a>
+                </li>
+                <li>
+                    <a href="#myApplication" data-toggle="tab">
+                        我的申请
+                    </a>
+                </li>
+            </ul>
+            <div style="float:right;">
+                <a class="btn btn-xs btn-success" style="width:88px; height:21px;line-height:21px; background-color:rgba(63,180,181,1);border-color:rgba(63,180,181,1);" href="#">导出当前列表</a>
+                <a class="btn btn-xs btn-success" style="width:88px;height:21px;line-height:21px; background-color:rgba(22,155,213,1);border-color:rgba(22,155,213,1);" href="#">员工离职申请</a>
+                <a class="btn btn-xs btn-success" style="width:88px; height:21px;line-height:21px; background-color:rgba(22,155,213,1);border-color:rgba(22,155,213,1);" href="#">个人离职申请</a>
+            </div>
+        </div>
+    </header>
+
+
+    <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade in active" id="All">
+            <div class="topPanel">
+                <div class="search">
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="input-group">
+                                    <input id="" type="text" class="form-control" placeholder="工号0" maxlength="36" style="width: 200px; height: 29px">
+                                    <span class="input-group-btn">
+                                        <button id="btnSearch" type="button" class="btn btn-primary" style="border: 1px solid rgb(43,75,98);"><i class="fa fa-search"></i></button>
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="gridPanel">
+                <table id="gridList"></table>
+                <div id="gridPager"></div>
+            </div>
+        </div>
+        @*我的审批*@
+        <div class="tab-pane fade" id="myApproval">
+            <div class="topPanel">
+                <div class="search">
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="input-group">
+                                    <input id="" type="text" class="form-control" placeholder="工号1" maxlength="36" style="width: 200px; height: 29px">
+                                    <span class="input-group-btn">
+                                        <button id="btnSearch" type="button" class="btn btn-primary" style="border: 1px solid rgb(43,75,98);"><i class="fa fa-search"></i></button>
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="gridPanel">
+                <table id="gridList2"></table>
+                <div id="gridPager2"></div>
+            </div>
+        </div>
+        @*我的申请*@
+        <div class="tab-pane fade" id="myApplication">
+            <div class="topPanel">
+                <div class="search">
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="input-group">
+                                    <input id="" type="text" class="form-control" placeholder="工号2" maxlength="36" style="width: 200px; height: 29px">
+                                    <span class="input-group-btn">
+                                        <button id="btnSearch" type="button" class="btn btn-primary" style="border: 1px solid rgb(43,75,98);"><i class="fa fa-search"></i></button>
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="gridPanel">
+                <table id="gridList3"></table>
+                <div id="gridPager3"></div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="~/Content/js/detail/humanResource/resignation/index.js"></script>

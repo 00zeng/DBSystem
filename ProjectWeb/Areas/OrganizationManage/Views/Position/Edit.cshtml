@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "修改职位";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<link href="~/Content/css/validate_pop.css" rel="stylesheet" />
+
+<div class="box-header widt-border">
+    <h3 class="box-title">修改职位</h3>
+</div>
+<div class="panel-body" style="background:white;">
+    <form id="form1">
+        <div class="box box-default">
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="form-group formValue">
+                            <label for="name">职位名称</label>
+                            <input id="name" name="name" type="text" class="form-control required" placeholder="请输入职位名称" maxlength="32" />
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group formValue">
+                            <label for="company_linkname">所属机构</label>
+                            <input id="company_linkname" name="company_linkname" class="form-control" disabled />
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group formValue">
+                            <label for="dept_name">所属部门</label>
+                            <input id="dept_name" name="dept_id" class="form-control" disabled />
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group formValue">
+                            <label for="grade_level_display">职层</label>
+                            <input id="grade_level_display" name="grade_level_display" class="form-control" disabled />
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group formValue">
+                            <label for="position_type">职位类型</label>
+                            <input id="position_type" name="position_type" class="form-control" disabled />
+                        </div>
+                    </div>
+                    <div id="gradeSalaryWrap" hidden class="col-xs-6">
+                        <div class="form-group formValue">
+                            <label for="grade_salary_category">等级工资类型</label>
+                            <input id="grade_salary_category" name="grade_salary_category" class="form-control" disabled />
+                        </div>
+                    </div>
+                    @*<div class="col-xs-12">
+                            <div class="form-group formValue">
+                                <label for="grade_list">等级</label>
+                                <div id="gradeListWrap" class="row">
+                                </div>
+                            </div>
+                        </div>*@
+                    <div class="col-xs-12">
+                        <div class="form-group formValue">
+                            <label for="note">备注说明</label>
+                            <textarea style="height:100px;" class="form-control" id="note" rows="4" maxlength="128"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="box-footer">
+        <button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+        <a class="btn btn-default pull-right" href="/OrganizationManage/Position/Index">返回</a>
+    </div>
+</div>
+<script src="~/Content/js/detail/OrganizationManage/Position/edit.js"></script>

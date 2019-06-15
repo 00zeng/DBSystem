@@ -1,0 +1,134 @@
+﻿@*个人岗位调整申请*@
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Form_dinf.cshtml";
+}
+<style>
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+        width: 113px;
+        line-height: 24px;
+    }
+</style>
+<form id="form1">
+    <header class="panel-heading">
+        <span style="color:#ffffff">岗位调整审批</span>
+    </header>
+    <div class="panel-body" style="background:white;">
+        <div class="row">
+            <div class="col-xs-1">
+            </div>
+            <div class="col-xs-10" style="min-width:1000px">
+                <div class="form">
+                    <div class="main-title main-title2">
+                        <div class="main-title2-type">
+                            转岗类型：
+                            <span id="type" style="margin-right:60px"></span>
+                            调岗时间：
+                            <span id="request_date_top" style="margin-right:60px"></span>
+                            审批状态：
+                            <span id="approve_status"></span>
+                        </div>
+                    </div>
+                    <table class="normal-MyChange" style="white-space:nowrap">
+                        <tr>
+                            <th>工号</th>
+                            <td><span id="work_number"></span></td>
+                            <th>姓名</th>
+                            <td><span id="emp_name"></span></td>
+                            <th>性别</th>
+                            <td><span id="gender"></span></td>
+                            <th>最高学历</th>
+                            <td><span id="education"></span></td>
+                            <th>入职时间</th>
+                            <td><span id="entry_date" class="format_date"></span></td>
+                        </tr>
+                        <tr>
+                            <th>原机构</th>
+                            <td><span id="company_name"></span></td>
+                            <th>原部门</th>
+                            <td><span id="dept_name"></span></td>
+                            <th>原区域</th>
+                            <td><span id="area_name"></span></td>
+                            <th>原职位</th>
+                            <td><span id="position_name"></span></td>
+                            <th>目前等级</th>
+                            <td><span id="grade"></span></td>
+                        </tr>
+                        <tr>
+                            <th>新机构</th>
+                            <td>
+                                <span id="company_name_new"></span>
+                            </td>
+                            <th>新部门</th>
+                            <td><span id="dept_name_new"></span>
+                            <th>新区域</th>
+                            <td><span id="area_name_new"></span>
+                            <th>新职位</th>
+                            <td><span id="position_name_new"></span>
+                            <th>新等级</th>
+                            <td><span id="grade_new"></span></td>
+                        </tr>
+                        <tr>
+                            <th colspan="2">申请转岗时间</th>
+                            <td colspan="2"><span id="request_date" class="format_date"></span></td>
+                            <th colspan="1">发起人</th>
+                            <td colspan="1"><span id="creator_name"></span></td>
+                            <th colspan="2">发起时间</th>
+                            <td colspan="2"><span id="create_time" class="format_date"></span></td>
+                        </tr>
+                    </table>
+                    <div class="mid-title-wrap">
+                        <div class="mid-title">审批</div>
+                    </div>
+                    <table  class="normal-approve" id="approve1" style="display:none">
+                        <tr>
+                            @*<th>操作类型</th>
+                            <td><span id="next_approve1"></span>审批</td>*@
+                            <th>核准转岗时间</th>
+                            <td><input type="text" id="date_approve" class="Wdate" readonly="readonly" onfocus="WdatePicker();"/></td>
+                            <th>审批结果</th>
+                            <td>
+                                <input name="status1" type="radio" value="1" checked>通过 &nbsp;&nbsp;
+                                <input name="status1" type="radio" value="-1">不通过
+                            </td>
+                            <td><input id="approve_note1" style="width:100%" /></td>
+                            @*<th>审批人</th>
+                            <td></td>
+                            <th>审批时间</th>
+                            <td></td>*@
+                        </tr>
+
+                    </table>
+                    <table class="normal-approve" id="approve" style="display:none">
+                        <tr>
+                            <th>操作类型</th>
+                            <th>操作人</th>
+                            <th>操作人职位</th>
+                            <th>时间</th>
+                            <th>结果</th>
+                            <th>意见</th>
+                        </tr>
+                        <tr>
+                            <td id="next_approve"></td>
+                            <td><span id="approve_name"></span></td>
+                            <td><span id="approve_position_name"></span></td>
+                            <td><span id="approve_time"></span></td>
+                            <td>
+                                <input name="status" type="radio" value="1" checked>通过 &nbsp;&nbsp;
+                                <input name="status" type="radio" value="-1">不通过
+                            </td>
+                            <td><input id="approve_note" style="width:100%" /></td>
+                        </tr>
+                    </table>
+
+                    <div class="main-submit">
+                        <a class="btn-return" href="javascript:history.go(-1);"> 返回 </a>
+                        <a class="btn-submit" id="btnEdit" onclick="submitForm()">确认</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="~/Content/js/detail/humanResource/PositionChange/approve.js"></script>
+

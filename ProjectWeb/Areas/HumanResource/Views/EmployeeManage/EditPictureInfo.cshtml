@@ -1,0 +1,217 @@
+﻿@{
+    ViewBag.Title = "员工图片信息修改";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+
+<div class="panel-body" style="background: white;">  
+    <form id="form1">
+    <div class="box box-default">
+        <div class="box-header widt-border">
+            <h3 class="box-title">图片信息修改：</h3>
+            <span id="work_number" class="label-default"></span>
+            <span id="name" class="label-default"></span>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="box box-solid">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">合同</h3>
+                            <button type="button" class="btn bg-primary pull-right" add="upload">上传图片</button>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body" name="picbox" style="display: none">
+                            <div id="myCarousel_1" class="carousel slide">
+                                <div class="carousel-inner" name="row">
+                                </div>
+                                <a class="left carousel-control" href="#myCarousel_1" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="right carousel-control" href="#myCarousel_1" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="box box-solid">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">入职登记表</h3>
+                            <button type="button" class="btn bg-primary pull-right" add="upload">上传图片</button>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body" name="picbox" style="display: none">
+                            <div id="myCarousel_2" class="carousel slide">
+                                <div class="carousel-inner" name="row">
+                                </div>
+                                <a class="left carousel-control" href="#myCarousel_2" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="right carousel-control" href="#myCarousel_2" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+
+                <div class="col-md-4">
+                    <div class="box box-solid">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">身份证</h3>
+                            <button type="button" class="btn bg-primary pull-right" add="upload">上传图片</button>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body" name="picbox" style="display: none">
+                            <div id="myCarousel_3" class="carousel slide">
+                                <div class="carousel-inner" name="row">
+                                </div>
+                                <a class="left carousel-control" href="#myCarousel_3" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="right carousel-control" href="#myCarousel_3" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+
+                <div class="col-md-4">
+                    <div class="box box-solid">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">照片</h3>
+                            <button type="button" class="btn bg-primary pull-right" add="upload">上传图片</button>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body" name="picbox" style="display: none">
+                            <div id="myCarousel_4" class="carousel slide">
+                                <div class="carousel-inner" name="row">
+                                </div>
+                                <a class="left carousel-control" href="#myCarousel_4" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="right carousel-control" href="#myCarousel_4" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+
+                <div class="col-md-4">
+                    <div class="box box-solid">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">简历</h3>
+                            <button type="button" class="btn bg-primary pull-right" add="upload">上传图片</button>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body" name="picbox" style="display: none">
+                            <div id="myCarousel_5" class="carousel slide">
+                                <div class="carousel-inner" name="row">
+                                </div>
+                                <a class="left carousel-control" href="#myCarousel_5" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="right carousel-control" href="#myCarousel_5" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+
+                <div class="col-md-4">
+                    <div class="box box-solid">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">毕业证</h3>
+                            <button type="button" class="btn bg-primary pull-right" add="upload">上传图片</button>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body" name="picbox" style="display: none">
+                            <div id="myCarousel_6" class="carousel slide">
+                                <div class="carousel-inner" name="row">
+                                </div>
+                                <a class="left carousel-control" href="#myCarousel_6" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="right carousel-control" href="#myCarousel_6" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="box box-solid">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">学位证</h3>
+                            <button type="button" class="btn bg-primary pull-right" add="upload">上传图片</button>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body" name="picbox" style="display: none">
+                            <div id="myCarousel_7" class="carousel slide">
+                                <div class="carousel-inner" name="row">
+                                </div>
+                                <a class="left carousel-control" href="#myCarousel_7" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="right carousel-control" href="#myCarousel_7" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+	</form>
+</div>
+
+<div class="box-footer">
+    <button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+    <a class="btn btn-default pull-right" href="javascript:history.go(-1);"> 返回 </a>
+</div>
+
+<script src="~/Content/js/deepinf/dinf-input.js"></script>
+<script src="~/Content/js/detail/humanResource/employeeManage/edit_picture_info.js"></script>

@@ -1,0 +1,54 @@
+﻿@* 员工导入 *@
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+
+<div class="box-header widt-border">
+    <h3 class="box-title">员工导入</h3>
+    <h6 class="label label-warning">请先选择机构类型再选择导入文件</h6>
+	<h3 class="box-title pull-right"><a href="/HttpHandler/TemplateDownload.ashx?name=导入模板-人力资源.xlsx" rel="external nofollow"><i class='fa  fa-download'></i>模板下载</a></h3>
+</div>
+
+<div class="box-body">
+	<div class="col-sm-6 margin-bottom">
+		<div class="form-group margin-bottom">
+			<label>机构类型</label>
+				<div>
+					<div class="radio col-sm-6 ">
+						<label>
+							<input id="company1" name="company" type="radio" value="1" checked>分公司
+						</label>
+                    </div>
+                    <div class="radio col-sm-6 " style="margin-top: 10px">
+                        <label>
+							<input id="company2" name="company" type="radio" value="2">事业部
+                        </label>
+					</div>
+               </div>
+          </div>
+     </div>
+</div>
+
+<div class="panel-body" style="background:white;">
+    <div class="form">
+        <div class="box box-default">
+            <div class="box-body">
+                <div id="toolbar" class="btn-group">
+                    <button class="btn btn-primary" type="button" onclick="$('#FileInput')[0].click()"><i class="glyphicon glyphicon-folder-open"></i>选择文件</button>
+                    <div class="input-group" onclick="$('#FileInput')[0].click()">
+                        <input type="text" class="form-control" placeholder="导入文件名" readonly="readonly" id="excelfile">
+                    </div>
+                </div>
+                <table id="tb_table" style="table-layout:fixed;"></table>
+                <input type="file" id="FileInput" hidden="hidden" style="display: none;" onchange="importfile(this)" />
+            </div>
+        </div>
+
+    </div>
+    <div class="box-footer">
+        <button type="submit" id="btnSubmit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+        <button id="btnReturn" class="btn btn-default pull-right">返回</button>
+    </div>
+</div>
+<script src="~/Content/js/detail/HumanResource/EmployeeManage/import.js"></script>

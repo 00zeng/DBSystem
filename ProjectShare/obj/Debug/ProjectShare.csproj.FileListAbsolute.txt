@@ -1,0 +1,13 @@
+E:\Job1\trunk\DaobenSystem\ProjectShare\bin\Debug\ProjectShare.dll
+E:\Job1\trunk\DaobenSystem\ProjectShare\bin\Debug\ProjectShare.pdb
+E:\Job1\trunk\DaobenSystem\ProjectShare\bin\Debug\MySqlSugar.dll
+E:\Job1\trunk\DaobenSystem\ProjectShare\bin\Debug\MySqlSugar.xml
+E:\Job1\trunk\DaobenSystem\ProjectShare\obj\Debug\ProjectShare.dll
+E:\Job1\trunk\DaobenSystem\ProjectShare\obj\Debug\ProjectShare.pdb
+E:\Job1\trunk\DaobenSystem\ProjectShare\bin\Debug\ICSharpCode.SharpZipLib.dll
+E:\Job1\trunk\DaobenSystem\ProjectShare\bin\Debug\NPOI.dll
+E:\Job1\trunk\DaobenSystem\ProjectShare\bin\Debug\NPOI.OOXML.dll
+E:\Job1\trunk\DaobenSystem\ProjectShare\bin\Debug\NPOI.OpenXml4Net.dll
+E:\Job1\trunk\DaobenSystem\ProjectShare\bin\Debug\NPOI.OpenXmlFormats.dll
+E:\Job1\trunk\DaobenSystem\ProjectShare\bin\Debug\ICSharpCode.SharpZipLib.xml
+E:\Job1\trunk\DaobenSystem\ProjectShare\obj\Debug\ProjectShare.csprojResolveAssemblyReference.cache

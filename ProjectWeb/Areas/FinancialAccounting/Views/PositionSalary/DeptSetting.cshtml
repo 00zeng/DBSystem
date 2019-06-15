@@ -1,0 +1,115 @@
+﻿@{
+    ViewBag.Title = "部门薪资";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<style type="text/css">
+    tbody table td {
+        padding: 0;
+    }
+
+    .radio + .radio {
+        margin-top: 10px;
+    }
+
+    .table-bordered {
+        border-radius: 4px;
+    }
+</style>
+
+<form id="form1">
+    <div class="box-header">
+        <h3 class="box-title">部门薪资</h3>
+    </div>
+    <div class="box-body">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="input-group margin-bottom">
+                    <span class="input-group-addon no-border"> 机构</span>
+                    <select id="company_id" class="form-control"></select>
+                </div>
+            </div>
+            <div class="col-sm-4 ">
+                <div class="input-group margin-bottom">
+                    <span class="input-group-addon no-border"> 部门</span>
+                    <select id="dept_id" class="form-control"><option value="0">--请选择部门--</option></select>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="input-group margin-bottom">
+                    <span class="input-group-addon no-border"> 生效时间</span>
+                    <input id="effect_date" class="form-control" readonly="readonly" onfocus="WdatePicker({dateFmt: 'yyyy-MM' });" />
+                    <div class="checkbox input-group-addon no-border">
+                        <label>
+                            <input type="checkbox" id="effect_now" title="审批通过后立即生效" onclick="Effective(this)" />立即生效
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+		<div class="=col-xs-12 col-sm-12 col-lg-12">
+            <div class="box box-warning">
+				<div class="box-header">
+                    <h3 class="box-title">KPI设置</h3>
+                    <div class="box-tools">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <table id="deptKpi" class="table table-bordered text-center">
+                            @*<tr>
+                                <th>职等</th>
+                                <th>建议金额（元）</th>
+                                <th>标准金额（元）</th>
+                                <th>KPI（元）</th>
+                            </tr>*@
+                        </table>
+                        <label id="err-message" style="color:red" hidden></label>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="box box-success">
+                <div class="box-header">
+                    <div class="row">
+                        <div class="input-group col-sm-5 col-lg-3">
+                            <h3 class="box-title input-group-addon no-border">交通补贴</h3>
+                            <div class="checkbox input-group-addon no-border">
+                                <label class="text-red">
+                                    <input type="checkbox" id="assessment_setting3"/>将所有个人设置重置为此方案
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-tools">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="row margin-bottom" id="amount">
+                        <div class="col-sm-2 col-lg-1"><span class="form-control no-border">补贴金额</span></div>
+                        <div class="col-sm-3 col-lg-3">
+                            <div class="input-group">
+								<div class="formValue">
+									<input class="form-control text-center required number" id="traffic_subsidy" name="traffic_subsidy">
+								</div>
+                                <span class="input-group-addon ">元</span>
+                            </div>
+                        </div>
+                    </div>                  
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="box-footer">
+    <button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+</div>
+
+<script src="~/Content/js/detail/FinancialAccounting/PositionSalary/dept_setting.js"></script>

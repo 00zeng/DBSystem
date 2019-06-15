@@ -1,0 +1,369 @@
+﻿@{
+    ViewBag.Title = "培训薪资查看";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<style type="text/css">
+    tbody table td {
+        padding: 0;
+    }
+
+    .radio + .radio {
+        margin-top: 10px;
+    }
+
+    .table-bordered {
+        border-radius: 4px;
+    }
+</style>
+<form id="form1">
+    <div class="box-header">
+        <div class="col-xs-6 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">姓名：</span>
+                <span id="name" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">职位：</span>
+                <span id="position_name" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">等级：</span>
+                <span id="grade" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">机构：</span>
+                <span id="company_name" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-lg-3">
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border">入职时间：</span>
+                <span id="entry_date" class="form-control format_date"></span>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-lg-3">
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border"> 生效时间</span>
+                <span id="effect_date" class="form-control format_date_ym"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="box-body" style="padding-bottom:0px;">
+        <div class="col-xs-12 col-sm-12 col-lg-12">
+            <div class="box box-warning">
+                <div class="box-header">
+                    <h3 class="box-title">薪资查看</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body" style="background-color:#ecf0f5">
+                    <div class="row">
+
+                        <div class="col-xs-12 col-sm-12 col-lg-6">
+                            <div class="box box-widget">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">基本工资</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+								
+                                    <div id="EmpType" style="display:none">
+                                        <div class="row margin-bottom">
+                                            <div class="col-sm-2 col-lg-3 "><span class="form-control no-border text-right">岗位工资</span></div>
+                                            <div class="col-sm-4">
+                                                <span class="form-control text-center col-sm-6" id="base_salary"></span>
+                                            </div>
+
+                                        </div>
+                                        <div class="row margin-bottom">
+                                            <div class="col-sm-2 col-lg-3 "><span class="form-control no-border text-right">住房补贴</span></div>
+                                            <div class="col-sm-4">
+                                                <span class="form-control text-center" id="house_subsidy"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row margin-bottom">
+                                            <div class="col-sm-2 col-lg-3 "><span class="form-control no-border text-right">全勤奖</span></div>
+                                            <div class="col-sm-4">
+                                                <span class="form-control text-center" id="attendance_reward"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row margin-bottom">
+                                            <div class="col-sm-2 col-lg-3 "><span class="form-control no-border text-right">工龄工资</span></div>
+                                            <div class="col-sm-4">
+                                                <span class="form-control text-center" id="seniority_salary"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row margin-bottom">
+                                            <div class="col-sm-2 col-lg-3"><span class="form-control no-border text-right">交通补贴</span></div>
+                                            <div class="col-sm-4">
+                                                <div class="input-group">
+                                                    <span class="form-control text-center" id="traffic_subsidy"></span>
+                                                    <span class="input-group-addon">元/月</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row margin-bottom">
+                                            <div class="col-sm-2 col-lg-3 "><span class="form-control no-border text-right">合计</span></div>
+                                            <div class="col-sm-4">
+                                                <span class="form-control text-center" id="base_all"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="EmpType2" style="display:none">
+                                        <div class="row margin-bottom">
+                                            <div class="col-sm-2 col-lg-3"><span class="form-control no-border text-right">实习工资</span></div>
+                                            <div class="col-sm-4">
+                                                <span class="form-control text-center" id="intern_salary_type"></span>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="input-group">
+                                                    <span class="form-control text-center" id="salary"></span>
+                                                    <span class="input-group-addon" id="salary_type"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-lg-6">
+                            <div class="box box-widget">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">离职押金</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <div class="row margin-bottom">
+                                        <div class="col-sm-2 col-lg-3"><span class="form-control no-border text-right">离职押金</span></div>
+                                        <div class="col-sm-4">
+                                            <div class="input-group">
+                                                <span class="form-control text-center" id="resign_deposit"></span>
+                                                <span class="input-group-addon">元/月</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box-body" style="padding-bottom:0px;" >
+        <div class="col-xs-12 col-sm-12 col-lg-12" id="trainer" style="display:none">
+            <div class="box box-danger">
+                <div class="box-header">
+                    <h3 class="box-title">考核查看</h3><h6 id="kpiNotSet" class="label label-danger" hidden style="font-size:12px">考核信息未设置</h6>
+                </div>
+                <div class="box-body" style="background-color:#ecf0f5">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-lg-6" id="snowball_number_div">
+                            <div class="box box-widget">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title" style="width:150px">V雪球活跃人数</h3>
+                                    <input type="checkbox" name="uncheck" disabled />不考核
+                                </div>
+                                <div class="box-body" name="box">
+                                    <div class="row margin-bottom">
+                                        <div class="col-sm-2"><span class="form-control no-border text-right">经理片区</span></div>
+                                        <div class="col-sm-8">
+                                            <span name="area_l1_id" class="form-control"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-lg-6" id="snowball_ratio_div">
+                            <div class="box box-widget">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title" style="width:150px">V雪球转化率</h3>
+                                    <input type="checkbox" name="uncheck" disabled />不考核
+                                </div>
+                                <div class="box-body" name="box">
+                                    <div class="row margin-bottom">
+                                        <div class="col-sm-2"><span class="form-control no-border text-right">经理片区</span></div>
+                                        <div class="col-sm-8">
+                                            <span name="area_l1_id" class="form-control"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-lg-6" id="shopguide_average_div">
+                            <div class="box box-widget">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title" style="width:150px">导购人均产值</h3>
+                                    <input type="checkbox" name="uncheck" disabled />不考核
+                                </div>
+                                <div class="box-body" name="box">
+                                    <div class="row margin-bottom">
+                                        <div class="col-sm-2"><span class="form-control no-border text-right">经理片区</span></div>
+                                        <div class="col-sm-8">
+                                            <span name="area_l1_id" class="form-control"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-lg-6" id="shopguide_resign_div">
+                            <div class="box box-widget">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title" style="width:150px">导购离职率</h3>
+                                    <input type="checkbox" name="uncheck" disabled />不考核
+                                </div>
+                                <div class="box-body" name="box">
+                                    <div class="row margin-bottom">
+                                        <div class="col-sm-2"><span class="form-control no-border text-right">经理片区</span></div>
+                                        <div class="col-sm-8">
+                                            <span name="area_l1_id" class="form-control"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-lg-6" id="product_expensive_div">
+                            <div class="box box-widget">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title" style="width:150px">高端机占比</h3>
+                                    <input type="checkbox" name="uncheck" disabled />不考核
+                                </div>
+                                <div class="box-body" name="box">
+                                    <div class="row margin-bottom">
+                                        <div class="col-sm-2"><span class="form-control no-border text-right">经理片区</span></div>
+                                        <div class="col-sm-8">
+                                            <span name="area_l1_id" class="form-control"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-lg-6" id="product_train_div">
+                            <div class="box box-widget">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title" style="width:150px">培训场次</h3>
+                                    <input type="checkbox" name="uncheck" disabled />不考核
+                                </div>
+                                <div class="box-body" name="box">
+                                    <div class="row margin-bottom">
+                                        <div class="col-sm-2"><span class="form-control no-border text-right">经理片区</span></div>
+                                        <div class="col-sm-8">
+                                            <span name="area_l1_id" class="form-control"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-lg-6" id="image_efficiency_div">
+                            <div class="box box-widget">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title" style="width:150px">形象执行效率</h3>
+                                    <input type="checkbox" name="uncheck" disabled />不考核
+                                </div>
+                                <div class="box-body" name="box">
+                                    <div class="row margin-bottom">
+                                        <div class="col-sm-2"><span class="form-control no-border text-right">经理片区</span></div>
+                                        <div class="col-sm-8">
+                                            <span name="area_l1_id" class="form-control"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-lg-6" id="image_fine_div">
+                            <div class="box box-widget">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title" style="width:150px">形象罚款</h3>
+                                    <input type="checkbox" name="uncheck" disabled />不考核
+                                </div>
+                                <div class="box-body" name="box">
+                                    <div class="row margin-bottom">
+                                        <div class="col-sm-2"><span class="form-control no-border text-right">经理片区</span></div>
+                                        <div class="col-sm-8">
+                                            <span name="area_l1_id" class="form-control"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-lg-12"  id="manager" style="display:none">
+            <div class="box box-danger">
+                <div class="box-header">
+                    <h3 class="box-title">考核查看</h3><h6 id="kpiNotSetM" class="label label-danger" hidden style="font-size:12px">考核信息未设置</h6>
+                </div>
+                <div class="box-body" style="background-color:#ecf0f5">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-lg-6">
+                            <div class="box box-widget">
+                                <div class="box-body" name="box">
+                                    <div class="row margin-bottom ">
+                                        <div class="col-sm-4"><span class="form-control no-border text-right"><strong>导购人均产值</strong></span></div>
+                                        <div class="col-sm-4">
+                                            <div class="input-group formValue margin-bottom">
+                                                <span class="form-control no-border text-left"><input type="checkbox" name="uncheck" disabled />不考核</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row margin-bottom ">
+                                        <div class="col-sm-4"><span class="form-control no-border text-right"><strong>导购离职率</strong></span></div>
+                                        <div class="col-sm-4">
+                                            <div class="input-group formValue margin-bottom">
+                                                <span class="form-control no-border text-left"><input type="checkbox" name="uncheck" disabled />不考核</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row margin-bottom ">
+                                        <div class="col-sm-4"><span class="form-control no-border text-right"><strong>高端机占比</strong></span></div>
+                                        <div class="col-sm-4">
+                                            <div class="input-group formValue margin-bottom">
+                                                <span class="form-control no-border text-left"><input type="checkbox" name="uncheck" disabled />不考核</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="box-footer">
+    <button type="submit" class="btn btn-default pull-right" onclick="javascript:history.back(-1);">返回</button>
+</div>
+
+<script src="~/Content/js/detail/FinancialAccounting/employeeSalary/trainer_show.js"></script>

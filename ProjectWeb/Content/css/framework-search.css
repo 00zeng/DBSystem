@@ -1,0 +1,57 @@
+﻿/*新查询列表*/
+.topPanel .search table td .btn-fold{ height:28px; margin-left:50px; font-size:14px; padding:0 20px; background-color:#DEDEDE; border-color:#6E6E6E; color:#333; background: -webkit-linear-gradient(#F6F6F6, #DEDEDE); background: -o-linear-gradient(#F6F6F6, #DEDEDE); background: -moz-linear-gradient(#F6F6F6, #DEDEDE); background: linear-gradient(#F6F6F6, #DEDEDE);}
+.search .btn-search-filter{height:28px; margin-left:20px; font-size:14px; padding:0 20px;}
+
+.fold_block_wrap{ border-left:solid 1px #2B4B62; background-color:#2B4B62;padding:10px 0;}
+.fold_block_wrap_hide{ display:none;}
+.fold_block_wrap .fold_block{ overflow: hidden; zoom: 1;}
+.fold_block_wrap .fold_block::after{ content:""; clear:both; padding:0;margin:0;}
+.fold_block_wrap .fold_block .fold_block_layer{ float: left; width:300px; min-width:300px; display:table; padding:10px 10px;}
+.fold_block_wrap .fold_block .fold_block_layer .fold_block_title{ display:table-cell; width:80px; vertical-align:middle; text-align:right;color:#fff}
+.fold_block_wrap .fold_block .fold_block_layer .fold_block_content{ display:table-cell; padding-left:10px;}
+/*.fold_block_wrap .fold_block .fold_block_layer .fold_block_content .form-control{ height:20px;}*/
+.fold_block_wrap .fold_block .fold_block_layer .fold_block_content .form-control{ width:93%; height:20px; padding:2px 5px}
+
+.btn-hidden { display:none;}
+/*按钮样式*/ 
+.theme-blue-gradient .btn-basic{background-color:#00cc99;border-color:#00cc99; color:#fff;padding:3px 6px}
+.theme-blue-gradient .btn-edit{background-color:#3498DB;border-color:#3498DB; color:#fff;padding:3px 6px}
+.theme-blue-gradient .btn-danger{background-color:#cc3300;border-color:#cc3300; color:#fff;padding:3px 6px;}
+.theme-blue-gradient .btn-warning{background-color:#33BFDD;border-color:#33BFDD; color:#fff;padding:3px 6px;}
+.theme-blue-gradient .btn-disable{background-color:#E3321E;border-color:#E3321E; color:#fff;padding:3px 6px;}
+.theme-blue-gradient .btn-enable{background-color:#33BFDD;border-color:#33BFDD; color:#fff;padding:3px 6px;}
+.theme-blue-gradient .btn-map{background-color:#0099cc;border-color:#0099cc; color:#fff;padding:3px 6px;}
+.theme-blue-gradient .btn-map i{ background:url('../img/map.png') no-repeat; padding-left:16px; background-position-y:-1px; font-style:normal;}
+.btn-basic:hover,.btn-edit:hover,.btn-danger:hover,.btn-map:hover,.btn-warning:hover,.btn-disable:hover,.btn-enable:hover{ opacity:0.8; filter:alpha(opacity=80); -moz-opacity:0.8;-ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=80)'}
+
+
+
+
+/*新样式修改*/
+.topPanel{ background: rgba(43, 75, 98, 1);border-top: 1px solid #5a5f5f;}
+.topPanel .toolbar .operate{ background: #26374C;border: 1px solid #26374C; color:#8DABC4;}
+.topPanel .toolbar .operate li a{ color:#8DABC4;}
+
+/*查询*/
+.topPanel .search .input-group .form-control{ background-color:#ffffff; border-color:#2B4B62; color:#8DABC4;}
+.theme-blue-gradient .btn-primary{ background-color:rgba(43, 75, 98, 1); border-color:rgba(43, 75, 98, 1); color:#fff; font-size:16px; padding:2px;}
+.theme-blue-gradient .btn-primary:hover{ background-color:rgba(43, 75, 98, 1); border-color:rgba(43, 75, 98, 1); color:#eee;}
+.theme-blue-gradient .input-group .btn-primary{ background-color:#2B4B62; border-color:#2B4B62; color:#fff;}
+.theme-blue-gradient .input-group .btn-primary:hover{ background-color:#2B4B62; color:#eee;}
+
+
+/*刷新*/
+.topPanel .search .input-group .form-control{ background-color:#ffffff; border-color:#2B4B62; color:#555;}
+.theme-blue-gradient .btn-refresh{ background-color:transparent; border-color:transparent; color:#fff; font-size:16px; padding:2px}
+.theme-blue-gradient .btn-refresh:hover{ background-color:transparent; border-color:transparent; color:#eee;}
+.theme-blue-gradient .input-group .btn-refresh{ background-color:#2B4B62; border-color:#2B4B62; color:#fff;}
+.theme-blue-gradient .input-group .btn-refresh:hover{ background-color:#2B4B62; color:#eee;}
+
+/*新显示页面*/
+.ckbox,.rdio{background: #26374C;}
+.ckbox label:before,.rdio label:before{border: 1px solid #ABC6DF;background: #26374C;}
+.ckbox input[type="checkbox"]:checked + label::before,.rdio input[type="radio"]:checked + label:before{border-color: #26374C;background-color: #26374C;}
+
+
+/*新增*/
+.topPanel .toolbar .btn i.new_add{font-size:18px;}

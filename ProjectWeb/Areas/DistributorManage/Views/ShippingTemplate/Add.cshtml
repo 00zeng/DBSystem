@@ -1,0 +1,117 @@
+﻿@*运费模板*@
+@{
+    ViewBag.Title = "运费设置";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+
+<div class="panel-body" style="background:white;">
+    <div class="box box-default">
+        <div class="box-header widt-border">
+            <h3 class="box-title">运费设置</h3>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body">
+            <form id="form1">
+                <div class="form-group col-md-6 ">
+                    <div class="row">
+                        <div class="col-md-12 margin-bottom">
+                            <label>生效时间</label>
+                            <div class="input-group col-sm-9">
+                                <input id="effect_date" class="form-control" name="effect_date" readonly="readonly" type="text" onfocus="WdatePicker();">
+                                <span class="input-group-addon checkbox">
+                                    <label>
+                                        <input type="checkbox" id="effect_now" title="立即生效" onclick="Effective(this)">立即生效
+                                    </label>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-12  ">
+                            <label>最低运费</label>
+                            <label class="label label-danger">不足最低收费标准时按最低收费标准结算（免运费除外）</label>
+                            <div class="input-group col-sm-9">
+                                <input id="minimum_fee" class="form-control" type="text" />
+                                <span class="input-group-addon">元</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <div class="form-group">
+                        <table class="table table-bordered text-center" id="shipping_tr">
+                            <tr>
+                                <th class="col-sm-6">台数</th>
+                                <th class="col-sm-4">运费（元/台）</th>
+                                <th class="col-sm-2"></th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="input-group">
+                                        <input class="form-control text-center" value="0" disabled>
+                                        <span class="input-group-addon">-</span>
+                                        <input class="form-control text-center" onchange="setShipping()">
+
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="input-group">
+                                        <input class="form-control text-center">
+                                    </div>
+
+                                </td>
+                                <td>
+                                    <i class="fa fa-plus-circle fa-lg margin text-blue " onclick="addRow(this)"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="input-group">
+                                        <input class="form-control text-center" disabled>
+                                        <span class="input-group-addon">-</span>
+                                        <input class="form-control text-center" onchange="setShipping()">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="input-group">
+                                        <input class="form-control text-center">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="row">
+                                        <i onclick="addRow(this)" class="fa fa-plus-circle fa-lg   text-blue "></i>
+                                        <i onclick="deleteRow(this)" class="fa fa-minus-circle fa-lg   text-red"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="input-group">
+                                        <input class="form-control text-center" disabled>
+                                        <span class="input-group-addon">-</span>
+                                        <input class="form-control text-center" value="以上" disabled>
+
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="input-group">
+                                        <input class="form-control text-center">
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="box-footer">
+    <button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+    <a type="button" class="btn btn-default pull-right" href="/DistributorManage/ShippingTemplate/Show">返回</a>
+</div>
+<script src="~/Content/js/detail/DistributorManage/ShippingTemplate/add.js"></script>

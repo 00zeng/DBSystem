@@ -1,0 +1,148 @@
+﻿@{
+    ViewBag.Title = "买断";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<div class="box-header">
+    <h3 class="box-title">买断审批</h3><h6 class="text-red inline margin">买断后不退换货，不参与调价补差</h6>
+</div>
+<div class="panel-body" style="padding-bottom:0px;">
+    <form id="form1">
+        <div class="col-md-12">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <div class="input-group  col-md-3">
+                        <span class="input-group-addon no-border">买断类型：</span>
+                        <span id="category" class="form-control"></span>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="row margin">
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon no-border">
+                                    经销商：
+                                </span>
+                                <span id="distributor_name" class="form-control no-border"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon no-border">
+                                    业务员：
+                                </span>
+                                <span id="sales_name" class="form-control no-border"></span>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon no-border">
+                                    导购员：
+                                </span>
+                                <span id="guide_name" class="form-control no-border"></span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-striped text-center" id="store" style="display:none">
+                        <tbody>
+                            <tr>
+                                <th class="col-sm-2">串码</th>
+                                <th class="col-sm-2">型号</th>
+                                <th class="col-sm-2">买断价</th>
+                                <th class="col-sm-2">导购员提成</th>
+                                <th class="col-sm-2">业务员提成</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-striped text-center" id="warehouse" style="display:none">
+                        <tbody>
+                            <tr>
+                                <th class="col-md-3">型号</th>
+                                <th class="col-md-3">颜色</th>
+                                <th class="col-md-2">买断价</th>
+                                <th class="col-md-2">数量</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="box box-default">
+                <div class="box-header widt-border">
+                    <h3 class="box-title">审批</h3>
+                </div>
+                <div class="box-body">
+                    <table class="table table-bordered text-center" id="approve" style="display:none">
+                        <tbody>
+                            <tr>
+                                <th width="150px">操作类型</th>
+                                <th width="150px">操作人</th>
+                                <th width="150px">操作人职位</th>
+                                <th width="200px">时间</th>
+                                <th width="200px">结果</th>
+                                <th width="200px">意见</th>
+                            </tr>
+                            <tr>
+                                <td>发起申请</td>
+                                <td><span id="creator_name"></span></td>
+                                <td><span id="creator_position_name"></span></td>
+                                <td><span id="create_time" class="convert_datetime"></span></td>
+                                <td><span id="">--</span></td>
+                                <td><span id="">--</span></td>
+                            </tr>
+                            <tr>
+                                <td>当前审批</td>
+                                <td><span id="approve_name"></span></td>
+                                <td><span id="approve_position_name"></span></td>
+                                <td><span id="approve_time" class="convert_datetime"></span></td>
+                                <td class="radio no-margin no-border">
+                                    <label>
+                                        <input name="status" type="radio" value="1" checked>通过 &nbsp;&nbsp;
+                                    </label>
+                                    <label>
+                                        <input name="status" type="radio" value="-1">不通过
+                                    </label>
+                                </td>
+                                <td class="no-padding"><input id="approve_note" class="form-control" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-bordered text-center" id="approve1" style="display:none">
+                        <tbody>
+                            <tr>
+                                <th>审批结果</th>
+                                <td class="radio no-margin no-border">
+                                    <label>
+                                        <input name="status1" type="radio" value="1" checked>通过 &nbsp;&nbsp;
+                                    </label>
+                                    <label>
+                                        <input name="status1" type="radio" value="-1">不通过
+                                    </label>
+                                </td>
+                                <th>后续审批流程</th>
+                                <td>
+                                    <input id="gm1_approve" type="checkbox" value="1" >分公司经理审批 &nbsp;&nbsp;
+                                    <input id="gm2_approve" type="checkbox" value="-1">总经理审批
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>备注</th>
+                                <td colspan="3"> 
+                                    <textarea class="form-control" id="approve_note1"></textarea>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="box-footer">
+    <button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+    <a type="submit" class="btn btn-default pull-right" href="/saleManage/buyoutInfo/approveIndex">返回</a>
+</div>
+<script src="~/Content/js/detail/saleManage/buyoutInfo/approve.js"></script>

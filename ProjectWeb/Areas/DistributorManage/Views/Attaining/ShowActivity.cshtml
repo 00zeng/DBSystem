@@ -1,0 +1,224 @@
+﻿@{
+    ViewBag.Title = "达量";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<link href="~/Content/js/bootstrap-duallistbox/bootstrap-duallistbox.min.css" rel="stylesheet" />
+<style type="text/css">
+    tbody table td {
+        padding: 0;
+    }
+
+    .radio + .radio {
+        margin-top: 10px;
+    }
+
+    .table-bordered {
+        border-radius: 4px;
+    }
+</style>
+<form id="form1">
+    <div class="box-header">
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">活动名称</span>
+                <span type="text" id="name" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">分公司</span>
+                <span id="company_name" name="company_name" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">返利类型</span>
+                <span id="category" name="category" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border">活动时间</span>
+                <div class="formValue">
+                    <input id="start_date" name="start_date" class="form-control format_date" disabled/>
+                </div>
+                <span class="input-group-addon">至</span>
+                <div class="formValue">
+                    <input id="end_date" name="end_date" class="form-control format_date" disabled/>
+                </div>
+            </div>
+        </div>
+        @*<div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group">
+                <span class="input-group-addon no-border">统计时间：</span>
+                <span id="counting_time" name="" class="form-control format_date"></span>
+              
+            </div>
+        </div>*@
+    </div>
+    <div class="box-body" style="padding-bottom:0px;" id="bigBox">
+        <div class="col-xs-12 col-sm-12 col-lg-12">
+            <div class="box box-danger">
+                <div class="box-header">
+                    <h3 class="box-title">返利政策</h3>
+                    <div class="box-tools">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body" style="background-color:#ecf0f5">
+                    <div class="col-xs-12 col-sm-12 col-lg-6">
+                        <div class="box box-widget">
+                            <div class="box-header with-border">
+                                <div class="input-group col-sm-5 col-lg-3">
+                                    <h3 class="box-title input-group-addon no-border">返利政策&nbsp;&nbsp;&nbsp;<span class="label label-danger" style="font-size:12px">买断机、包销机算量不算钱</span></h3>
+                                    <div class="checkbox input-group-addon no-border">
+                                        <label>
+                                            <input type="checkbox" id="money_included" disabled />特价机算量不算钱
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="box-body" style="height:460px">
+                                <div class="col-md-12 col-lg-12">
+                                    <div class="form-group">
+                                        <label>返利发放</label>
+                                        <div>
+                                            <div class="radio col-sm-3">
+                                                <label>
+                                                    <input id="pay_mode" name="pay_mode" type="radio" value="1" disabled>一次性发放
+                                                </label>
+                                            </div>
+                                            <div class="radio col-sm-9">
+                                                <label>
+                                                    <input name="pay_mode" type="radio" value="2" disabled>按月发放
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>计量方式</label>
+                                        <div>
+                                            <div class="radio col-sm-3">
+                                                <label>
+                                                    <input id="target_content" name="target_content" type="radio" value="1" disabled>按实销量
+                                                </label>
+                                            </div>
+                                            <div class="radio col-sm-9">
+                                                <label>
+                                                    <input name="target_content" type="radio" value="2" disabled>按下货量
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>销量阶梯</label>
+                                        <div>
+                                            <div class="radio col-sm-3">
+                                                <label>
+                                                    <input id="target_sale" name="target_sale" type="radio" value="1" disabled>按完成率
+                                                </label>
+                                            </div>
+                                            <div class="radio col-sm-3">
+                                                <label>
+                                                    <input name="target_sale" type="radio" value="2" disabled>按台数
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-sm-12">
+                                            <label>目标销量</label>
+                                            <label class="label label-warning">该经销商前三个月月均销量为&nbsp;<span id="sale_avg_before"></span>&nbsp;</label>
+                                            <span class="label label-warning" id="act_show" style="display:none">未达到目标销量时无返利</span>
+                                            <div class="input-group col-sm-6  col-lg-3 formValue">
+                                                <span id="activity_target" name="activity_target" value="0" class="form-control"></span>
+                                                <span class="input-group-addon" name="activity_unit">台</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>备注说明</label>
+                                        <textarea class="form-control" rows="3" name="note" id="note" disabled></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-lg-6">
+                        <div class="box box-widget">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">经销商</h3><h6 class="inline margin">共<span class="margin" id="distributor_count">0</span>家</h6>
+                                <span style="margin-left:20px">活动状态：<label class="label label-default" id="activity_status"></label></span>
+                                <span style="margin-left:20px">统计时间：<label class="label label-primary format_date" id="counting_time"></label></span>
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <table id="targetDistributor"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div  id="saleDetail" >
+            <div class="col-xs-12 col-sm-12 col-lg-12">
+                <div class="box box-danger">
+                    <div class="box-header ">
+                        <h4 class="pull-left">销售详情</h4>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-lg-2 col-sm-3">
+                                <input class="form-control" id="distributor_name" type="text" placeholder="请输入经销商">
+                            </div>
+                            <div class="col-lg-2 col-sm-3">
+                                <input class="form-control" id="phone_sn" type="text" placeholder="请输入串码">
+                            </div>
+                            <div class="col-lg-2 col-sm-3">
+                                <input class="form-control" id="model" type="text" placeholder="请输入型号">
+                            </div>
+                            <div class="col-lg-2 col-sm-3">
+                                <input class="form-control" id="startTime1" type="text" placeholder="请输入起始时间" readonly="readonly" onfocus="WdatePicker({ minDate: '#F{$dp.$D(\'start_date\')}', maxDate: '#F{$dp.$D(\'endTime1\')}' });">
+                            </div>
+                            <div class="col-lg-2 col-sm-3">
+                                <input class="form-control" id="endTime1" type="text" placeholder="请输入结束时间" readonly="readonly" onfocus="WdatePicker({ minDate: '#F{$dp.$D(\'startTime1\')}', maxDate: '#F{$dp.$D(\'end_date\')}' });">
+                            </div>
+                            <div class="col-lg-1 col-sm-1">
+                                <i id="querySubmit" class='fa fa-search btn btn-primary'></i>
+                            </div>
+                        </div>
+                        <table id="gridList" style="table-layout:fixed"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+<div class="box-footer">
+    <a type="submit" class="btn btn-default pull-right" href="/DistributorManage/Attaining/Index">返回</a>
+    <button id="btn_edit" type="button" style="display:none" class="btn btn-primary pull-right" onclick="OpenForm('/DistributorManage/Attaining/Edit', '修改结束时间')">
+        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改结束时间
+    </button>
+    <button id="btn_edit" type="button" class="btn btn-info pull-right" onclick="EditFull()">
+        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改规则
+    </button>
+</div>
+
+<script src="~/Content/js/detail/DistributorManage/Attaining/showActivity.js"></script>

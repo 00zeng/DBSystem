@@ -1,0 +1,8 @@
+﻿
+h1,h2,h3,h4,h5,h6,p,label,iput{height:34px;line-height:34px;margin:0;padding:0;}
+@media (min-width:768px ){.pd_l{padding-left:7.5px;}.pd_r{padding-right:7.5px;}}
+#lg-title p{font-size:20px;color:#666666;font-weight:700;}
+#form_title{margin-top:-7.5px;}
+.panel-heading span,.panel-heading label{font-size:14px;}
+.module-show-area p span{display:inline-block;width: 24px;height:24px;margin-top:5px;}
+#showImg{position: absolute;left:80px;z-index:99999;}

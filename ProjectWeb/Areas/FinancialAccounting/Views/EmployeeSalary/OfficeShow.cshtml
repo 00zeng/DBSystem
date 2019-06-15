@@ -1,0 +1,337 @@
+﻿@{
+    ViewBag.Title = "行政薪资查看";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<style type="text/css">
+    tbody table td {
+        padding: 0;
+    }
+
+    .radio + .radio {
+        margin-top: 10px;
+    }
+
+    .table-bordered {
+        border-radius: 4px;
+    }
+</style>
+<form id="form1">
+    <div class="box-header">
+        <div class="col-xs-6 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">姓名：</span>
+                <span id="name" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">职位：</span>
+                <span id="position_name" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">等级：</span>
+                <span id="grade" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">机构：</span>
+                <span id="company_name" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-lg-3">
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border">入职时间：</span>
+                <span id="entry_date" class="form-control format_date"></span>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-lg-3">
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border"> 生效时间</span>
+                <span id="effect_date" class="form-control format_date_ym"></span>
+            </div>
+        </div>
+    </div>
+    <div class="box-body" style="padding-bottom:0px;">
+        <div class="col-xs-12 col-sm-12 col-lg-12">
+            <div class="box box-warning">
+                <div class="box-header">
+                    <h3 class="box-title">薪资查看</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body" style="background-color:#ecf0f5">
+                    <div class="col-xs-12 col-sm-12 col-lg-6 no-padding">
+                        <div class="col-xs-12 col-sm-12 col-lg-12">
+                            <div class="box box-widget">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">基本工资</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+							
+                                    <div id="EmpType" style="display:none">
+                                        <div class="row margin-bottom">
+                                            <div class="col-sm-2 col-lg-3 "><span class="form-control no-border text-right">基本工资</span></div>
+                                            <div class="col-sm-4">
+                                                <span class="form-control text-center col-sm-6" id="base_salary"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row margin-bottom">
+                                            <div class="col-sm-2 col-lg-3 "><span class="form-control no-border text-right">岗位工资</span></div>
+                                            <div class="col-sm-4">
+                                                <span class="form-control text-center col-sm-6" id="position_salary"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row margin-bottom">
+                                            <div class="col-sm-2 col-lg-3 "><span class="form-control no-border text-right">住房补贴</span></div>
+                                            <div class="col-sm-4">
+                                                <span class="form-control text-center" id="house_subsidy"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row margin-bottom">
+                                            <div class="col-sm-2 col-lg-3 "><span class="form-control no-border text-right">全勤奖</span></div>
+                                            <div class="col-sm-4">
+                                                <span class="form-control text-center" id="attendance_reward"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row margin-bottom">
+                                            <div class="col-sm-2 col-lg-3 "><span class="form-control no-border text-right">工龄工资</span></div>
+                                            <div class="col-sm-4">
+                                                <span class="form-control text-center" id="seniority_salary"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row margin-bottom">
+                                            <div class="col-sm-2 col-lg-3"><span class="form-control no-border text-right">交通补贴</span></div>
+                                            <div class="col-sm-4">
+                                                <div class="input-group">
+                                                    <span class="form-control text-center" id="traffic_subsidy"></span>
+                                                    <span class="input-group-addon">元/月</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row margin-bottom">
+                                            <div class="col-sm-2 col-lg-3 "><span class="form-control no-border text-right">合计</span></div>
+                                            <div class="col-sm-4">
+                                                <span class="form-control text-center" id="base_all"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="EmpType2" style="display:none">
+                                        <div class="row margin-bottom">
+                                            <div class="col-sm-2 col-lg-3"><span class="form-control no-border text-right">实习工资</span></div>
+                                            <div class="col-sm-4">
+                                                <span class="form-control text-center" id="intern_salary_type"></span>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="input-group">
+                                                    <span class="form-control text-center" id="salary"></span>
+                                                    <span class="input-group-addon" id="salary_type"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-lg-12">
+                            <div class="box box-widget">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">离职押金</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <div class="row margin-bottom">
+                                        <div class="col-sm-2 col-lg-3"><span class="form-control no-border text-right">离职押金</span></div>
+                                        <div class="col-sm-4">
+                                            <div class="input-group">
+                                                <span class="form-control text-center" id="resign_deposit"></span>
+                                                <span class="input-group-addon">元/月</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-lg-6 no-padding">
+                        <div class="col-xs-12 col-sm-12 col-lg-12">
+                            <div class="box box-widget">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">KPI补贴</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <div class="row margin-bottom">
+                                        <div class="col-sm-2 col-lg-3"><span class="form-control no-border text-right">KPI补贴</span></div>
+                                        <div class="col-sm-4">
+                                            <div class="input-group">
+                                                <span type="text" class="form-control text-center" id="kpi_subsidy"></span>
+                                                <span class="input-group-addon">元/月</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" id="kpi_subsidy_full" name="kpi_subsidy_full" value="true" disabled />全额发放
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="kpi_subsidy_full" value="false" disabled />比例发放
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row margin-bottom">
+                                        <div class="col-sm-2 col-lg-3"><span class="form-control no-border text-right">补贴说明</span></div>
+                                        <div class="col-sm-8">
+                                            <textarea id="kpi_subsidy_note" class="form-control" disabled></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-lg-12">
+                            <div class="box box-widget">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">薪资补贴</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <div class="row margin-bottom">
+                                        <div class="col-sm-2 col-lg-3"><span class="form-control no-border text-right">特聘补贴</span></div>
+                                        <div class="col-sm-4">
+                                            <div class="input-group">
+                                                <span type="text" class="form-control text-center" id="subsidy"></span>
+                                                <span class="input-group-addon">元/月</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row margin-bottom">
+                                        <div class="col-sm-2 col-lg-3"><span class="form-control no-border text-right">补贴说明</span></div>
+                                        <div class="col-sm-8">
+                                            <textarea id="subsidy_note" class="form-control" disabled></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    @*<div class="col-xs-12 col-sm-12 col-lg-6">
+                            <div class="box box-widget">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">公司借款</h3>
+                                </div>
+                                <div class="box-body">
+                                    <div class="row margin-bottom">
+                                        <div class="col-sm-2 col-lg-3"><span class="form-control no-border text-right">借款事由</span></div>
+                                        <div class="col-sm-4">
+                                            <div class="input-group">
+                                                <span class="form-control text-center" id="resign_deposit"></span>
+                                                <span class="input-group-addon">元/月</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row margin-bottom">
+                                        <div class="col-sm-2 col-lg-3"><span class="form-control no-border text-right">借款日期</span></div>
+                                        <div class="col-sm-4">
+                                            <div class="input-group">
+                                                <span class="form-control text-center" id=""></span>
+                                                <span class="input-group-addon">元/月</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row margin-bottom">
+                                        <div class="col-sm-2 col-lg-3"><span class="form-control no-border text-right">分期数</span></div>
+                                        <div class="col-sm-4">
+                                            <div class="input-group">
+                                                <span class="form-control text-center" id=""></span>
+                                                <span class="input-group-addon">元/月</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row margin-bottom">
+                                        <div class="col-sm-2 col-lg-3"><span class="form-control no-border text-right">每期金额</span></div>
+                                        <div class="col-sm-4">
+                                            <div class="input-group">
+                                                <span class="form-control text-center" id=""></span>
+                                                <span class="input-group-addon">元/月</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row margin-bottom">
+                                        <div class="col-sm-2 col-lg-3"><span class="form-control no-border text-right">年利率</span></div>
+                                        <div class="col-sm-4">
+                                            <div class="input-group">
+                                                <span class="form-control text-center" id=""></span>
+                                                <span class="input-group-addon">元/月</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row margin-bottom">
+                                        <div class="col-sm-2 col-lg-3"><span class="form-control no-border text-right">已还金额</span></div>
+                                        <div class="col-sm-4">
+                                            <div class="input-group">
+                                                <span class="form-control text-center" id=""></span>
+                                                <span class="input-group-addon">元/月</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row margin-bottom">
+                                        <div class="col-sm-2 col-lg-3"><span class="form-control no-border text-right">未还金额</span></div>
+                                        <div class="col-sm-4">
+                                            <div class="input-group">
+                                                <span class="form-control text-center" id=""></span>
+                                                <span class="input-group-addon">元/月</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row margin-bottom">
+                                        <div class="col-sm-2 col-lg-3"><span class="form-control no-border text-right">滞纳金</span></div>
+                                        <div class="col-sm-4">
+                                            <div class="input-group">
+                                                <span class="form-control text-center" id=""></span>
+                                                <span class="input-group-addon">元/月</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="box-footer">
+    <button type="submit" class="btn btn-default pull-right" onclick="javascript:history.back(-1);">返回</button>
+</div>
+
+<script src="~/Content/js/detail/FinancialAccounting/employeeSalary/office_show.js"></script>

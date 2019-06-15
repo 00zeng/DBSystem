@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Form_dinf.cshtml";
+}
+<link href="~/Content/css/dinf-table.css" rel="stylesheet" />
+<form id="form1">
+    <header class="panel-heading">
+        <span style="color:#ffffff"> <span id="position_name"></span>薪资审批</span>
+    </header>
+    <div class="panel-body" style="background:white;">
+        <div class="row">
+            <div class="col-xs-1">
+            </div>
+            <div class="col-xs-10" style="min-width: 1000px">
+            <div class="form">
+                <div class="main-title main-title2">
+                    <div class="main-title2-type">
+                        姓名：<span id="name" style="margin-right:60px"></span>
+                        等级：<span id="grade" style="margin-right:60px"></span>
+                        机构：<span id="company_name" style="margin-right:60px"></span>
+                        入职时间：<span id="entry_date" style="margin-right:60px"></span>
+                        生效时间：<span id="effect_date"></span>
+                    </div>
+                </div>
+				<div class="mid-title-wrap">
+                    <div class="mid-title">薪资</div>
+                </div>
+                <table class="normal-salaryGuide" style="white-space:nowrap">
+                    <tr>
+                        <th>底薪</th>
+                        <td colspan="3">
+                            <div class="col-sm-3" style="height:30px"><input type="radio" name="guide_base_type" value="0"    disabled/>0底薪</div>
+                            <div class="col-sm-3" style="height:30px"><input type="radio" name="guide_base_type" value="2"   disabled/>星级制</div>
+                            <div class="col-sm-3" style="height:30px"><input type="radio" name="guide_base_type" value="3"  disabled/>浮动底薪</div>
+                            <div class="col-sm-3" style="height:30px"><input type="radio" name="guide_base_type" value="4"  disabled/>保底工资<div id="base" style="display:none">：<span id="guide_salary_base"></span>元/月</div></div>
+                            <div class="col-sm-3" style="height:30px"><input type="radio" name="guide_base_type" value="1"  disabled/>达标底薪<div id="standard" style="display:none">：<span id="guide_salary_commission"></span>元/月</div></div>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th>年终奖</th>
+                        <td colspan="3">
+                            <div class="col-sm-3"><input type="radio" name="guide_annualbonus_type" value="1" disabled/>按销量</div>
+                            <div class="col-sm-3"><input type="radio" name="guide_annualbonus_type" value="2" disabled/>按星级</div>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th>离职押金</th>
+                        <td>
+                            <div class="col-sm-3"><span id="resign_deposit"></span>元/月</div>
+                        </td>
+                        <th>累计离职押金</th>
+                        <td>
+                            <div class="col-sm-3"><span id=""></span>元</div>
+                        </td>
+                    </tr>
+                </table>
+                @*<span style="color:red;font-family:'微软雅黑'">新入职员工，该部分薪资在财务经理确认后当月生效；入职后的修改则在财务经理确认后次月生效</span>*@
+                <div class="mid-title-wrap">
+                    <div class="mid-title">审批</div>
+                </div>
+                <table class="normal-approve">
+                    <tr>
+                        <th>操作类型</th>
+                        <th>操作人</th>
+                        <th>操作人职位</th>
+                        <th>时间</th>
+                        <th>结果</th>
+                        <th>意见</th>
+                    </tr>
+                    <tr>
+                        <td>发起申请</td>
+                        <td><span id="creator_name"></span></td>
+                        <td><span id="creator_position_name"></span></td>
+                        <td><span id="create_time"></span></td>
+                        <td><span id=""></span></td>
+                        <td><span id=""></span></td>
+                    </tr>
+                    <tr>
+                        <td>财务经理审批</td>
+                        <td><span id="approve_id"></span></td>
+                        <td><span id="approve_position_id"></span></td>
+                        <td><span id="approve_time"></span></td>
+                        <td>
+                            <input name="status" type="radio" value="1" checked>通过 &nbsp;&nbsp;
+                            <input name="status" type="radio" value="-1">不通过
+                        </td>
+                        <td><input id="approve_note" style="width:100%" /></td>
+                    </tr>
+                </table>
+                    <div class="main-submit">
+                        <a class="btn-return" href="javascript:history.go(-1);"> 返回 </a>
+                        <input type="button" value="提交" class="btn-submit" onclick="submitForm()" />
+                    </div>
+              </div>
+			  </div>
+			  </div>
+        </div>
+    </div>
+</form>
+<script src="~/Content/js/detail/financialAccounting/employeeSalary/guide_approve.js"></script>

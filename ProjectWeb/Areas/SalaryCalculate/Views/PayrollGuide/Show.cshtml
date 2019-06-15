@@ -1,0 +1,321 @@
+﻿@*导购工资*@
+@{
+    ViewBag.Title = "导购工资";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<form id="form1">
+    <div class="box-header widt-border">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-lg-3">
+                <div class="input-group margin-bottom">
+                    <span class="input-group-addon no-border">结算日期</span>
+                    <span id="start_date" name="start_date" class="form-control format_date "></span>
+                    <span class="input-group-addon">至</span>
+                    <span id="end_date" name="end_date" class="form-control  format_date "></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-lg-3">
+                <div class="input-group margin-bottom formValue">
+                    <span class="input-group-addon no-border">姓名</span>
+                    <span type="text" id="name" name="name" class="form-control required"></span>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-3">
+                <div class="input-group margin-bottom formValue">
+                    <span class="input-group-addon no-border">职位名称</span>
+                    <span type="text" id="position_name" name="position_name" class="form-control"></span>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-3">
+                <div class="input-group margin-bottom formValue">
+                    <span class="input-group-addon no-border">入职时间</span>
+                    <span type="text" id="entry_date" name="entry_date" class="form-control format_date"></span>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-3">
+                <div class="input-group margin-bottom formValue">
+                    <span class="input-group-addon no-border">职等</span>
+                    <span type="text" id="grade" name="grade" class="form-control"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box-body">
+        <div class="box box-danger">
+            <div class="box-header widt-border">
+                <h3 class="box-title">工资明细</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body" style="background-color:#ecf0f5">
+                <div class="col-lg-12 no-padding">
+                    <div class="col-xs-12 col-sm-12 col-lg-12">
+                        <div class="box box-widget">
+                            <div class="box-body">
+                                <br />
+                                <div class="col-xs-12 col-sm-6 col-lg-3">
+                                    <div class="input-group margin-bottom formValue">
+                                        <span class="input-group-addon no-border">应发工资</span>
+                                        <span id="salary" name="salary" class="form-control"></span>
+                                        <span class="input-group-addon">元</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-lg-3">
+                                    <div class="input-group margin-bottom formValue">
+                                        <span class="input-group-addon no-border   ">实发工资</span>
+                                        <span type="text" id="actual_salary" name="actual_salary" class="form-control required   "></span>
+                                        <span class="input-group-addon   ">元</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6  no-padding">
+                    <div class="col-xs-12 col-sm-12 col-lg-12">
+                        <div class="box box-widget">
+                            <div class="box-header">
+                                <div class="input-group col-sm-5 col-lg-3">
+                                    <h3 class="box-title input-group-addon no-border">基本工资</h3>
+                                </div>
+                                <div class="box-tools">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div>
+                                    <div class="col-sm-12 col-md-12">
+                                        <div class="col-xs-12 col-sm-6 col-lg-5">
+                                            <div class="input-group margin-bottom formValue">
+                                                <span class="input-group-addon  no-border">底&nbsp;&nbsp;&nbsp;&nbsp;薪&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                                <span class="form-control" id="base_salary"></span>
+                                                <span class="input-group-addon">元</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-7">
+                                            底薪方案：<a class="label label-danger margin"><span id="base_type"></span></a>
+                                            当月核算底薪提成：<a class="label label-warning margin"><span id="commission_basesalary"></span>元</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12">
+                                        <div class="col-xs-12 col-sm-6 col-lg-5">
+                                            <div class="input-group margin-bottom formValue">
+                                                <span class="input-group-addon  no-border">实销提成</span>
+                                                <span type="text" id="sale_commission" name="sale_commission" class="form-control"></span>
+                                                <span class="input-group-addon">元</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-lg-7">
+                                            当月实销：<a class="label label-danger margin"><span id="sale_count"></span>台</a>
+                                            <a class="label label-primary btnDetailTag isShowDetail " id='saleDetail' data-href="" data-id="" data-btndetail="导购提成详情">查看详情</a>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12">
+                                        <div class="col-xs-12 col-sm-6 col-lg-5">
+                                            <div class="input-group margin-bottom formValue">
+                                                <span class="input-group-addon  no-border">包销提成</span>
+                                                <span type="text" id="exclusive_commission" name="exclusive_commission" class="form-control"></span>
+                                                <span class="input-group-addon">元</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-lg-7">
+                                            当月包销：<a class="label label-danger margin"><span id="exclusive_count"></span>台</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12">
+                                        <div class="col-xs-12 col-sm-6 col-lg-5">
+                                            <div class="input-group margin-bottom formValue">
+                                                <span class="input-group-addon  no-border">买断提成</span>
+                                                <span type="text" id="buyout_commission" name="buyout_commission" class="form-control"></span>
+                                                <span class="input-group-addon">元</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-lg-7">
+                                            当月买断：<a class="label label-danger margin"><span id="buyout_count"></span>台</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12" id="increase" style="display:none">
+                                        <div class="col-xs-12 col-sm-6 col-lg-5">
+                                            <div class="input-group margin-bottom formValue">
+                                                <span class="input-group-addon  no-border">增员奖励</span>
+                                                <span id="increase_reward" name="increase_reward" class="form-control"></span>
+                                                <span class="input-group-addon">元</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-lg-7">
+                                            增员人数：<a class="label label-danger margin"><span id="increase_count"></span>元</a>
+                                            增员提成：<a class="label label-warning margin"><span id="increase_commission"></span>分</a><br />
+                                            增员销量：<a class="label label-info margin"><span id="increase_sale_count"></span>元</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12">
+                                        <div class="col-xs-12 col-sm-6 col-lg-5">
+                                            <div class="input-group margin-bottom  ">
+                                                <span class="input-group-addon  no-border">全勤奖金</span>
+                                                <span type="text" id="attendance_reward" name="attendance_reward" class="form-control  "></span>
+                                                <span class="input-group-addon">元</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-lg-7">
+                                            应出勤：<a class="label label-danger margin"><span id="work_days"></span>天</a>
+                                            实际出勤：<a class="label label-warning margin"><span id="onduty_day"></span>天</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-lg-12">
+                        <div class="box box-widget">
+                            <div class="box-header">
+                                <div class="input-group col-sm-5 col-lg-3">
+                                    <h3 class="box-title input-group-addon no-border">福利奖罚</h3>
+                                </div>
+                                <div class="box-tools">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div id="benefit" style="display:none">
+                                    <div class="col-sm-12 col-md-12" id="benefitList">
+                                        <label @*class="label label-danger"*@>福利</label>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12" id="rewardsList">
+                                        <label @*class="label label-danger"*@>奖罚</label>
+                                    </div>
+                                </div>
+                                <div id="benefitNone" style="display:none">
+                                    <div class="col-sm-12 col-md-12  text-center  margin-bottom">
+                                        <label class="text-red">本月无福利奖罚</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6  no-padding">
+                    <div class="col-xs-12 col-sm-12 col-lg-12">
+                        <div class="box box-widget">
+                            <div class="box-header">
+                                <div class="input-group col-sm-5 col-lg-3">
+                                    <h3 class="box-title input-group-addon no-border">活动</h3>
+                                </div>
+                                <div class="box-tools">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div id="activity" style="display:none">
+                                    <div class="col-sm-12 col-md-12" id="recomList">
+                                        <label @*class="label label-danger"*@>主推</label>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12" id="attaList">
+                                        <label @*class="label label-danger"*@>达量</label>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12" id="rankList">
+                                        <label @*class="label label-danger"*@>排名</label>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12" id="pkList">
+                                        <label @*class="label label-danger"*@>PK</label>
+                                    </div>
+                                </div>
+                                <div id="activityNone" style="display:none">
+                                    <div class="col-sm-12 col-md-12  text-center  margin-bottom">
+                                        <label class="text-red">本月无活动</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-lg-12">
+                        <div class="box box-widget">
+                            <div class="box-header">
+                                <div class="input-group col-sm-5 col-lg-3">
+                                    <h3 class="box-title input-group-addon no-border">其他</h3>
+                                </div>
+                                <div class="box-tools">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="col-sm-12 col-md-12">
+                                    <div class="col-xs-12 col-sm-6 col-lg-5">
+                                        <div class="input-group margin-bottom formValue">
+                                            <span class="input-group-addon  no-border   ">请假扣款</span>
+                                            <span type="text" id="leaving_deduction" name="leaving_deduction" class="form-control required   "></span>
+                                            <span class="input-group-addon   ">元</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-12">
+                                    <div class="col-xs-12 col-sm-6 col-lg-5">
+                                        <div class="input-group margin-bottom formValue">
+                                            <span class="input-group-addon  no-border  ">风&nbsp; 险&nbsp;金&nbsp;</span>
+                                            <span type="text" id="resign_deposit" name="resign_deposit" class="form-control required  "></span>
+                                            <span class="input-group-addon  ">元</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-12" >
+                                    <div class="col-xs-12 col-sm-6 col-lg-5">
+                                        <div class="input-group margin-bottom formValue">
+                                            <span class="input-group-addon  no-border  ">社&nbsp;&nbsp;&nbsp;&nbsp;保&nbsp;&nbsp;&nbsp;</span>
+                                            <span type="text" id="insurance_fee" name="insurance_fee" class="form-control required  "></span>
+                                            <span class="input-group-addon  ">元</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="staySubsidyWrap">
+                                    <div class="col-sm-12 col-md-12">
+                                        <div class="col-xs-12 col-sm-6 col-lg-5">
+                                            <div class="input-group margin-bottom formValue">
+                                                <span class="input-group-addon  no-border">留守补助-公司</span>
+                                                <span id="stay_subsidy_company" name="stay_subsidy_company" class="form-control"></span>
+                                                <span class="input-group-addon">元</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12">
+                                        <div class="col-xs-12 col-sm-6 col-lg-5">
+                                            <div class="input-group margin-bottom formValue">
+                                                <span class="input-group-addon  no-border">留守补助-个人</span>
+                                                <span id="stay_subsidy_personal" name="stay_subsidy_personal" class="form-control"></span>
+                                                <span class="input-group-addon">元</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-12">
+                                    <div class="col-xs-12 col-sm-12 col-lg-12">
+                                        <div class="input-group margin-bottom formValue">
+                                            <span class="input-group-addon  no-border  ">备&nbsp;&nbsp;&nbsp;&nbsp;注&nbsp;&nbsp;&nbsp;</span>
+                                            <textarea type="text" id="note" name="note" class="form-control  " disabled></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="box-footer">
+    <a class="btn btn-default pull-right" href="/SalaryCalculate/PayrollGuide/HistoryIndex">返回</a>
+</div>
+<script src="~/Content/js/detail/SalaryCalculate/PayrollGuide/show.js"></script>

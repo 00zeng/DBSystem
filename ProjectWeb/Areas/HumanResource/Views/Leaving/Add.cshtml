@@ -1,0 +1,60 @@
+﻿@*请假申请*@
+@{
+    ViewBag.Title = "请假申请";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<div class="box-header widt-border">
+    <h3 class="box-title pull-left">请假申请</h3>
+</div>
+<div class="box-body">
+    <form id="form1">
+        <div class="box box-danger">
+            <div class="box-header widt-border">
+                <div class="col-xs-12 col-sm-4 col-lg-3">
+                    <div class="input-group margin-bottom formValue">
+                        <span class="input-group-addon no-border">请选择类型：</span>
+                        <select type="text" id="salary" name="salary" class="form-control">
+                            <option value="1">事假</option>
+                            <option value="2">病假</option>
+                            <option value="3">婚假</option>
+                            <option value="4">陪育假/产假</option>
+                            <option value="5">丧假</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body" style="background-color:#ecf0f5">
+                <div class="box box-widget">
+                    <div class="box-body">
+                        <br />
+                        <div class="col-xs-12 col-sm-4 col-lg-3">
+                            <div class="input-group margin-bottom formValue">
+                                <span class="input-group-addon no-border">应发工资</span>
+                                <input type="text" id="salary" name="salary" class="form-control">
+                                <span class="input-group-addon">元</span>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-lg-3">
+                            <div class="input-group margin-bottom formValue">
+                                <span class="input-group-addon no-border">实发工资</span>
+                                <input type="text" id="actual_salary" name="actual_salary" class="form-control required number">
+                                <span class="input-group-addon">元</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="box-footer">
+    <button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+    <a class="btn btn-default pull-right" href="/HumanResource/Leaving/Index">返回</a>
+</div>
+
+<script src="~/Content/js/detail/humanResource/leaving/add.js"></script>

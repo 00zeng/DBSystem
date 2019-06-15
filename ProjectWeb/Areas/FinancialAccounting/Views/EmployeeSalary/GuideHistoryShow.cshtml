@@ -1,0 +1,157 @@
+﻿@{
+    ViewBag.Title = "员工薪资/导购薪资";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+
+<style type="text/css">
+    tbody table td {
+        padding: 0;
+    }
+
+    .radio + .radio {
+        margin-top: 10px;
+    }
+
+    .table-bordered {
+        border-radius: 4px;
+    }
+</style>
+<form id="form1">
+    <div class="box-header">
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">姓名：</span>
+                <span id="name" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">职位：</span>
+                <span id="position_name" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">等级：</span>
+                <span id="grade" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">机构：</span>
+                <span id="company_name" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border"> 生效时间</span>
+                <span id="effect_date" class="form-control format_date_ym"></span>
+            </div>
+        </div>
+    </div>
+    <div class="box-body" style="padding-bottom:0px;">
+        <div class="col-xs-12 col-sm-12 col-lg-12">
+            <div class="box box-warning">
+                <div class="box-header">
+                    <h3 class="box-title">导购员薪资查看</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body" style="background-color:#ecf0f5">
+                    <div class="col-xs-12 col-sm-12 col-lg-12">
+                        <div class="box box-widget">
+                            <div class="box-body">
+                                <div class="row margin-bottom">
+                                    <div class="col-sm-2 "><span class="form-control no-border text-right">底薪</span></div>
+                                    <div class="radio col-sm-2">
+                                        <label>
+                                            <input type="radio" id="guide_base_type" name="guide_base_type" value="0" disabled />0底薪
+                                        </label>
+                                    </div>
+                                    <div class="radio col-sm-2">
+                                        <label>
+                                            <input type="radio" name="guide_base_type" value="2" disabled>星级制
+                                        </label>
+                                    </div>
+                                    <div class="radio col-sm-2">
+                                        <label>
+                                            <input type="radio" name="guide_base_type" value="3" disabled>浮动底薪
+                                        </label>
+                                    </div>
+                                    <div class="radio col-sm-2">
+                                        <label>
+                                            <input type="radio" name="guide_base_type" value="4" disabled>保底工资
+                                        </label>
+                                    </div>
+                                    <div class="radio col-sm-2">
+                                        <label>
+                                            <input type="radio" name="guide_base_type" value="1" disabled>达标底薪
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row margin-bottom" id="salary_base" style="display:none">
+                                    <div class="col-sm-2 "><span class="form-control no-border text-right">保底工资</span></div>
+                                    <div class="col-sm-4">
+                                        <div class="input-group formValue">
+                                            <input class="form-control text-center required number" id="guide_salary_base">
+                                            <span class="input-group-addon ">元/月</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row margin-bottom" id="salary_commission" style="display:none">
+                                    <div class="col-sm-2 "><span class="form-control no-border text-right">达标提成</span></div>
+                                    <div class="col-sm-4">
+                                        <div class="input-group formValue">
+                                            <span class="form-control text-center required number" id="guide_standard_commission"></span>
+                                            <span class="input-group-addon ">元/月</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2 "><span class="form-control no-border text-right">底薪</span></div>
+                                    <div class="col-sm-4">
+                                        <div class="input-group formValue">
+                                            <span class="form-control text-center required number" id="guide_standard_salary"></span>
+                                            <span class="input-group-addon ">元/月</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row margin-bottom">
+                                    <div class="col-sm-2 "><span class="form-control no-border text-right">年终奖</span></div>
+                                    <div class="radio col-sm-2">
+                                        <label>
+                                            <input id="guide_annualbonus_type" name="guide_annualbonus_type" type="radio" value="1" disabled>按销量
+                                        </label>
+                                    </div>
+                                    <div class="radio col-sm-2">
+                                        <label>
+                                            <input name="guide_annualbonus_type" type="radio" value="2" disabled>按星级
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row margin-bottom">
+                                    <div class="col-sm-2 "><span class="form-control no-border text-right">离职押金</span></div>
+                                    <div class="col-sm-4">
+                                        <div class="input-group">
+                                            <div class="input-single formValue">
+                                                <span type="text" class="form-control text-center col-sm-6 required number" id="resign_deposit" name="resign_deposit"></span>
+                                            </div>
+                                            <span class="input-group-addon">元/月</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="box-footer">
+    <button type="submit" class="btn btn-default pull-right" onclick="javascript:history.back(-1);">返回</button>
+</div>
+
+<script src="~/Content/js/detail/FinancialAccounting/employeeSalary/guide_history_show.js"></script>

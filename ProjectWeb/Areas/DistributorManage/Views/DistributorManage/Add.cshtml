@@ -1,0 +1,339 @@
+﻿@*经销商添加*@
+@{
+    ViewBag.Title = "经销商添加";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<link href="~/Content/js/cityPicker/css/city-picker.css" rel="stylesheet" />
+<div class="box-header widt-border">
+    <h3 class="box-title">经销商添加</h3>
+</div>
+<div class="panel-body">
+    <form id="main-form">
+        <div class="box box-danger">
+            <div class="box-header widt-border">
+                <h3 class="box-title">经销商信息</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">经销商名称<span class="text-red">&nbsp;*</span></span>
+                            <input type="text" id="name" name="name" class="form-control distributorName" onblur="checkName(this)">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">V2报量名称<span class="text-red">&nbsp;*</span></span>
+                            <input type="text" id="name_v2" name="name_v2" class="form-control" >
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">快捷编码<span class="text-red">&nbsp;*</span></span>
+                            <input type="text" id="code" name="code" class="form-control" disabled >
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">所属代理商<span class="text-red">&nbsp;*</span></span>
+                            <input type="text" id="agent" name="agent" class="form-control required">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">潜在售点<span class="text-red">&nbsp;*</span></span>
+                            <div class="form-control radio" style="margin-top:0px">
+                                <label class="col-sm-6 ">
+                                    <input id="potential_salepoint" name="potential_salepoint" type="radio" value="1" checked>是
+                                </label>
+                                <label class="col-sm-6 ">
+                                    <input name="potential_salepoint" type="radio" value="0" >否
+                                </label>
+                            </div>   
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">连锁体系<span class="text-red">&nbsp;*</span></span>
+                            <input type="text" id="system_chain" name="system_chain" class="form-control required">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">TOP层级客户<span class="text-red">&nbsp;*</span></span>
+                            <input type="text" id="top_customers" name="top_customers" class="form-control required">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">体系调拨<span class="text-red">&nbsp;*</span></span>
+                            <input type="text" id="system_allocation" name="system_allocation" class="form-control required">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">地区属性<span class="text-red">&nbsp;*</span></span>
+                            <input type="text" id="locale_attribute" name="locale_attribute" class="form-control required">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">客户类别<span class="text-red">&nbsp;*</span></span>
+                            <input type="text" id="customer_category" name="customer_category" class="form-control required">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">客户级别<span class="text-red">&nbsp;*</span></span>
+                            <input type="text" id="customer_level" name="customer_level" class="form-control required">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">经销商属性<span class="text-red">&nbsp;*</span></span>
+                            <div class="form-control radio" style="margin-top:0px">
+                                <label class="col-sm-6 ">
+                                    <input id="distributor_attribute" name="distributor_attribute" type="radio" value="自营" checked>自营
+                                </label>
+                                <label class="col-sm-6 ">
+                                    <input name="distributor_attribute" type="radio" value="非自营" >非自营
+                                </label>
+                            </div>     
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">运营商属性<span class="text-red">&nbsp;*</span></span>
+                            <input type="text" id="sp_attribute" name="sp_attribute" class="form-control required">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">经营品牌<span class="text-red">&nbsp;*</span></span>
+                            <input type="text" id="brand" name="brand" class="form-control required">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">年销售规模<span class="text-red">&nbsp;*</span></span>
+                            <input type="text" id="annual_sales_volume" name="annual_sales_volume" class="form-control required">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">经营模式<span class="text-red">&nbsp;*</span></span>
+                            <input type="text" id="operation_mode" name="operation_mode" class="form-control required">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">价格级别<span class="text-red">&nbsp;*</span></span>
+                            <input type="text" id="price_level" name="price_level" class="form-control required">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">所属机构<span class="text-red">&nbsp;*</span></span>
+                            <select type="text" id="company_id" name="company_id" class="form-control required"></select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">经理片区<span class="text-red">&nbsp;*</span></span>
+                            <select type="text" id="area_l1_id" name="area_l1_id" class="form-control required"></select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">业务片区<span class="text-red">&nbsp;*</span></span>
+                            <select type="text" id="area_l2_id" name="area_l2_id" class="form-control required"></select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon formValue">所在省市<span class="text-red">&nbsp;*</span></span>
+                            <input id="city" name="city" class="form-control required" style="position: absolute" data-toggle="city-picker" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">地址<span class="text-red">&nbsp;*</span></span>
+                            <input type="text" id="address" name="address" class="form-control required">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">电话<span class="text-red">&nbsp;*</span></span>
+                            <input type="text" id="phone" name="phone" class="form-control required">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">传真<span class="text-red">&nbsp;*</span></span>
+                            <input type="text" id="fax" name="fax" class="form-control required">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">联系人<span class="text-red">&nbsp;*</span></span>
+                            <input type="text" id="contact_name" name="contact_name" class="form-control required">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">联系人电话<span class="text-red">&nbsp;*</span></span>
+                            <input type="text" id="contact_phone" name="contact_phone" class="form-control required">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom">
+                            <span class="input-group-addon">备注</span>
+                            <input type="text" id="note" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box box-warning">
+            <div class="box-header widt-border">
+                <h3 class="box-title">系统账户</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">系统账户<span class="text-red">&nbsp;*</span></span>
+                            <input type="text" id="account" name="account" class="form-control required">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">初始密码<span class="text-red">&nbsp;*</span></span>
+                            <input type="password" id="password" name="password" class="form-control required">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom">
+                            <span class="input-group-addon">是否启用</span>
+                            <div class="form-control checkbox no-margin">
+                                <label>
+                                    <input type="checkbox" id="inactive" name="inactive">启用
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="box box-success collapsed-box">
+        <div class="box-header widt-border">
+            <h3 class="box-title">证件上传</h3>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-plus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body no-padding">
+            <div class="row">
+                <div class="col-sm-6 col-lg-4">
+                    <div class="box box-solid">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">营业执照</h3>
+                            <button type="button" class="btn bg-primary pull-right" add="upload">上传图片</button>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body" name="picbox" style="display: none">
+                            <div class="row mg-t" name="row"></div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <div class="box box-solid">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">门店照片</h3>
+                            <button type="button" class="btn bg-primary pull-right" add="upload">上传图片</button>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body" name="picbox" style="display: none">
+                            <div class="row mg-t" name="row"></div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <div class="box box-solid">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">身份证</h3>
+                            <button type="button" class="btn bg-primary pull-right" add="upload">上传图片</button>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body" name="picbox" style="display: none">
+                            <div class="row mg-t" name="row"></div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+           
+
+                <div class="col-sm-6 col-lg-4">
+                    <div class="box box-solid">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">合同</h3>
+                            <button type="button" class="btn bg-primary pull-right" add="upload">上传图片</button>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body" name="picbox" style="display: none">
+                            <div class="row mg-t" name="row"></div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <div class="box box-solid">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">其他</h3>
+                            <button type="button" class="btn bg-primary pull-right" add="upload">上传图片</button>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body" name="picbox" style="display: none">
+                            <div class="row mg-t" name="row"></div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="box-footer">
+    <button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+    <a class="btn btn-default pull-right" href="/DistributorManage/DistributorManage/Index">返回</a>
+</div>
+
+<script src="~/Content/js/cityPicker/city-picker.data.js"></script>
+<script src="~/Content/js/cityPicker/city-picker.js"></script>
+<script src="~/Content/js/detail/DistributorManage/distributor/add.js"></script>

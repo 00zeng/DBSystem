@@ -1,0 +1,65 @@
+﻿@*运费模板*@
+@{
+    ViewBag.Title = "当前运费 ";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+
+@*<div class="box-header widt-border">
+    <h3 class="box-title">当前运费</h3>
+</div>*@
+
+
+<div class="panel-body" style="padding-bottom:0px;">
+    <div class="box box-default">
+        <div class="box-header widt-border">
+            <h3 class="box-title">经销商运费</h3>
+            <div class="box-tools pull-right">
+                <button type="button" id="editIcon" class="btn btn-box-tool " hidden onclick="window.location.href='Add'">
+                    <i class="fa fa-pencil"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body">
+            <form id="form1">
+                <div id="showdiv" class="col-md-6" style="display:none">
+                    <dl class="col-sm-12 dl-horizontal">
+                        <dt>状态</dt>
+                        <dd><span id="effect_status" name="effect_status"></span></dd>
+                    </dl>
+                    <dl class="col-sm-12 dl-horizontal">
+                        <dt>生效时间</dt>
+                        <dd><span id="effect_date" name="effect_date" class="format_date"></span></dd>
+                    </dl>
+                    <dl class="col-sm-12 dl-horizontal">
+                        <dt>最低运费</dt>
+                        <dd>
+                            <span id="minimum_fee" type="text"></span>元<br>
+                            <span style="color:red">不足最低收费标准时按最低收费标准结算（免运费除外）</span>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="form-group col-md-6" style="display:none" id="teble_div">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <table class="table table-bordered text-center" id="shipping_tr">
+                                <tr>
+                                    <th class="col-sm-6">台数</th>
+                                    <th class="col-sm-6">运费（元/台）</th>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div align="center" id="Newdiv"  style="display:none">
+                    <span style="color:red">当前无运费配置信息，请</span>
+                    <button type="button" class="btn btn-primary" onclick="window.location.href='Add'">新增</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/js/detail/DistributorManage/ShippingTemplate/show.js"></script>

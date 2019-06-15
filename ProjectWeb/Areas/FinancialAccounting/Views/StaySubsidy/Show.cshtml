@@ -1,0 +1,139 @@
+﻿@{
+    ViewBag.Title = "留守补助";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<link href="~/Content/js/bootstrap-duallistbox/bootstrap-duallistbox.min.css" rel="stylesheet" />
+<style type="text/css">
+    tbody table td {
+        padding: 0;
+    }
+
+    .radio + .radio {
+        margin-top: 10px;
+    }
+
+    .table-bordered {
+        border-radius: 4px;
+    }
+</style>
+<form id="form1">
+    <div class="box-header">
+        <div class="col-xs-12 col-sm-4 col-lg-3" id="branch">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">机构：</span>
+                <span type="text" id="company_name" class="form-control"></span>
+            </div>
+        </div>
+		<div class="col-xs-12 col-sm-4 col-lg-3" >
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border">发放月份</span>
+                <span id="month" class="form-control"/>
+            </div>
+        </div>
+    </div>
+    <div class="box-body" style="padding-bottom:0px;">
+        <div class="col-xs-12 col-sm-12 col-lg-6">
+            <div class="box box-warning">
+                <div class="box-header">
+                    <h3 class="box-title">发放对象</h3><h6 class="inline margin">共<span class="margin" id="emp_count">0</span>人</h6>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <table id="targetEmp"></table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-lg-6">
+            <div class="box box-danger">
+                <div class="box-header">
+                    <h3 class="box-title">补助金额</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="box-body">
+                    <div class="row margin-bottom">
+                        <div class="col-sm-3"><span class="form-control no-border text-right"><strong>公司</strong></span></div>
+                        <div class="col-sm-7">
+                            <div class="input-group">
+                                <span type="text" class="form-control text-center" id="company_amount"></span>
+                                <span class="input-group-addon">元</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row margin-bottom">
+                        <div class="col-sm-3"><span class="form-control no-border text-right"><strong>员工</strong></span></div>
+                        <div class="col-sm-7">
+                            <div class="input-group">
+                                <span type="text" class="form-control text-center" id="emp_amount"></span>
+                                <span class="input-group-addon">元</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row margin-bottom">
+                        <div class="col-sm-3"><span class="form-control no-border text-right"><strong>补助总金额</strong></span></div>
+                        <div class="col-sm-7">
+                            <div class="input-group">
+                                <span type="text" class="form-control text-center" id="amount"></span>
+                                <span class="input-group-addon">元</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-lg-12">
+            <div class="box box-default">
+                <div class="box-header widt-border">
+                    <h3 class="box-title">审批</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <table class="table table-bordered text-center" id="approve">
+                        <tbody>
+                            <tr>
+                                <th width="150px">操作类型</th>
+                                <th width="150px">操作人</th>
+                                <th width="150px">操作人职位</th>
+                                <th width="200px">时间</th>
+                                <th width="200px">结果</th>
+                                <th width="200px">意见</th>
+                            </tr>
+                            <tr>
+                                <td>发起申请</td>
+                                <td><span id="creator_name"></span></td>
+                                <td><span id="creator_position_name"></span></td>
+                                <td><span id="create_time"></span></td>
+                                <td><span id="">--</span></td>
+                                <td><span id="">--</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+<div class="box-footer">
+    <a type="submit" class="btn btn-default pull-right" href="/FinancialAccounting/StaySubsidy/Index">返回</a>
+</div>
+
+<script src="~/Content/js/detail/FinancialAccounting/StaySubsidy/show.js"></script>

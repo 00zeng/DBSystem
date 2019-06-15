@@ -1,0 +1,169 @@
+﻿@{
+    ViewBag.Title = "员工职务信息修改";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+
+<div class="panel-body" style="background: white;">
+    <form id="form1">
+   
+        <div class="box box-warning">
+            <div class="box-header widt-border">
+                <h3 class="box-title">职务信息修改</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom">
+                            <span class="input-group-addon">工号</span>
+                            <span type="text" id="work_number" name="work_number" class="form-control"></span>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">姓名</span>
+                            <span type="text" id="name" name="name" class="form-control"></span>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">v2姓名<span class="text-red">&nbsp;*</span></span>
+                            <input type="text" id="name_v2" name="name_v2" class="form-control required">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon ">所属机构<span class="text-red">&nbsp;*</span></span>
+                            <select type="text" id="company_id" name="company_id" class="form-control required"></select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon ">部门<span class="text-red">&nbsp;*</span></span>
+                            <select type="text" id="dept_id" name="dept_id" class="form-control required"></select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">职位<span class="text-red">&nbsp;*</span></span>
+                            <select type="text" id="position_id" name="position_id" class="form-control required"></select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon ">职级<span class="text-red">&nbsp;*</span></span>
+                            <select type="text" id="grade" name="grade" class="form-control required"></select>
+                        </div>
+                    </div>                  
+                    <div class="col-xs-12 col-sm-6 col-lg-4" hidden id="areaL1Wrap">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">经理片区<span class="text-red"></span></span>
+                            <span type="text" id="area_l1_name" name="area_l1_name" class="form-control"></span>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4" hidden id="areaL2Wrap">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">业务片区<span class="text-red"></span></span>
+                            <span type="text" id="area_l2_name" name="area_l2_name" class="form-control"></span>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4" hidden id="distributorWrap">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">经销商<span class="text-red"></span></span>
+                            <span type="text" id="distributor_name" name="distributor_name" class="form-control"></span>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">上级主管姓名</span>
+                            <input type="text" id="supervisor_name" name="supervisor_name" class="form-control" onblur="CheckNameExist(this);">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">雇员类别<span class="text-red">&nbsp;*</span></span>
+                            <select type="text" id="emp_category" class="form-control required">
+                                <option value="实习生">实习生</option>
+                                <option value="劳务工">劳务工</option>
+                                <option value="员工">员工</option>
+                                <option value="职员">职员</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">入职时间<span class="text-red">&nbsp;*</span></span>
+                            <input id="entry_date" name="entry_date" type="text" class="form-control required format_date" readonly="readonly" onfocus="WdatePicker({ maxDate: '%y-%M-%d', minDate: '%y-%M-#{%d-7}' });">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">工作地点<span class="text-red">&nbsp;*</span></span>
+                            <input type="text" id="work_addr" name="work_addr" class="form-control required">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">纳税单位<span class="text-red">&nbsp;*</span></span>
+                            <input type="text" id="tax_unit" name="tax_unit" class="form-control required">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">是否已购买社保<span class="text-red">&nbsp;*</span></span>
+                            <div class="form-control radio" style="margin-top:0px">
+                                <label class="col-sm-6 ">
+                                    <input id="insurance_paid" name="insurance_paid" type="radio" value="true">是
+                                </label>
+                                <label class="col-sm-6 ">
+                                    <input name="insurance_paid" type="radio" value="false">否
+                                </label>
+                            </div>   
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">合同签署日期<span class="text-red">&nbsp;*</span></span>
+                            <input id="cur_contract_sign" name="cur_contract_sign" type="text" class="form-control required format_date" readonly="readonly" onfocus="WdatePicker({ maxDate: '#F{$dp.$D(\'cur_contract_expire\')}' });">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">合同到期日期<span class="text-red">&nbsp;*</span></span>
+                            <input id="cur_contract_expire" name="cur_contract_expire" type="text" class="form-control required format_date" readonly="readonly" onfocus="WdatePicker({ minDate: '#F{$dp.$D(\'cur_contract_sign\')}' });">
+
+                        </div>
+                    </div>
+                    <div id="guideSpecificWrap" hidden>
+                        <div class="col-xs-12 col-sm-6 col-lg-4">
+                            <div class="input-group margin-bottom formValue">
+                                <span class="input-group-addon">导购员类别<span class="text-red">&nbsp;*</span></span>
+                                <select id="guide_category" class="form-control required">
+                                    <option value="正职">正职</option>
+                                    <option value="副职">副职</option>
+                                    <option value="挂职">挂职</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-lg-4">
+                            <div class="input-group margin-bottom formValue">
+                                <span class="input-group-addon">介绍人<span class="text-red">&nbsp;*</span></span>
+                                <input type="text" id="introducer_name" name="introducer_name" class="form-control required" onblur="CheckNameExist(this);">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       </form>
+</div>
+<div class="box-footer">
+    <button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+    <a class="btn btn-default pull-right" href="javascript:history.go(-1);"> 返回 </a>
+</div>
+<script src="~/Content/js/deepinf/dinf-input.js"></script>
+<script src="~/Content/js/detail/humanResource/employeeManage/edit_job_info.js"></script>

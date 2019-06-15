@@ -1,0 +1,126 @@
+﻿@* 区域管理 *@
+@{
+    ViewBag.Title = "业务片区";
+    Layout = "~/Views/Shared/_Index_v2.cshtml";
+}
+<div class="panel-body" style="padding-bottom:0px;">
+
+    <div id="toolbar" class="btn-group">
+        <button id="btn_add" name="orgShow" type="button" class="btn btn-primary" onclick="window.location.href='Add'">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+        </button>		
+        <button id="btn_del" name="orgHide" type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDel" style="display:none">
+            <span class="glyphicon glyphicon-trash" aria-hidden="true" ></span>删除
+        </button>	
+        <button id="btn_change"name="orgHide" type="button" class="btn btn-warning"  data-toggle="modal" data-target="#modalChange" style="display:none">
+            <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>调区
+        </button>	
+        <button type="button" name="orgShow" class="btn btn-default" data-toggle="modal" data-target="#modalQuery">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>更多搜索
+        </button>
+		<div class="input-group" name="orgShow">
+			<input class="form-control" id="name" type="text" placeholder="请输入区域名称">
+		</div>
+    </div>
+
+    <div>
+        <table id="gridList" style="table-layout:fixed"></table>
+    </div>
+
+</div>
+
+<div class="modal fade" id="modalQuery" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">按条件搜索
+				<button id="clear" type="button" class="btn btn-warning btn-xs">清空</button>
+				</h4>
+            </div>
+            <div class="modal-body">
+                <form id="queryForm" class="form-horizontal">
+                    <div class="form-group">
+                        <span  class="col-sm-2 control-label">分公司</span>
+                        <div class="col-sm-9">
+							<select class="form-control" id="company_id"></select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" id="querySubmit" class="btn btn-primary">搜索</button>
+            </div>
+        </div>
+    </div>
+</div>
+@*删除*@
+<div class="modal fade" id="modalDel" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">
+                    业务片区删除
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form id="queryForm" class="form-horizontal">
+                    <div class="form-group">
+                        <span class="col-sm-2 control-label">生效时间</span>
+                        <div class="col-sm-9">
+                            <input id="effect_date" type="text" class='form-control' readonly="readonly" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd', maxDate: '%y-%M-%d' });">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" id="querySubmit" class="btn btn-primary" onclick="deleteColumns()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+@*区域调整*@
+<div class="modal fade" id="modalChange" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">
+                    区域调整
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form id="queryForm" class="form-horizontal">
+                    <div class="form-group">
+                        <span class="col-sm-2 control-label">分公司</span>
+                        <div class="col-sm-9">
+                            <select class="form-control" id="company_id2"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span  class="col-sm-2 control-label">经理片区</span>
+                        <div class="col-sm-9">
+                            <select class="form-control" id="area_l1_id"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span class="col-sm-2 control-label">生效时间</span>
+                        <div class="col-sm-9">
+                            <input id="effect_date2" type="text" class='form-control' readonly="readonly" onfocus="WdatePicker({ maxDate: '%y-%M-%d' });">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" id="querySubmit" class="btn btn-primary"onclick="AjustL2()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Content/js/detail/OrganizationManage/Area/area_l2_index.js"></script>

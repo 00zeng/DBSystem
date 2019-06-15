@@ -1,0 +1,80 @@
+﻿@*统计分析*@
+@{
+    ViewBag.Title = "统计分析";
+    Layout = "~/Views/Shared/_Index_v2.cshtml";
+}
+<div class="box-header widt-border">
+    <h3 class="box-title">统计分析</h3>
+</div>
+<div class="box-header">
+	<div class="row">
+            <div class="col-xs-12 col-sm-3 col-lg-3">
+                <div class="input-group margin-bottom">
+                    <span class="input-group-addon no-border">分公司：</span>
+                    <select id="company_id" class="form-control" type="text"></select>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-lg-3">
+                <div class="input-group ">
+                    <span class="input-group-addon no-border">经理片区：</span>
+                    <select id="area_l1_id" class="form-control"><option value="">--所有经理片区--</option></select>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-lg-3">
+                <div class="input-group">
+                    <span class="input-group-addon no-border">业务片区：</span>
+                    <select id="area_l2_id" class="form-control"><option value="">--所有业务片区--</option></select>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-lg-3">
+                <div class="input-group">
+                    <span class="input-group-addon no-border">经销商：</span>
+                    <select id="distributor_id" class="form-control"><option value="">--所有经销商--</option></select>
+                </div>
+            </div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-3 col-lg-3">
+                <div class="input-group">
+                    <span class="input-group-addon no-border">统计时间：</span>
+                    <select id="time" class="form-control">
+						<option value="">--自定义--</option>
+						<option value="">--月度--</option>
+						<option value="">--季度--</option>
+						<option value="">--年度--</option>
+					</select>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-lg-3">
+                <div class="input-group">
+                    <span class="input-group-addon no-border">选择时间：</span>
+                    <input id="start_date" name="start_date" type="text" class="form-control" readonly="readonly" onfocus="WdatePicker({ maxDate: '#F{$dp.$D(\'end_date\')}' });"></input>
+                    <span class="input-group-addon">-</span>
+                    <input id="end_date" name="end_date" type="text" class="form-control" readonly="readonly" onfocus="WdatePicker({ minDate: '#F{$dp.$D(\'start_date\')}' });"></input>
+                </div>
+            </div>
+        </div>
+</div>
+<div class="panel-body">
+   <div class="nav-tabs-custom">
+            <!-- Tabs within a box -->
+            <ul class="nav nav-tabs pull-right" id="menu">
+              <li class="active"><a href="#return-chart" data-toggle="tab">退库</a></li>
+              <li><a href="#refund-chart" data-toggle="tab">补差</a></li>
+			  <li><a href="#buyout-chart" data-toggle="tab">买断</a></li>
+			  <li><a href="#sales-chart" data-toggle="tab">出库/实销</a></li>
+			  <li class="pull-left header"><i class="fa fa-inbox"></i> 销售统计</li>
+            </ul>
+			<div style="overflow:auto; border:0px solid;">
+            <div class="tab-content no-padding" align="center">
+              <!-- Morris chart - Sales -->
+              <div class="chart tab-pane active" id="return-chart" style="position: relative;width:1550px; height: 500px;"></div>
+              <div class="chart tab-pane" id="refund-chart" style="position: relative;width:1550px; height: 500px;"></div>
+			  <div class="chart tab-pane" id="buyout-chart" style="position: relative;width:1550px; height: 500px;"></div>
+			  <div class="chart tab-pane" id="sales-chart" style="position: relative;width:1550px; height: 500px;"></div>
+            </div>
+			</div>
+	</div>
+</div>
+
+<script src="~/Content/js/detail/humanResource/EmployeeStatistic/index.js"></script>

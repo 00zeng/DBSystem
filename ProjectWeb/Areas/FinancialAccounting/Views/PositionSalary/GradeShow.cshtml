@@ -1,0 +1,83 @@
+﻿@* 职等薪资导入*@
+@{
+    ViewBag.Title = "职等薪资导入查看";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<div class="form">
+<div class="box-header widt-border">
+	<div class="margin-bottom">
+		<h3 class="box-title">职等薪资导入查看</h3>
+	</div>
+	<div class="row">
+        <div class="col-sm-4 ">
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border"> 机构类型</span>
+                <span id="company_category" class="form-control"></span>
+            </div>
+        </div>
+        <div class="col-sm-4" id="company">
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border"> 机构</span>
+                <span id="company_name" class="form-control"></span>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border"> 生效时间</span>
+                <span id="effect_date" class="form-control" /></span>
+            </div>
+        </div>
+</div>
+<div class="panel-body" style="background:white;">
+
+    
+        <div class="box box-warning">
+            <div class="box-header widt-border">
+                <h3 class="box-title">导入信息</h3>
+            </div>
+            <div class="box-body">
+                <div id="toolbar" class="btn-group">
+                    导入文件：<span id="file_name" class="label-default" style="margin-right:60px"></span>
+                    审批状态：<span id="approve_status"></span>
+                </div>
+                <table id="tb_table" style="table-layout:fixed;"></table>
+            </div>
+        </div>
+        <div class="box box-default">
+            <div class="box-header widt-border">
+                <h3 class="box-title">审批信息</h3>
+            </div>
+            <form id="form1">
+                <div class="box-body">
+                    <table class="table table-bordered text-center" id="approve">
+                        <tbody>
+                            <tr>
+                                <th width="150px">操作类型</th>
+                                <th width="150px">操作人</th>
+                                <th width="150px">操作人职位</th>
+                                <th width="200px">时间</th>
+                                <th width="200px">结果</th>
+                                <th width="200px">意见</th>
+                            </tr>
+                            <tr>
+                                <td>发起申请</td>
+                                <td><span id="creator_name"></span></td>
+                                <td><span id="creator_position_name"></span></td>
+                                <td><span id="create_time"></span></td>
+                                <td><span id="">--</span></td>
+                                <td><span id="">--</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="box-footer">
+        @*<button id="btnApprove" class="btn btn-primary pull-right" onclick="approval()">审批</button>*@
+        <button id="btnDel" class="btn btn-danger pull-right" style="display:none" onclick="delForm()">撤回</button>
+        <a class="btn btn-default pull-right" href="javascript:history.go(-1);">返回</a>
+    </div>
+</div>
+<script src="~/Content/js/detail/FinancialAccounting/PositionSalary/grade_show.js"></script>

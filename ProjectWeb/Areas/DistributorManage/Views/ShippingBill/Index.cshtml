@@ -1,0 +1,91 @@
+﻿@* 运费计算 *@
+@{
+    ViewBag.Title = "查看所有";
+    Layout = "~/Views/Shared/_Index_v2.cshtml";
+}
+
+<style>
+.lineheight34{line-height:34px;}   
+</style>
+
+<div class="panel-body" style="padding-bottom:0px;">
+
+    <div id="toolbar" class="btn-group">
+        <button id="btn_add" type="button" class="btn btn-info" onclick="window.location.href='Import'">
+            <span class="glyphicon glyphicon-import" aria-hidden="true"></span>导入
+        </button>
+        <button type="button" id="exportExcel" class="btn btn-warning">
+            <span class="glyphicon glyphicon-export" aria-hidden="true"></span>导出
+        </button>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalQuery">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>更多搜索
+        </button>
+		<div class="input-group">
+			<input class="form-control" id="distributor_name" type="text" placeholder="请输入经销商"></input>
+			</div>
+    </div>
+
+    <div>
+        <table id="gridList" style="table-layout:fixed"></table>
+    </div>
+
+</div>
+
+<div class="modal fade" id="modalQuery" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">
+                    按条件搜索
+                    <button id="clear" type="button" class="btn btn-warning btn-xs">清空</button>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form id="queryForm">
+                    <div class="row">
+                        <div class="col-sm-12 margin-bottom">
+                            <span for="company_id" class="col-sm-2 text-right lineheight34">分公司</span>
+                            <div class="input-group col-sm-9">
+                                <select class="form-control" id="company_id"></select>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 margin-bottom">
+                            <span for="shipping_bill" class="col-sm-2 text-right lineheight34">单号</span>
+                            <div class="input-group col-sm-9">
+                                <input id="shipping_bill" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="col-sm-12 margin-bottom">
+                            <span class="col-sm-2 text-right lineheight34">数量</span>
+                            <div class="input-group col-sm-9 ">
+                                <div class="formValue">
+                                    <input id="total_count_min" type="text" class='form-control number'>
+                                </div>                              
+                                <span class="input-group-addon">-</span>
+                                <div class="formValue">
+                                    <input id="total_count_max" type="text" class='form-control number'>
+                                </div>                       
+                            </div>
+                        </div>
+                        <div class="col-sm-12 margin-bottom">
+                            <span class="col-sm-2 text-right lineheight34">制单时间</span>
+                            <div class="input-group col-sm-9">
+                                <input id="startTime1" type="text" class='form-control' readonly="readonly" onfocus="WdatePicker({ maxDate: '#F{$dp.$D(\'startTime2\')||\'%y-%M-%d\'}' });">
+                                <span class="input-group-addon">-</span>
+                                <input id="startTime2" type="text" class='form-control' readonly="readonly" onfocus="WdatePicker({ minDate: '#F{$dp.$D(\'startTime1\')}' ,maxDate: '%y-%M-%d' });">
+                            </div>
+                        </div>    
+					</div>            
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" id="querySubmit" class="btn btn-primary">搜索</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Content/js/detail/DistributorManage/ShippingBill/index.js"></script>

@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Form_dinf.cshtml";
+}
+<link href="~/Content/css/dinf-table.css" rel="stylesheet" />
+
+<form id="form1">
+    <header class="panel-heading">
+        <span style="color:#ffffff"><span id="position_type"></span> 提成考核审批</span>
+    </header>
+    <div class="panel-body" style="background:white;">
+        <div class="row">
+            <div class="col-xs-1">
+            </div>
+            <div class="col-xs-10" style="min-width: 1000px">
+            <div class="form">
+                <div class="main-title main-title2">
+                    <div class="main-title2-type">
+                        分公司：<span id="company_name" style="margin-right:60px"></span>
+                        生效时间：<span id="effect_date" class="format_date_ym" ></span>
+                    </div>
+                </div>
+                <div class="mid-title-wrap">
+                    <div class="mid-title">提成考核</div>
+                </div>
+                <table class="normal-guide" id="finish_rate" style="white-space:nowrap">
+
+                    <tr>
+                        <th rowspan="10"><span style="font-size:28px;color:rgb(51, 51, 51);">按完成率</span></th>
+                        <th>完成率（%）</th>
+                        <th>正常机提成（元/台）</th>
+                        <th>买断提成（元/台）</th>
+                    </tr>
+
+
+                </table>
+                <table class="normal-guide" id="sales_volume" style="margin-top:25px;white-space:nowrap">
+                    <tr>
+                        <th rowspan="10"><span style="font-size:28px;color:rgb(51, 51, 51);">按销量</span></th>
+                        <th>批发价（元/台）</th>
+                        <th>正常机提成（元/台）</th>
+                        <th>买断提成（元/台）</th>
+                    </tr>
+                </table>
+                <div  class="mid-title-wrap">
+                    <div class="mid-title">审批</div>
+                </div>     
+                <table class="normal-approve">
+                    <tr>
+                        <th>操作类型</th>
+                        <th>操作人</th>
+                        <th>操作人职位</th>
+                        <th>时间</th>
+                        <th>结果</th>
+                        <th>意见</th>
+                    </tr>
+                    <tr>
+                        <td>发起申请</td>
+                        <td><span id="creator_name"></span></td>
+                        <td><span id="creator_position_name"></span></td>
+                        <td><span id="create_time"></span></td>
+                        <td><span id=""></span></td>
+                        <td><span id=""></span></td>
+                    </tr>
+                    <tr>
+                        <td>财务经理审批</td>
+                        <td><span id="approve_id"></span></td>
+                        <td><span id="approve_position_id"></span></td>
+                        <td><span id="approve_time"></span></td>
+                        <td>
+                            <input name="status" type="radio" value="1" checked>通过 &nbsp;&nbsp;
+                            <input name="status" type="radio" value="-1">不通过
+                        </td>
+                        <td><input id="approve_note" style="width:100%" /></td>
+                    </tr>
+                </table>
+
+                <div class="main-submit">
+                    <a class="btn-return" href="javascript:history.go(-1);"> 返回 </a>
+                    <input type="button" value="提交" class="btn-submit" onclick="submitForm()" />
+                </div>
+            </div>
+			</div>
+        </div>
+    </div>
+</form>
+<script src="~/Content/js/detail/financialAccounting/positionSalary/sales_approve.js"></script>

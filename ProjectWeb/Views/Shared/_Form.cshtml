@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/css/framework-font.css" rel="stylesheet" />
+    <link href="~/Content/css/framework-theme.css" rel="stylesheet" />
+    <script src="~/Content/js/jquery/jquery-3.1.1.js"></script>  
+    <script src="~/Content/js/layer/layer.js"></script>
+    <link href="~/Content/css/framework-ui.css" rel="stylesheet" />
+    @*<script src="~/Content/
+    "></script>*@
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/js/select2/select2.min.css" rel="stylesheet" />
+    <script src="~/Content/js/select2/select2.min.js"></script>
+    <link href="~/Content/js/wizard/wizard.css" rel="stylesheet" />
+    <script src="~/Content/js/wizard/wizard.js"></script>
+    
+    <link href="~/Content/css/dinf-table.css" rel="stylesheet" />
+    @*<script src="~/Content/js/bootstrap/bootstrap.js"></script>*@
+    <link href="~/Content/js/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Content/js/bootstrap/bootstrap.min.js"></script>
+    <!--Jquery组件引用-->
+    <script src="~/Content/js/excel/shim.js"></script>
+    <script src="~/Content/js/excel/xlsx.full.min.js"></script>
+    <!--bootstrap-editable组件以及中文包的引用-->
+    <link href="~/Content/js/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet" />
+    <script src="~/Content/js/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+    <!--bootstrap table组件以及中文包的引用-->
+    <link href="~/Content/js/bootstarp-table/css/bootstrap-table.min.css" rel="stylesheet" />
+    <script src="~/Content/js/bootstarp-table/js/bootstrap-table.js"></script>
+    <script src="~/Content/js/bootstarp-table/js/bootstrap-table-editable.js"></script>
+    <script src="~/Content/js/bootstarp-table/js/bootstrap-table-zh-CN.min.js"></script>
+    <script src="~/Content/js/excel/utils.js"></script>
+    <!--bootstrap select组件以及中文包的引用-->
+    @* <link href="~/Content/js/bootstrap-select/bootstrap-select.css" rel="stylesheet" /> *@
+    @* <script src="~/Content/js/bootstrap-select/bootstrap-select.js"></script> *@
+    
+
+    <link href="~/Content/css/deepinf.css" rel="stylesheet" />
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+    <script src="~/Content/js/deepinf/dinf-input.js"></script>
+    <script src="~/Content/js/base.js?version=1.0"></script>
+    <link href="~/Content/css/framework-add.css" rel="stylesheet" />
+    <link href="~/Content/js/datepicker/skin/WdatePicker.css" rel="stylesheet" />
+    <script src="~/Content/js/datepicker/WdatePicker.js"></script>
+    <script src="~/Content/js/validate/jquery.validate.min.js"></script>
+    <link href="~/Content/css/validate_pop.css" rel="stylesheet" />
+    @*表格样式--Zeng*@  
+    
+
+    @*<script src="~/Content/js/datepicker/DatePicker.js"></script>*@
+    @*<script src="~/Content/js/datepicker/calendar.js"></script>*@
+    
+    <style>
+        html,body{background-color:#212f41;}
+        /*.row{margin:0;}*/
+    </style>
+</head>
+<body class="body_pd">
+    @RenderBody()
+    @Html.AntiForgeryToken()
+</body>
+</html>

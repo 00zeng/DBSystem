@@ -1,0 +1,96 @@
+﻿@{
+    ViewBag.Title = "UploadPictures";
+    Layout = null;
+}
+<style>
+    .add_upload { height: auto !important; }
+
+    .upload_preview { min-height: 150px; }
+</style>
+<meta charset="UTF-8"/>
+<script src="~/Content/js/jquery/jquery-3.1.1.js"></script>
+<link href="~/Content/js/zyupload/skins/zyupload-1.0.0.min.css" rel="stylesheet"/>
+<script src="~/Content/js/zyupload/zyupload.basic-1.0.0.min.js?version=1.0"></script>
+<script src="~/Content/js/deepinf/dinf-base-preload.js"></script>
+<script type="text/javascript">
+    // var fileType = $.request("fileType");   //附件
+    var multiple = $.request("multiple"); //是否上传多张图片
+    var type = $.request("type");
+    var src = $.request("src");
+    var module = $.request("module");
+    //var class_name = $.request("class_name");   //附件
+    //controller调用url例子："/Common/File/UploadPictures?controller=" + encodeURI(encodeURIComponent("/Common/File/UploadDerectImages?class_name=PRODUCT&type=0"))
+    var controller = decodeURI(decodeURIComponent($.request("controller")));;
+    //if (!!fileType)//有这个参数，可上传excel等
+    //    fileType = ["jpg", "png", "gif", "ppt", "pdf", "psd",
+    //        "rar", "ttf", "xls", "zip", "doc", "docx", "xlsx", "xlsx", "mp4", "rm", "rmvb", "wmv", "avi", "3gp", "mkv"]; //上传文件的类型
+    //else
+    //    fileType = ["jpg", "png", "gif", "GIF", "PNG", "JPG"];
+    fileType = ["jpg", "png", "JPG", "PNG"];
+    var strJson = null;
+    $(function() {
+        multiple = (multiple == "false" ? false : true);
+        controller = !!controller && controller != ""
+            ? controller
+            : "/File/UploadImages?type=" + type + "&src=" + src + "&module=" + module;
+        // 初始化插件
+        $("#zyupload").zyUpload({
+            width: "520px", // 宽度
+            height: "130px", // 高度
+            itemWidth: "140px", // 文件项的宽度
+            itemHeight: "115px", // 文件项的高度
+            url: controller, // 上传文件的路径
+            fileType: fileType, //
+            fileSize: 512000000, // 上传文件的大小
+            multiple: multiple, // 是否可以多个文件上传
+            dragDrop: false, // 是否可以拖动上传文件
+            tailor: false, // 是否可以裁剪图片
+            del: true, // 是否可以删除文件
+            finishDel: false, // 是否在上传文件完成后删除预览
+            /* 外部获得的回调接口 */
+            onSelect: function(selectFiles, allFiles) { // 选择文件的回调方法  selectFile:当前选中的文件  allFiles:还没上传的全部文件
+                if (!multiple) {
+                    $(".add_upload").hide().css("position", "absolute");
+                    $(".webuploader_pick").hide();
+                }
+                console.info("当前选择了以下文件：");
+                console.info(selectFiles);
+            },
+            onDelete: function(file, files) { // 删除一个文件的回调方法 file:当前删除的文件  files:删除之后的文件
+                if (!multiple) {
+                    $(".webuploader_pick").show();
+                    $(".add_upload").show();
+                }
+            },
+            onSuccess: function(file, response) { // 文件上传成功的回调方法
+                var obj = JSON.parse(response);
+                if (obj.state == "error") {
+                    alert(obj.message);
+                    return;
+                }
+                $.currentaOperate().CallBackPictures(obj.data);
+                //parent.window.document.getElementById("iframe2401").CallBackPictures(obj.data)
+                $.modalClose();
+            },
+            onFailure: function(file, response) { // 文件上传失败的回调方法
+                console.info("此文件上传失败：");
+                console.info(file);
+            },
+            onComplete: function(response) { // 上传完成的回调方法
+            }
+        })
+    });
+
+    function deleteData(name) {
+        var persons = strJson.teacher;
+        for (var i = 0; i < persons.length; i++) {
+            var cur_person = persons[i];
+            if (cur_person.name == name) {
+                strJson.teacher.splice(i, 1);
+            }
+        }
+    }
+</script>
+<input id="hdJsonList" type="hidden"/>
+<div id="zyupload" class="zyupload" style="zoom: -1;"></div>
+<script src="~/Content/js/deepinf/dinf-base-postload.js"></script>

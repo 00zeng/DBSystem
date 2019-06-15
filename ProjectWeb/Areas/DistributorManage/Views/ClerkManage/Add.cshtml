@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Form_dinf.cshtml";
+}
+<link href="~/Content/js/cityPicker/css/city-picker.css" rel="stylesheet" />
+@*<style>
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+        color:#444;
+        line-height:21px;
+        }
+        .select2-container .select2-selection--single, .select2-container .select2-selection {
+        height:21px;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+        height:21px;
+        }
+
+    </style>*@
+<form id="form1">
+    <header class="panel-heading">
+        <span style="color:#ffffff">新增店员</span>
+    </header>
+
+    <div class="panel-body" style="background:white;">
+        <div class="row">
+            <div class="col-xs-1">
+            </div>
+            <div class="col-xs-10" style="min-width: 1000px">
+            <div class="form">
+                <div class="main-title main-title2">
+                    <div class="main-title2-type">
+					新增店员
+					</div>
+                </div>
+				<div class="mid-title-wrap">
+                    <div class="mid-title">
+					基础信息
+					</div>
+					</div>
+                <table class="normal">
+                    <tr>
+                        <th>姓名</th>
+                        <td  class="form-group formValue"  style="width: 17%"><input id="name" type="text" class="form-control required" /></td>
+                        <th>入职时间</th>
+                        <td  class="form-group formValue"  style="width: 17%"><input id="entry_date" type="text" class="form-control Wdate required" readonly="readonly"  onfocus="WdatePicker();"/></td>
+                    </tr>
+                    <tr>
+
+                        <th>经销商所属分公司</th>
+                        <td class="formValue" style="width: 17%"><select id="company_id" class="form-control required"></select></td>
+                        <th>经销商</th>
+                        <td class="formValue" style="width: 17%"><select id="distributor_id" class="form-control required"></select></td>
+                       
+                    </tr>
+                    <tr>
+                        <th>所在省市</th>
+                        <td>
+                            <div id="addrCity" class="pos-rlt formValue">
+                                <input id="city" class="form-control required" readonly type="text" data-toggle="city-picker">
+                            </div>
+                        </td>
+                        <th>详细地址</th>
+                        <td class="formValue" style="width: 17%"><input id="address" type="text" class="form-control required" /></td>
+                    </tr>
+                    <tr>
+                        <th>手机号</th>
+                        <td><input id="phone" type="text" class="form-control required" /></td>
+                        <th>微信号</th>
+                        <td><input id="wechat"type="text" class="form-control required" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="mid-title-wrap">
+                            <div class="mid-title">账户信息</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>系统账户</th>
+                        <td><input id="account"  /></td>
+                        <th>初始密码</th>
+                        <td><input id="password" /></td>
+                    </tr>
+                    <tr>
+                        <th>是否启用</th>
+                        <td><input type="checkbox" id="inactive"  style="width:20px"/>启用</td>
+                    </tr>
+                </table>
+                <div class="main-submit">
+                    <a class="btn-return" href="javascript:history.go(-1);"> 返回 </a>
+                    <input id="submitBtn" type="button" value="提交" class="btn-submit" onclick="submitForm()" />
+
+                </div>
+            </div>
+			</div>
+			</div>
+			</div>
+        </div>
+    </div>
+</form>
+<script src="~/Content/js/cityPicker/city-picker.data.js"></script>
+<script src="~/Content/js/cityPicker/city-picker.js"></script>
+<script src="~/Content/js/detail/DistributorManage/Clerk/add.js"></script>

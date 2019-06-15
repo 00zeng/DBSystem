@@ -1,0 +1,269 @@
+﻿@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Form_dinf.cshtml";
+}
+<header class="panel-heading">
+    <span style="color:#ffffff">员工查看</span>
+</header>
+<div class="panel-body" style="background:white;">
+    <div class="row">
+            <div class="col-xs-1">
+            </div>
+            <div class="col-xs-10" style="min-width: 1000px">
+        <div class="form" id="form1">
+            <div class="main-title main-title2">
+                <div class="main-title2-type">员工信息</div>
+            </div>
+            <table class="normal">
+                <tr>
+                    <td colspan="4" class="mid-title-wrap">
+                        <div class="mid-title">个人信息</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>工号</th>
+                    <td><span id="job_number" name="job_number"></span></td>
+                    <th>姓名</th>
+                    <td><span id="name" name="name"></span></td>
+                </tr>
+                <tr>
+                    <th>电话号码</th>
+                    <td><span id="phone" name="phone"></span></td>
+                    <th>微信号</th>
+                    <td><span id="wechat" name=""></span></td>
+                </tr>
+                <tr>
+                    <th>紧急联系人</th>
+                    <td><span id="emergency_contact" name="emergency_contact"></span></td>
+                    <th>紧急联系电话</th>
+                    <td><span id="emergency_contact_phone" name="emergency_contact_phone"></span></td>
+                </tr>
+                <tr>
+                    <th>证件类别</th>
+                    <td><span id="idtype" name=""></span></td>
+                    <th>证件号码</th>
+                    <td><span id="identity" name=""></span></td>
+                </tr>
+                <tr>
+                    <th>性别</th>
+                    <td><span id="gender" name="gender"></span></td>
+                    <th>政治面貌</th>
+                    <td><span id="political" name=""></span></td>
+                </tr>
+                <tr>
+                    <th>出生日期</th>
+                    <td><span id="birthdate" type="time" readonly="readonly" onfocus="WdatePicker();"></span></td>
+                    <th>年龄</th>
+                    <td><span id="age" name=""></span></td>
+                </tr>
+                <tr>
+                    <th>生日</th>
+                    <td><span id="birthday" name="birthday"></span></td>
+                    <th>生日类型</th>
+                    <td><span id="birthday_type" name="birthday_type"></span></td>
+                </tr>
+                <tr>
+                    <th>婚姻状况</th>
+                    <td><span id="marriage"></span></td>
+                    <th>子女（个）</th>
+                    <td><span id="number_children" name=""></span></td>
+                </tr>
+                <tr>
+                    <th>籍贯</th>
+                    <td><span id="native" name="native"></span></td>
+                    <th>民族</th>
+                    <td><span id="nation" name="nation"></span></td>
+                </tr>
+                <tr>
+                    <th>国家或地区</th>
+                    <td><span id="country" name=""></span></td>
+                    <th>家庭住址</th>
+                    <td><span id="address" name=""></span></td>
+                </tr>
+                <tr>
+                    <th>证件地址</th>
+                    <td><span id="idaddress" name=""></span></td>
+                    <th>证件有效期</th>
+                    <td><span id="id_begin" name=""></span>至<span id="id_end" name=""></span></td>
+                </tr>
+                <tr>
+                    <th>证件签发机关</th>
+                    <td><span id="idIssued" name=""></span></td>
+                    <th>健康证有效期</th>
+                    <td><span id="health_begin" name=""></span>至<span id="health_end" name=""></span></td>
+                </tr>
+                <tr>
+                    <th>学历</th>
+                    <td><span id="education" name=""></span></td>
+                    <th>专业</th>
+                    <td><span id="profession" name=""></span></td>
+                </tr>
+                <tr>
+                    <th>毕业学校</th>
+                    <td><span id="graduation_school" name=""></span></td>
+                    <th>毕业日期</th>
+                    <td><span id="graduation_day" name=""></span></td>
+                </tr>
+                <tr>
+                    <th>信息提交人</th>
+                    <td><span id="submitter" name=""></span></td>
+                    <th>信息提交日期</th>
+                    <td><span id="submit_day" name=""></span></td>
+                </tr>
+                <tr>
+                    <th>备注</th>
+                    <td><span id="note" name=""></span></td>
+                    <th></th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="mid-title-wrap">
+                        <div class="mid-title">银行信息</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>银行类别</th>
+                    <td><span id="bank_type " name="account"></span></td>
+                    <th>开户行</th>
+                    <td><span id="bank_name" name="bank_name"></span></td>
+                </tr>
+                <tr>
+                    <th>银行账号</th>
+                    <td><span id="bank_account" name="bank_account"></span></td>
+                    <th></th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="mid-title-wrap">
+                        <div class="mid-title">家庭信息</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>父母银行卡开户银行</th>
+                    <td><span id="parents_card" name="parents_card"></span></td>
+                    <th>父母银行卡号</th>
+                    <td><span id="parents_card_number" name="parents_card_number"></span></td>
+                </tr>
+                <tr>
+                    <th>父母联系电话</th>
+                    <td><span id="parents_phone" name="parents_phone"></span></td>
+                    <th></th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="mid-title-wrap">
+                        <div class="mid-title">职务信息</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>职位</th>
+                    <td><span id="position_name" name=""></span></td>
+                    <th>职级</th>
+                    <td><span id="" name=""></span></td>
+                </tr>
+                <tr>
+                    <th>所属机构</th>
+                    <td><span id="organization_name" name="organization_name"></span></td>
+                    <th>部门</th>
+                    <td><span id="department_name" name="department_name"></span></td>
+                </tr>
+                <tr>
+                    <th>上级主管姓名</th>
+                    <td><span id="supervisor_name" name="supervisor_name"></span></td>
+                    <th>雇员类别</th>
+                    <td><span id="emp_category" name="emp_category"></span></td>
+                </tr>
+                <tr>
+                    <th>工资</th>
+                    <td><span id="salary" name="salary"></span></td>
+                    <th>工作地点</th>
+                    <td><span id="working_place" name=""></span></td>
+                </tr>
+                <tr>
+                    <th>纳税单位</th>
+                    <td><span id="taxable_unit" name="taxable_unit"></span></td>
+                    <th>是否已购买社保</th>
+                    <td><span id="social_security" name="social_security"></span></td>
+                </tr>
+                <tr>
+                    <th>入职时间</th>
+                    <td><span id="entry_time" name=""></span></td>
+                    <th>工龄</th>
+                    <td><span id="working_years" name=""></span></td>
+                </tr>
+                <tr>
+                    <th>合同签署日期</th>
+                    <td><span id="contract_signing_date" name="contract_signing_date"></span></td>
+                    <th>合同到期日期</th>
+                    <td><span id="contract_expiration_date" name="contract_expiration_date"></span></td>
+                <tr>
+                    <th>售点地区</th>
+                    <td><span id="selling_point_area" name=""></span></td>
+                    <th>售点</th>
+                    <td><span id="selling_point" name=""></span></td>
+                <tr>
+                    <th>导购员类别</th>
+                    <td><span id="shopping_guide_category" name=""></span></td>
+                    <th>介绍人</th>
+                    <td><span id="introducer" name=""></span></td>
+                <tr>
+                    <th>业务员</th>
+                    <td><span id="salesman" name="salesman"></span></td>
+                    <th>培训师</th>
+                    <td><span id="trainer" name="trainer"></span></td>
+                <tr>
+                    <th>离职押金</th>
+                    <td><span id="deposit_leave" name="deposit_leave"></span></td>
+                    <th></th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>状态</th>
+                    <td>
+                        <span id="emp_status"></span>
+                    </td>
+                    <th>休假时间（离职日期）</th>
+                    <td><span id="rest_time" name=""></span></td>
+                </tr>
+                <tr>
+                    <th>离职方式</th>
+                    <td>
+                        <span id="resign_type"></span>
+                    </td>
+                    <th>离职原因</th>
+                    <td><span id="content" name=""></span></td>
+                </tr>
+                <tr>
+                    <th>上报人</th>
+                    <td><span id="report_person" name=""></span></td>
+                    <th>应扣保险</th>
+                    <td><span id="deductible_insurance" name=""></span></td>
+                </tr>
+                <tr>
+                    <th>其他应扣</th>
+                    <td><span id="others_insurance" name=""></span></td>
+                    <th>应退押金</th>
+                    <td><span id="deposit_return" name=""></span></td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="mid-title-wrap">
+                        <div class="mid-title">账户信息</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>系统账户</th>
+                    <td><span id="account" name="account"></span></td>
+                    <th></th>
+                    <td></td>
+                </tr>
+            </table>
+            <div class="main-submit">
+                @*<input id="btnEdit" type="button" value="修改" class="btn-edit" onclick="updateForm()" />*@
+                <input id="btnStar" type="button" value="返回" class="btn-back" onclick="backForm()" />
+            </div>
+			</div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/js/detail/subordinate/subordinate/subordinateShow.js"></script>

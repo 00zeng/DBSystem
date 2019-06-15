@@ -1,0 +1,107 @@
+﻿@{
+    ViewBag.Title = "奖罚申请";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<style type="text/css">
+    tbody table td {
+        padding: 0;
+    }
+
+    .radio + .radio {
+        margin-top: 10px;
+    }
+
+    .table-bordered {
+        border-radius: 4px;
+    }
+</style>
+<form id="form1">
+    <div class="box-header">
+        <h4><span id="position_name"></span>奖罚明细</h4>
+    </div>
+    <div class="box-body" style="padding-bottom:0px;">
+        <div class="box box-default ">
+            <div class="box-header">
+                <div class="col-xs-12 col-sm-4 col-lg-3">
+                    <div class="input-group formValue margin-bottom">
+                        <span class="input-group-addon no-border">姓名：</span>
+                        <span type="text" id="name" class="form-control required"></span>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-lg-3">
+                    <div class="input-group formValue margin-bottom">
+                        <span class="input-group-addon no-border">等级：</span>
+                        <span type="text" id="grade" class="form-control required"></span>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-lg-3">
+                    <div class="input-group margin-bottom">
+                        <span class="input-group-addon no-border">月份：</span>
+                        <div class="formValue">
+                            <span id="month" name="month" class="form-control required format_date"> </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="form-group">
+                    <table id="reward_table" class="table table-bordered text-center">
+                        <tr>
+                            <th style="width:20%">名称</th>
+                            <th style="width:20%">金额（元）</th>
+                            <th style="width:60%">备注说明</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="box box-warning">
+            <div class="box-header widt-border">
+                <h3 class="box-title">审批</h3>
+            </div>
+            <div class="box-body">
+                <table class="table table-bordered text-center" id="approve">
+                    <tbody>
+                        <tr>
+                            <th>操作类型</th>
+                            <th>操作人</th>
+                            <th>操作人职位</th>
+                            <th>时间</th>
+                            <th>结果</th>
+                            <th>意见</th>
+                        </tr>
+                        <tr>
+                            <td>发起申请</td>
+                            <td><span id="creator_name"></span></td>
+                            <td><span id="creator_position_name"></span></td>
+                            <td><span id="create_time"></span></td>
+                            <td><span id="">--</span></td>
+                            <td><span id="">--</span></td>
+                        </tr>
+                        <tr>
+                            <td>当前审批</td>
+                            <td><span id="approve_name"></span></td>
+                            <td><span id="approve_position_name"></span></td>
+                            <td><span id="currentTime"></span></td>
+                            <td class="radio no-margin no-border">
+                                <label>
+                                    <input name="status" type="radio" value="1" checked>通过 &nbsp;&nbsp;
+                                </label>
+                                <label>
+                                    <input name="status" type="radio" value="-1">不通过
+                                </label>
+                            </td>
+                            <td class="no-padding"><input id="approve_note" class="form-control" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="box-footer">
+    <button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+    <a type="submit" class="btn btn-default pull-right" href="/FinancialAccounting/Rewards/ApproveIndex">返回</a>
+</div>
+
+<script src="~/Content/js/detail/FinancialAccounting/rewards/approve.js"></script>

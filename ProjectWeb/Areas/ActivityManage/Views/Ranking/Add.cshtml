@@ -1,0 +1,304 @@
+﻿@{
+    ViewBag.Title = "活动-达量奖励";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<link href="~/Content/js/bootstrap-duallistbox/bootstrap-duallistbox.min.css" rel="stylesheet" />
+<style type="text/css">
+    tbody table td {
+        padding: 0;
+    }
+
+    .radio + .radio {
+        margin-top: 10px;
+    }
+
+    .table-bordered {
+        border-radius: 4px;
+    }
+</style>
+<form id="form1">
+    <div class="box-header">
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border">活动名称</span>
+                <div class="formValue">
+                    <input type="text" id="name" class="form-control required">
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">分公司</span>
+                <select id="company" name="company" class="form-control required" tabindex="-1" aria-hidden="true"></select>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-4">
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border">活动时间</span>
+                <div class="formValue">
+                    <input id="start_date" name="start_date" class="form-control required" readonly="readonly" onfocus="WdatePicker({ maxDate: '#F{$dp.$D(\'end_date\')}' });" onblur="CheckValid(this)" />
+                </div>
+                <span class="input-group-addon">至</span>
+                <div class="formValue">
+                    <input id="end_date" name="end_date" class="form-control required" readonly="readonly" onfocus="WdatePicker({ minDate: '#F{$dp.$D(\'start_date\')}' });" onblur="CheckValid(this)" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="box-body" style="padding-bottom:0px;">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-lg-6">
+                <div class="box box-danger">
+                    <div class="box-header">
+                        <div class="input-group pull-left">
+                            <select class="form-control " name="emp_category" id="emp_category" style="width:130px">
+                                <option value="3">导购员</option>
+                                <option value="20">业务员</option>
+                                <option value="21">业务经理</option>
+                            </select>
+                        </div>
+                        <h6 class="inline margin pull-left">共<span class="margin" id="emp_count">0</span>人</h6>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div style="height: 40px">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalGuide" id="selectGuide">选择导购员</button>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalSales" id="selectSales" style="display:none">选择业务员</button>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalSalesManage" id="selectSalesManage" style="display:none">选择业务经理</button>
+                        </div>
+                        <table id="targetDistributor"></table>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-lg-6">
+                <div class="box box-warning">
+                    <div class="box-header">
+                        <h3 class="box-title">排名方式</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="form-group col-sm-12">
+                                <div>
+                                    <div class="radio col-sm-3 col-lg-6">
+                                        <label>
+                                            <input id="ranking_content" name="ranking_content" type="radio" value="1" checked>按实销总量
+                                        </label>
+                                    </div>
+                                    <div class="radio col-sm-3 col-lg-6">
+                                        <label>
+                                            <input name="ranking_content" type="radio" value="2" disabled>按下货总量
+                                        </label>
+                                    </div>
+                                    <div class="radio col-sm-3 col-lg-6">
+                                        <label>
+                                            <input name="ranking_content" type="radio" value="3">按实销总金额（零售价）
+                                        </label>
+                                    </div>
+                                    <div class="radio col-sm-3 col-lg-6">
+                                        <label>
+                                            <input name="ranking_content" type="radio" value="4" disabled>按下货总金额（零售价）
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6 col-lg-12">
+                                <label>备注说明</label>
+                                <textarea class="form-control" rows="3" name="note" id="note"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">奖励</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="form-group col-sm-12 col-lg-6">
+                    <table id="rank_tb" class="table table-bordered text-center">
+                        <tr>
+                            <th class="col-sm-5"><span name="target_mode_change">排名</span></th>
+                            <th class="col-sm-4"><span name="rebate_mode_change">奖金（元）</span></th>
+                            <th class="col-sm-3">
+                                <i onclick="add_one(this)" class="fa fa-plus fa-lg margin text-blue" title="增加单一排名奖励"></i>
+                                <i onclick="add_two(this)" class="fa fa-plus-circle fa-lg margin text-blue " title="增加排名区间奖励"></i>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="input-single formValue">
+                                    <input class="form-control text-center required number" value="1" name="place_min">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-single formValue">
+                                    <input type="text" class="form-control text-center required number" name="reward">
+                                </div>
+                            </td>
+                            <td>
+                                <i onclick="deleteRow(this)" class="fa fa-minus-circle fa-lg margin text-red "></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="input-single formValue">
+                                    <input class="form-control text-center required number" value="2" name="place_min">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-single formValue">
+                                    <input type="text" class="form-control text-center required number" name="reward">
+                                </div>
+                            </td>
+                            <td>
+                                <i onclick="deleteRow(this)" class="fa fa-minus-circle fa-lg margin text-red "></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="input-single formValue">
+                                    <input class="form-control text-center required number" value="3" name="place_min">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-single formValue">
+                                    <input type="text" class="form-control text-center required number" name="reward">
+                                </div>
+                            </td>
+                            <td>
+                                <i onclick="deleteRow(this)" class="fa fa-minus-circle fa-lg margin text-red "></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="input-single formValue">
+                                    <input class="form-control text-center required number" value="4" name="place_min">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-single formValue">
+                                    <input type="text" class="form-control text-center required number" name="reward">
+                                </div>
+                            </td>
+                            <td>
+                                <i onclick="deleteRow(this)" class="fa fa-minus-circle fa-lg margin text-red "></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="input-single formValue">
+                                    <input class="form-control text-center required number" value="5" name="place_min">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-single formValue">
+                                    <input type="text" class="form-control text-center required number" name="reward">
+                                </div>
+                            </td>
+                            <td>
+                                <i onclick="deleteRow(this)" class="fa fa-minus-circle fa-lg margin text-red "></i>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="box-footer">
+    <button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+    <a type="submit" class="btn btn-default pull-right" href="/ActivityManage/Ranking/Index">返回</a>
+</div>
+
+
+<div class="modal fade" id="modalGuide" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">请从左侧选择导购员</h4>
+            </div>
+            <select class="form-control margin" name="" id="guide_category" style="width:130px">
+                <option value="">全部</option>
+                <option value="正职">正职</option>
+                <option value="副职">副职</option>
+                <option value="挂职">挂职</option>
+            </select>
+            <div class="modal-body">
+                <select multiple="multiple" size="10" id="duallistGuide"></select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalSales" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">请从左侧选择业务员</h4>
+            </div>
+            <div class="modal-body">
+                <select multiple="multiple" size="10" id="duallistSales" hidden style="display:none"></select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalSalesManage" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">请从左侧选择业务经理</h4>
+            </div>
+            <div class="modal-body">
+                <select multiple="multiple" size="10" id="duallistSalesManage" style="display:none"></select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalProduct" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">请从左侧选择机型</h4>
+            </div>
+            <div class="modal-body">
+                <select multiple="multiple" size="10" id="duallistProduct"></select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/js/bootstrap-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<script src="~/Content/js/detail/activityManage/Ranking/add.js"></script>
+

@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "新增职位";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<link href="~/Content/css/validate_pop.css" rel="stylesheet" />   
+<link href="~/Content/js/cityPicker/css/city-picker.css" rel="stylesheet" />
+
+<div class="box-header widt-border">
+    <h3 class="box-title">新增职位</h3>
+</div>
+<div class="panel-body">
+    <form id="form1">
+        <div class="box box-danger">
+            <div class="box-header widt-border">
+                <h3 class="box-title">职位信息</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">职位名称<span class="text-red">&nbsp;*</span></span>
+                            <input type="text" id="name" name="name" class="form-control required">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">所属机构<span class="text-red">&nbsp;*</span></span>
+                            <select id="company_id" name="company_id" class="form-control required"></select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">所属部门<span class="text-red">&nbsp;*</span></span>
+                            <select id="dept_id" name="dept_id" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">职层<span class="text-red">&nbsp;*</span></span>
+                            <select id="grade_level" name="grade_level" class="form-control required">
+                                <option value='1'>公司层面</option>
+                                <option value='2'>部门层面</option>
+                                <option value='0'>无职层</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-3">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">职位类型<span class="text-red">&nbsp;*</span></span>
+                            <select type="text" id="position_type" name="position_type" class="form-control required"></select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-1">
+                        <div class="input-group margin-bottom formValue">
+                            <label class="label label-danger">工资方案：<span id="position_change">行政薪资</span></label>
+                        </div>
+                    </div>
+                    @*<div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">工资结算方案<span class="text-red">&nbsp;*</span></span>
+                            <select id="salary_category" name="salary_category" class="form-control required">
+                                <option value='0'>行政</option>
+                                <option value='1'>培训</option>
+                                <option value='2'>业务</option>
+                                <option value='3'>导购</option>
+                            </select>
+                        </div>
+                    </div>*@                  
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom">
+                            <span class="input-group-addon">备注说明</span>
+                            <input class="form-control" id="note" type="text" maxlength="128">
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </form>
+    <div class="box-footer">
+        <button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+        <a class="btn btn-default pull-right" href="/OrganizationManage/Position/Index">返回</a>
+    </div>
+</div>
+<script src="~/Content/js/detail/OrganizationManage/Position/add.js"></script>

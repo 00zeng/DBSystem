@@ -1,0 +1,79 @@
+﻿@*运费模板*@
+@{
+    ViewBag.Title = "业务经理指派";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+
+<div class="box-header widt-border">
+    <h3 class="box-title">业务经理指派</h3>
+</div>
+<div class="panel-body" style="background:white;">
+    <div class=" col-md-6">
+        <div class="box box-danger ">
+            <div class="box-header widt-border">
+                <h3 class="box-title">业务经理:<span id="name"></span></h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <form id="form1">
+                    <div class="form-group col-md-12 ">
+                        <div class="row">
+                            <div class="col-md-12  margin-bottom">
+                                <label>分公司</label>
+                                <span id="company_name1" class="form-control"></span>
+                            </div>
+                            <div class="col-md-12 margin-bottom ">
+                                <label>经理片区</label>
+                                <select id="area_l1_id" class="form-control"></select>
+                            </div>
+							<div class="col-md-12 ">
+                                <label>生效时间</label>
+								<input id="start_date" class="form-control" readonly="readonly" onfocus="WdatePicker({ minDate: '#F{$dp.$D(\'effect_date\')}',maxDate: '%y-%M-%d' });"/>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div><div class=" col-md-6">
+        <div class="box box-warning ">
+            <div class="box-header widt-border">
+                <h3 class="box-title">当前绑定</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="form-group col-md-12 ">
+                    <div class="row">
+                        <div class="col-md-12  margin-bottom">
+                            <label>分公司</label>
+                            <span id="company_name" class="form-control"></span>
+                        </div>
+                        <div class="col-md-12 margin-bottom ">
+                            <label>经理片区</label>
+                            <span id="area_l1_name" class="form-control"></span>
+                        </div>
+						<div class="col-md-12  ">
+                                <label>生效时间</label>
+                           <input id="effect_date" class="form-control format_date" disabled/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+</div>
+<div class="box-footer">
+    <button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+    <button type="button" class="btn btn-default pull-right" onclick="javascript:history.back(-1);">返回</button>
+</div>
+<script src="~/Content/js/detail/subordinate/assignment/SalesManageAdd.js"></script>

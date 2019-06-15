@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "权限设置";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<link href="~/Content/js/wdtree/tree.css" rel="stylesheet" />
+<style type="text/css">
+    .last_lavel {
+        float: left;
+    }
+</style>
+<div class="box-header widt-border">
+    <h3 class="box-title">权限设置：<span id="role_name"></span></h3>
+</div>
+
+<div class="panel-body" style="background:white;">
+    <div class="box box-default">
+        <div class="box-header widt-border">
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>
+		<div class="box-body">
+			<div class="row">
+					<div class="main-section">
+						<div id="auth_tree"></div>
+						<div style="margin-top: 20px;">
+							<input id="role_id" type="hidden" title="角色id" />
+						</div>
+					</div>
+
+			</div>
+		</div>
+	</div>
+		<div class="box-footer">
+			<a class="btn btn-primary pull-right" id="btnSubmit" onclick="submitForm()">提交</a>
+			<a class="btn btn-default pull-right" href="javascript:history.go(-1);"> 返回 </a>
+		</div>
+</div>
+<script src="~/Content/js/deepinf/dinf-auth-tree.js"></script>
+<script src="~/Content/js/detail/SystemManage/MsRole/authority_edit.js"></script>

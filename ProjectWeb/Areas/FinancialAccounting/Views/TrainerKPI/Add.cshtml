@@ -1,0 +1,537 @@
+﻿@{
+    ViewBag.Title = "培训KPI";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+
+<style type="text/css">
+    tbody table td {
+        padding: 0;
+    }
+
+    .radio + .radio {
+        margin-top: 10px;
+    }
+
+    .table-bordered {
+        border-radius: 4px;
+    }
+</style>
+
+<link href="~/Content/js/bootstrap-duallistbox/bootstrap-duallistbox.min.css" rel="stylesheet" />
+
+<form id="form1">
+
+    <div class="box-header">
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">姓名：</span>
+                <span id="name" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">职位：</span>
+                <span id="position_name" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">等级：</span>
+                <span id="grade" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">机构：</span>
+                <span id="company_linkname" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border">入职时间：</span>
+                <span id="entry_date" class="form-control format_date"></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border"> 考核月份：</span>
+                <input id="month" class="form-control" readonly="readonly" onfocus="WdatePicker({ dateFmt: 'yyyy-MM', onpicked: Month });" />
+            </div>
+        </div>
+    </div>
+
+    <div class="box-body" style="padding-bottom:0px; " id="trainer" >
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-lg-12">
+                <div class="box box-warning">
+                    <div class="box-header">
+                        <h3 class="box-title"><span id="position_type_name"></span> </h3>
+                        <div class="box-tools">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="box-body" style="background-color:#ecf0f5">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-lg-12">
+                                <div class="box box-primary">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">KPI评分</h3>
+                                        <div class="box-tools">
+                                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="box-body">
+                                        <table class="table table-bordered text-center">
+                                            <tr>
+                                                <th class="bg-gray-light" width="15%">考核内容</th>
+                                                <th class="bg-gray-light" width="17%" colspan="2">考核结果</th>
+                                                <th class="bg-gray-light" width="7%">KPI</th>
+                                                <th class="bg-gray-light advice" width="7%">建议金额</th>
+                                                <th class="bg-gray-light" width="7%">标准金额</th>
+                                                <th class="bg-gray-light" width="7%">考核标准</th>
+                                                <th class="bg-gray-light" width="23%">未达标扣款计算方式（元）</th>
+                                            </tr>
+                                            <tr class="wrap1" style="display:none">
+                                                <th style="text-align:center;vertical-align:middle;">V雪球活跃人数&nbsp;<span name="area_l1_name"></span></th>
+                                                <td colspan="2">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon no-border">实际活跃人数</span>
+                                                        <div class="formValue">
+                                                            <input class="form-control text-center required digits" type="text" id="snowball_number_result" name="kpi_result" onchange="SnowballNumberSum()" />
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="input-group" id="scoreWrap1">
+                                                        <span class="form-control text-center" id="snowball_number_KPI" name="kpi_score"></span>
+                                                        <span class="input-group-addon no-border">元</span>
+                                                    </div>
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    <span id="snowball_number_advice"></span>元
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    <span id="snowball_number_standard" name="snowball_number_standard"></span>元/人
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    <span id="snowball_number_assess" name="snowball_number_assess"></span>人
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    <span id="snowball_number_kpi">(实际活跃人数 - 考核标准) * 标准金额</span>
+                                                </td>
+                                            </tr>
+                                            <tr class="wrap2" style="display:none">
+                                                <th style="text-align:center;vertical-align:middle;">V雪球转化率&nbsp;<span name="area_l1_name"></span></th>
+                                                <td colspan="2">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon no-border">实际转化率</span>
+                                                        <div class="formValue">
+                                                            <input class="form-control text-center required number" type="text" id="snowball_ratio_result" name="kpi_result" onchange="SnowballRatioSum()" />
+                                                        </div>
+                                                        <span class="input-group-addon no-border">%</span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="input-group">
+                                                        <span class="form-control text-center" id="snowball_ratio_KPI" name="kpi_score"></span>
+                                                        <span class="input-group-addon no-border">元</span>
+                                                    </div>
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    <span id="snowball_ratio_advice"></span>元
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    <span id="snowball_ratio_standard" name="snowball_ratio_standard"></span>元
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    <span id="snowball_ratio_assess" name="snowball_ratio_assess"></span>%
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    <span id="snowball_ratio_kpi">[ 1 - ( 考核标准 - 实际转化率 ) * 5 ] * 标准金额</span>
+                                                </td>
+                                            </tr>
+
+                                            <tr class="wrap3" style="display:none">
+                                                <th style="text-align:center;vertical-align:middle;">导购人均产值&nbsp;<span name="area_l1_name"></span></th>
+                                                <td>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon no-border">销量</span>
+                                                        <div class="formValue">
+                                                            <input class="form-control text-center required digits" type="text" id="shopguide_average_result1" disabled />
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon no-border">人数</span>
+                                                        <div class="formValue">
+                                                            <input class="form-control text-center required digits" type="text" id="shopguide_average_result" name="kpi_result" disabled />
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="input-group">
+                                                        <span class="form-control text-center" id="shopguide_average_KPI" name="kpi_score"></span>
+                                                        <span class="input-group-addon no-border">元</span>
+                                                    </div>
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;" class="advice">
+                                                    <span id="shopguide_average_advice"></span>元
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    <span id="shopguide_average_standard" name="shopguide_average_standard"></span>元
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    <span id="shopguide_average_assess" name="shopguide_average_assess"></span>台
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    <span id="shopguide_average_kpi">(导购产生销量 / 产生销量导购人数) / 考核标准 * 100% * 标准金额</span>
+                                                </td>
+                                            </tr>
+                                            <tr class="wrap4" style="display:none">
+                                                <th style="text-align:center;vertical-align:middle;">导购离职率&nbsp;<span name="area_l1_name"></span></th>
+                                                <td>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon no-border">离职</span>
+                                                        <div class="formValue">
+                                                            <input class="form-control text-center required digits" type="text" id="shopguide_resign_result1" name="kpi_result" onchange="ShopguideResignSum()" />
+                                                        </div>
+                                                        <span class="input-group-addon no-border">人</span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon no-border">月底</span>
+                                                        <div class="formValue">
+                                                            <input class="form-control text-center required digits" type="text" id="shopguide_resign_result" name="kpi_result" onchange="ShopguideResignSum()" />
+                                                        </div>
+                                                        <span class="input-group-addon no-border">人</span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="input-group">
+                                                        <span class="form-control text-center" id="shopguide_resign_KPI" name="kpi_score">0.00</span>
+                                                        <span class="input-group-addon no-border">元</span>
+                                                    </div>
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;" class="advice">
+                                                    <span id="shopguide_resign_advice"></span>元
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    <span id="shopguide_resign_standard" name="shopguide_resign_standard"></span>元
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    <span id="shopguide_resign_assess" name="shopguide_resign_assess"></span>%
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    <span id="shopguide_resign_kpi">{ 1 - [ 离职人数 / (月底人数 + 离职人数) - 考核标准 ] * 5 } * 标准金额</span>
+                                                </td>
+                                            </tr>
+
+                                            <tr class="wrap5" style="display:none">
+                                                <th style="text-align:center;vertical-align:middle;">高端机占比&nbsp;<span name="area_l1_name"></span></th>
+                                                <td colspan="2">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon no-border">实销高端机占比</span>
+                                                        <div class="formValue">
+                                                            <input class="form-control text-center required number" disabled type="text" id="product_expensive_result" name="kpi_result" onchange="ProductExpensiveSum()" />
+                                                        </div>
+                                                        <span class="input-group-addon no-border">%</span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="input-group">
+                                                        <span class="form-control text-center" id="product_expensive_KPI" name="kpi_score"></span>
+                                                        <span class="input-group-addon no-border">元</span>
+                                                    </div>
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;" class="advice">
+                                                    <span id="product_expensive_advice"></span>元
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    <span id="product_expensive_standard" name="product_expensive_standard"></span>元
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    <span id="product_expensive_assess" name="product_expensive_assess"></span>%
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    <span id="product_expensive_kpi">[ 1 - ( 考核标准 - 下属导购实销高端机占比 ) * 5 ] * 标准金额</span>
+                                                </td>
+                                            </tr>
+                                            <tr class="wrap6" style="display:none">
+                                                <th style="text-align:center;vertical-align:middle;">培训场次&nbsp;<span name="area_l1_name"></span></th>
+                                                <td colspan="2">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon no-border">实际场次</span>
+                                                        <div class="formValue">
+                                                            <input class="form-control text-center required digits" type="text" id="product_train_result" name="kpi_result" onchange="ProductTrainSum()" />
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="input-group">
+                                                        <span class="form-control text-center" id="product_train_KPI" name="kpi_score"></span>
+                                                        <span class="input-group-addon no-border">元</span>
+                                                    </div>
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    <span id="product_train_advice"></span>元
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    <span id="product_train_standard" name="product_train_standard"></span>元/场
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    <span id="product_train_assess" name="product_train_assess"></span>场
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    <span id="product_train_kpi">( 实际场次 - 考核标准 ) * 标准金额</span>
+                                                </td>
+                                            </tr>
+
+                                            <tr class="wrap7" style="display:none">
+                                                <th style="text-align:center;vertical-align:middle;">形象执行效率&nbsp;<span name="area_l1_name"></span></th>
+                                                <td colspan="2">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon no-border">品牌部打分</span>
+                                                        <div class="formValue">
+                                                            <input class="form-control text-center required number" type="text" id="image_efficiency_result" name="kpi_result" onchange="ImageEfficiencySum()" />
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="input-group">
+                                                        <span class="form-control text-center" id="image_efficiency_KPI" name="kpi_score"></span>
+                                                        <span class="input-group-addon no-border">元</span>
+                                                    </div>
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    <span id="image_efficiency_advice"></span>元
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    <span id="image_efficiency_standard" name="image_efficiency_standard"></span>元
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    100分
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    <span id="image_efficiency_kpi">品牌部打分分值 / 100 * 标准金额</span>
+                                                </td>
+                                            </tr>
+                                            <tr class="wrap8" style="display:none">
+                                                <th style="text-align:center;vertical-align:middle;">形象罚款&nbsp;<span name="area_l1_name"></span></th>
+                                                <td colspan="2">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon no-border">不合格</span>
+                                                        <div class="formValue">
+                                                            <input class="form-control text-center text-center required" type="text" id="image_fine_result" name="kpi_result" onchange="ImageFineSum()" />
+                                                        </div>
+                                                        <span class="input-group-addon no-border">家</span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="input-group">
+                                                        <span class="form-control text-center" id="image_fine_KPI" name="kpi_score"></span>
+                                                        <span class="input-group-addon no-border">元</span>
+                                                    </div>
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    <span id="image_fine_advice"></span>元
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    <span id="image_fine_standard" name="image_fine_standard"></span>元/家
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    抽查<span id="image_fine_number" name="image_fine_number"></span>家
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    <span id="image_fine_kpi">不合格门店数 * 标准金额</span>
+                                                </td>
+                                            </tr>
+
+                                            <tr class="wrap9" style="display:none">
+                                                <th style="text-align:center;vertical-align:middle;">终端经理打分</th>
+                                                <td>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon no-border">态度</span>
+                                                        <div class="formValue">
+                                                            <input class="form-control text-center required" type="text" id="manager_scoring_result1" name="kpi_result" onchange="ManagerScoringSum()" />
+                                                        </div>
+                                                        <span class="input-group-addon no-border">分</span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon no-border">效率</span>
+                                                        <div class="formValue">
+                                                            <input class="form-control text-center required" type="text" id="manager_scoring_result" name="kpi_result" onchange="ManagerScoringSum()" />
+                                                        </div>
+                                                        <span class="input-group-addon no-border">分</span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="input-group">
+                                                        <span class="form-control text-center" id="manager_scoring_KPI" name="kpi_score"></span>
+                                                        <span class="input-group-addon no-border">元</span>
+                                                    </div>
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    <span id="manager_scoring_advice"></span>元
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    <span id="manager_scoring_standard" name="manager_scoring_standard"></span>元
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    100分
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;">
+                                                    <span id="manager_scoring_kpi">( 工作态度分值 + 效率分值 ) / 100 * 标准金额</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th style="text-align:center;vertical-align:middle;">累计KPI</th>
+                                                <td colspan="2" style="text-align:center;vertical-align:middle;">--</td>
+                                                <td>
+                                                    <div class="input-group">
+                                                        <span class="form-control text-center" id="trainer_sum_KPI">0.00</span>
+                                                        <span class="input-group-addon no-border">元</span>
+                                                    </div>
+                                                </td>
+                                                <td style="text-align:center;vertical-align:middle;" class="advice">--</td>
+                                                <td style="text-align:center;vertical-align:middle;">--</td>
+                                                <td style="text-align:center;vertical-align:middle;">--</td>
+                                                <td style="text-align:center;vertical-align:middle;">--</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-body" style="background-color:#ecf0f5">
+                        <div class="row" id="saleDetail1">
+                            <div class="col-xs-12 col-sm-12 col-lg-12">
+                                <div class="box box-primary">
+                                    <div class="box-header ">
+                                        <h4 class="pull-left">导购销售详情</h4>
+                                        <div class="box-tools pull-right">
+                                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="box-body">
+                                        <div class="row">
+                                            <div class="col-lg-2 col-sm-3">
+                                                <input class="form-control" id="guide_name" type="text" placeholder="请输入导购员">
+                                            </div>
+                                            <div class="col-lg-2 col-sm-3">
+                                                <input class="form-control" id="phone_sn1" type="text" placeholder="请输入串码">
+                                            </div>
+                                            <div class="col-lg-2 col-sm-3">
+                                                <input class="form-control" id="model1" type="text" placeholder="请输入型号">
+                                            </div>                                           
+                                            <div class="col-lg-1 col-sm-1">
+                                                <i id="querySubmit1" class='fa fa-search btn btn-primary'></i>
+                                            </div>
+                                        </div>
+                                        <table id="gridList1" style="table-layout:fixed"></table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-body" style="background-color:#ecf0f5">
+                        <div class="row" id="saleDetail">
+                            <div class="col-xs-12 col-sm-12 col-lg-12">
+                                <div class="box box-primary">
+                                    <div class="box-header ">
+                                        <h4 class="pull-left">高端机销售详情</h4>
+                                        <div class="box-tools pull-right">
+                                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="box-body">
+                                        <div class="row">                                           
+                                            <div class="col-lg-2 col-sm-3">
+                                                <input class="form-control" id="phone_sn2" type="text" placeholder="请输入串码">
+                                            </div>
+                                            <div class="col-lg-2 col-sm-3">
+                                                <input class="form-control" id="model2" type="text" placeholder="请输入型号">
+                                            </div>
+                                            <div class="col-lg-2 col-sm-3">
+                                                <select class="form-control" id="high_level">
+                                                    <option value="0">全部机型</option>
+                                                    <option value="1">高端机</option>
+                                                    <option value="-1">非高端机</option>
+                                                </select>
+                                            </div>                                     
+                                            <div class="col-lg-1 col-sm-1">
+                                                <i id="querySubmit2" class='fa fa-search btn btn-primary'></i>
+                                            </div>
+                                        </div>
+                                        <table id="gridList2" style="table-layout:fixed"></table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="box-footer">
+    <button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+    <button type="submit" class="btn btn-default pull-right" onclick="javascript:history.back(-1);">返回</button>
+</div>
+
+<div class="modal fade" id="modalMessage" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">
+                    系统提示
+                </h4>
+            </div>
+            <div class="modal-body">
+                <span>信息错误：该员工考核薪资未设置</span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" href="/FinancialAccounting/trainerKPI/EmpIndex">取消</button>
+                <button type="button" id="trainerDetail" class="btn btn-primary btnDetailTag" data-href="" data-id="" data-btndetail="培训考核">前往设置</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalPosition" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">
+                    系统提示
+                </h4>
+            </div>
+            <div class="modal-body">
+                <span>信息错误：该员工岗位薪资未设置</span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" href="/FinancialAccounting/trainerKPI/EmpIndex">取消</button>
+                <button type="button" id="saleDetail2" class="btn btn-primary btnDetailTag" data-href="" data-id="" data-btndetail="培训岗位薪资">前往设置</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/js/detail/FinancialAccounting/trainerKPI/add.js"></script>

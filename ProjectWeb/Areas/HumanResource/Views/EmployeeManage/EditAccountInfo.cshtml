@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "员工账户信息修改";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+
+<div class="panel-body" style="background: white;">
+    <form id="form1">
+        <div class="box box-success">
+            <div class="box-header widt-border">
+                <h3 class="box-title"><span id="name"></span>账户信息修改</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom ">
+                            <span class="input-group-addon">系统账户</span>
+                            <span id="account" name="account" class="form-control"></span>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom ">
+                            <span class="input-group-addon">账户状态</span>
+                            <span id="account_state" name="account_state" class="form-control "></span>
+                            <span class="input-group-addon no-border">
+                                <input id="btnActive" type="button" class="btn btn-xs" onclick="SetState()" />
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom ">
+                            <span class="input-group-addon">角色</span>
+                            <span id="role_name" name="role_name" class="form-control"></span>
+                        </div>
+                    </div>
+					<div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom ">
+                            <span class="input-group-addon">重置密码</span>
+							<div class="formValue">
+                            <input type="password" id="newPassword" name="newPassword" class="form-control required"/>
+							</div>
+                        </div>
+                    </div>
+					<div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom ">
+                            <span class="input-group-addon">确认密码</span>
+							<div class="formValue">
+                            <input type="password" id="newPassword2" name="newPassword2" class="form-control required"/>
+							</div>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="box-footer">
+    <button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+    <a class="btn btn-default pull-right" href="javascript:history.go(-1);"> 返回 </a>
+</div>
+
+<script src="~/Content/js/deepinf/dinf-input.js"></script>
+<script src="~/Content/js/detail/humanResource/employeeManage/edit_account_info.js"></script>

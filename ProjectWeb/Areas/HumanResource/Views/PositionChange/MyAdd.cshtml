@@ -1,0 +1,87 @@
+﻿@*个人岗位调整申请*@
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Form_dinf.cshtml";
+}
+<style>
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+        width: 113px;
+        line-height: 24px;
+    }
+</style>
+<form id="form1">
+    <header class="panel-heading">
+        <span style="color:#ffffff">岗位调整申请</span>
+    </header>
+    <div class="panel-body" style="background:white;">
+        <div class="row">
+            <div class="col-xs-1">
+            </div>
+            <div class="col-xs-10" style="min-width:1000px">
+                <div class="form">
+                    <div class="main-title main-title2">
+                        <div class="main-title2-type">
+                            请选择类型
+                            <select id="type">
+                                <option value="2" selected>转部门</option>
+                                <option value="1">转区域</option>
+                                <option value="3">转机构</option>
+                            </select>
+                        </div>
+                    </div>
+                    <table class="normal-MyChange" style="white-space:nowrap">
+                        <tr>
+                            <th>工号</th>
+                            <td><span id="work_number"></span></td>
+                            <th>姓名</th>
+                            <td><span id="name"></span></td>
+                            <th>性别</th>
+                            <td><span id="gender"></span></td>
+                            <th>最高学历</th>
+                            <td><span id="education"></span></td>
+                            <th>入职时间</th>
+                            <td><span id="entry_date" class="format_date"></span></td>
+                        </tr>
+                        <tr>
+                            <th>原机构</th>
+                            <td><span id="company_name"></span></td>
+                            <th>原部门</th>
+                            <td><span id="dept_name"></span></td>
+                            <th>原区域</th>
+                            <td><span id="area_name"></span></td>
+                            <th>原职位</th>
+                            <td><span id="position_name"></span></td>
+                            <th>目前等级</th>
+                            <td><span id="grade"></span></td>
+                        </tr>
+                        <tr>
+                            <th>新机构</th>
+                            <td>
+                                <select id="company_id_new"></select>
+                            </td>
+                            <th>新部门</th>
+                            <td><select id="dept_id_new" ></select>
+                            <th>新区域</th>
+                            <td><select id="area_id_new"></select>
+                            <th>新职位</th>
+                            <td><select id="position_id_new"></select>
+                            <th>新等级</th>
+                            <td><select id="grade_new"></select></td>
+                        </tr>
+                        <tr>
+                            <th colspan="2">申请转岗时间</th>
+                            <td colspan="3"><input id="request_date" class="Wdate" readonly="readonly" onfocus="WdatePicker();" /></td>
+                            <th colspan="2">发起人</th>
+                            <td colspan="3"><span id=""></span></td>
+                        </tr>
+                    </table>
+                    <div class="main-submit">
+                        <a class="btn-return" href="javascript:history.go(-1);"> 返回 </a>
+                        <a class="btn-submit" id="btnEdit" onclick="submitForm()">确认</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="~/Content/js/detail/humanResource/PositionChange/myAdd.js"></script>

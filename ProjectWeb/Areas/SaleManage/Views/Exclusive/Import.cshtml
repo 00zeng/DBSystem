@@ -1,0 +1,39 @@
+﻿@* 包销信息导入 *@
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+
+<div class="box-header widt-border">
+    <h3 class="box-title">包销信息导入</h3>
+	@*<h6 class="label label-danger">请确认对应的价格信息已导入并通过审批</h6>*@
+	<h3 class="box-title pull-right"><a href="/HttpHandler/TemplateDownload.ashx?name=导入模板-包销导入.xlsx" rel="external nofollow"><i class='fa  fa-download'></i>模板下载</a></h3>
+</div>
+<div class="panel-body" style="background:white;">
+    <div class="form">
+        <div class="box box-default">
+            <div class="box-header widt-border">
+                <h3 class="box-title">导入预览</h3>
+            </div>
+            <div class="box-body">
+                <div id="toolbar" class="btn-group">
+                    @*<button id="btn_delete" type="button" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
+                        </button>*@
+                    <button class="btn btn-primary" type="button" onclick="$('#FileInput')[0].click()"><i class="glyphicon glyphicon-folder-open"></i>选择文件</button>
+                    <div class="input-group" onclick="$('#FileInput')[0].click()">
+                        <input type="text" class="form-control" placeholder="导入文件名" readonly="readonly" id="excelfile">
+                    </div>
+                </div>
+                <table id="tb_table" style="table-layout:fixed;"></table>
+                <input type="file" id="FileInput" hidden="hidden" style="display: none;" onchange="importfile(this)" />
+            </div>
+        </div>
+
+    </div>
+    <div class="box-footer">
+        <button type="submit" id="btnSubmit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+        <button id="btnReturn" class="btn btn-default pull-right">返回</button>
+    </div>
+</div>
+<script src="~/Content/js/detail/saleManage/Exclusive/import.js"></script>

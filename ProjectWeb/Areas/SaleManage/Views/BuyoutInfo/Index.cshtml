@@ -1,0 +1,75 @@
+﻿@* 买断信息 *@
+@{
+    ViewBag.Title = "查看申请";
+    Layout = "~/Views/Shared/_Index_v2.cshtml";
+}
+<div class="panel-body" style="padding-bottom:0px;">
+    <div id="toolbar" class="btn-group">
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalQuery">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>更多搜索
+        </button>
+		<div class="input-group">
+        			<input class="form-control" id="distributor_name" type="text" placeholder="请输入经销商"></input>
+		</div>
+    </div>
+    <div>
+        <table id="gridList" style="table-layout:fixed"></table>
+    </div>
+</div>
+
+<div class="modal fade" id="modalQuery" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">按条件搜索
+				<button id="clear" type="button" class="btn btn-warning btn-xs">清空</button>
+				</h4>
+            </div>
+            <div class="modal-body">
+                <form id="queryForm" class="form-horizontal">
+                    <div class="form-group">
+                        <span for="phone_sn" class="col-sm-2 control-label">串码</span>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="phone_sn">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span for="model" class="col-sm-2 control-label">型号</span>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="model">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span for="sales_name" class="col-sm-2 control-label">业务员</span>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="sales_name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span for="guide_name" class="col-sm-2 control-label">促销员</span>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="guide_name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span for="category" class="col-sm-2 control-label">买断类型</span>
+                        <div class="col-sm-9">
+                            <select class="form-control" id="category">
+							<option value="">--请选择买断类型--</option>
+                            <option value="1">仓库买断</option>
+                            <option value="2">门店买断</option>
+							</select>
+                        </div>
+                    </div>                 
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" id="querySubmit" class="btn btn-primary">搜索</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/js/detail/SaleManage/BuyoutInfo/index.js"></script>

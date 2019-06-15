@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "创建用户";
+    Layout = "~/Views/Shared/_Pop.cshtml";
+}
+<div class="row">
+    <div class="col-xs-12">
+        <form id="form1" role="form">
+            <div class="row">
+                <div class="col-xs-6 ">
+                    <div class="form-group formValue">
+                        <label for="account">账户名称</label>
+                        <input id="account" name="account" type="text" class="form-control required" placeholder="请输入账户名称" maxlength="32" />
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group formValue">
+                        <label for="role_id">角色</label>
+                        <select id="role_id" name="role_id" class="form-control required"></select>
+                    </div>
+                </div>
+			</div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group formValue">
+                        <label for="password">密码</label>
+                        <input id="password" name="password" type="password" class="form-control required" placeholder="请输入密码" maxlength="32" />
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group formValue">
+                        <label for="password2">确认密码</label>
+                        <input id="password2" name="password2" type="password" class="form-control required" placeholder="请再次输入密码" maxlength="32" />
+                    </div>
+                </div> 
+            </div>
+        </form>
+    </div>
+</div>
+<script src="~/Content/js/detail/SystemManage/MsAccount/add.js"></script>

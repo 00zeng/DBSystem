@@ -1,0 +1,100 @@
+﻿@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Index_v2.cshtml";
+}
+<form id="form1">
+    <div class="panel-body" style="padding-bottom:0px;">
+        <div class="box box-default nav-tabs-custom">
+            <div class="box-header widt-border">
+                <h3 class="box-title">工资明细</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <dl class="col-sm-1 ">
+                        <dt>姓名：</dt>
+                        <dd><span id="name" ></span></dd>
+                    </dl>
+                    <dl class="col-sm-1 ">
+                        <dt>等级：</dt>
+                        <dd><span id="grade1"></span></dd>
+                    </dl>
+                    <dl class="col-sm-2">
+                        <dt>结算周期：</dt>
+                        <dd><span id="start_date"></span></dd>
+                    </dl>
+                </div>
+                <div class="row">
+                    <dl class="col-sm-6 dl-horizontal">
+                        <dt>底薪</dt>
+                        <dd><span id="company_name" name="company_name"></span></dd>
+                    </dl>
+                    <dl class="col-sm-6 dl-horizontal">
+
+                        <dt>底薪模式</dt>
+                        <dd><span id="dept_name" name="dept_name"></span></dd>
+                    </dl>
+                    <dl class="col-sm-6 dl-horizontal">
+                        <dt>实销提成</dt>
+                        <dd><span id="position_name"></span></dd>
+                    </dl>
+                    <dl class="col-sm-6 dl-horizontal">
+                        <dt>当月实销</dt>
+                        <dd><span id="grade"></span></dd>
+                    </dl>
+                    <dl class="col-sm-6 dl-horizontal">
+                        <dt>买断提成</dt>
+                        <dd><span id="supervisor_name" name="supervisor_name"></span></dd>
+                    </dl>
+                    <dl class="col-sm-6 dl-horizontal">
+                        <dt>当月买断</dt>
+                        <dd><span id="emp_category" name="emp_category"></span></dd>
+                    </dl>
+                    <dl class="col-sm-6 dl-horizontal">
+                        <dt>增员奖</dt>
+                        <dd><span id="supervisor_name" name="supervisor_name"></span></dd>
+                    </dl>
+                    <dl class="col-sm-6 dl-horizontal">
+                        <dt>增员人数</dt>
+                        <dd><span id="emp_category" name="emp_category"></span></dd>
+                    </dl>
+                    <dl class="col-sm-6 dl-horizontal">
+                        <dt>增员提成</dt>
+                        <dd><span id="supervisor_name" name="supervisor_name"></span></dd>
+                    </dl>
+                    <dl class="col-sm-6 dl-horizontal">
+                        <dt>增员销量</dt>
+                        <dd><span id="emp_category" name="emp_category"></span></dd>
+                    </dl>
+                    <dl class="col-sm-6 dl-horizontal">
+                        <dt>（主推活动名1）</dt>
+                        <dd><span id="supervisor_name" name="supervisor_name"></span></dd>
+                    </dl>
+                    <dl class="col-sm-6 dl-horizontal">
+                        <dt>活动销量</dt>
+                        <dd><span id="emp_category" name="emp_category"></span></dd>
+                    </dl>
+                    <dl class="col-sm-6 dl-horizontal">
+                        <dt>（主推活动名2）</dt>
+                        <dd><span id="supervisor_name" name="supervisor_name"></span></dd>
+                    </dl>
+                    <dl class="col-sm-6 dl-horizontal">
+                        <dt>活动销量</dt>
+                        <dd><span id="emp_category" name="emp_category"></span></dd>
+                    </dl>
+                   
+                </div>
+            </div>
+        </div>
+        
+    </div>   
+</form>
+@*<div class="box-footer">
+    <button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">确认</button>
+    <button class="btn btn-default pull-right" href="javascript:history.go(-1);">返回</button>
+</div>*@
+<script src="~/Content/js/detail/SalaryCalculate/PayrollOffice/add.js"></script>

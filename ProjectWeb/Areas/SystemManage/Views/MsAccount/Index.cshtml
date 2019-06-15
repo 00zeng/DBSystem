@@ -1,0 +1,183 @@
+﻿@*<div class="number"><label><a name="btnAdd" class="btn btn-primary priv" href="javascript:;" onclick="OpenForm('/SystemManage/MsAccount/Add')">新增</a></label></div>*@
+@*<button id="btnSearch" class="btn btn-info btn-div">查询</button>*@
+@* 账户管理 *@
+@{
+    ViewBag.Title = "账户管理";
+    Layout = "~/Views/Shared/_Index_v2.cshtml";
+}
+<div class="panel-body" style="padding-bottom:0px;">
+
+    <div id="toolbar" class="btn-group">
+
+        <button id="btn_add" type="button" class="btn btn-primary"data-toggle="modal" data-target="#Add">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+        </button>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalQuery">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>更多搜索
+        </button>
+		<div class="input-group">
+			<input class="form-control" id="account_name" type="text" placeholder="请输入账户名称" />
+		</div>
+    </div>
+
+    <div>
+        <table id="gridList" style="table-layout:fixed"></table>
+    </div>
+</div>
+
+<div class="modal fade" id="modalQuery" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">按条件搜索
+				<button id="clear" type="button" class="btn btn-warning btn-xs">清空</button>
+				</h4>
+            </div>
+            <div class="modal-body">
+                <form id="queryForm" class="form-horizontal">
+                    <div class="form-group">
+                        <span for="employee_name" class="col-sm-2 control-label">用户名称</span>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="employee_name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span for="role_name" class="col-sm-2 control-label">角色</span>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="role_name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span for="role_name" class="col-sm-2 control-label">状态</span>
+                        <div class="col-sm-10 checkbox">
+                            <label>
+                                <input type="checkbox" id="inactive" name="inactive">已注销
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" id="querySubmit" class="btn btn-primary">搜索</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="Add" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">
+                    新增账户
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form id="form1">
+                    <div class="row">
+                        <div class="col-xs-6 ">
+                            <div class="form-group formValue">
+                                <label for="account">账户名称</label>
+                                <input id="account" name="account" type="text" class="form-control required" placeholder="请输入账户名称" maxlength="32" />
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="form-group formValue">
+                                <label for="role_id">角色</label>
+                                <select id="role_id" name="role_id" class="form-control required"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group formValue">
+                                <label for="password">密码</label>
+                                <input id="password" name="password" type="password" class="form-control required" placeholder="请输入密码" maxlength="32" />
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="form-group formValue">
+                                <label for="password2">确认密码</label>
+                                <input id="password2" name="password2" type="password" class="form-control required" placeholder="请再次输入密码" maxlength="32" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" id="addRole" class="btn btn-primary" onclick="addRole()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="UpdateRole" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">
+                    账号：<span id="org_role_name"></span>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form id="form2">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group formValue">
+                                <label for="role_id_update">角色</label>
+                                <select id="role_id_update" name="role_id_update" class="form-control required"></select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" id="" class="btn btn-primary" onclick="submitForm()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+@*重置密码*@
+<div class="modal fade" id="ResetPassword" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">
+                    账号：<span id="org_role_name1"></span>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form id="form3">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group formValue">
+                                <label for="newPassword">新密码</label>
+                                <input id="newPassword" name="newPassword" type="password" class="form-control required" placeholder="请输入密码" maxlength="32" />
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="form-group formValue">
+                                <label for="newPassword2">确认密码</label>
+                                <input id="newPassword2" name="newPassword2" type="password" class="form-control required" placeholder="请再次输入密码" maxlength="32" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" id="ResetPassword" class="btn btn-primary" onclick="ResetSubmit()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/js/bootstrap-table/extensions/export/bootstrap-table-export.js"></script>
+<script src="~/Content/js/tableExport/tableExport.min.js"></script>
+<script src="~/Content/js/tableExport/libs/js-xlsx/xlsx.core.min.js"></script>
+<script src="~/Content/js/tableExport/libs/FileSaver/FileSaver.min.js"></script>
+<script src="~/Content/js/detail/SystemManage/MsAccount/index.js"></script>

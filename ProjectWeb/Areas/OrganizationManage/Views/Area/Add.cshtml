@@ -1,0 +1,80 @@
+﻿@{
+    ViewBag.Title = "新增区域";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<link href="~/Content/js/cityPicker/css/city-picker.css" rel="stylesheet" />
+
+<div class="box-header widt-border">
+    <h3 class="box-title">新增区域</h3>
+</div>
+<div class="panel-body" style="background:white;">
+    <form id="form1">
+        <div class="box box-danger">
+            <div class="box-header widt-border">
+                <h3 class="box-title">区域信息</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">区域名称<span class="text-red">&nbsp;*</span></span>
+                            <input type="text" id="name" name="name" class="form-control required">
+                        </div>
+                    </div>                   
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">所属分公司<span class="text-red">&nbsp;*</span></span>
+                            <select id="company_id" name="company_id" class="form-control required"></select>
+                        </div>
+                    </div>
+				    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">类型<span class="text-red">&nbsp;*</span></span>
+                            <select id="type" name="type" class="form-control required">
+                                <option value="1">经理片区</option>
+                                <option value="2">业务片区</option>
+                            </select>
+                        </div>
+                    </div>
+					<div class="col-xs-12 col-sm-6 col-lg-4" id="manage" style="display:none">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">经理片区<span class="text-red">&nbsp;*</span></span>
+                            <select id="area_l1_id" name="area_l1_id" class="form-control required">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">所在城市<span class="text-red">&nbsp;*</span></span>
+                            <input type="text" id="city" class="form-control required" style="position:absolute" data-toggle="city-picker">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">详细地址<span class="text-red">&nbsp;*</span></span>
+                            <input type="text" id="address" name="address" class="form-control required">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom">
+                            <span class="input-group-addon">备注说明</span>
+                            <input class="form-control" id="note" type="text" maxlength="128">
+                        </div>
+                    </div>
+                </div>              
+            </div>
+        </div>
+    </form>
+    <div class="box-footer">
+        <button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+        <a class="btn btn-default pull-right" href="javascript:history.go(-1);">返回</a>
+    </div>
+</div>
+<script src="~/Content/js/cityPicker/city-picker.data.js"></script>
+<script src="~/Content/js/cityPicker/city-picker.js"></script>
+<script src="~/Content/js/detail/OrganizationManage/Area/add.js"></script>

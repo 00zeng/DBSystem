@@ -1,0 +1,83 @@
+﻿@* 结算审批 *@
+@{
+    ViewBag.Title = "结算审批";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+
+<div class="box-header widt-border">
+    <h3 class="box-title">结算审批</h3>
+</div>
+<form id="form1">
+    <div class="panel-body" style="background:white;">
+        <div class="form">
+            <div class="box box-default">
+                <div class="box-header widt-border">
+                    <h3 class="box-title">结算信息</h3>
+                </div>
+                <div class="box-body">
+                    <div class="row" id="showdiv">
+                        <dl class="col-sm-6 dl-horizontal">
+                            <dt>默认结算日</dt>
+                            <dd><span id="end_date" class="format_date"></span></dd>
+                        </dl>
+                        <dl class="col-sm-6 dl-horizontal">
+                            <dt>设置结算日</dt>
+                            <dd><span id="end_date_setting" class="format_date"></span></dd>
+                        </dl>
+                        <dl class="col-sm-12 dl-horizontal">
+                            <dt>备注</dt>
+                            <dd><span id="note"></span></dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <div class="box box-default">
+                <div class="box-header widt-border">
+                    <h3 class="box-title">审批信息</h3>
+                </div>
+                <div class="box-body">
+                    <table class="table table-bordered text-center" id="approve">
+                        <tbody>
+                            <tr>
+                                <th>操作类型</th>
+                                <th>操作人</th>
+                                <th>操作人职位</th>
+                                <th>时间</th>
+                                <th>结果</th>
+                                <th>意见</th>
+                            </tr>
+                            <tr>
+                                <td>发起申请</td>
+                                <td><span id="creator_name"></span></td>
+                                <td><span id="creator_position_name"></span></td>
+                                <td><span id="create_time"></span></td>
+                                <td><span id="">--</span></td>
+                                <td><span id="">--</span></td>
+                            </tr>
+                            <tr>
+                                <td id="next_approve">财务经理审批</td>
+                                <td><span id="approve_name"></span></td>
+                                <td><span id="approve_position_name"></span></td>
+                                <td><span id="currentTime"></span></td>
+                                <td class="radio no-margin no-border">
+                                    <label>
+                                        <input name="status" type="radio" value="1" checked>通过 &nbsp;&nbsp;
+                                    </label>
+                                    <label>
+                                        <input name="status" type="radio" value="-1">不通过
+                                    </label>
+                                </td>
+                                <td class="no-padding"><input id="approve_note" class="form-control" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="box-footer">
+            <button type="submit" id="btnSubmit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+            <a class="btn btn-default pull-right" href="/SalaryCalculate/PayrollSetting/approveIndex">返回</a>
+        </div>
+    </div>
+</form>
+<script src="~/Content/js/detail/SalaryCalculate/PayrollSetting/approve.js"></script>

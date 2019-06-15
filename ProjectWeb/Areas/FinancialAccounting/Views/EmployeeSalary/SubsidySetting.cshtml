@@ -1,0 +1,99 @@
+﻿@{
+    ViewBag.Title = "kpi";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<style type="text/css">
+    tbody table td {
+        padding: 0;
+    }
+
+    .radio + .radio {
+        margin-top: 10px;
+    }
+
+    .table-bordered {
+        border-radius: 4px;
+    }
+</style>
+<form id="form1">
+    <div class="box-header">
+        <div class="col-xs-6 col-sm-4 col-lg-4">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">姓名：</span>
+                <span id="name" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-lg-4">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">等级：</span>
+                <span id="grade" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-lg-4">
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border"> 生效时间</span>
+                <input id="effect_date" class="form-control" readonly="readonly" onfocus="WdatePicker({dateFmt: 'yyyy-MM' });" />
+                <div class="checkbox input-group-addon no-border">
+                    <label>
+                        <input type="checkbox" id="effect_now" title="审批通过后立即生效" onclick="Effective(this)" />立即生效
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box-body" style="padding-bottom:0px;">
+        <div class="col-xs-12 col-sm-12 col-lg-12">
+            <div class="box box-warning">
+                <div class="box-header">
+                    <h3 class="box-title"><span id="position_name"></span>薪资补助</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body" style="background-color:#ecf0f5">
+                    <div class="col-xs-12 col-sm-12 col-lg-6">
+                        <div class="box box-widget">
+                            <div class="box-body">
+                                <div class="row margin-bottom">
+                                    <div class="col-sm-2 col-lg-3"><span class="form-control no-border text-right">特聘补贴</span></div>
+                                    <div class="col-sm-4">
+                                        <div class="input-group">
+											<div class="formValue">
+												<input type="text" class="form-control text-center required number" value="0" id="subsidy" name="subsidy" onchange="getSum()">
+											</div>
+												<span class="input-group-addon">元/月</span>
+										</div>
+                                    </div>
+                                </div>
+                                <div class="row margin-bottom">
+                                    <div class="col-sm-2 col-lg-3"><span class="form-control no-border text-right">补助后工资</span></div>
+                                    <div class="col-sm-4">
+                                        <div class="input-group formValue">
+                                            <span type="text" class="form-control text-center required number" id="subsidySalary" name="subsidySalary"></span>
+                                            <span class="input-group-addon">元/月</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row margin-bottom">
+                                    <div class="col-sm-2 col-lg-3"><span class="form-control no-border text-right">补助说明</span></div>
+                                    <div class="col-sm-8">
+                                        <textarea id="subsidy_note" class="form-control" ></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="box-footer">
+    <button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+    <button type="submit" class="btn btn-default pull-right" onclick="javascript:history.back(-1);">返回</button>
+</div>
+
+<script src="~/Content/js/detail/FinancialAccounting/employeeSalary/subsidySetting.js"></script>

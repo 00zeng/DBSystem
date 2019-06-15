@@ -1,0 +1,118 @@
+﻿@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Form_dinf.cshtml";
+}
+<link href="~/Content/css/dinf-table.css" rel="stylesheet" />
+<form id="form1">
+    <header class="panel-heading">
+        <span style="color: #ffffff">
+            工资结算
+        </span>
+    </header>
+    <div class="panel-body" style="background:white;">
+        <div class="row">
+            <div class="col-xs-1">
+            </div>
+            <div class="col-xs-10" style="min-width:1000px">
+                <div class="form">
+                    <div class="main-title main-title2">
+                        <div class="main-title2-type">
+                            姓名：<span id="name" style="margin-right:60px"></span>
+                            等级：<span id="grade1" style="margin-right:60px"></span>
+                            结算周期：<span id="start_date" style="margin-right:10px" class="format_date"></span>-<span id="end_date" style="margin-left:10px" class="format_date"></span>
+                        </div>
+                    </div>
+                    <div class="mid-title-wrap">
+                        <div class="mid-title">工资明细</div>
+                    </div>
+                    <table class="normal-Office">
+                        <tr>
+                            <th>底薪</th>
+                            <td><span id=""></span></td>
+                            <th>底薪模式</th>
+                            <td><span id=""></span></td>
+                        </tr>
+                        <tr>
+                            <th>实销提成</th>
+                            <td><span id="grade"></span></td>
+                            <th>当月实销</th>
+                            <td><span id=""></span></td>
+                        </tr>
+                        <tr>
+                            <th>买断提成</th>
+                            <td><span id=""></span></td>
+                            <th>当月买断</th>
+                            <td><span id=""></span></td>
+                        </tr>
+                        <tr>
+                            <th>增员奖</th>
+                            <td><span id=""></span></td>
+                            <th>增员人数</th>
+                            <td><span id=""></span></td>
+                        </tr>
+                        <tr>
+                            <th>增员提成</th>
+                            <td><span id=""></span></td>
+                            <th>增员销量</th>
+                            <td><span id=""></span></td>
+                        </tr>
+                        <tr>
+                            <th>（主推活动名1）</th>
+                            <td><span id=""></span></td>
+                            <th>活动销量</th>
+                            <td><span id=""></span></td>
+                        </tr>
+                        <tr>
+                            <th>（主推活动名2）</th>
+                            <td><span id=""></span></td>
+                            <th>活动销量</th>
+                            <td><span id=""></span></td>
+                        </tr>
+                        <tr>
+                            <th>（达量活动名1）</th>
+                            <td><span id=""></span></td>
+                            <th>活动销量</th>
+                            <td><span id=""></span></td>
+                        </tr>
+                        <tr>
+                            <th>（排名比赛名1）</th>
+                            <td><span id=""></span></td>
+                            <th>比赛排名</th>
+                            <td><span id=""></span></td>
+                        </tr>
+                        <tr>
+                            <th>（PK比赛名1）</th>
+                            <td><span id=""></span></td>
+                            <th>比赛结果</th>
+                            <td><span id=""></span></td>
+                        </tr>
+                        <tr>
+                            <th>（奖罚名称1）</th>
+                            <td><span id=""></span></td>
+                            <th>备注说明</th>
+                            <td><span id=""></span></td>
+                        </tr>
+                        <tr>
+                            <th>（福利名称1）</th>
+                            <td><span id=""></span></td>
+                            <th>备注说明</th>
+                            <td><span id=""></span></td>
+                        </tr>
+                        <tr>
+                            <th>应发工资</th>
+                            <td colspan="3"></td>
+                        </tr>
+                    </table>
+
+                    <div class="main-submit">
+                        <a class="btn-return" href="javascript:history.go(-1);"> 返回 </a>
+                        <input type="button" value="确认" class="btn-submit" onclick="submitForm()" />
+                        <input type="button" value="确认" class="btn-submit" onclick="submitForm()" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+<script src="~/Content/js/detail/SalaryCalculate/PayrollOffice/add.js"></script>

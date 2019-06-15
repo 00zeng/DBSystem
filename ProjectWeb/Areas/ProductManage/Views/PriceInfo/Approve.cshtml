@@ -1,0 +1,100 @@
+﻿@* 价格信息审批 *@
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+
+
+<div class="box-header widt-border">
+    <h3 class="box-title">价格信息审批</h3>
+</div>
+<div class="panel-body" style="background:white;">
+    <div class="form">
+        <div class="box box-default">
+            <div class="box-header widt-border">
+                <h3 class="box-title">导入信息</h3>
+            </div>
+            <div class="box-body">
+                <div id="toolbar" class="btn-group">
+                    分公司：<span id="company_linkname" class="label-default" style="margin-right:10px"></span>
+                    导入文件：<span id="import_file" class="label-default" style="margin-right:10px"></span>
+                    审批状态：<span id="approve_status"></span>
+                </div> 
+                <table id="tb_table" style="table-layout:fixed;"></table>                                   
+            </div>
+        </div>
+        <div class="box box-default">
+            <div class="box-header widt-border">
+                <h3 class="box-title">审批信息</h3>
+            </div>
+            <div class="box-body">
+                <table class="table table-bordered text-center" id="approve">
+                    <tbody>
+                        <tr>
+                            <th>操作类型</th>
+                            <th>操作人</th>
+                            <th>操作人职位</th>
+                            <th>时间</th>
+                            <th>结果</th>
+                            <th>意见</th>
+                        </tr>
+                        <tr>
+                            <td>发起申请</td>
+                            <td><span id="creator_name"></span></td>
+                            <td><span id="creator_position_name"></span></td>
+                            <td><span id="create_time" class="convert_datetime"></span></td>
+                            <td><span id="">--</span></td>
+                            <td><span id="">--</span></td>
+                        </tr>
+                        <tr>
+                            <td>当前审批</td>
+                            <td><span id="approve_name"></span></td>
+                            <td><span id="approve_position_name"></span></td>
+                            <td><span id="currentTime"></span></td>
+                            <td class="radio no-margin no-border">
+                                <label>
+                                    <input name="status" type="radio" value="1" checked>通过 &nbsp;&nbsp;
+                                </label>
+                                <label>
+                                    <input name="status" type="radio" value="-1">不通过
+                                </label>
+                            </td>
+                            <td class="no-padding"><input id="approve_note" class="form-control" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table table-bordered text-center" id="approve1" style="display:none">
+                    <tbody>
+                        <tr>
+                            <th>审批结果</th>
+                            <td class="radio no-margin no-border">
+                                <label>
+                                    <input name="status1" type="radio" value="1" checked>通过 &nbsp;&nbsp;
+                                </label>
+                                <label>
+                                    <input name="status1" type="radio" value="-1">不通过
+                                </label>
+                            </td>
+                            <th>后续审批流程</th>
+                            <td>
+                                <input id="gm1_approve" type="checkbox" value="1">分公司经理审批 &nbsp;&nbsp;
+                                <input id="gm2_approve" type="checkbox" value="-1">总经理审批
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>备注</th>
+                            <td colspan="3">
+                                <textarea class="form-control" id="approve_note"></textarea>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="box-footer">
+        <button type="submit" id="btnSubmit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+        <a type="submit" class="btn btn-default pull-right" href="/ProductManage/PriceInfo/ApproveIndex">返回</a>
+    </div>
+</div>
+<script src="~/Content/js/detail/ProductManage/PriceInfo/approve.js"></script>

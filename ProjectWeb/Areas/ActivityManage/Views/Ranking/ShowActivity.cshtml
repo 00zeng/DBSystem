@@ -1,0 +1,200 @@
+﻿@{
+    ViewBag.Title = "排名比赛";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<style type="text/css">
+    tbody table td {
+        padding: 0;
+    }
+
+    .radio + .radio {
+        margin-top: 10px;
+    }
+
+    .table-bordered {
+        border-radius: 4px;
+    }
+</style>
+<form id="form1">
+    <div class="box-header">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-lg-3">
+                <div class="input-group margin-bottom">
+                    <label class="input-group-addon no-border">活动名称：</label>
+                    <span type="text" id="name" class="form-control"></span>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-3">
+                <div class="input-group margin-bottom">
+                    <span class="input-group-addon no-border">分公司：</span>
+                    <span id="company_name" class="form-control" tabindex="-1" aria-hidden="true"></span>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-3">
+                <div class="input-group margin-bottom">
+                    <span class="input-group-addon no-border">活动时间：</span>
+                    <span id="start_date" class="form-control format_date"></span>
+                    <span class="input-group-addon">-</span>
+                    <span id="end_date" class="form-control format_date"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box-body" style="padding-bottom:0px;">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-lg-6">
+                <div class="box box-danger">
+                    <div class="box-header">
+                        <h3 class="box-title" id="emp_category"></h3><h6 class="inline margin">共<span class="margin" id="emp_count">0</span>人</h6>
+						<span style="margin-left:20px">活动状态：<label class="label label-default" id="activity_status"></label></span>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <table id="targetEmp"></table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-lg-6">
+                <div class="box box-warning">
+                    <div class="box-header">
+                        <h3 class="box-title">排名方式</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <div>
+                                        <div class="radio col-sm-3 col-lg-6">
+                                            <label>
+                                                <input id="ranking_content" name="ranking_content" type="radio" value="1" disabled>按实销总量
+                                            </label>
+                                        </div>
+                                        <div class="radio col-sm-3 col-lg-6">
+                                            <label>
+                                                <input name="ranking_content" type="radio" value="2" disabled>按下货总量
+                                            </label>
+                                        </div>
+                                        <div class="radio col-sm-3 col-lg-6">
+                                            <label>
+                                                <input name="ranking_content" type="radio" value="3" disabled>按实销总金额（零售价）
+                                            </label>
+                                        </div>
+                                        <div class="radio col-sm-3 col-lg-6">
+                                            <label>
+                                                <input name="ranking_content" type="radio" value="4" disabled>按下货总金额（零售价）
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>备注说明</label>
+                                <textarea class="form-control" rows="3" name="note" id="note" disabled></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-lg-12">
+                <div class="box box-success">
+                    <div class="box-header ">
+                        <h4 class="pull-left">销售详情</h4>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-lg-2 col-sm-3">
+                                <input class="form-control" id="emp_name" type="text" placeholder="请输入姓名">
+                            </div>
+                            <div class="col-lg-2 col-sm-3">
+                                <input class="form-control" id="phone_sn" type="text" placeholder="请输入串码">
+                            </div>
+                            <div class="col-lg-2 col-sm-3">
+                                <input class="form-control" id="model" type="text" placeholder="请输入型号">
+                            </div>
+                            <div class="col-lg-1 col-sm-1">
+                                <i id="querySubmit" class='fa fa-search btn btn-primary'></i>
+                            </div>
+                        </div>
+                        <table id="gridList" style="table-layout:fixed"></table>
+                    </div>
+                </div>
+            </div>           
+            <div class="col-xs-12 col-sm-12 col-lg-12">
+                <div class="box box-primary">
+                    <div class="box-header ">
+                        <h3 class="box-title">奖励</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group col-sm-12 col-lg-6">
+                            <table id="rank_tb" class="table table-bordered text-center">
+                                <tr>
+                                    <th class="col-sm-6"><span name="target_mode_change">排名</span></th>
+                                    <th class="col-sm-6"><span name="rebate_mode_change">奖金（元）</span></th>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box box-default  collapsed-box">
+            <div class="box-header widt-border">
+                <h3 class="box-title">审批</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <table class="table table-bordered text-center" id="approve">
+                    <tbody>
+                        <tr>
+                            <th>操作类型</th>
+                            <th>操作人</th>
+                            <th>操作人职位</th>
+                            <th>时间</th>
+                            <th>结果</th>
+                            <th>意见</th>
+                        </tr>
+                        <tr>
+                            <td>发起申请</td>
+                            <td><span id="creator_name"></span></td>
+                            <td><span id="creator_position_name"></span></td>
+                            <td><span id="create_time"></span></td>
+                            <td><span id="">--</span></td>
+                            <td><span id="">--</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</form>
+<div class="box-footer">
+    <a type="submit" class="btn btn-default pull-right" href="/ActivityManage/Ranking/Index">返回</a>
+	<button id="btn_edit" type="button" class="btn btn-primary pull-right" onclick="OpenForm('/ActivityManage/Ranking/Edit', '修改结束时间')">
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改结束时间
+    </button>
+</div>
+<script src="~/Content/js/detail/activityManage/Ranking/show_activity.js"></script>

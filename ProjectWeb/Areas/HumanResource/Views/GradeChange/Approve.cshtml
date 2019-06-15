@@ -1,0 +1,306 @@
+﻿@*个人晋升降级审批*@
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Form_dinf.cshtml";
+}
+<style>
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+        width: 113px;
+        line-height: 24px;
+    }
+</style>
+<form id="form1">
+    <header class="panel-heading">
+        <span style="color:#ffffff">晋升降级审批</span>
+    </header>
+    <div class="panel-body" style="background:white;">
+        <div class="row">
+        <div class="col-xs-1">
+        </div>
+        <div class="col-xs-10" style="min-width:1000px">
+            <div class="form">
+                <div class="main-title main-title2">
+                    <div class="main-title2-type">
+                        类型：<span id="type" style="margin-right:60px"></span>
+                        晋升时间：<span id="" style="margin-right:60px"></span>
+                        审核状态：<span id="approve_status"></span>
+                    </div>
+                </div>
+                <table class="normal-MyChange" style="white-space:nowrap">
+                    <tr>
+                        <th>工号</th>
+                        <td>
+                            <span id="work_number" name="work_number"></span>
+                        </td>
+                        <th>姓名</th>
+                        <td>
+                            <span id="name" name="name"></span>
+                        </td>
+                        <th>性别</th>
+                        <td>
+                            <span id="gender" name="gender"></span>
+                        </td>
+                        <th>最高学历</th>
+                        <td>
+                            <span id="education" name="education"></span>
+                        </td>
+                        <th>入职时间</th>
+                        <td>
+                            <span id="entry_date" class="format_date"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>原部门</th>
+                        <td>
+                            <span id="dept_name" name="department_name"></span>
+                        </td>
+                        <th>原区域</th>
+                        <td>
+                            <span id="area_name" name="area_name"></span>
+                        </td>
+                        <th>原职位</th>
+                        <td>
+                            <span id="position_name" name="position_name"></span>
+                        </td>
+                        <th>目前等级</th>
+                        <td colspan="3">
+                            <span id="grade" name="grade"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>晋升部门</th>
+                        <td>
+                            <span id="dept_name_new"></span>
+                        </td>
+                        <th>新区域</th>
+                        <td><span id="area_name_new"></span>
+                        <th>晋升职位</th>
+                        <td><span id="position_name_new"></span>
+                        <th>拟晋升等级</th>
+                        <td colspan="3">
+                            <span id="grade_new"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="10" style="text-align: left">个人总结与晋升申请</th>
+                    </tr>
+                    <tr>
+                        <td colspan="10">
+                            <span>一、工作概况 (现任职务及现任工作情况简介)</span><br />
+                            <textarea id="content_summary" class="resign-textarea" @*style="width:100%;border:none"*@ rows="4" disabled></textarea>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="10">
+                            <span>二、晋升后工作计划与工作目标</span><br />
+                            <textarea id="content_plan" class="resign-textarea" rows="4" disabled></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="10">
+                            <span>三、对晋升职位的信心与期望</span><br />
+                            <textarea id="content_expect" class="resign-textarea" rows="4" disabled></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">晋升时间</th>
+                        <td colspan="3">
+                            <span id="request_date" class="format_date"></span>
+                        </td>
+                        <th colspan="2"></th>
+                        <td colspan="3"></td>
+                    </tr>
+
+                </table>
+                <table class="normal-z" id="table_dept_approve" style="display:none">
+                    <tr>
+                        <td colspan="10" class="mid-title-wrap">
+                            <div class="mid-title">部门负责人审批</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">被考评人分数 </th>
+                        <td colspan="4"><input id="check_grade" style="width:300px;" /><span style="float:right">(满分10分)</span></td>
+                        <th rowspan="4">考评参考内容</th>
+                        <td colspan="3" rowspan="4">
+                            <span> 1、价值观（2分）</span><br />
+                            <span> 2、工作业绩（2分）</span><br />
+                            <span> 3、工作态度2分）</span><br />
+                            <span> 4、工作能力（2分）</span><br />
+                            <span> 5、晋升演讲（2分）</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">考评意见 </th>
+                        <td colspan="4">
+                            <input id="opinion1" type="radio" name="opinion" value="-2" />暂不适合晋升
+                            <input id="opinion2" type="radio" name="opinion" value="-1" />待定
+                            <input id="opinion3" type="radio" name="opinion" value="1" />可以晋升
+                            <input id="opinion4" type="radio" name="opinion" value="2" />优先推荐晋升
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">核准晋升时间 </th>
+                        <td colspan="4"><input style="width:300px;" id="adjust_time2" readonly="readonly" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd' });" /></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">考评时间 </th>
+                        <td colspan="4"><input style="width:300px;" id="check_time" readonly="readonly" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd' });" /></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="10">
+                            <span>部门负责人评语以及意见：</span><br>
+                            <textarea style="width:100% ;border:0px" rows="3" id="charge_opinion"></textarea><br>
+                            <span style="float:right ;border:none;">
+                                填写人：  <input id="approve_name" style="border:none;" />
+                                填写时间：<input id="approve_time" style="border:none;" readonly="readonly" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd' });" />
+                            </span>
+                        </td>
+
+                    </tr>
+                </table>
+                <table class="normal-Change" id="table_dept_show" @*style="display:none"*@>
+                    <tr>
+                        <td colspan="10" class="mid-title-wrap">
+                            <div class="mid-title">部门负责人审批</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">被考评人分数 </th>
+                        <td colspan="4"><span id="check_grade"></span><span style="float:right">(满分10分)</span></td>
+                        <th colspan="2" rowspan="4">考评参考内容</th>
+                        <td colspan="2" rowspan="4">
+                            <span> 1、价值观（2分）</span><br />
+                            <span> 2、工作业绩（2分）</span><br />
+                            <span> 3、工作态度（2分）</span><br />
+                            <span> 4、工作能力（2分）</span><br />
+                            <span> 5、晋升演讲（2分）</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">考评意见 </th>
+                        <td colspan="4">
+                            <div>
+                                <input id="opinion1" type="radio" name="opinion" value="-2" />
+                                <label for="opinion1">暂不适合晋升</label>
+                            </div>
+                           
+                            <input id="opinion2" type="radio" name="opinion" value="-1" /><label for="opinion2">待定</label>
+                            <input id="opinion3" type="radio" name="opinion" value="1"  /><label for="opinion3">可以晋升</label>
+                            <input id="opinion4" type="radio" name="opinion" value="2"  /><label for="opinion4">优先推荐晋升</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">核准晋升时间 </th>
+                        <td colspan="4"><span style="width:300px;" id="adjust_time2" readonly="readonly" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd' });"></span></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">考评时间 </th>
+                        <td colspan="4"><span style="width:300px;" id="check_time" readonly="readonly" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd' });"></span></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="10">
+                            <span>部门负责人评语以及意见：</span><br>
+                            <textarea style="width:100% ;border:0px" rows="3" id="charge_opinion" disabled></textarea><br>
+                            <span style="float:right ;border:none;">
+                                填写人：  <span id="approve_name" style="border:none;margin-right:30px;"></span>
+                                填写时间：<span id="approve_time" style="border:none;margin-right:20px;" readonly="readonly" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd' });"></span>
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+
+                <table class="normal-z" id="table_branch_approve" style="display:none">
+                    <tr>
+                        <td colspan="10" class="mid-title-wrap">
+                            <div class="mid-title">分区总经理审批</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="10">
+                            <span>分区总经理评语以及意见：</span><br>
+                            <textarea style="width:100% ;border:0px" rows="3" id="charge_opinion2"></textarea><br>
+                            <span style="float:right ;border:none;">
+                                审批结果：<input id="opinion2" type="radio" name="opinion2" value="1" />同意
+                                <input id="opinion2" type="radio" name="opinion2" value="-1" />不同意
+                                审批人：  <input id="apporve_name2" style="border:none;" />
+                                审批时间：<input id="approve_time2" style="border:none;" readonly="readonly" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd' });" />
+                            </span>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="10" class="mid-title-wrap">
+                            <div class="mid-title">总经理审批</div>
+                        </td>
+                    </tr>
+                </table>
+                <table class="normal-z" id="table_branch_show" style="display:none">
+                    <tr>
+                        <td colspan="10" class="mid-title-wrap">
+                            <div class="mid-title">分区总经理审批</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="10">
+                            <span>分区总经理评语以及意见：</span><br>
+                            <textarea style="width:100% ;border:0px" rows="3" id="charge_opinion2" disabled></textarea><br>
+                            <span style="float:right ;border:none;">
+                                审批结果：<input id="opinion2" type="radio" name="opinion2" value="1" disabled />同意
+                                <input id="opinion2" type="radio" name="opinion2" value="-1" disabled />不同意&nbsp;&nbsp;&nbsp;&nbsp;
+                                审批人：  <span id="approve_name2" style="margin-right:30px;"></span>
+                                审批时间：<span id="approve_time2" style="margin-right:20px;"></span>
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+                <table class="normal-z" id="table_boss_approve" style="display:none">
+                    <tr>
+                        <td colspan="10">
+                            <span>总经理批示：</span><br>
+                            <textarea style="width:100% ;border:0px" rows="3" id="charge_opinion3"></textarea><br>
+                            <span style="float:right ;border:none;">
+                                审批结果：<input id="opinion3" type="radio" name="opinion3" value="1" />同意
+                                <input id="opinion3" type="radio" name="opinion3" value="-1" />不同意
+                                审批人：  <input id="apporve_name3" style="border:none;" />
+                                审批时间：<input id="approve_time3" style="border:none;" readonly="readonly" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd' });" />
+                            </span>
+                        </td>
+
+                    </tr>
+                </table>
+                <table class="normal-z" id="table_boss_show" style="display:none">
+                    <tr>
+                        <td colspan="10" class="mid-title-wrap">
+                            <div class="mid-title">总经理审批</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="10">
+                            <span>总经理批示：</span><br>
+                            <textarea style="width:100% ;border:0px" rows="3" id="charge_opinion3" disabled></textarea><br>
+                            <span style="float:right ;border:none;">
+                                审批结果：<input id="opinion3" type="radio" name="opinion3" value="1" disabled />同意
+                                <input id="opinion3" type="radio" name="opinion3" value="-1" disabled />不同意 &nbsp;&nbsp;&nbsp;&nbsp;
+                                审批人：  <span id="approve_name3" style="margin-right:30px;"></span>
+                                审批时间：<span id="approve_time3" style="margin-right:20px;" readonly="readonly" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd' });"></span>
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+                <div class="main-submit">
+                    @*<input id="btnEdit" type="button" value="提交" class="btn-edit" onclick="submitForm()" />
+                    <input id="btnStar" type="button" value="返回" class="btn-back" onclick="backForm()" />*@
+
+                    <a class="btn-return" href="javascript:history.go(-1);"> 返回 </a>
+                    <a class="btn-submit" id="btnEdit" onclick="submitForm()">提交</a>
+                </div>
+				</div>
+				</div>
+            </div>
+        </div>
+</form>
+<script src="~/Content/js/detail/humanResource/gradeChange/approve.js"></script>

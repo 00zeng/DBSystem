@@ -1,0 +1,162 @@
+﻿@{
+    ViewBag.Title = "业务考核-月度考核";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<link href="~/Content/js/bootstrap-duallistbox/bootstrap-duallistbox.min.css" rel="stylesheet" />
+<style type="text/css">
+    tbody table td {
+        padding: 0;
+    }
+
+    .radio + .radio {
+        margin-top: 10px;
+    }
+
+    .table-bordered {
+        border-radius: 4px;
+    }
+</style>
+<form id="form1">
+    <div class="box-header">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-lg-3">
+                <div class="input-group  margin-bottom">
+                    <span class="input-group-addon no-border">考核名称</span>
+					<div class="formValue">
+						<input type="text" id="name" class="form-control required">
+					</div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-3">
+                <div class="input-group formValue margin-bottom">
+                    <span class="input-group-addon no-border">分公司</span>
+                    <select id="company_id" name="company_id" class="form-control required" tabindex="-1" aria-hidden="true"></select>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-4">
+                <div class="input-group margin-bottom">
+                    <span class="input-group-addon no-border">考核周期</span>
+                    <div class="formValue">
+                        <input id="start_date" name="start_date" class="form-control required" readonly="readonly" onfocus="WdatePicker({ maxDate: '#F{$dp.$D(\'end_date\')}' });" onblur="CheckValid(this)" />
+                    </div>
+                    <span class="input-group-addon">至</span>
+                    <div class="formValue">
+                        <input id="end_date" name="end_date" class="form-control required" readonly="readonly" onfocus="WdatePicker({ minDate: '#F{$dp.$D(\'start_date\')}' });" onblur="CheckValid(this)" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="box-body" style="padding-bottom:0px;">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-lg-6">
+                <div class="box box-danger">
+                    <div class="box-header">
+                        <h3 class="box-title">业务员</h3>
+                        <h6 class="inline margin">共<span class="margin" id="emp_count">0</span>人</h6>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div style="height: 50px">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalSales" id="selectSales">选择业务员</button>
+                        </div>
+                        <table id="targetEmployee"></table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-lg-6">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">月度考核</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group col-sm-12">
+                            <label>考核内容</label>
+                            <div>
+                                <div class="radio col-sm-3">
+                                    <label>
+                                        <input id="target_content" name="target_content" type="radio" value="1" checked>按实销量
+                                    </label>
+                                </div>
+                                <div class="radio col-sm-3">
+                                    <label>
+                                        <input name="target_content" type="radio" value="2">按下货量
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-sm-12">
+                            <label>考核模式</label>
+                            <div>
+                                <div class="radio col-sm-3">
+                                    <label>
+                                        <input id="target_mode" name="target_mode" type="radio" value="1" checked>按完成率
+                                    </label>
+                                </div>
+                                <div class="radio col-sm-3">
+                                    <label>
+                                        <input name="target_mode" type="radio" value="2">按销量
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="forTargetMode1" class="form-group col-sm-12">
+                            <label>目标销量</label>
+                            <div class="input-group col-sm-3  col-lg-6">
+								<div class="formValue">
+									<input id="activity_target" name="activity_target" class="form-control required digits" />
+								</div>
+                                <span class="input-group-addon">台</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-sm-6 col-lg-12">
+                            <label>备注说明</label>
+                            <textarea class="form-control" rows="3" name="note" id="note"></textarea>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+<div class="box-footer">
+    <button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+    <a type="submit" class="btn btn-default pull-right" href="/ActivityManage/SalesPerformance/Index">返回</a>
+</div>
+
+
+<div class="modal fade" id="modalSales" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">请从左侧选择业务员</h4>
+            </div>
+            <div class="modal-body">
+                <select multiple="multiple" size="10" id="duallistSales"></select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/js/bootstrap-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<script src="~/Content/js/detail/activityManage/SalesPerformance/monthly_perf_add.js"></script>
+

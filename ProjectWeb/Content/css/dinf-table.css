@@ -1,0 +1,363 @@
+﻿body {
+}
+
+#note{
+    resize: none;
+}
+
+/*工龄工资设置*/
+table.normal-setting{ width:50%; border-width:0px; font-size:14px; border-collapse:collapse; text-align:center; vertical-align:middle; color:#333;}
+table.normal-setting tr{ height:30px;}
+table.normal-setting tr td.main-title{ width:160px; font-size:13px; font-weight:bold; margin:0 auto; color:#999; padding-top:12px; padding-left:0px; text-align:center; vertical-align:top;}
+table.normal-setting tr td.mid-title-wrap{ border-width:0px; padding:0; margin:0; padding-bottom:10px;}
+table.normal-setting tr th{ color:#6B6B6B; background-color:#F3F2F0; border:solid 1px #726F6A; padding-right:10px; text-align:center;}
+table.normal-setting tr td{ border:solid 1px #726F6A; padding-left:10px;padding-right:10px; text-align:center;}
+table.normal-setting tr.more-rows th,table.normal tr.more-rows td{ height:100px; min-height:100px; vertical-align:top; line-height:30px;}
+table.normal-setting tr td span.high-light{ color:blue;}
+table.normal-setting tr td select{width:100px;height:26px;border:1px solid; border-color:#ddd;}
+table.normal-setting tr td input{width:80px;border:1px solid; border-color:#ddd;}
+
+/*员工福利样式*/
+table.normal-benefit{ width:100%; border-width:0px; font-size:14px; border-collapse:collapse; text-align:center; vertical-align:middle; color:#333;}
+table.normal-benefit tr{ height:30px;}
+table.normal-benefit tr td.main-title{ width:160px; font-size:13px; font-weight:bold; margin:0 auto; color:#999; padding-top:12px; padding-left:0px; text-align:center; vertical-align:top;}
+table.normal-benefit tr td.mid-title-wrap{ border-width:0px; padding:0; margin:0; padding-bottom:10px;}
+table.normal-benefit tr th{ width:10%; color:#6B6B6B; background-color:#F3F2F0; border:solid 1px #726F6A; padding-right:10px; text-align:center;}
+table.normal-benefit tr td{ width:10%; border:solid 1px #726F6A; padding-left:10px;padding-right:10px; text-align:left;}
+table.normal-benefit tr.more-rows th,table.normal tr.more-rows td{ height:100px; min-height:100px; vertical-align:top; line-height:30px;}
+table.normal-benefit tr td span.high-light{ color:blue;}
+table.normal-benefit tr td select{width:100%;height:26px;border:1px solid; border-color:#ddd;}
+table.normal-benefit tr td input[type=text]{width:100%;height:26px;border:1px solid; border-color:#ddd;}
+
+
+table.normal-benefit2{ width:100%; border-width:0px; font-size:14px; border-collapse:collapse; text-align:center; vertical-align:middle; color:#333;}
+table.normal-benefit2 tr{ height:30px;}
+table.normal-benefit2 tr td.main-title{ width:160px; font-size:13px; font-weight:bold; margin:0 auto; color:#999; padding-top:12px; padding-left:0px; text-align:center; vertical-align:top;}
+table.normal-benefit2 tr td.mid-title-wrap{ border-width:0px; padding:0; margin:0; padding-bottom:10px;}
+table.normal-benefit2 tr th{ width:10%; color:#6B6B6B; background-color:#F3F2F0; border:solid 1px #726F6A; padding-right:10px; text-align:center;}
+table.normal-benefit2 tr td{ width:10%; border:solid 1px #726F6A; padding-left:10px;padding-right:10px; text-align:center;}
+table.normal-benefit2 tr.more-rows th,table.normal tr.more-rows td{ height:100px; min-height:100px; vertical-align:top; line-height:30px;}
+table.normal-benefit2 tr td span.high-light{ color:blue;}
+table.normal-benefit2 tr td select{width:100%;height:26px;border:1px solid; border-color:#ddd;}
+table.normal-benefit2 tr td input[type=text]{width:100%;height:26px;border:1px solid; border-color:#ddd;}
+
+table.normal-benefitShow{ width:50%; border-width:0px; font-size:14px; border-collapse:collapse; text-align:center; vertical-align:middle; color:#333;}
+table.normal-benefitShow tr{ height:30px;}
+table.normal-benefitShow tr td.main-title{ width:160px; font-size:13px; font-weight:bold; margin:0 auto; color:#999; padding-top:12px; padding-left:0px; text-align:center; vertical-align:top;}
+table.normal-benefitShow tr td.mid-title-wrap{ border-width:0px; padding:0; margin:0; padding-bottom:10px;}
+table.normal-benefitShow tr th{ width:10%; color:#6B6B6B; background-color:#F3F2F0; border:solid 1px #726F6A; padding-right:10px; text-align:center;}
+table.normal-benefitShow tr td{ width:10%; border:solid 1px #726F6A; padding-left:10px;padding-right:10px; text-align:center;}
+table.normal-benefitShow tr.more-rows th,table.normal tr.more-rows td{ height:100px; min-height:100px; vertical-align:top; line-height:30px;}
+table.normal-benefitShow tr td span.high-light{ color:blue;}
+
+table.normal-benefitShow tr td input[type=text]{width:100%;height:26px;border:1px solid; border-color:#ddd;}
+/*留守补助样式*/
+table.normal-staySubsidy{ width:100%; border-width:0px; font-size:14px; border-collapse:collapse; text-align:center; vertical-align:middle; color:#333;}
+table.normal-staySubsidy tr{ height:30px;}
+table.normal-staySubsidy tr td.main-title{ width:160px; font-size:13px; font-weight:bold; margin:0 auto; color:#999; padding-top:12px; padding-left:0px; text-align:center; vertical-align:top;}
+table.normal-staySubsidy tr td.mid-title-wrap{ border-width:0px; padding:0; margin:0; padding-bottom:10px;}
+table.normal-staySubsidy tr th{color:#6B6B6B; background-color:#F3F2F0; border:solid 1px #726F6A; padding-right:10px; text-align:center;}
+table.normal-staySubsidy tr td{border:solid 1px #726F6A; padding-left:10px;padding-right:10px; text-align:left;}
+table.normal-staySubsidy tr.more-rows th,table.normal tr.more-rows td{ height:100px; min-height:100px; vertical-align:top; line-height:30px;}
+table.normal-staySubsidy tr td span.high-light{ color:blue;}
+table.normal-staySubsidy tr td select{width:100px;height:26px;border:1px solid; border-color:#ddd;}
+table.normal-staySubsidy tr td input{ border:1px solid; border-color:#ddd;}
+/*审批样式*/
+table.normal-approve{ width:100%; border-width:0px; font-size:14px; border-collapse:collapse; text-align:center; vertical-align:middle; color:#333;}
+table.normal-approve tr{ height:30px;}
+table.normal-approve tr td.main-title{ width:160px; font-size:13px; font-weight:bold; margin:0 auto; color:#999; padding-top:12px; padding-left:0px; text-align:center; vertical-align:top;}
+table.normal-approve tr td.mid-title-wrap{ border-width:0px; padding:0; margin:0; padding-bottom:10px;}
+table.normal-approve tr th{ color:#6B6B6B; background-color:#F3F2F0; border:solid 1px #726F6A; padding-right:10px; text-align:center;}
+table.normal-approve tr td{ border:solid 1px #726F6A; padding-left:10px;padding-right:10px; text-align:center;}
+table.normal-approve tr.more-rows th,table.normal tr.more-rows td{ height:100px; min-height:100px; vertical-align:top; line-height:30px;}
+table.normal-approve tr td span.high-light{ color:blue;}
+table.normal-approve tr td input{border:1px solid; border-color:#ddd;}
+/*查看样式*/
+table.normal-show{ width:60%; border-width:0px; font-size:14px; border-collapse:collapse; text-align:center; vertical-align:middle; color:#333;}
+table.normal-show tr{ height:30px;}
+table.normal-show tr td.main-title{ width:160px; font-size:13px; font-weight:bold; margin:0 auto; color:#999; padding-top:12px; padding-left:0px; text-align:center; vertical-align:top;}
+table.normal-show tr td.mid-title-wrap{ border-width:0px; padding:0; margin:0; padding-bottom:10px;}
+table.normal-show tr th{ color:#6B6B6B; background-color:#F3F2F0; border:solid 1px #726F6A; padding-right:10px; text-align:center;}
+table.normal-show tr td{ border:solid 1px #726F6A; padding-left:10px;padding-right:10px; text-align:center;}
+table.normal-show tr.more-rows th,table.normal tr.more-rows td{ height:100px; min-height:100px; vertical-align:top; line-height:30px;}
+table.normal-show tr td span.high-light{ color:blue;}
+table.normal-show tr td input{border:1px solid; border-color:#ddd;}
+/*业务考核样式*/
+table.normal-performance{ width:100%; border-width:0px; font-size:14px; border-collapse:collapse; text-align:center; vertical-align:middle; color:#333;}
+table.normal-performance tr{ height:30px;}
+table.normal-performance tr td.main-title{ width:160px; font-size:13px; font-weight:bold; margin:0 auto; color:#999; padding-top:12px; padding-left:0px; text-align:center; vertical-align:top;}
+table.normal-performance tr td.mid-title-wrap{ border-width:0px; padding:0; margin:0; padding-bottom:10px;}
+table.normal-performance tr th{width:20%; color:#6B6B6B; background-color:#F3F2F0; border:solid 1px #726F6A; padding-right:10px; text-align:right;}
+table.normal-performance tr td{width:40%; border:solid 1px #726F6A; padding-left:10px;padding-right:10px; text-align:left;}
+table.normal-performance tr.more-rows th,table.normal tr.more-rows td{ height:100px; min-height:100px; vertical-align:top; line-height:30px;}
+table.normal-performance tr td span.high-light{ color:blue;}
+table.normal-performance tr td select{width:100px;height:26px;border:1px solid; border-color:#ddd;}
+table.normal-performance tr td input{border:1px solid; border-color:#ddd;}
+/*比赛样式*/
+table.normal-ranking{ width:100%; border-width:0px; font-size:14px; border-collapse:collapse; text-align:center; vertical-align:middle; color:#333;}
+table.normal-ranking tr{ height:30px;}
+table.normal-ranking tr td.main-title{ width:160px; font-size:13px; font-weight:bold; margin:0 auto; color:#999; padding-top:12px; padding-left:0px; text-align:center; vertical-align:top;}
+table.normal-ranking tr td.mid-title-wrap{ border-width:0px; padding:0; margin:0; padding-bottom:10px;}
+table.normal-ranking tr th{width:10%; color:#6B6B6B; background-color:#F3F2F0; border:solid 1px #726F6A; padding-right:10px; text-align:right;}
+table.normal-ranking tr td{width:30%; border:solid 1px #726F6A; padding-left:10px;padding-right:10px; text-align:left;}
+table.normal-ranking tr.more-rows th,table.normal tr.more-rows td{ height:100px; min-height:100px; vertical-align:top; line-height:30px;}
+table.normal-ranking tr td span.high-light{ color:blue;}
+/*table.normal-ranking tr td select{width:100px;height:26px;border:1px solid; border-color:#ddd;}*/
+/*table.normal-ranking tr td input:not(:first-child){margin-left:10%; border:1px solid; border-color:#ddd;}*/
+table.normal-ranking tr td textarea{width:100%;border:1px solid; border-color:#ddd;}
+
+/*比赛样式1*/
+table.normal-ranking1{ width:100%; border-width:0px; font-size:14px; border-collapse:collapse; text-align:center; vertical-align:middle; color:#333;}
+table.normal-ranking1 tr{ height:30px;}
+table.normal-ranking1 tr td.main-title{ width:160px; font-size:13px; font-weight:bold; margin:0 auto; color:#999; padding-top:12px; padding-left:0px; text-align:center; vertical-align:top;}
+table.normal-ranking1 tr td.mid-title-wrap{ border-width:0px; padding:0; margin:0; padding-bottom:10px;}
+table.normal-ranking1 tr th{ color:#6B6B6B; background-color:#F3F2F0; border:solid 1px #726F6A; padding-right:10px; text-align:right;}
+table.normal-ranking1 tr td{ border:solid 1px #726F6A; padding-left:10px;padding-right:10px; text-align:left;}
+table.normal-ranking1 tr.more-rows th,table.normal tr.more-rows td{ height:100px; min-height:100px; vertical-align:top; line-height:30px;}
+table.normal-ranking1 tr td span.high-light{ color:blue;}
+/*table.normal-ranking1 tr td select{width:100px;height:26px;border:1px solid; border-color:#ddd;}*/
+/*table.normal-ranking1 tr td input:not(:first-child){margin-left:10%; border:1px solid; border-color:#ddd;}*/
+table.normal-ranking1 tr td textarea{width:100%;border:1px solid; border-color:#ddd;}
+
+
+/*PK样式*/
+table.normal-pk{ width:100%; border-width:0px; font-size:14px; border-collapse:collapse; text-align:center; vertical-align:middle; color:#333;}
+table.normal-pk tr{ height:30px;}
+table.normal-pk tr td.main-title{ width:160px; font-size:13px; font-weight:bold; margin:0 auto; color:#999; padding-top:12px; padding-left:0px; text-align:center; vertical-align:top;}
+table.normal-pk tr td.mid-title-wrap{ border-width:0px; padding:0; margin:0; padding-bottom:10px;}
+table.normal-pk tr th{width:10%; color:#6B6B6B; background-color:#F3F2F0; border:solid 1px #726F6A; padding-right:10px; text-align:right;}
+table.normal-pk tr td{width:40%; border:solid 1px #726F6A; padding-left:10px;padding-right:10px; text-align:left;}
+table.normal-pk tr.more-rows th,table.normal tr.more-rows td{ height:100px; min-height:100px; vertical-align:top; line-height:30px;}
+table.normal-pk tr td span.high-light{ color:blue;}
+table.normal-pk tr td select{width:100px;height:26px;border:1px solid; border-color:#ddd;}
+table.normal-pk tr td input:not(:first-child){margin-left:10%; border:1px solid; border-color:#ddd;}
+table.normal-pk tr td textarea{width:100%;border:1px solid; border-color:#ddd;}
+
+/*岗位薪资--导购员样式*/
+table.normal-guide{ width:60%; border-width:0px; font-size:14px; border-collapse:collapse; text-align:center; vertical-align:middle; color:#333;}
+table.normal-guide tr{ height:30px;}
+table.normal-guide tr td.main-title{ width:160px; font-size:13px; font-weight:bold; margin:0 auto; color:#999; padding-top:12px; padding-left:0px; text-align:center; vertical-align:top;}
+table.normal-guide tr td.mid-title-wrap{ border-width:0px; padding:0; margin:0; padding-bottom:10px;}
+table.normal-guide tr th{ color:#6B6B6B; background-color:#F3F2F0; border:solid 1px #726F6A; padding-right:10px; text-align:center;}
+table.normal-guide tr th:first-child{width:200px;  color:#6B6B6B; background-color:#F3F2F0; border:solid 1px #726F6A; padding-right:10px; text-align:center;}
+table.normal-guide tr td{border:solid 1px #726F6A; padding-left:10px;padding-right:10px; text-align:center;}
+table.normal-guide tr.more-rows th,table.normal tr.more-rows td{ height:100px; min-height:100px; vertical-align:top; line-height:30px;}
+table.normal-guide tr td span.high-light{ color:blue;}
+table.normal-guide tr td select{width:122px;height:26px;border:1px solid; border-color:#ddd;}
+table.normal-guide tr td input{width:80px;height:26px;border:1px solid; border-color:#ddd;}
+
+table.normal-Addguide{ width:60%; border-width:0px; font-size:14px; border-collapse:collapse; text-align:center; vertical-align:middle; color:#333;}
+table.normal-Addguide tr{ height:30px;}
+table.normal-Addguide tr td.main-title{ width:160px; font-size:13px; font-weight:bold; margin:0 auto; color:#999; padding-top:12px; padding-left:0px; text-align:center; vertical-align:top;}
+table.normal-Addguide tr td.mid-title-wrap{ border-width:0px; padding:0; margin:0; padding-bottom:10px;}
+table.normal-Addguide tr th{ width:20%; color:#6B6B6B; background-color:#F3F2F0; border:solid 1px #726F6A; padding-right:10px; text-align:right;}
+table.normal-Addguide tr th:first-child{ 200px; color:#6B6B6B; background-color:#F3F2F0; border:solid 1px #726F6A; padding-right:10px; text-align:right;}
+table.normal-Addguide tr td{ width:40%;  border:solid 1px #726F6A; padding-left:10px;padding-right:10px; text-align:left;}
+table.normal-Addguide tr.more-rows th,table.normal tr.more-rows td{ height:100px; min-height:100px; vertical-align:top; line-height:30px;}
+table.normal-Addguide tr td span.high-light{ color:blue;}
+table.normal-Addguide tr td input[type=text]{width:150px;height:26px;border:1px solid; border-color:#ddd;}
+
+/*导购员薪资设置*/
+table.normal-salaryGuide{ width:100%; border-width:0px; font-size:14px; border-collapse:collapse; text-align:center; vertical-align:middle; color:#333;}
+table.normal-salaryGuide tr{ height:30px;}
+table.normal-salaryGuide tr td.main-title{ width:160px; font-size:13px; font-weight:bold; margin:0 auto; color:#999; padding-top:12px; padding-left:0px; text-align:center; vertical-align:top;}
+table.normal-salaryGuide tr td.mid-title-wrap{ border-width:0px; padding:0; margin:0; padding-bottom:10px;}
+table.normal-salaryGuide tr th{ width:20%; color:#6B6B6B; background-color:#F3F2F0; border:solid 1px #726F6A; padding-right:10px; text-align:right;}
+table.normal-salaryGuide tr td{ width:80%; border:solid 1px #726F6A; padding-left:10px;padding-right:10px; text-align:left;}
+table.normal-salaryGuide tr.more-rows th,table.normal tr.more-rows td{ height:100px; min-height:100px; vertical-align:top; line-height:30px;}
+table.normal-salaryGuide tr td span.high-light{ color:blue;}
+table.normal-salaryGuide tr td input[type=radio]:not(:first-child){margin-left:5%; border:1px solid; border-color:#ddd;}
+table.normal-salaryGuide tr td input[type=text]{height:26px;border:1px solid; border-color:#ddd;}
+/*员工奖罚样式*/
+table.normal-rewards{ width:100%; border-width:0px; font-size:14px; border-collapse:collapse; text-align:center; vertical-align:middle; color:#333;}
+table.normal-rewards tr{ height:30px;}
+table.normal-rewards tr td.main-title{text-align:left; width:160px; font-size:13px; font-weight:bold; margin:0 auto; color:#999; padding-top:12px; padding-left:0px; text-align:left; vertical-align:top;}
+table.normal-rewards tr td.mid-title-wrap{ border-width:0px; padding:0; margin:0; padding-bottom:10px;}
+table.normal-rewards tr th{  color:#6B6B6B; background-color:#F3F2F0; border:solid 1px #726F6A; padding-right:10px; text-align:center;}
+table.normal-rewards tr td{  border:solid 1px #726F6A; padding-left:10px;padding-right:10px; text-align:center;}
+table.normal-rewards tr.more-rows th,table.normal tr.more-rows td{ height:100px; min-height:100px; vertical-align:top; line-height:30px;}
+table.normal-rewards tr td span.high-light{ color:blue;}
+
+/*形象返利薪资设置*/
+table.normal-image{ width:100%; border-width:0px; font-size:14px; border-collapse:collapse; text-align:center; vertical-align:middle; color:#333;}
+table.normal-image tr{ height:30px;}
+table.normal-image tr td.main-title{ width:160px; font-size:13px; font-weight:bold; margin:0 auto; color:#999; padding-top:12px; padding-left:0px; text-align:center; vertical-align:top;}
+table.normal-image tr td.mid-title-wrap{ border-width:0px; padding:0; margin:0; padding-bottom:10px;}
+table.normal-image tr th{ width:20%; color:#6B6B6B; background-color:#F3F2F0; border:solid 1px #726F6A; padding-right:10px; text-align:right;}
+table.normal-image tr td{ width:80%; border:solid 1px #726F6A; padding-left:10px;padding-right:10px; text-align:left;}
+table.normal-image tr.more-rows th,table.normal tr.more-rows td{ height:100px; min-height:100px; vertical-align:top; line-height:30px;}
+table.normal-image tr td span.high-light{ color:blue;}
+table.normal-image tr td input[type=radio]:not(:first-child){margin-left:5%; border:1px solid; border-color:#ddd;}
+table.normal-image tr td input[type=text]{width:200px;height:24px;border:1px solid; border-color:#ddd;}
+table.normal-image tr td textarea{width:100%;border:1px solid; border-color:#ddd;}
+
+
+/*实销信息样式*/
+table.normal-s{ width:100%; border-width:0px; font-size:12px; border-collapse:collapse; text-align:center; vertical-align:middle; color:#333;}
+table.normal-s tr{ height:30px;}
+table.normal-s tr td.main-title{ width:160px; font-size:13px; font-weight:bold; margin:0 auto; color:#999; padding-top:12px; padding-left:0px; text-align:center; vertical-align:top;}
+table.normal-s tr td.mid-title-wrap{ border-width:0px; padding:0; margin:0; padding-bottom:10px;}
+table.normal-s tr th{ width:7%; color:#6B6B6B; background-color:#F3F2F0; border:solid 1px #726F6A; padding:0 5px; text-align:center;}
+table.normal-s tr td{ width:7%; border:solid 1px #726F6A; /*padding-left:10px;padding-right:10px;*/ text-align:center;}
+table.normal-s tr.more-rows th,table.normal tr.more-rows td{ height:100px; min-height:100px; vertical-align:top; line-height:30px;}
+table.normal-s tr td span.high-light{ color:blue;}
+table.normal-s tr td input{width:980px;height:100px;border:0;border-bottom:1px solid #000}
+table.normal-s tr td textarea{width:960px;height:100px;margin:10px 0 10px 10px}
+table.normal-s tr td select{ width:289px;height:21px;}
+
+/*岗位调整样式*/
+table.normal-z{ width:100%; border-width:0px; font-size:14px; border-collapse:collapse; text-align:center; vertical-align:middle; color:#333;}
+table.normal-z tr{ height:30px;}
+table.normal-z tr td.main-title{ width:160px; font-size:13px; font-weight:bold; margin:0 auto; color:#999; padding-top:12px; padding-left:0px; text-align:center; vertical-align:top;}
+table.normal-z tr td.mid-title-wrap{ border-width:0px; padding:0; margin:0; padding-bottom:10px;}
+table.normal-z tr th{ width:10%; color:#6B6B6B; background-color:#F3F2F0; border:solid 1px #726F6A; padding-right:10px; text-align:right;}
+table.normal-z tr td{ width:10%; border:solid 1px #726F6A; padding-left:10px;padding-right:10px; text-align:left;}
+table.normal-z tr.more-rows th,table.normal tr.more-rows td{ height:100px; min-height:100px; vertical-align:top; line-height:30px;}
+table.normal-z tr td span.high-light{ color:blue;}
+table.normal-z tr td select{width:122px;height:26px;border:1px solid; border-color:#ddd;}
+/*个人岗位调整申请样式*/
+table.normal-MyChange{ width:100%; border-width:0px; font-size:14px; border-collapse:collapse; text-align:center; vertical-align:middle; color:#333;}
+table.normal-MyChange tr{ height:30px;}
+table.normal-MyChange tr td.main-title{ width:160px; font-size:13px; font-weight:bold; margin:0 auto; color:#999; padding-top:12px; padding-left:0px; text-align:center; vertical-align:top;}
+table.normal-MyChange tr td.mid-title-wrap{ border-width:0px; padding:0; margin:0; padding-bottom:10px;}
+table.normal-MyChange tr th{ width:10%; color:#6B6B6B; background-color:#F3F2F0; border:solid 1px #726F6A; padding-right:10px; text-align:right;}
+table.normal-MyChange tr td{ width:10%; border:solid 1px #726F6A; padding-left:10px;padding-right:10px; text-align:left;}
+table.normal-MyChange tr.more-rows th,table.normal tr.more-rows td{ height:100px; min-height:100px; vertical-align:top; line-height:30px;}
+table.normal-MyChange tr td span.high-light{ color:blue;}
+table.normal-MyChange tr td select{width:100%;height:26px;border:1px solid; border-color:#ddd;}
+table.normal-MyChange tr td input[type=text]{width:100%;height:26px;border:1px solid; border-color:#ddd;}
+/*薪资 补贴样式*/
+table.normal-z1{ width:100%; border-width:0px; font-size:14px; border-collapse:collapse; text-align:center; vertical-align:middle; color:#333;}
+table.normal-z1 tr{ height:30px;}
+table.normal-z1 tr td.main-title{ width:160px; font-size:13px; font-weight:bold; margin:0 auto; color:#999; padding-top:12px; padding-left:0px; text-align:center; vertical-align:top;}
+table.normal-z1 tr td.mid-title-wrap{ border-width:0px; padding:0; margin:0; padding-bottom:10px;}
+table.normal-z1 tr th{ width:10%; color:#6B6B6B; background-color:#F3F2F0; border:solid 1px #726F6A; padding-right:10px; text-align:right;}
+table.normal-z1 tr td{ width:30%; border:solid 1px #726F6A; padding-left:10px;padding-right:10px; text-align:left;}
+table.normal-z1 tr.more-rows th,table.normal tr.more-rows td{ height:100px; min-height:100px; vertical-align:top; line-height:30px;}
+table.normal-z1 tr td span.high-light{ color:blue;}
+table.normal-z1 tr td select{width:122px;height:26px;border:1px solid; border-color:#ddd;}
+
+/*岗位 培训师 样式*/
+table.normal-trainer{ width:100%; border-width:0px; font-size:14px; border-collapse:collapse; text-align:center; vertical-align:middle; color:#333;}
+table.normal-trainer tr{ height:30px;}
+table.normal-trainer tr td.main-title{ width:160px; font-size:13px; font-weight:bold; margin:0 auto; color:#999; padding-top:12px; padding-left:0px; text-align:center; vertical-align:top;}
+table.normal-trainer tr td.mid-title-wrap{ border-width:0px; padding:0; margin:0; padding-bottom:10px;}
+table.normal-trainer tr th{ width:10%; color:#6B6B6B; background-color:#F3F2F0; border:solid 1px #726F6A; padding-right:10px; text-align:right;}
+table.normal-trainer tr:first-child th{ width:10%; color:#6B6B6B; background-color:#F3F2F0; border:solid 1px #726F6A; padding-right:10px; text-align:center;}
+table.normal-trainer tr td{ width:10%; border:solid 1px #726F6A; padding-left:10px;padding-right:10px; text-align:center;}
+table.normal-trainer tr.more-rows th,table.normal tr.more-rows td{ height:100px; min-height:100px; vertical-align:top; line-height:30px;}
+table.normal-trainer tr td span.high-light{ color:blue;}
+table.normal-trainer tr td input{width:80px;height:26px;border:1px solid; border-color:#ddd;}
+
+/*薪资 补贴样式*/
+table.normal-SalarySetting{ width:100%; border-width:0px; font-size:14px; border-collapse:collapse; text-align:center; vertical-align:middle; color:#333;}
+table.normal-SalarySetting tr{ height:30px;}
+table.normal-SalarySetting tr td.main-title{ width:160px; font-size:13px; font-weight:bold; margin:0 auto; color:#999; padding-top:12px; padding-left:0px; text-align:center; vertical-align:top;}
+table.normal-SalarySetting tr td.mid-title-wrap{ border-width:0px; padding:0; margin:0; padding-bottom:10px;}
+table.normal-SalarySetting tr th{ width:10%; color:#6B6B6B; background-color:#F3F2F0; border:solid 1px #726F6A; padding-right:10px; text-align:right;}
+table.normal-SalarySetting tr td{ width:30%; border:solid 1px #726F6A; padding-left:10px;padding-right:10px; text-align:left;}
+table.normal-SalarySetting tr.more-rows th,table.normal tr.more-rows td{ height:100px; min-height:100px; vertical-align:top; line-height:30px;}
+table.normal-SalarySetting tr td span.high-light{ color:blue;}
+table.normal-SalarySetting tr td select{width:122px;height:26px;border:1px solid; border-color:#ddd;}
+table.normal-SalarySetting tr td input[type=number]{width:80px;height:25px;border:1px solid; border-color:#ddd;}
+table.normal-SalarySetting tr td input[type=text]{height:25px;border:1px solid; border-color:#ddd;}
+
+
+
+/*请假样式*/
+table.normal-leave{ width:100%; border-width:0px; font-size:14px; border-collapse:collapse; text-align:center; vertical-align:middle; color:#333;}
+table.normal-leave tr{ height:30px;}
+table.normal-leave tr td.main-title{ width:160px; font-size:13px; font-weight:bold; margin:0 auto; color:#999; padding-top:12px; padding-left:0px; text-align:center; vertical-align:top;}
+table.normal-leave tr td.mid-title-wrap{ border-width:0px; padding:0; margin:0; padding-bottom:10px;}
+table.normal-leave tr th{ width:10%; color:#6B6B6B; background-color:#F3F2F0; border:solid 1px #726F6A; padding-right:10px; text-align:right;}
+table.normal-leave tr td{ width:10%; border:solid 1px #726F6A; padding-left:10px;padding-right:10px; text-align:left;}
+table.normal-leave tr.more-rows th,table.normal tr.more-rows td{ height:100px; min-height:100px; vertical-align:top; line-height:30px;}
+table.normal-leave tr td span.high-light{ color:blue;}
+table.normal-leave tr td input[type=text]{height:26px;border:1px solid; border-color:#ddd;}
+
+/*薪资结算样式*/
+table.normal-Office{ width:100%; border-width:0px; font-size:14px; border-collapse:collapse; text-align:center; vertical-align:middle; color:#333;}
+table.normal-Office tr{ height:30px;}
+table.normal-Office tr td.main-title{ width:160px; font-size:13px; font-weight:bold; margin:0 auto; color:#999; padding-top:12px; padding-left:0px; text-align:center; vertical-align:top;}
+table.normal-Office tr td.mid-title-wrap{ border-width:0px; padding:0; margin:0; padding-bottom:10px;}
+table.normal-Office tr th{ width:15%; color:#6B6B6B; background-color:#F3F2F0; border:solid 1px #726F6A; padding-right:10px; text-align:right;}
+table.normal-Office tr td{ width:35%; border:solid 1px #726F6A; padding-left:10px;padding-right:10px; text-align:left;}
+table.normal-Office tr.more-rows th,table.normal tr.more-rows td{ height:100px; min-height:100px; vertical-align:top; line-height:30px;}
+table.normal-Office tr td span.high-light{ color:blue;}
+table.normal-Office tr td select{width:122px;height:26px;border:1px solid; border-color:#ddd;}
+
+/*薪资样式*/
+table.normal-salary{ width:100%; border-width:0px; font-size:14px; border-collapse:collapse; text-align:center; vertical-align:middle; color:#333;}
+table.normal-salary tr{ height:30px;}
+table.normal-salary tr td.main-title{ width:160px; font-size:13px; font-weight:bold; margin:0 auto; color:#999; padding-top:12px; padding-left:0px; text-align:center; vertical-align:top;}
+table.normal-salary tr td.mid-title-wrap{ border-width:0px; padding:0; margin:0; padding-bottom:10px;}
+table.normal-salary tr th{  color:#6B6B6B; background-color:#F3F2F0; border:solid 1px #726F6A; padding-right:10px; text-align:right;}
+table.normal-salary tr td{  border:solid 1px #726F6A; padding-left:10px;padding-right:10px; text-align:left;}
+table.normal-salary tr.more-rows th,table.normal tr.more-rows td{ height:100px; min-height:100px; vertical-align:top; line-height:30px;}
+table.normal-salary tr td span.high-light{ color:blue;}
+table.normal-salary tr td select{width:122px;height:26px;border:1px solid; border-color:#ddd;}
+
+
+/*买断样式*/
+table.normal-buyout{ width:100%; border-width:0px; font-size:14px; border-collapse:collapse; text-align:center; vertical-align:middle; color:#333;}
+table.normal-buyout tr{ height:30px;}
+table.normal-buyout tr td.main-title{ width:160px; font-size:13px; font-weight:bold; margin:0 auto; color:#999; padding-top:12px; padding-left:0px; text-align:center; vertical-align:top;}
+table.normal-buyout tr td.mid-title-wrap{ border-width:0px; padding:0; margin:0; padding-bottom:10px;}
+table.normal-buyout tr th{ width:10%; color:#6B6B6B; background-color:#F3F2F0; border:solid 1px #726F6A; padding-right:10px; text-align:right;}
+table.normal-buyout tr td{ width:10%; border:solid 1px #726F6A; padding-left:10px;padding-right:10px; text-align:left;}
+table.normal-buyout tr.more-rows th,table.normal tr.more-rows td{ height:100px; min-height:100px; vertical-align:top; line-height:30px;}
+table.normal-buyout tr td span.high-light{ color:blue;}
+table.normal-buyout tr td select{width:100%;height:26px;border:1px solid; border-color:#ddd;}
+table.normal-buyout tr td input{width:100%;height:26px;border:1px solid; border-color:#ddd;}
+
+
+/*运费样式*/
+table.normal-shipping{ width:60%; border-width:0px; font-size:14px; border-collapse:collapse; text-align:center; vertical-align:middle; color:#333;}
+table.normal-shipping tr{ height:30px;}
+table.normal-shipping tr td.main-title{ width:160px; font-size:13px; font-weight:bold; margin:0 auto; color:#999; padding-top:12px; padding-left:0px; text-align:center; vertical-align:top;}
+table.normal-shipping tr td.mid-title-wrap{ border-width:0px; padding:0; margin:0; padding-bottom:10px;}
+table.normal-shipping tr th{ width:10%; color:#6B6B6B; background-color:#F3F2F0; border:solid 1px #726F6A; padding-right:10px; text-align:right;}
+table.normal-shipping tr td{ width:10%; border:solid 1px #726F6A; padding-left:10px;padding-right:10px; text-align:left;}
+table.normal-shipping tr.more-rows th,table.normal tr.more-rows td{ height:100px; min-height:100px; vertical-align:top; line-height:30px;}
+table.normal-shipping tr td span.high-light{ color:blue;}
+table.normal-shipping tr td input{width:80px;height:26px;border:1px solid; border-color:#ddd;}
+/*table.normal-shipping tr td:nth-child(1) input:nth-child(1){width:40%;height:26px;border:1px solid; border-color:#ff0000;float:left}
+table.normal-shipping tr td:nth-child(1) input:nth-child(2){width:40%;height:26px;border:1px solid; border-color:#ff0000;float:right;}*/
+
+/*福利对象样式*/
+table.normal-be{ width:100%; border-width:0px; font-size:14px; border-collapse:collapse; text-align:center; vertical-align:middle; color:#333;}
+table.normal-be tr{ height:30px;}
+table.normal-be tr td.main-title{ width:160px; font-size:13px; font-weight:bold; margin:0 auto; color:#999; padding-top:12px; padding-left:0px; text-align:center; vertical-align:top;}
+table.normal-be tr td.mid-title-wrap{ border-width:0px; padding:0; margin:0; padding-bottom:10px;}
+table.normal-be tr th{color:#6B6B6B; background-color:#F3F2F0; border:solid 1px #726F6A; padding-right:10px; text-align:center;}
+table.normal-be tr td{border:solid 1px #726F6A; padding-left:10px;padding-right:10px; text-align:left;}
+table.normal-be tr.more-rows th,table.normal tr.more-rows td{ height:100px; min-height:100px; vertical-align:top; line-height:30px;}
+table.normal-be tr td span.high-light{ color:blue;}
+table.normal-be tr td p{margin:0px}
+table.normal-be tr td input[type=text]{border:1px solid; border-color:#ddd;}
+
+
+table.normal-recommendation{ width:100%; border-width:0px; font-size:14px; border-collapse:collapse; text-align:center; vertical-align:middle; color:#333;}
+table.normal-recommendation tr{ height:30px;}
+table.normal-recommendation tr td.main-title{ width:160px; font-size:13px; font-weight:bold; margin:0 auto; color:#999; padding-top:12px; padding-left:0px; text-align:center; vertical-align:top;}
+table.normal-recommendation tr td.mid-title-wrap{ border-width:0px; padding:0; margin:0; padding-bottom:10px;}
+table.normal-recommendation tr th{width:10%; color:#6B6B6B; background-color:#F3F2F0; border:solid 1px #726F6A; padding-right:10px; text-align:right;}
+table.normal-recommendation tr td{width:30%; border:solid 1px #726F6A; padding-left:10px;padding-right:10px; text-align:left;}
+table.normal-recommendation tr.more-rows th,table.normal tr.more-rows td{ height:100px; min-height:100px; vertical-align:top; line-height:30px;}
+table.normal-recommendation tr td span.high-light{ color:blue;}
+/*tablnormal-recommendationng tr td select{width:100px;height:26px;border:1px solid; border-color:#ddd;}*/
+table.normal-recommendation tr td input[type=text]{width:40%; border:1px solid; border-color:#ddd;}
+table.normal-recommendation .ue-container input[type=text]{width:100%; border:1px solid; border-color:#ddd;}
+table.normal-recommendation tr td textarea{width:100%;border:1px solid; border-color:#ddd;}
+
+/*审批 无固定th,td宽度样式*/
+table.normal-Change{ width:100%; border-width:0px; font-size:14px; border-collapse:collapse; text-align:center; vertical-align:middle; color:#333;}
+table.normal-Change tr{ height:30px;}
+table.normal-Change tr td.main-title{ width:160px; font-size:13px; font-weight:bold; margin:0 auto; color:#999; padding-top:12px; padding-left:0px; text-align:center; vertical-align:top;}
+table.normal-Change tr td.mid-title-wrap{ border-width:0px; padding:0; margin:0; padding-bottom:10px;}
+table.normal-Change tr th{ color:#6B6B6B; background-color:#F3F2F0; border:solid 1px #726F6A; padding-right:10px; text-align:right;}
+table.normal-Change tr td{ border:solid 1px #726F6A; padding-left:10px;padding-right:10px; text-align:left;}
+table.normal-Change tr.more-rows th,table.normal tr.more-rows td{ height:100px; min-height:100px; vertical-align:top; line-height:30px;}
+table.normal-Change tr td span.high-light{ color:blue;}
+table.normal-Change tr td input{border:1px solid; border-color:#ddd;}
+

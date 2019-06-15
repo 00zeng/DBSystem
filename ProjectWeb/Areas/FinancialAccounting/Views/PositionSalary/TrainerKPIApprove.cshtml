@@ -1,0 +1,155 @@
+﻿@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Form_dinf.cshtml";
+}
+<link href="~/Content/css/dinf-table.css" rel="stylesheet" />
+
+<style>
+    .normal-z tr th {
+        background-color: #cccccc;
+    }
+    .normal-z span {
+        width: 90px;
+    }
+</style>
+<form id="form1">
+    <header class="panel-heading">
+        <span style="color:#ffffff">培训师KPI审批</span>
+    </header>
+    <div class="panel-body" style="background:white;">
+        <div class="row">
+            <div class="col-xs-1">
+            </div>
+            <div class="col-xs-10" style="min-width: 1000px">
+            <div class="form">
+                <div class="main-title main-title2">
+                    <div class="main-title2-type" style="white-space:nowrap">
+                        分公司：<span id="company_name" style="margin-right:60px"></span>
+                        生效时间：<span id="effect_date" class="format_date_ym"></span>
+
+                    </div>
+                </div>
+
+				<div class="mid-title-wrap">
+                    <div class="mid-title">KPI</div>
+                </div>
+                <table class="normal-approve" id="trainerManageKPI_table" style="white-space:nowrap">
+                    <tr>
+                        <th>考核项目</th>
+                        <th>考核内容</th>
+                        <th>建议金额（元）</th>
+                        <th>标准金额（元）</th>
+                        <th>考核标准（元）</th>
+                        <th>KPI（元）</th>
+                    </tr>
+                    <tr>
+                        <th rowspan="2">V雪球</th>
+                        <th>活跃人数</th>
+                        <td><span id="snowball_number_advice"></span></td>
+                        <td><span id="snowball_number_standard"></span>元/人</td>
+                        <td><span id="snowball_number_assess"></span>人</td>
+                        <td><span id="snowball_number_kpi">(实际活跃人数 - 考核标准) * 标准金额</span><span style="color:red;float:right">只罚不奖</span></td>
+                    </tr>
+                    <tr>
+                        <th>V雪球转化率</th>
+                        <td><span id="snowball_ratio_advice"></span></td>
+                        <td><span id="snowball_ratio_standard"></span>元</td>
+                        <td><span id="snowball_ratio_assess"></span>%</td>
+                        <td><span id="snowball_ratio_kpi">[ 1 - ( 考核标准 - 实际转化率 ) * 5 ] * 标准金额</span></td>
+                    </tr>
+                    <tr>
+                        <th rowspan="2">导购服务</th>
+                        <th>人均产值</th>
+                        <td><span id="shopguide_average_advice"></span></td>
+                        <td><span id="shopguide_average_standard"></span>元</td>
+                        <td><span id="shopguide_average_assess"></span>台</td>
+                        <td><span id="shopguide_average_kpi">(导购产生销量 / 产生销量导购人数) / 考核标准 * 100% * 标准金额</span></td>
+                    </tr>
+                    <tr>
+                        <th>导购离职率</th>
+                        <td><span id="shopguide_resign_advice"></span></td>
+                        <td><span id="shopguide_resign_standard"></span>元</td>
+                        <td><span id="shopguide_resign_assess"></span>%</td>
+                        <td><span id="shopguide_resign_kpi">{ 1 - [ 离职人数 / (月底人数 + 离职人数) - 考核标准 ] * 5 } * 标准金额</span></td>
+                    </tr>
+                    <tr>
+                        <th rowspan="2">产品培推</th>
+                        <th>高端机占比</th>
+                        <td><span id="product_expensive_advice"></span></td>
+                        <td><span id="product_expensive_standard"></span>元</td>
+                        <td><span id="product_expensive_assess"></span>%</td>
+                        <td><span id="product_expensive_kpi">[ 1 - ( 考核标准 - 下属导购实销高端机占比 ) * 5 ] * 标准金额</span></td>
+                    </tr>
+                    <tr>
+                        <th>培训场次</th>
+                        <td><span id="product_train_advice"></span></td>
+                        <td><span id="product_train_standard"></span>元/场</td>
+                        <td><span id="product_train_assess"></span>场</td>
+                        <td><span id="product_train_kpi">( 实际场次 - 考核标准 ) * 标准金额</span><span style="color:red;float:right">只罚不奖</span></td>
+                    </tr>
+                    <tr>
+                        <th rowspan="2">形象</th>
+                        <th>形象执行效率</th>
+                        <td><span id="image_efficiency_advice"></span></td>
+                        <td><span id="image_efficiency_standard"></span>元</td>
+                        <td>100分</td>
+                        <td><span id="image_efficiency_kpi">品牌部打分分值 / 100 * 标准金额</span></td>
+                    </tr>
+                    <tr>
+                        <th>形象罚款</th>
+                        <td><span id="image_fine_advice"></span></td>
+                        <td><span id="image_fine_standard"></span>元/家</td>
+                        <td>抽查<span id="image_fine_number" style="width:60px"></span>家</td>
+                        <td><span id="image_fine_kpi">不合格门店数 * 标准金额</span><span style="color:red;float:right">只罚不奖</span></td>
+                    </tr>
+                    <tr>
+                        <th>必选项</th>
+                        <th>终端经理打分</th>
+                        <td><span id="manager_scoring_advice"></span></td>
+                        <td><span id="manager_scoring_standard"></span>元</td>
+                        <td>100分</td>
+                        <td><span id="manager_scoring_kpi">( 工作态度分值 + 效率分值 ) / 100 * 标准金额</span></td>
+                    </tr>
+                </table>
+                <div class="mid-title-wrap">
+                    <div class="mid-title">审批</div>
+                </div>
+                <table class="normal-approve">
+                    <tr>
+                        <th>操作类型</th>
+                        <th>操作人</th>
+                        <th>操作人职位</th>
+                        <th>时间</th>
+                        <th>结果</th>
+                        <th>意见</th>
+                    </tr>
+                    <tr>
+                        <td>发起申请</td>
+                        <td><span id="creator_name"></span></td>
+                        <td><span id="creator_position_name"></span></td>
+                        <td><span id="create_time"></span></td>
+                        <td><span id=""></span></td>
+                        <td><span id=""></span></td>
+                    </tr>
+                    <tr>
+                        <td>财务经理审批</td>
+                        <td><span id="approve_id"></span></td>
+                        <td><span id="approve_position_id"></span></td>
+                        <td><span id="approve_time"></span></td>
+                        <td>
+                            <input name="status" type="radio" value="1" checked>通过 &nbsp;&nbsp;
+                            <input name="status" type="radio" value="-1">不通过
+                        </td>
+                        <td><input id="approve_note" style="width:100%" /></td>
+                    </tr>
+                </table>
+                <div class="main-submit">
+                    <input id="btnEdit" type="button" value="提交" class="btn-edit" onclick="submitForm()" />
+                    <input id="btnStar" type="button" value="返回" class="btn-back" onclick="backForm()" />
+                </div>
+            </div>
+			</div>
+        </div>
+    </div>
+</form>
+<script src="~/Content/js/detail/financialAccounting/positionSalary/trainer_kpi_approve.js"></script>

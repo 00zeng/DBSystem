@@ -1,0 +1,47 @@
+﻿html,body {background-color:#f9f9f9;margin:0;padding:0}
+.mg{margin:15px;margin-left:0;}
+h1,h2,h3,h4,h5,h6,p{height:34px;line-height:34px;margin:0;padding:0;}
+input,select{height:32px;line-height:32px;border-radius:2px;width:113px;border:1px solid #dddddd;padding:0;padding-left:5px;}
+.list_border{border:1px solid #cccccc !important;}
+.list{position:relative;}
+#more{display:none}
+/*面板部分样式重写*/
+.panel{margin-bottom:0;}
+.panel-default>.panel-heading{background-color:#e4e4e4;position:relative}
+.topPanel {background-color:transparent ;border: none;}
+/*重写插件的样式*/
+.ui-jqgrid {border-color:#cccccc;border-top:none;}
+/*.ui-jqgrid .ui-jqgrid-hbox {float: left;padding-right: 0;}
+.ui-jqgrid .ui-jqgrid-view {max-width:100%;}
+.ui-jqgrid .ui-jqgrid-pager{max-width:100%;}*/
+
+.search-div{float:left;margin-left:15px;}
+.btn-div{float:right;margin-left:15px;}
+.number{float:right}
+.number label{position:absolute;top:5px;right:15px;}
+.calendar_span{position:relative;}
+.calendar{text-align:center;width:30px;height:22px;line-height:22px;font-size:20px;position:absolute;right:5px;top:-2px;z-index:9;zoom:1;background-color:white}
+.more{display:none;position:absolute;left:0;top:99px;z-index:9;width:100%;background:white;padding-bottom:15px;}
+
+/*重写插件表格*/
+thead{background:#f6f6f4 !important;}
+.ui-jqgrid .table-bordered th{background:none}
+.table-bordered{border-right:0}
+tr:nth-child(2n-1){background:#F9F9F8 !important}
+/*.ui-jqgrid-hbox{width:100% !important}*/
+
+/*重写输入框组*/
+.input-group{display:inline-flex;vertical-align:middle;}
+.input-group-addon {position: absolute;right: 5px;background-color: transparent;border: none;height:inherit;line-height:inherit}
+@media(min-width:968px){
+    #more{display:block;}
+}
+/*重写日历插件样式*/
+.input-group .Wdate {
+    border: #717171 1px solid;
+    line-height:32px;
+    height: 32px !important;
+    background-position-y:9px;
+}
+/*查询列表按钮间距*/
+.jqgrow .priv{margin-right:6px;}

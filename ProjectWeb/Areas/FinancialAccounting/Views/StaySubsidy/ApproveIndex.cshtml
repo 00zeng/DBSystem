@@ -1,0 +1,27 @@
+﻿@* 留守补助 *@
+@{
+    ViewBag.Title = "补助审批";
+    Layout = "~/Views/Shared/_Index_v2.cshtml";
+}
+<div class="panel-body" style="padding-bottom:0px;">
+
+	<div id="toolbar" class="btn-group">
+		<div class="input-group">
+			<select style="height:32px" id="approve_status">
+				<option value="">请选择审批状态</option>
+				<option value="100">通过</option>
+				<option value="-100">未通过</option>
+				<option value="1">审批中</option>
+				<option value="-1">未审批</option>
+			</select>
+		</div>
+    </div>
+
+    <div>
+        <table id="gridList"></table>
+    </div>
+
+</div>
+
+
+<script src="~/Content/js/detail/FinancialAccounting/StaySubsidy/approve_index.js"></script>

@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<div class="container">
+    <div class="text-danger text-center" style="padding-top: 50px;">
+        <a href="~/Account/Login">账号过期，请重新登录！</a>
+    </div>
+    <div class="text-danger text-center" style="padding-top: 50px;">
+        <span id="jumpTo">5</span>秒后自动跳转到登陆页面
+    </div>
+</div>
+<script>
+    $(function () {
+        countDown(5, '/Account/Login');
+    });
+    function countDown(secs, surl) {
+        var jumpTo = document.getElementById('jumpTo');
+        jumpTo.innerHTML = secs;
+        if (--secs > 0) {
+            setTimeout("countDown(" + secs + ",'" + surl + "')", 1000);
+        }
+        else {
+            top.location.href = surl;
+        }
+    }
+</script>

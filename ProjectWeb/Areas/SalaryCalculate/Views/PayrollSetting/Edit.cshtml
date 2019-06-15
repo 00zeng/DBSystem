@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "修改本月结算日";
+    Layout = "~/Views/Shared/_Pop.cshtml";
+}
+<div class="row">
+    <div class="col-xs-12">
+        <form id="form1" role="form">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group formValue">
+                        <label for="end_date">结算日</label>
+                        <span class="form-control"><input id="end_date" name="end_date" type="text" style="border:0;width:100%;float:left;" class="required" readonly="readonly" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd', minDate:'%y-%M-%d' });"/></span>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group formValue">
+                        <label for="end_date_orig">本月结算日</label>
+                        <input id="end_date_orig" name="end_date_orig" type="text" class="form-control" disabled />
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group formValue">
+                        <label for="note">备注</label>
+                        <textarea id="note" type="text" row="3" class="form-control" maxlength="128" ></textarea>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="~/Content/js/detail/SalaryCalculate/PayrollSetting/edit.js"></script>

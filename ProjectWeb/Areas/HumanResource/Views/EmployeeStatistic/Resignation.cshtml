@@ -1,0 +1,54 @@
+﻿@*离职分析*@
+@{
+    ViewBag.Title = "商品信息";
+    Layout = "~/Views/Shared/_Index.cshtml";
+}
+<style>
+    
+    
+    
+</style>
+<div id="list_area">
+    <header class="panel-heading">
+        <div class="panel-heading-div">
+            <span class="panel-heading-title">离职分析</span>
+        </div>
+    </header>
+    <div id="myTabContent" class="tab-content">
+        @*查看所有*@
+        <div class="tab-pane fade in active" id="All">
+            <div class="topPanel">
+                <div class="search">
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="input-group">
+                                    <div style="display:inline">
+                                        
+										<div class="single">
+                                            <span>统计时段</span>
+                                            <input id="startDate" type="text" maxlength="20" style="width: 150px;margin-right:5px;height:23px" class='Wdate' readonly="readonly" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd', maxDate: '#F{$dp.$D(\'startDate\')}' });" />
+											<span style="color: white;">-</span>
+											<input id="endDate"  type="text" maxlength="20" style="width: 150px;height:23px" class='Wdate' readonly="readonly" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd', minDate: '#F{$dp.$D(\'endDate\')}' });" /> 
+									    </div>   
+										
+                                        <button id="btnSearch" type="button" class="btn btn-primary distance" style="border: 1px solid rgb(43,75,98)">
+                                            <i class="fa fa-search"></i> 查询
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="gridPanel">
+                <div id="line" style="width: 600px; height: 400px; float: left; background: white;"></div>
+                <div id="first" style="width: 400px; height: 400px; float: left;background: white; margin-left: 50px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/js/detail/humanResource/EmployeeStatistic/resignation.js"></script>

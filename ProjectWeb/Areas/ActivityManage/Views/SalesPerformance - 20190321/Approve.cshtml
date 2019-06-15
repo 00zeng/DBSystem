@@ -1,0 +1,152 @@
+﻿@*考核审批*@
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Form_dinf.cshtml";
+}
+<header class="panel-heading">
+    <span style="color:#ffffff">业务考核审批</span>
+</header>
+<div class="panel-body" style="background:white;">
+    <div class="row">
+        <div class="col-xs-1">
+        </div>
+        <div class="col-xs-10" style="min-width:1000px">
+
+            <div class="form">
+                <div class="main-title main-title2">
+                    <div class="main-title2-type" >
+                        <input id="approve_position_id" type="hidden"/>
+                        姓名：<span id="emp_name" style="margin-right:60px"></span>
+                        职位：<span id="position_name" style="margin-right:60px"></span>
+                        类型：<span id="category" style="margin-right:60px"></span>
+                        考核周期：<span id="date"></span>
+                    </div>
+                </div>
+                @*销量考核*@
+                <table class="normal-z" style="white-space:nowrap;display:none;" id="content_2">
+                    <tr>
+                        <td colspan="10" class="mid-title-wrap">
+                            <div class="mid-title">销量考核</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">考核内容</th>
+                        <td colspan="4" style="border-right:0px;">
+                            <input type="radio" name="perf_content2" value="1" disabled> 按实销量
+                        </td>
+                        <td colspan="4" style="border-left:0px;">
+                            <input type="radio" name="perf_content2" value="2" disabled> 按下货量
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">考核机型</th>
+                        <td colspan="4" style="border-right:0px;">
+                            <input type="radio" name="perf_product2" value="1" disabled> 按所有机型
+                        </td>
+                        <td colspan="4" style="border-left:0px;">
+                            <input type="radio" name="perf_product2" value="2" disabled> 按指定机型&nbsp;&nbsp;&nbsp;&nbsp;
+                            机型：<span id="product_model2"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">目标销量</th>
+                        <td colspan="6">
+                            <span id="perf_target2"></span> 台
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">考核模式</th>
+                        <td colspan="4" style="border-right:0px;">
+                            <input type="radio" name="perf_mode2" value="1" disabled> 按完成率
+                        </td>
+                        <td colspan="4" style="border-left:0px;">
+                            <input type="radio" name="perf_mode2" value="2" disabled> 按销量
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="2" rowspan="2">奖罚方式</th>
+                        <td colspan="2"><input type="checkbox" name="reward2" value="1" disabled>奖励</td>
+                        <td colspan="6">完成<span id="reward_first_text2">比例</span> *  <span id="reward2"></span><span id="reward_second_text2">元</span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="checkbox" name="penalty2" value="-1" disabled>罚款</td>
+                        <td colspan="6">未完成<span id="penalty_first_text2">比例</span> *<span id="penalty2"></span><span id="penalty_second_text2">元</span></td>
+                    </tr>
+                </table>
+                @*导购人数考核*@
+                <table class="normal-z" style="white-space:nowrap;display:none;" id="content_3">
+                    <tr>
+                        <td colspan="10" class="mid-title-wrap">
+                            <div class="mid-title">导购人数考核</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">考核任务</th>
+                        <td colspan="8">
+                            "导购-经销商" 占比：<span id="perf_target3"></span>%
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">考核模式</th>
+                        <td colspan="2" style="border-right:0px;">
+                            <input type="radio" name="perf_mode3" value="1" disabled> 按比例
+                        </td>
+                        <td colspan="6" style="border-left:0px;">
+                            <input type="radio" name="perf_mode3" value="2" disabled> 按人数
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="2" rowspan="2">奖罚方式</th>
+                        <td colspan="2"><input type="checkbox" name="reward3" value="1" disabled>奖励</td>
+                        <td colspan="6">完成<span id="reward_first_text3">比例</span> *  <span id="reward3"></span><span id="reward_second_text3">元</span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="checkbox" name="penalty3" value="-1" disabled>罚款</td>
+                        <td colspan="6">未完成<span id="penalty_first_text3">比例</span> *<span id="penalty3"></span><span id="penalty_second_text3">元</span></td>
+                    </tr>
+                </table>
+
+                <div class="mid-title-wrap">
+                    <div class="mid-title">审批</div>
+                </div>
+                <table class="normal-approve">
+                    <tr>
+                        <th>操作类型</th>
+                        <th>操作人</th>
+                        <th>操作人职位</th>
+                        <th>时间</th>
+                        <th>结果</th>
+                        <th>意见</th>
+                    </tr>
+                    <tr>
+                        <td>发起申请</td>
+                        <td><span id="creator_name"></span></td>
+                        <td><span id="creator_position_name"></span></td>
+                        <td><span id="create_time"></span></td>
+                        <td><span id=""></span></td>
+                        <td><span id=""></span></td>
+                    </tr>
+                    <tr>
+                        <td id="next_approve">分公司总经理审批</td>
+                        <td><span id="approve_id"></span></td>
+                        <td><span id="approve_position_id"></span></td>
+                        <td><span id="approve_time"></span></td>
+                        <td>
+                            <input name="status" type="radio" value="1" checked>通过 &nbsp;&nbsp;
+                            <input name="status" type="radio" value="-1">不通过
+                        </td>
+                        <td><input id="approve_note" style="width:100%" /></td>
+                    </tr>
+                </table>
+
+               <div class="main-submit">
+                    <a class="btn-return" id="btnReturn" href="javascript:history.go(-1);"> 返回 </a>
+                    <a class="btn-submit" id="btnSubmit" onclick="submitForm()">提交</a>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/js/detail/activityManage/salesPerformance/Approve.js"></script>

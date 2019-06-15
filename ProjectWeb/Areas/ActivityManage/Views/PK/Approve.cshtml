@@ -1,0 +1,279 @@
+﻿@*考核发起*@
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Form_dinf.cshtml";
+}
+<link href="~/Content/css/dinf-table.css" rel="stylesheet"/>
+<style>
+    /*.select2-container--default .select2-selection--single .select2-selection__rendered {
+        width: 113px;
+        line-height: 24px;
+    }*/
+    .main-title2-type input {
+        width: 150px;
+        height: 26px;
+        border: 1px solid;
+        border-color: #ddd;
+    }
+
+    /*顶部input长宽*/
+
+    /*radio 间距*/
+
+    .ue-container {
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 3%;
+        padding: 20px 40px;
+        border: 1px solid #ddd;
+        background: #fff;
+    }
+
+    .outlayer {
+        width: 60%;
+        height: 400px;
+        border: 1px solid blue;
+        margin-left: 20%;
+        margin-right: 20%;
+        text-align: center;
+    }
+
+    .list {
+        margin-top: 5px;
+        margin-left: 4%;
+        margin-right: 4%;
+        float: left;
+        width: 25%;
+        height: 300px;
+        margin-right: 50px;
+        border: 1px solid red;
+    }
+
+    .title {
+        height: 30px;
+        width: 100%;
+        background-color: #000066;
+        padding-top: 10px;
+    }
+
+    .title span {
+        font-size: 10px;
+        font-family: "宋体";
+        color: #FFFFFF;
+    }
+
+    .select {
+        width: 90%;
+        height: 230px;
+        margin: 0px 10px 10px 10px;
+        text-align: left;
+        border: 2px solid #CCCCCC;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        table-layout: fixed;
+        word-wrap: break-word;
+        word-break: break-all;
+    }
+    
+    
+    #emp .box {
+        width: 150px;
+        margin-left: 20px;
+        float: left;
+    }
+
+    #emp .box:nth-child(2) { width: 80px; }
+
+    .left {
+        background: url('/Content/img/icon/emp_l.png') right;
+        text-align: center;
+        color: white;
+        font-size: 15px;
+        height: 36px;
+        width: 150px;
+        line-height: 36px;
+        margin-top: 5px;
+    }
+
+    .right {
+        background: url('/Content/img/icon/emp_r.png') left;
+        text-align: center;
+        color: white;
+        font-size: 15px;
+        height: 36px;
+        width: 150px;
+        line-height: 36px;
+        margin-top: 5px;
+    }
+</style>
+<form id="form1">
+    <header class="panel-heading">
+        <span style="color: #ffffff">PK比赛审批</span>
+    </header>
+    <div class="panel-body" style="background: white;">
+        <div class="row">
+            <div class="col-xs-1">
+            </div>
+            <div class="col-xs-10" style="min-width: 1000px">
+                <div class="form">
+                    <div class="main-title main-title2">
+                        <div class="main-title2-type">
+                            活动名称：<span name="name" id="name" style="margin-right:60px"></span>
+                            活动时期：<span id="start_date" class="format_date" style="margin-right:10px"></span>至<span id="end_date" class="format_date" style="margin-left:10px"/>
+                        </div>
+                    </div>
+					<div class="mid-title-wrap">
+                    <div class="mid-title">
+					<span style="margin-right:20px">PK比赛</span><span style="color: red">奖金将于比赛结束后，随当月工资一同发放/扣除</span>
+					</div>
+                </div>
+                    <table class="normal-ranking" id="rank_tb">
+                        <tr>
+                            <th>参与员工</th>
+                            <td colspan="2">
+                                <div id="emp">
+                                    <div class="box">
+                                    </div>
+                                    <div class="box">
+                                        <img src="~/Content/img/icon/vs.png" width="80px"/>
+                                    </div>
+                                    <div class="box">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr style="display: none">
+                            <th>活动机型</th>
+                            <td colspan="3">
+                                <select id="product" name="product" disabled="disabled">
+                                    <option value="-1">全部机型</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr style="display: none">
+                            <th>活动机型</th>
+                            <td colspan="3">
+                                <select id="product" name="product" disabled="disabled">
+                                    <option value="-1">指定单一机型</option>
+                                </select>
+                                机型：
+                                <div id="product_type" style="margin-left: 150px; margin-top: -25px;">
+                                    <select name="product_type" disabled="disabled"></select>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr style="display: none">
+                            <th>活动机型</th>
+                            <td colspan="3">
+                                <select name="selectProducts" size="5" disabled="disabled" multiple="multiple" style="width: 200px;"></select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>目标销量</th>
+                            <td colspan="3">
+                                <span type="text" id="activity_target"></span>台
+                            </td>
+                        </tr>
+                        <tr>
+                            <th rowspan="5">奖罚方式</th>
+                            <th rowspan="3">获胜方</th>
+                            <td colspan="2">
+                                <input type="checkbox" checked="checked" disabled="disabled"/>赢取对方<span value="0" id="win_lose"></span>元
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="win_company" disabled="disabled"/>公司奖励获胜方<span value="0" id="win_company"></span>元：<input type="radio" name="win_company_condition" id="win_company_condition" value="1" disabled="disabled"/>仅当双方完成率都达到100%时 <input type="radio" name="win_company_condition" id="win_company_condition" value="2" disabled="disabled"/>只要获胜方完成率达到100%
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="win_penalty" disabled="disabled"/>获胜方完成率低于100%，罚款<span value="0" id="win_penalty"></span>元
+                            </td>
+                        </tr>
+                        <tr>
+                            <th rowspan="2" colspan="1">失败方</th>
+                            <td colspan="2">
+                                <input type="checkbox" checked="checked" disabled="disabled"/>输给对方<span value="0" id="lose_win"></span>元
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="lose_penalty" disabled="disabled"/>失败方完成率低于100%，罚款<span value="0" id="lose_penalty"></span>元
+                            </td>
+                        </tr>
+                        <tr>
+                            <th rowspan="4">备注说明</th>
+                            <td colspan="3" rowspan="4">
+                                <span style="width: 100%" ;rows="4" name="note" id="note"></span>
+
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="mid-title-wrap">
+                    <div class="mid-title">
+					审批
+					</div></div>
+
+                    <table class="normal-approve">
+                        <tr>
+                            <th>操作类型</th>
+                            <th>操作人</th>
+                            <th>操作人职位</th>
+                            <th>时间</th>
+                            <th>结果</th>
+                            <th>意见</th>
+                        </tr>
+                        <tr>
+                            <td>发起申请</td>
+                            <td>
+                                <span id="creator_name"></span>
+                            </td>
+                            <td>
+                                <span id="creator_position_name"></span>
+                            </td>
+                            <td>
+                                <span id="create_time"></span>
+                            </td>
+                            <td>
+                                <span id=""></span>
+                            </td>
+                            <td>
+                                <span id=""></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="next_approve">分公司总经理审批</td>
+                            <td>
+                                <span id="approve_id"></span>
+                            </td>
+                            <td>
+                                <span id="approve_position_id"></span>
+                            </td>
+                            <td>
+                                <span id="approve_time"></span>
+                            </td>
+                            <td>
+                                <input name="status" type="radio" value="1" checked>通过 &nbsp;&nbsp;
+                                <input name="status" type="radio" value="-1">不通过
+                            </td>
+                            <td>
+                                <input id="approve_note" style="width: 100%"/>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="main-submit">
+                    <a class="btn-return" id="btnReturn" href="javascript:history.go(-1);"> 返回 </a>
+                    <a class="btn-submit" id="btnSubmit" onclick="submitForm()">提交</a>
+                </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script src="~/Content/js/detail/activityManage/PK/approve.js">
+</script>

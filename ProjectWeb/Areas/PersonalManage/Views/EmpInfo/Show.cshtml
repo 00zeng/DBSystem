@@ -1,0 +1,341 @@
+﻿@{
+    ViewBag.Title = "个人信息 ";
+    Layout = "~/Views/Shared/_Show_v2.cshtml";
+}
+<form id="form1">
+    <div class="panel-body" style="padding-bottom:0px;">
+        <div class="box box-default nav-tabs-custom">
+            <div class="box-header widt-border">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#tab_1" data-toggle="tab"><h3 class="box-title">个人信息</h3></a></li>
+                    <li><a href="#tab_2" data-toggle="tab"><h3 class="box-title">银行信息</h3></a></li>
+                    <li><a href="#tab_3" data-toggle="tab"><h3 class="box-title">家庭信息</h3></a></li>
+
+                </ul>
+
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" onclick="OpenForm()" title="修改个人信息">
+                        <i class="fa fa-pencil"></i>
+                    </button>   
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                     
+                </div>
+                
+            </div>
+            <div class="box-body tab-content">
+                <div class="tab-pane active" id="tab_1">
+                    <div class="row">
+                        <dl class="col-sm-4 dl-horizontal">
+                            <dt>工号</dt>
+                            <dd><span id="work_number" name="work_number"></span></dd>
+                        </dl>
+                        <dl class="col-sm-4 dl-horizontal">
+                            <dt>姓名</dt>
+                            <dd><span id="name" name="name"></span></dd>
+                        </dl>
+                        <dl class="col-sm-4 dl-horizontal">
+                            <dt>性别</dt>
+                            <dd><span id="gender" name="gender"></span></dd>
+                        </dl>
+                        <dl class="col-sm-4 dl-horizontal">
+                            <dt>出生日期</dt>
+                            <dd><span id="birthdate" class="format_date" type="time" readonly="readonly" onfocus="WdatePicker();"></span></dd>
+                        </dl>
+                        <dl class="col-sm-4 dl-horizontal">
+                            <dt>年龄</dt>
+                            <dd><span id="age"></span></dd>
+                        </dl>
+                        <dl class="col-sm-4 dl-horizontal">
+                            <dt>生日</dt>
+                            <dd><span id="birthday" class="format_date" name="birddday"></span></dd>
+                        </dl>
+                        <dl class="col-sm-4 dl-horizontal">
+                            <dt>生日类型</dt>
+                            <dd><span id="birthday_type" name="birddday_type"></span></dd>
+                        </dl>
+                        <dl class="col-sm-4 dl-horizontal">
+
+                            <dt>电话号码</dt>
+                            <dd><span id="phone" name="phone"></span></dd>
+                        </dl>
+                        <dl class="col-sm-4 dl-horizontal">
+                            <dt>微信号</dt>
+                            <dd><span id="wechat" name="wechat"></span></dd>
+                        </dl>
+                        <dl class="col-sm-4 dl-horizontal">
+                            <dt>家庭住址</dt>
+                            <dd><span id="address"></span></dd>
+                        </dl>
+                        <dl class="col-sm-4 dl-horizontal">
+                            <dt>证件类别</dt>
+                            <dd><span id="identity_type" name="identity_type"></span></dd>
+                        </dl>
+                        <dl class="col-sm-4 dl-horizontal">
+                            <dt>证件号码</dt>
+                            <dd><span id="identity" name="identity"></span></dd>
+                        </dl>
+                        <dl class="col-sm-4 dl-horizontal">
+                            <dt>证件地址</dt>
+                            <dd><span id="identity_address" class="format_date" name="identity_address"></span></dd>
+                        </dl>
+                        <dl class="col-sm-4 dl-horizontal">
+                            <dt>证件有效期</dt>
+                            <dd><span id="identity_effect" class="format_date"></span>至<span class="format_date" id="identity_expire"></span></dd>
+                        </dl>
+                        <dl class="col-sm-4 dl-horizontal">
+                            <dt>证件签发机关</dt>
+                            <dd><span id="identity_issue"></span></dd>
+                        </dl>
+                        <dl class="col-sm-4 dl-horizontal">
+                            <dt>国家或地区</dt>
+                            <dd><span id="country"></span></dd>
+                        </dl>
+                        <dl class="col-sm-4 dl-horizontal">
+                            <dt>籍贯</dt>
+                            <dd><span id="native" name="native"></span></dd>
+                        </dl>
+                        <dl class="col-sm-4 dl-horizontal">
+                            <dt>民族</dt>
+                            <dd><span id="nation" name="nation"></span></dd>
+                        </dl>
+                        <dl class="col-sm-4 dl-horizontal">
+                            <dt>政治面貌</dt>
+                            <dd><span id="political" name="political"></span></dd>
+                        </dl>
+                        <dl class="col-sm-4 dl-horizontal">
+                            <dt>学历</dt>
+                            <dd><span id="education"></span></dd>
+                        </dl>
+                        <dl class="col-sm-4 dl-horizontal">
+                            <dt>专业</dt>
+                            <dd><span id="profession"></span></dd>
+                        </dl>
+                        <dl class="col-sm-4 dl-horizontal">
+                            <dt>毕业学校</dt>
+                            <dd><span id="graduation_school"></span></dd>
+                        </dl>
+                        <dl class="col-sm-4 dl-horizontal">
+                            <dt>毕业日期</dt>
+                            <dd><span id="graduation_date" class="format_date"></span></dd>
+                        </dl>
+                        <dl class="col-sm-4 dl-horizontal">
+                            <dt>婚姻状况</dt>
+                            <dd><span id="marriage"></span></dd>
+                        </dl>
+                        <dl class="col-sm-4 dl-horizontal">
+                            <dt>子女（个）</dt>
+                            <dd><span id="child_count"></span></dd>
+                        </dl>
+                        <dl class="col-sm-4 dl-horizontal">
+                            <dt>紧急联系人</dt>
+                            <dd><span id="emergency_contact" name="emergency_contact"></span></dd>
+                        </dl>
+                        <dl class="col-sm-4 dl-horizontal">
+                            <dt>紧急联系电话</dt>
+                            <dd><span id="emergency_contact_phone" name="emergency_contact_phone"></span></dd>
+                        </dl>
+                        <dl class="col-sm-4 dl-horizontal">
+                            <dt>健康证有效期</dt>
+                            <dd><span id="healdt_start" class="format_date"></span>至<span class="format_date" id="healdt_expire"></span></dd>
+                        </dl>
+                        <dl class="col-sm-4 dl-horizontal">
+                            <dt>备注</dt>
+                            <dd><span id="note"></span></dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="tab-pane" id="tab_2">
+                    <dl class="col-sm-4 dl-horizontal">
+                        <dt>银行类别</dt>
+                        <dd><span id="bank_type" name="bank_type"></span></dd>
+                    </dl>
+                    <dl class="col-sm-4 dl-horizontal">
+                        <dt>开户行</dt>
+                        <dd><span id="bank_name" name="bank_name"></span></dd>
+                    </dl>
+                    <dl class="col-sm-4 dl-horizontal">
+                        <dt>银行账号</dt>
+                        <dd><span id="bank_account" name="bank_account"></span></dd>
+                    </dl>
+                </div>
+                <div class="tab-pane" id="tab_3">
+                    <dl class="col-sm-4 dl-horizontal">
+                        <dt>父母银行卡开户银行</dt>
+                        <dd><span id="parents_bank" name="parents_bank"></span></dd>
+                    </dl>
+                    <dl class="col-sm-4 dl-horizontal">
+                        <dt>父母银行卡号</dt>
+                        <dd><span id="parents_bankaccount" name="parents_bankaccount"></span></dd>
+                    </dl>
+                    <dl class="col-sm-4 dl-horizontal">
+                        <dt>父母联系电话</dt>
+                        <dd><span id="parents_phone" name="parents_phone"></span></dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+        <div class="box box-warning collapsed-box">
+            <div class="box-header widt-border">
+                <h3 class="box-title">职位信息</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <dl class="col-sm-4 dl-horizontal">
+                        <dt>所属机构</dt>
+                        <dd><span id="company_name" name="company_name"></span></dd>
+                    </dl>
+                    <dl class="col-sm-4 dl-horizontal">
+
+                        <dt>部门</dt>
+                        <dd><span id="dept_name" name="dept_name"></span></dd>
+                    </dl>
+                    <dl class="col-sm-4 dl-horizontal">
+                        <dt>职位</dt>
+                        <dd><span id="position_name"></span></dd>
+                    </dl>
+                    <dl class="col-sm-4 dl-horizontal">
+                        <dt>职级</dt>
+                        <dd><span id="grade"></span></dd>
+                    </dl>
+                    <dl class="col-sm-4 dl-horizontal">
+                        <dt>上级主管姓名</dt>
+                        <dd><span id="supervisor_name" name="supervisor_name"></span></dd>
+                    </dl>
+                    <dl class="col-sm-4 dl-horizontal">
+                        <dt>雇员类别</dt>
+                        <dd><span id="emp_category" name="emp_category"></span></dd>
+                    </dl>
+                    <dl class="col-sm-4 dl-horizontal">
+                        <dt>入职时间</dt>
+                        <dd><span id="entry_date" class="format_date"></span></dd>
+                    </dl>
+                    <dl class="col-sm-4 dl-horizontal">
+                        <dt>工作地点</dt>
+                        <dd><span id="work_addr"></span></dd>
+                    </dl>
+                    <dl class="col-sm-4 dl-horizontal">
+                        <dt>纳税单位</dt>
+                        <dd><span id="tax_unit" name="tax_unit"></span></dd>
+                    </dl>
+                    <dl class="col-sm-4 dl-horizontal">
+                        <dt>是否已购买社保</dt>
+                        <dd><span id="insurance_paid" name="insurance_paid"></span></dd>
+                    </dl>
+                    <dl class="col-sm-4 dl-horizontal">
+                        <dt>合同签署日期</dt>
+                        <dd><span id="cur_contract_sign" class="format_date" name="cur_contract_sign"></span></dd>
+                    </dl>
+                    <dl class="col-sm-4 dl-horizontal">
+                        <dt>合同到期日期</dt>
+                        <dd><span id="cur_contract_expire" class="format_date" name="cur_contract_expire"></span></dd>
+                    </dl>
+                    <dl class="col-sm-4 dl-horizontal">
+                        <dt>状态</dt>
+                        <dd>
+                            <span id="emp_status"></span>
+                        </dd>
+                    </dl>
+                    <dl class="col-sm-4 dl-horizontal">
+                        @*<dt>休假时间（离职日期）</dt>
+                            <dd><span id="rest_time" class="format_date"></span></dd>*@
+                        <dt>导购员类别</dt>
+                        <dd><span id="guide_category"></span></dd>
+                    </dl>
+                    <dl class="col-sm-4 dl-horizontal">
+                        <dt>介绍人</dt>
+                        <dd><span id="introducer_name"></span></dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+        <div class="box box-danger collapsed-box">
+            <div class="box-header widt-border">
+                <h3 class="box-title">账户信息</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <dl class="col-sm-4 dl-horizontal">
+                        <dt>系统账户</dt>
+                        <dd><span id="account" name="account"></span></dd>
+                    </dl>
+                    <dl class="col-sm-4 dl-horizontal">
+                        <dt>角色</dt>
+                        <dd><span id="role_name" name="role_name"></span></dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div class="box box-success collapsed-box">
+            <div class="box-header widt-border">
+                <h3 class="box-title">图片信息</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body no-padding">
+                <ul class="users-list clearfix">
+                    <li>
+                        <img src="~/Content/js/adminlte/img/user1-128x128.jpg" alt="User Image">
+                        <a class="users-list-name" href="#">Alexander Pierce</a>
+                        <span class="users-list-date">Today</span>
+                    </li>
+                    <li>
+                        <img src="~/Content/js/adminlte/img/user8-128x128.jpg" alt="User Image">
+                        <a class="users-list-name" href="#">Norman</a>
+                        <span class="users-list-date">Yesterday</span>
+                    </li>
+                    <li>
+                        <img src="~/Content/js/adminlte/img/user7-128x128.jpg" alt="User Image">
+                        <a class="users-list-name" href="#">Jane</a>
+                        <span class="users-list-date">12 Jan</span>
+                    </li>
+                    <li>
+                        <img src="~/Content/js/adminlte/img/user6-128x128.jpg" alt="User Image">
+                        <a class="users-list-name" href="#">John</a>
+                        <span class="users-list-date">12 Jan</span>
+                    </li>
+                    <li>
+                        <img src="~/Content/js/adminlte/img/user2-160x160.jpg" alt="User Image">
+                        <a class="users-list-name" href="#">Alexander</a>
+                        <span class="users-list-date">13 Jan</span>
+                    </li>
+                    <li>
+                        <img src="~/Content/js/adminlte/img/user5-128x128.jpg" alt="User Image">
+                        <a class="users-list-name" href="#">Sarah</a>
+                        <span class="users-list-date">14 Jan</span>
+                    </li>
+                    <li>
+                        <img src="~/Content/js/adminlte/img/user4-128x128.jpg" alt="User Image">
+                        <a class="users-list-name" href="#">Nora</a>
+                        <span class="users-list-date">15 Jan</span>
+                    </li>
+                    <li>
+                        <img src="~/Content/js/adminlte/img/user3-128x128.jpg" alt="User Image">
+                        <a class="users-list-name" href="#">Nadia</a>
+                        <span class="users-list-date">15 Jan</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="box-footer text-center">
+                <a href="javascript:void(0)" class="uppercase">View All Users</a>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="~/Content/js/detail/personalManage/empInfo/show.js"></script>

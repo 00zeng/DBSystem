@@ -1,0 +1,129 @@
+﻿<!--导购员岗位调整申请-->
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Form_dinf.cshtml";
+}
+<form id="form1">
+    <header class="panel-heading">
+        <span style="color:#ffffff">岗位调整详情</span>
+    </header>
+    <div class="panel-body" style="background:white;">
+         <div class="row">
+        <div class="col-xs-1">
+        </div>
+        <div class="col-xs-10" style="min-width:1000px">
+            <div class="form">
+                <div class="main-title main-title2">
+                    <div class="main-title2-type">调岗类型：</div>
+                </div>
+
+                <table class="normal-r" style="white-space:nowrap">
+                    <tr>
+                        <th>工号</th>
+                        <td><span id="job_number" name="job_number"></span></td>
+                        <th>姓名</th>
+                        <td><span id="name" name="name"></span></td>
+                        <th>性别</th>
+                        <td><span id="gender" name="gender"></span></td>
+                        <th>最高学历</th>
+                        <td><span id="education" name="education"></span></td>
+                        <th>入职时间</th>
+                        <td><span id="entry_time" name="entry_time"></span></td>
+                    </tr>
+                    <tr>
+                        <th>原机构</th>
+                        <td><span id="organization_name" name="organization_name"></span></td>
+                        <th>原部门</th>
+                        <td><span id="department_name" name="department_name"></span></td>
+                        <th>原区域</th>
+                        <td><span id="area_name" name="area_name"></span></td>
+                        <th>原职位</th>
+                        <td><span id="position_id" name="position_id"></span></td>
+                        <th>目前等级</th>
+                        <td><span id="" name=""></span></td>
+                    </tr>
+                    <tr>
+                        <th>新机构</th>
+                        <td><span id="organization_name_new" name="organization_name_new"></span></td>
+                        <th>新部门</th>
+                        <td><span id="department_name_new" name="department_name_new"></span></td>
+                        <th>新区域</th>
+                        <td><span id="area_name_new" name="area_name_new"></span></td>
+                        <th>新职位</th>
+                        <td><span id="position_name_new" name="position_name_new"></span></td>
+                        <th>新等级</th>
+                        <td><span id="" name=""></span></td>
+                    </tr>
+                    <tr>
+                        <th>申请转岗时间</th>
+                        <td><span id="initiate_time" name="initiate_time"></span></td>
+                        <th>发起人</th>
+                        <td><span id="initiator" name="initiator"></span></td>
+                        <th>发起时间</th>
+                        <td colspan="5"><span id="initiate_time" name="initiate_time"></span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="10" class="mid-title-wrap">
+                            <div class="mid-title">上级审批</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>核准转岗时间</th>
+                        <td><span id="adjust_time" name="adjust_time"></span></td>
+                        <th>审批结果</th>
+                        <td><span id="approve_result" name="approve_result"></span></td>
+                        <th>审批人</th>
+                        <td><span id="name" name="name"></span></td>
+                        <th>审批时间</th>
+                        <td colspan="3"><span id="approve_time" name="approve_time"></span></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="10" class="mid-title-wrap">
+                            <div class="mid-title">总经理审批</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>审批结果</th>
+                        <td><span id="approve_result" name="approve_result"></span></td>
+                        <th>审批人</th>
+                        <td><span id="name" name="name"></span></td>
+                        <th>审批时间</th>
+                        <td colspan="5"><span id="approve_time" name="approve_time"></span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="10" class="mid-title-wrap">
+                            <div class="mid-title">人事部审批</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">原岗位下属调整</th>
+                        <td colspan="3"><span id="" name=""></span></td>
+                        <th colspan="2">原岗位经销商调整</th>
+                        <td colspan="3"><span id="" name=""></span></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">原岗位绑定店员调整</th>
+                        <td colspan="3"><span id="" name=""></span></td>
+                        <th colspan="2">原部门负责人调整</th>
+                        <td colspan="3"><span id="" name=""></span></td>
+                    </tr>
+
+                </table>
+
+                <div class="main-submit">
+                    @*<input id="btnEdit" type="button" value="撤回" class="btn-edit" onclick="" />
+                    <input id="btnEdit" type="button" value="审批" class="btn-edit" onclick="submitForm()" />
+                    <input id="btnStar" type="button" value="返回" class="btn-back" onclick="backForm()" />*@
+
+                    <a class="btn-return" href="javascript:history.go(-1);"> 返回 </a>
+                    <input id="btnEdit" class="btn-submit" type="button" value="审批" onclick="approval()" style="display:none" />
+                    <input id="btnDel" class="btn-submit" type="button" value="撤回" onclick='delForm()' style="display:none" />
+                </div>
+			</div>
+			</div>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="~/Content/js/detail/humanResource/PositionChange/guideAdd.js"></script>

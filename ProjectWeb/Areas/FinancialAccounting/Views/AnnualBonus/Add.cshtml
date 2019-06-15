@@ -1,0 +1,83 @@
+﻿@*年终奖金*@
+@{
+    ViewBag.Title = "员工列表";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<div class="box-header widt-border">
+    <h3 class="box-title">年终奖金设置</h3>
+</div>
+<form id="form1">
+    <div class="box-header">
+        <div class="col-xs-12 col-sm-4 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">姓名：</span>
+                <span id="name" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">职位：</span>
+                <span id="position_name" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">等级：</span>
+                <span id="grade" class="form-control "></span>
+            </div>
+        </div>
+		<div class="col-xs-12 col-sm-4 col-lg-3" >
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border">发放月份</span>
+                <input id="month" class="form-control" readonly="readonly" onfocus="WdatePicker({dateFmt: 'yyyy-MM' });" />
+            </div>
+        </div>
+    </div>
+
+    <div class="box-body" style="padding-bottom:0px;">
+        <div class="col-xs-12 col-sm-12 col-lg-12">
+            <div class="box box-warning">
+                <div class="box-header">
+                    <h3 class="box-title"><span id="position_name"></span>年终奖金</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body" style="background-color:#ecf0f5">
+                    <div class="col-xs-12 col-sm-12 col-lg-12">
+                        <div class="box box-widget">
+                            <div class="box-body">
+                                <div class="row margin-bottom">
+                                    <div class="col-sm-2"><span class="form-control no-border text-right">年终奖金</span></div>
+                                    <div class="col-sm-4">
+                                        <div class="input-group formValue ">
+                                            <input type="text" class="form-control text-center required number" id="amount">
+                                            <span class="input-group-addon">元</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row margin-bottom">
+                                    <div class="col-sm-2"><span class="form-control no-border text-right">奖金说明</span></div>
+                                    <div class="col-sm-8">
+                                        <textarea id="note" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+    <div class="box-footer">
+        <button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+        <button type="submit" class="btn btn-default pull-right" onclick="javascript:history.back(-1);">返回</button>
+    </div>
+
+
+<script src="~/Content/js/detail/FinancialAccounting/AnnualBonus/add.js"></script>

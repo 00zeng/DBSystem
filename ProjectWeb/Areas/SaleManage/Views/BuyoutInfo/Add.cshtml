@@ -1,0 +1,99 @@
+﻿@{
+    ViewBag.Title = "买断申请";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<div class="box-header">
+    <h3 class="box-title">买断申请</h3>@*<h6 class="text-red inline margin">买断后不退换货，不参与调价补差</h6>*@
+    <h6 class="label label-danger">买断后不退换货，不参与调价补差</h6>
+</div>
+<div class="panel-body" style="padding-bottom:0px;">
+    <form id="form1">
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <div class="row">
+                    <div class="input-group col-sm-3">
+                        <span class="input-group-addon no-border">请选择类型：</span>
+                        <select id="category1" class="form-control">
+                            <option value="1">仓库买断</option>
+                            <option value="2" selected>门店买断</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="input-group margin-bottom">
+                            <span class="input-group-addon  no-border ">
+                                经销商：
+                            </span>
+                            <span id="distributor_name" class="form-control no-border"></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="input-group ">
+                            <span class="input-group-addon  no-border">
+                                业务员：
+                            </span>
+                            <span id="sales_name" class="form-control no-border"></span>
+
+                        </div>               
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <span class="input-group-addon no-border">
+                                导购员：
+                            </span>
+                            <select id="guide_id" class="form-control"></select>
+                        </div>
+   
+                    </div>
+                </div>
+                <table class="table table-striped text-center" id="store">
+                    <tbody>
+                        <tr >
+                            <th class="col-sm-3">串码</th>
+                            <th class="col-sm-3">型号</th>
+                            <th class="col-sm-3">买断价</th> 
+                            <th class="col-sm-3"></th>                           
+                        </tr>
+                        <tr>
+                            <td><input class="form-control text-center" name="phone_sn" onchange="setPhoneSN(this)" /></td>                         
+                            <td><input class="form-control text-center" name="model" /></td>
+                            <td><input class="form-control text-center" name="buyout_count" /></td>
+                            <td>
+                                <i class="glyphicon glyphicon-plus text-blue margin" onclick="StoreAddRow()"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table table-striped text-center" id="warehouse" style="display:none">
+                    <tbody>
+                        <tr>
+                            <th class="col-md-2">型号</th>
+                            <th class="col-md-2">颜色</th>
+                            <th class="col-md-2">买断价</th>
+                            <th class="col-md-2">数量</th>
+                            <th class="col-md-2"></th>
+                        </tr>
+                        <tr>
+                            <td><select class="form-control" name="model" onchange="SetColor(this)"></select></td>
+                            <td><select class="form-control" name="color" onchange="SetPrice(this)"></select></td>
+                            <td><input class="form-control text-center" name="price_buyout" /></td>
+                            <td><input class="form-control text-center" name="count" /></td>
+                            <td>
+                                <i class="glyphicon glyphicon-plus text-blue margin" onclick="WarehouseAddRow(this)"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </form>
+</div>
+<div class="box-footer">
+    <button id="btnSubmit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+    <a class="btn btn-default pull-right" href="/saleManage/buyoutInfo/RequestIndex">返回</a>
+</div>
+<script src="~/Content/js/detail/saleManage/buyoutInfo/add.js"></script>

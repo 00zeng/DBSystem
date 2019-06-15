@@ -1,0 +1,308 @@
+﻿@{
+    ViewBag.Title = "KPI核对";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<style type="text/css">
+    tbody table td {
+        padding: 0;
+    }
+
+    .radio + .radio {
+        margin-top: 10px;
+    }
+
+    .table-bordered {
+        border-radius: 4px;
+    }
+</style>
+<form id="form1">
+    <div class="box-header">
+        <h4><span id="position_name"></span>年终奖核对</h4>
+        <div>
+            <div class="col-xs-12 col-sm-6 col-lg-3">
+                <div class="input-group formValue margin-bottom">
+                    <span class="input-group-addon no-border">姓名：</span>
+                    <span type="text" id="name" class="form-control required"></span>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-3">
+                <div class="input-group formValue margin-bottom">
+                    <span class="input-group-addon no-border">星级：</span>
+                    <span type="text" id="grade" class="form-control required"></span>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-3">
+                <div class="input-group formValue margin-bottom">
+                    <span class="input-group-addon no-border">发放月份：</span>
+                    <input id="month" class="form-control" readonly="readonly" onfocus="WdatePicker({dateFmt: 'yyyy-MM' });" />
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-3">
+                <div class="input-group formValue margin-bottom">
+                    <span class="input-group-addon no-border">考核周期：</span>
+                    <div class="formValue">
+                        <input id="start_date" name="start_date" class="form-control required" readonly="readonly" onfocus="WdatePicker({ maxDate: '#F{$dp.$D(\'end_date\')}' });" onblur="CheckValid(this)" />
+                    </div>
+                    <span class="input-group-addon">至</span>
+                    <div class="formValue">
+                        <input id="end_date" name="end_date" class="form-control required" readonly="readonly" onfocus="WdatePicker({ minDate: '#F{$dp.$D(\'start_date\')}' });" onblur="CheckValid(this)" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box-body">
+        <div class="row">
+            <div class="col-lg-5 col-sm-12">
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h4 class="pull-left" style="margin-right:32px">月度考核</h4>
+                        <div class="input-group">
+                            <button type="button" class="btn btn-primary pull-right" onclick="Adjust()">人工调整</button>
+                        </div>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="box-body" style="height:368px">
+                        <div class="form-group">
+                            <label>正常机</label>
+                            <div class="row">
+                                <div class="col-sm-4 col-lg-3">
+                                    <span>
+                                        销量：<label id="normal_count"></label>台
+                                    </span>
+                                </div>
+                                <div class="col-sm-4 col-lg-4">
+                                    <span>
+                                        批发价总额：<label id="normal_amount_w"></label>元
+                                    </span>
+                                </div>
+                                <div class="col-sm-4 col-lg-4">
+                                    <span>
+                                        零售价总额：<label id="normal_amount_r"></label>元
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>买断机</label>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-4 col-lg-3">
+                                    <span>
+                                        销量：<label id="buyout_count"></label>台
+                                    </span>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 col-lg-4">
+                                    <span>
+                                        批发价总额：<label id="buyout_amount_w"></label>元
+                                    </span>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 col-lg-4">
+                                    <span>
+                                        买断价总额：<label id="buyout_amount"></label>元
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>总计</label>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-4 col-lg-3">
+                                    <span>
+                                        销量：<label id="total_count"></label>台
+                                    </span>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 col-lg-4">
+                                    <span>
+                                        批发价总额：<label id="total_amount_w"></label>元
+                                    </span>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 col-lg-4">
+                                    <span>
+                                        零售价总额：<label id="total_amount_r"></label>元
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-4 col-lg-4">
+                                    <label>KPI总金额：<span id="kpi_total"></span>元 </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-5 col-lg-12" id="kpi_total_a_div" style="display:none">
+                                    <div class="input-group margin-bottom">
+                                        <span class="input-group-addon no-border text-blue">调整金额：</span>
+                                        <div class="input-group">
+                                            <div class="input-single formValue">
+                                                <input class="form-control text-center required text-blue" id="kpi_total_a">
+                                            </div>
+                                            <span class="input-group-addon text-blue">元</span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-7 col-lg-12" id="note_div" style="display:none">
+                                    <div class="input-group margin-bottom">
+                                        <span class="input-group-addon no-border">调整说明：</span>
+                                        <textarea id="note" class="form-control"></textarea>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7 col-sm-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h4 class="pull-left">   年终奖 ：按星级制</h4>
+                    </div>
+                    <div class="box-body">
+                        @*<div class="col-lg-6">
+                            <div class="form-group col-sm-12">
+                                <label>年终奖</label>
+                                <div>
+                                    <div class="radio col-sm-3">
+                                        <label>
+                                            <input id="guide_annualbonus_type" name="guide_annualbonus_type" type="radio" value="1" disabled>按星级制
+                                        </label>
+                                    </div>
+                                    <div class="radio col-sm-3">
+                                        <label>
+                                            <input name="guide_annualbonus_type" type="radio" value="2" disabled>按销量
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+                        <div class="form-group col-sm-12 col-lg-12">
+                            <div class="box-body">
+                                    @*<div class="col-sm-3 margin-bottom">
+                                        <label>
+                                            年终奖 ：按星级制
+                                        </label>
+                                    </div>*@
+                                    @*<div class="radio col-sm-3">
+                                        <label>
+                                            <input id="guide_annualbonus_type" name="guide_annualbonus_type" type="radio" value="1" disabled>按星级制
+                                        </label>
+                                    </div>
+                                    <div class="radio col-sm-3">
+                                        <label>
+                                            <input name="guide_annualbonus_type" type="radio" value="2" disabled>按销量
+                                        </label>
+                                    </div>*@
+                                <div class="form-group">
+                                    <table class="table table-bordered text-center" id="yearStarlevel_table">
+                                        <tr>
+                                            <th class="col-sm-4 bg-gray-light">星级</th>
+                                            <th class="col-sm-5 bg-gray-light">底薪（元/月）</th>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="form-control no-border" name="yearLevel">一星</span></td>
+                                            <td>
+                                                <div class="input-single formValue">
+                                                    <input class="form-control text-center required number" name="yearAmount" />
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="form-control no-border" name="yearLevel">二星</span></td>
+                                            <td>
+                                                <div class="input-single formValue">
+                                                    <input class="form-control text-center required number" name="yearAmount" />
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="form-control no-border" name="yearLevel">三星</span></td>
+                                            <td>
+                                                <div class="input-single formValue">
+                                                    <input class="form-control text-center required number" name="yearAmount" />
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="form-control no-border" name="yearLevel">四星</span></td>
+                                            <td>
+                                                <div class="input-single formValue">
+                                                    <input class="form-control text-center required number" name="yearAmount" />
+                                                </div>
+                                            </td>
+                                        <tr>
+                                            <td><span class="form-control no-border" name="yearLevel">五星</span></td>
+                                            <td>
+                                                <div class="input-single formValue">
+                                                    <input class="form-control text-center required number" name="yearAmount" />
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-sm-12">
+                <div class="box box-warning">
+                    <div class="box-header with-border">
+                        <h4 class="pull-left">销售详情</h4>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <button type="button" id="exportExcel" class="btn btn-warning">
+                                <span class="glyphicon glyphicon-export" aria-hidden="true"></span>导出
+                            </button>
+                            <div class="col-lg-3 col-sm-3">
+                                <input class="form-control" id="phone_sn" type="text" placeholder="请输入串码">
+                            </div>
+                            <div class="col-lg-3 col-sm-3">
+                                <input class="form-control" id="model" type="text" placeholder="请输入型号">
+                            </div>
+                            <div class="col-lg-3 col-sm-3">
+                                <select class="form-control" id="sale_type" name="sale_type">
+                                    <option value="10">全部</option>
+                                    <option value="0">已出库</option>
+                                    <option value="1">正常销售</option>
+                                    <option value="2">买断</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-1 col-sm-1">
+                                <i id="querySubmit" class='fa fa-search btn btn-primary'></i>
+                            </div>
+                        </div>
+                        <table id="gridList"></table>
+
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</form>
+<div class="box-footer">
+    <button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+    <button type="submit" class="btn btn-default pull-right" onclick="javascript:history.back(-1);">返回</button>
+</div>
+
+@*<script src="~/Content/js/detail/FinancialAccounting/AnnualBonus/guide_bonus_detail.js"></script>*@

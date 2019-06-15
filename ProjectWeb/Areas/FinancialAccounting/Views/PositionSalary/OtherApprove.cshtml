@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Form_dinf.cshtml";
+}
+<link href="~/Content/css/dinf-table.css" rel="stylesheet" />
+
+<form id="form1">
+    <header class="panel-heading">
+        <span style="color:#ffffff">工龄工资审批</span>
+    </header>
+    <div class="panel-body" style="background:white;">
+        <div class="row">
+            <div class="col-xs-1">
+            </div>
+            <div class="col-xs-10" style="min-width: 1000px">
+            <div class="form">
+                <div class="main-title main-title2">
+                    <div class="main-title2-type" style="white-space:nowrap">
+                        机构：<span id="company_name" style="margin-right:60px"></span> 
+                        生效时间：<span id="effect_date" class="format_date_ym"></span>
+                    </div>
+                </div>
+                <div class="mid-title-wrap">
+                    <div class="mid-title">工龄工资</div>
+                </div>
+                <table class="normal-setting" id="table_list">
+                    <tr>
+                        <th>工龄（年）</th>
+                        <th>工龄工资（元/月）</th>
+                    </tr>
+                    <tbody id="seniority_list">  
+                    </tbody>
+                </table>
+                <table class="normal-approve">
+                    <tr>
+                        <td colspan="10" class="mid-title-wrap">
+                            <div class="mid-title">审批</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>操作类型</th>
+                        <th>操作人</th>
+                        <th>操作人职位</th>
+                        <th>时间</th>
+                        <th>结果</th>
+                        <th>意见</th>
+                    </tr>
+                    <tr>
+                        <td>发起申请</td>
+                        <td><span id="creator_name"></span></td>
+                        <td><span id="creator_position_name"></span></td>
+                        <td><span id="create_time"></span></td>
+                        <td><span id=""></span></td>
+                        <td><span id=""></span></td>
+                    </tr>
+                    <tr>
+                        <td>财务经理审批</td>
+                        <td><span id="approve_id"></span></td>
+                        <td><span id="approve_position_id"></span></td>
+                        <td><span id="approve_time"></span></td>
+                        <td>
+                            <input name="status" type="radio" value="1" checked>通过 &nbsp;&nbsp;
+                            <input name="status" type="radio" value="-1">不通过
+                        </td>
+                        <td><input id="approve_note" style="width:100%" /></td>
+                    </tr>
+                </table>
+
+                <div class="main-submit">
+                    <a class="btn-return" href="javascript:history.go(-1);"> 返回 </a>
+                    <input type="button" value="确定" class="btn-submit" onclick="submitForm()" />
+                </div>
+				</div>
+
+            </div>
+        </div>
+    </div>
+</form>
+<script src="~/Content/js/detail/FinancialAccounting/positionSalary/other_approve.js"></script>

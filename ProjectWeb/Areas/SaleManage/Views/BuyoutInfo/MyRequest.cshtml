@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Form_dinf.cshtml";
+}
+<link href="~/Content/css/dinf-table.css" rel="stylesheet" />
+<form id="form1">
+    <header class="panel-heading">
+        <span style="color: #ffffff">
+            买断申请详情
+        </span>
+    </header>
+    <div class="panel-body" style="background:white;">
+        <div class="row">
+            <div class="col-xs-1">
+            </div>
+            <div class="col-xs-10" style="min-width:1000px">
+                <div class="form">
+                    <div class="main-title main-title2">
+                        <div class="main-title2-type">
+                            买断类型：
+                            <span id="category"></span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:red;font-family:'微软雅黑';font-size:14px">注意：买断后不退换货，不参与调价补差</span>
+                        </div>
+                    </div>
+                    <table class="normal-buyout" id="store" style="display:none">
+                        <tr>
+                            <th>经销商</th>
+                            <td><span id="distributor_name"></span></td>
+                            <th>业务员</th>
+                            <td colspan="3"><span id="sales_name"></span></td>
+                        </tr>
+                    </table>
+                    <table class="normal-buyout" id="warehouse" style="display:none">
+                        <tr>
+                            <th>经销商</th>
+                            <td colspan="3"><span id="distributor_name1"></span></td>
+                            <th>业务员</th>
+                            <td colspan="3"><span id="sales_name1"></span></td>
+                        </tr>
+                    </table>
+                    <div class="main-submit">
+                        <a class="btn-return" href="/saleManage/buyoutInfo/Index"> 返回 </a>
+                        @*<input type="button" value="确认" class="btn-submit" onclick="submitForm()" />*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="~/Content/js/detail/saleManage/buyoutInfo/myRequest.js"></script>

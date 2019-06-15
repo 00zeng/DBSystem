@@ -1,0 +1,123 @@
+﻿@* 离职审批 *@
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Form_dinf.cshtml";
+}
+
+<header class="panel-heading">
+    <span style="color:#ffffff">离职审批</span>
+</header>
+<form id="form1">
+<div class="panel-body" style="background:white;">
+    <div class="row">
+        <div class="col-xs-1">
+        </div>
+        <div class="col-xs-10" style="min-width:1000px">
+        <div class="form">
+            <div class="main-title main-title2">
+                <div class="main-title2-type">
+                    类型：<span id="type" name="type"></span>
+					 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    离职时间：<span id="request_date" name="request_date"></span>
+					 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    审核状态：<span id="approve_status" name="approve_status"></span>
+                </div>
+            </div>
+
+            @* 上传证明按钮 *@
+            <div class="prove" >
+                <div><input id="" type="file" /></div>
+            </div>
+
+            <table class="normal-r" style="white-space:nowrap">
+                <tr>
+                    <th>工号</th>
+                    <td><span id="work_number" name="work_number"></span></td>
+                    <th>姓名</th>
+                    <td><span id="emp_name" name="emp_name"></span></td>
+                    <th>性别</th>
+                    <td><span id="gender" name="gender"></span></td>
+                    <th>最高学历</th>
+                    <td><span id="education" name="education"></span></td>
+                </tr>
+                <tr>
+                    <th>部门</th>
+                    <td><span id="dept_name" name="dept_name"></span></td>
+                    <th>区域</th>
+                    <td><span id="area_name" name="area_name"></span></td>
+                    <th>职位</th>
+                    <td><span id="position_name" name="position_name"></span></td>
+                    <th>等级</th>
+                    <td><span id="grade" name="grade"></span></td>
+                </tr>
+                <tr>
+                    <th>入职时间</th>
+                    <td><span class="format_date" id="entry_date" name="entry_date"></span></td>
+                    <th>离职时间</th>
+                    <td><span class="format_date" id="request_time" name="request_time"></span></td>
+                    <th>发起人</th>
+                    <td><span id="creator_name" name="creator_name"></span></td>
+                    <th>发起时间</th>
+                    <td><span id="create_time" name="create_time"></span></td>
+                </tr>
+
+                <tr>
+                    <td colspan="10">
+                        @*一、离职原因<br />
+                        <span id="content" name="content" class="bigArea"/>*@
+                        <span>一、离职原因</span><br />
+                        <textarea id="content_reason" class="resign-textarea" rows="4" readonly></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="10">
+                        @*二、后续发展安排<br />
+                        <span id="later_arrangement" name="later_arrangement" class="bigArea"/>*@
+                        <span>二、后续发展安排</span><br />
+                        <textarea id="content_arrangement" class="resign-textarea" rows="4" readonly></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="10">
+                        @*三、请对公司提3点宝贵意见/建议<br />
+                        <span id="later_opinion" name="later_opinion"  class="bigArea"/>*@
+                        <span>三、请对公司提3点宝贵意见/建议</span><br />
+                        <textarea id="content_opinion" class="resign-textarea" rows="4" readonly></textarea>
+                    </td>
+                </tr>
+            </table>
+
+            
+            
+            <div style="margin-top: 30px">
+                <table class="normal-z" style="white-space:nowrap" id="approve_tb">
+                    <tr style="height: 30px">
+                        <th style="display: none">核准离职时间</th>
+                        <td style="display: none"><input id="date_approve" class="Wdate" readonly="readonly" onfocus="WdatePicker();"></td>
+                        <th>审批结果</th>
+                        <td>
+                            <input id="passed" name="opinion" value="1" type="radio" checked="checked" style="width: 15px; height: 15px;"/> 通过
+                            <input id="unpassed" name="opinion" value="-1" type="radio" style="width: 15px; height: 15px; margin-left: 40px"/> 不通过
+                        </td>
+                        <th>审批人</th>
+                        <td><span id="name" name="name"></span></td>
+                        <th>审批时间</th>
+                        <td><span id="approve_time" name="approve_time"></span></td>
+                        <th></th>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="main-submit">
+                <a class="btn-return" href="javascript:history.go(-1);"> 返回 </a>
+                <a class="btn-submit" id="btnEdit" onclick="submitForm()">确认</a>
+            </div>
+			</div>
+			</div>
+        </div>
+    </div>
+</div>
+</form>
+
+<script src="~/Content/js/detail/humanResource/resignation/approve.js"></script>

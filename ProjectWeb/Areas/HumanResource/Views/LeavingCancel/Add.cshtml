@@ -1,0 +1,57 @@
+﻿@* 请假申请 *@
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Form_dinf.cshtml";
+}
+
+<header class="panel-heading">
+    <span style="color:#ffffff">销假申请</span>
+</header>
+<div class="panel-body" style="background:white;">
+    <div class="row">
+        <div class="col-xs-1">
+        </div>
+        <div class="col-xs-10" style="min-width:1000px">
+        <div class="form">
+            <form id="form1">
+                <div class="main-title main-title2">
+                    <div class="main-title2-type">
+                        请选择类型：
+                        <select id="cancel_type">
+                            <option value="1">取消休假</option>
+                            <option value="2">提交回岗</option>
+                        </select>
+                    </div>
+                </div>
+                <table class="normal-leave" >
+                    <tr>
+                        <th>工号</th>
+                        <td><span id="work_number"></span></td>
+                        <th>姓名</th>
+                        <td><span id="emp_name"></span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="10">
+                            【<span id="company_name"></span>】&nbsp;【<span id="dept_name"></span> 】 &nbsp;【<span id="position_name"></span>】 ，请假类别：&nbsp;【<span id="leaving_type"></span>】<br /><br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            实际请假&nbsp;<input id="actual_days" type="number" min="0" style="width:50px;text-align:center;border-left-width:0px;border-top-width:0px;border-right-width:0px;" />天，现于此销假。 请批准！<br /><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>实际开始时间</th>
+                        <td><input id="cancel_begin_time" type="text" class="Wdate" readonly="readonly" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd HH:mm:ss', maxDate: '#F{$dp.$D(\'cancel_end_time\')}' });" style="width:100%" /></td>
+                        <th>实际结束时间</th>
+                        <td><input id="cancel_end_time" type="text" class="Wdate" readonly="readonly" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd HH:mm:ss', minDate: '#F{$dp.$D(\'cancel_begin_time\')}' });" style="width:100%" /></td>
+                    </tr>
+                </table>
+            </form>
+            <div class="main-submit">
+                <a class="btn-return" href="javascript:history.go(-1);" > 返回 </a>
+                <a class="btn-submit" id="btnEdit" onclick="submitForm()">提交</a>
+            </div>
+			</div>
+        </div>
+		</div>
+    </div>
+
+<script src="~/Content/js/detail/humanResource/leavingCancel/add.js"></script>

@@ -1,0 +1,469 @@
+﻿@{
+    ViewBag.Title = "达量";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<link href="~/Content/js/bootstrap-duallistbox/bootstrap-duallistbox.min.css" rel="stylesheet" />
+<style type="text/css">
+    tbody table td {
+        padding: 0;
+    }
+
+    .radio + .radio {
+        margin-top: 10px;
+    }
+
+    .table-bordered {
+        border-radius: 4px;
+    }
+</style>
+<form id="form1">
+    <div class="box-header">
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">活动名称</span>
+                <span type="text" id="name" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">分公司</span>
+                <span id="company_name" name="company_name" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">返利类型</span>
+                <span id="category" name="category" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border">活动时间</span>
+                <div class="formValue">
+                    <input id="start_date" name="start_date" class="form-control format_date" disabled/>
+                </div>
+                <span class="input-group-addon">至</span>
+                <div class="formValue">
+                    <input id="end_date" name="end_date" class="form-control format_date" disabled/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box-body" style="padding-bottom:0px;"  id="bigBox">
+        <div class="col-xs-12 col-sm-12 col-lg-12">
+            <div class="box box-danger">
+                <div class="box-header">
+                    <h3 class="box-title">返利政策</h3>
+                    <div class="box-tools">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body" style="background-color:#ecf0f5" >
+                    <div class="col-xs-12 col-sm-12 col-lg-6">
+                        <div class="box box-widget">
+                            <div class="box-header with-border">
+                                <div class="input-group col-sm-5 col-lg-3">
+                                    <h3 class="box-title input-group-addon no-border">返利政策&nbsp;&nbsp;&nbsp;<span class="label label-danger" style="font-size:12px">买断机、包销机算量不算钱</span></h3>
+                                    <div class="checkbox input-group-addon no-border">
+                                        <label>
+                                            <input type="checkbox" id="money_included" disabled/>特价机算量不算钱
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="box-body" style="height:460px">
+                                <div class="col-md-12 col-lg-12">
+                                    @*<div class="form-group">
+                                            <label>返利发放</label>
+                                            <div>
+                                                <div class="radio col-sm-3">
+                                                    <label>
+                                                        <input id="pay_mode" name="pay_mode" type="radio" value="1" checked>一次性发放
+                                                    </label>
+                                                </div>
+                                                <div class="radio col-sm-9">
+                                                    <label>
+                                                        <input name="pay_mode" type="radio" value="2">按月发放
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>*@
+                                    <div class="form-group">
+                                        <label>计量方式</label>
+                                        <div>
+                                            <div class="radio col-sm-3">
+                                                <label>
+                                                    <input id="target_content" name="target_content" type="radio" value="1" disabled>按实销量
+                                                </label>
+                                            </div>
+                                            <div class="radio col-sm-9">
+                                                <label>
+                                                    <input name="target_content" type="radio" value="2" disabled>按下货量
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>销量阶梯</label>
+                                        <div>
+                                            <div class="radio col-sm-3">
+                                                <label>
+                                                    <input id="target_sale" name="target_sale" type="radio" value="1"  onchange="targetSale()" disabled>按完成率
+                                                </label>
+                                            </div>
+                                            <div class="radio col-sm-3">
+                                                <label>
+                                                    <input name="target_sale" type="radio" value="2" onchange="targetSale()" disabled>按台数
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-sm-12">
+                                            <label>目标销量</label>
+                                            <label class="label label-warning">该经销商前三个月月均销量为&nbsp;<span id="sale_avg_before"></span>&nbsp;</label>
+                                            <span class="label label-warning" id="act_show" style="display:none">未达到目标销量时无返利</span>
+                                            <div class="input-group col-sm-6  col-lg-3 formValue">
+                                                <span id="activity_target" name="activity_target" class="form-control " ></span>
+                                                <span class="input-group-addon" name="activity_unit">台</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>备注说明</label>
+                                        <textarea class="form-control" rows="3" name="note" id="note" disabled></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-lg-6">
+                        <div class="box box-widget">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">经销商</h3><h6 class="inline margin">共<span class="margin" id="distributor_count">0</span>家</h6>
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <table id="targetDistributor"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-lg-12" id="proBox" data-index="1" >
+            <div class="box box-primary">
+                <div class="box-header with-border" style="height:55px">
+                    <div class="input-group" name="addProductDiv">
+                        <span class="btn btn-primary" name="addProduct" onclick="addProduct()">添加机型分段</span>
+                        <span class="label label-danger margin">新增的指定机型将以其对应的返利规则处理</span>
+                    </div>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body" style="background-color:#ecf0f5" id="box1">
+                    <div class="col-xs-12 col-sm-12 col-lg-6">
+                        <div class="col-xs-12 col-sm-12 col-lg-12 no-padding">
+                            <div class="box box-widget">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">活动机型</h3><h6 id="productCountWrap1" class="inline margin" style="display:none">共<span class="margin" id="product_count1">0</span>款</h6>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <div style="height: 40px">
+                                        <div class="radio col-sm-6">
+                                            <label>
+                                                <input name="product_scope1" data-index="1" id="all_product" type="radio" value="1" checked onchange="productScopeChange()" onclick="getPIndex(this)">全部机型
+                                            </label>
+                                        </div>
+                                        <div class="radio col-sm-6">
+                                            <label onclick="$('#modalProduct').modal('show');">
+                                                <input name="product_scope1" type="radio" value="2" onchange="productScopeChange()" data-index="1" onclick="getPIndex(this)">指定机型
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div id="targetProductWrap1" hidden>
+                                        <table id="targetProduct1"></table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-lg-6" id="copy_1_1" data-index="1">
+                        <div class="col-xs-12 col-sm-12 col-lg-12 no-padding" style="">
+                            <div class="box box-widget">
+                                <div class="box-header with-border">
+                                    <div class="col-lg-12">
+                                        <div class="col-lg-6">
+                                            <div class="input-group col-lg-12">
+                                                <input class="form-control" id="start_time_1_1" data-index="1" disabled>
+                                                <span class="input-group-addon no-border"> 至 </span>
+                                                <input class="form-control" id="end_time_1_1" data-index="1" readonly="readonly" onfocus="WdatePicker({ onpicked: DateSelect(this), minDate: '#F{$dp.$D(\'start_date\')}', maxDate: '#F{$dp.$D(\'end_date\')}' });">
+                                            </div>
+                                        </div>
+                                        <div class="input-group col-lg-6" name="addTimesDiv">
+                                            <span class="btn btn-primary " name="addTimes" onclick="addTimes(this)">添加时间分段</span>
+                                        </div>
+                                    </div>
+                                    <div class="box-tools pull-right" name="removeIcon">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                        @*<button type="button" class="btn  btn-box-tool" data-widget="remove">
+                                            <i class="fa fa-times"></i>
+                                        </button>*@
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <div class="col-md-12 col-lg-12  margin-bottom">
+                                        <div class="row">
+                                            <div class="form-group col-sm-12">
+                                                <label>返利模式</label>
+                                                <div>
+                                                    <div class="radio col-sm-3">
+                                                        <label>
+                                                            <input name="target_mode_1_1" data-index="1" type="radio" value="3" onchange="Target_mode(this)" checked>按零售价
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio col-sm-3">
+                                                        <label>
+                                                            <input name="target_mode_1_1" type="radio" data-index="1" value="5" onchange="Target_mode(this)">按批发价
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio col-sm-3">
+                                                        <label>
+                                                            <input name="target_mode_1_1" type="radio" data-index="1" value="4" disabled onchange="Target_mode(this)">按型号
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio col-sm-3">
+                                                        <label>
+                                                            <input name="target_mode_1_1" type="radio" data-index="1" value="6" onchange="Target_mode(this)">无
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>返利金额</label>
+                                            <div class="">
+                                                <div class="radio col-sm-3 col-lg-3">
+                                                    <label>
+                                                        <input name="rebate_mode_1_1" data-index="1" type="radio" value="1" checked onchange="RebateModeClick(this)">每台固定金额
+                                                    </label>
+                                                </div>
+                                                <div class="radio col-sm-3 col-lg-3">
+                                                    <label>
+                                                        <input name="rebate_mode_1_1" type="radio" data-index="1" value="2" onchange="RebateModeClick(this)">每台批发价比例
+                                                    </label>
+                                                </div>
+                                                <div class="radio col-sm-3 col-lg-3">
+                                                    <label>
+                                                        <input name="rebate_mode_1_1" type="radio" data-index="1" value="3" onchange="RebateModeClick(this)">每台零售价比例
+                                                    </label>
+                                                </div>
+                                                <div class="radio col-sm-3 col-lg-3">
+                                                    <label>
+                                                        <input name="rebate_mode_1_1" type="radio" data-index="1" value="4" onchange="RebateModeClick(this)" disabled> 固定总金额
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <table id="rebateMode1_1_1" class="table table-bordered text-center">
+                                        @*一般*@
+                                        <thead style="display: table;width: 99%;table-layout: fixed;">
+                                            <tr>
+                                                <th class="col-sm-3"><span name="sale_change">完成率（%）</span></th>
+                                                <th class="col-sm-3"><span name="target_mode_change_1_1">零售价（元）</span></th>
+                                                <th class="col-sm-1"></th>
+                                                <th class="col-sm-3"><span name="rebate_mode_change_1_1">返利金额</span></th>
+                                                <th class="col-sm-2"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody style="display: block;height:273px;overflow-y:scroll;overflow-x:hidden">
+                                            <tr>
+                                                <td class="col-sm-3" style="text-align:center;vertical-align:middle">
+                                                    <div class="input-group">
+                                                        <input class="form-control text-center" name="nor_target_min_1_1" onchange="setNumNor(this)">
+                                                        <span class="input-group-addon no-border">-</span>
+                                                        <div class="formValue">
+                                                            <input class="form-control text-center required number" name="nor_target_max_1_1" disabled value="以上">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <table class="table table-bordered text-center" name="small_table_1_1" style="margin-bottom:0px">
+                                                        <tr>
+                                                            <td class="col-sm-3">
+                                                                <div class="input-group">
+                                                                    <input class="form-control text-center" name="sma_target_min_1_1" onchange="setNumSmall(this)">
+                                                                    <span class="input-group-addon no-border">-</span>
+                                                                    <div class="formValue">
+                                                                        <input class="form-control text-center required number" name="sma_target_max_1_1" onchange="setNumSmall(this)">
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="col-sm-1" style="text-align:center;vertical-align:middle">
+                                                                <i onclick="addSmall(this)" name="addSmall_1_1" data-index="1" class="fa fa-plus text-blue "></i>&nbsp;<i onclick="delSmall(this)" name="delSmall_1_1" class="fa fa-minus  text-red "></i>
+                                                            </td>
+                                                            <td class="col-sm-3">
+                                                                <div class="input-group formValue">
+                                                                    <input class="form-control text-center required number" name="nor_rebate_1_1">
+                                                                    <span name="rebate_mode_input1_1_1" class="input-group-addon no-border">元/台</span>
+                                                                    <span name="rebate_mode_input2_1_1" class="input-group-addon no-border  no-padding"></span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="col-sm-3">
+                                                                <div class="input-group">
+                                                                    <input class="form-control text-center" name="sma_target_min_1_1" onchange="setNumSmall(this)">
+                                                                    <span class="input-group-addon no-border">-</span>
+                                                                    <div class="formValue">
+                                                                        <input class="form-control text-center required number" name="sma_target_max_1_1" disabled value="以上">
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="col-sm-1" style="text-align:center;vertical-align:middle">
+                                                                <i onclick="addSmall(this)" name="addSmall_1_1" data-index="1" class="fa fa-plus text-blue "></i>
+                                                            </td>
+                                                            <td class="col-sm-3">
+                                                                <div class="input-group formValue">
+                                                                    <input class="form-control text-center required number" name="nor_rebate_1_1">
+                                                                    <span name="rebate_mode_input1_1_1" class="input-group-addon no-border">元/台</span>
+                                                                    <span name="rebate_mode_input2_1_1" class="input-group-addon no-border  no-padding"></span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td class="col-sm-2" style="text-align:center;vertical-align:middle">
+                                                    <i onclick="addNormal(this)" data-index="1" name="addNormal_1_1" class="fa fa-plus-circle fa-lg  text-blue "></i>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table id="rebateMode4_1_1" data-index="1" class="table table-bordered text-center" hidden></table>@*按型号*@
+                                    <table id="rebateMode6_1_1" class="table table-bordered text-center" hidden>
+                                        @*无*@
+                                        <thead style="display: table;width: 99%;table-layout: fixed;">
+                                            <tr>
+                                                <th class="col-sm-6"><span name="sale_change">完成率（%）</span></th>
+                                                <th class="col-sm-4"><span name="rebate_mode_change_1_1">返利金额</span></th>
+                                                <th class="col-sm-2"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody style="display: block;height:273px;overflow-y:scroll;overflow-x:hidden">
+                                            <tr style="display: table;width: 100%;table-layout: fixed;">
+                                                <td class="col-sm-6">
+                                                    <div class="input-group">
+                                                        <input class="form-control text-center" name="target_min_1_1" disabled value="0">
+                                                        <span class="input-group-addon no-border">-</span>
+                                                        <div class="formValue">
+                                                            <input class="form-control text-center required number" name="target_max_1_1" onchange="setNum(this)">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="col-sm-4">
+                                                    <div class="input-group formValue">
+                                                        <input class="form-control text-center required number" name="rebate_1_1">
+                                                        <span name="rebate_mode_input1_1_1" class="input-group-addon no-border">元/台</span>
+                                                        <span name="rebate_mode_input2_1_1" class="input-group-addon no-border  no-padding"></span>
+                                                    </div>
+                                                </td>
+                                                <td class="col-sm-2">
+                                                    <i onclick="addRow(this)" data-index="1" name="addRow_1_1" class="fa fa-plus-circle fa-lg margin text-blue "></i>
+                                                </td>
+                                            </tr>
+                                            <tr style="display: table;width: 100%;table-layout: fixed;">
+                                                <td class="col-sm-6">
+                                                    <div class="input-group formValue">
+                                                        <input class="form-control text-center" name="target_min_1_1" onchange="setNum(this)">
+                                                        <span class="input-group-addon no-border">-</span>
+                                                        <input class="form-control text-center required number" name="target_max_1_1" onchange="setNum(this)">
+                                                    </div>
+                                                </td>
+                                                <td class="col-sm-4">
+                                                    <div class="input-group formValue">
+                                                        <input class="form-control text-center required number" name="rebate_1_1">
+                                                        <span name="rebate_mode_input1_1_1" class="input-group-addon no-border">元/台</span>
+                                                        <span name="rebate_mode_input2_1_1" class="input-group-addon no-border  no-padding"></span>
+                                                    </div>
+                                                </td>
+                                                <td class="col-sm-2">
+                                                    <div class="row">
+                                                        <i onclick="addRow(this)" data-index="1" name="addRow_1_1" class="fa fa-plus-circle fa-lg  text-blue "></i>
+                                                        <i onclick="deleteRow(this)"   name="delRow_1_1"  class="fa fa-minus-circle fa-lg text-red"></i>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr style="display: table;width: 100%;table-layout: fixed;">
+                                                <td class="col-sm-6">
+                                                    <div class="input-group">
+                                                        <input class="form-control text-center" name="target_min_1_1" onchange="setNum(this)">
+                                                        <span class="input-group-addon no-border">-</span>
+                                                        <input class="form-control text-center" name="target_max_1_1" disabled value="以上">
+                                                    </div>
+                                                </td>
+                                                <td class="col-sm-4">
+                                                    <div class="input-group formValue">
+                                                        <input class="form-control text-center required number" name="rebate_1_1">
+                                                        <span name="rebate_mode_input1_1_1" class="input-group-addon no-border">元/台</span>
+                                                        <span name="rebate_mode_input2_1_1" class="input-group-addon no-border  no-padding"></span>
+                                                    </div>
+                                                </td>
+                                                <td class="col-sm-2"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="box-footer">
+    <button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+    <a type="submit" class="btn btn-default pull-right" href="javascript:history.go(-1);">返回</a>
+</div>
+
+<div class="modal fade" id="modalProduct" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">请从左侧选择机型</h4>
+            </div>
+            <div class="modal-body">
+                <select multiple="multiple" size="10" id="duallistProduct1" data-index="1"></select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/js/bootstrap-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<script src="~/Content/js/detail/DistributorManage/Attaining/edit_full.js"></script>

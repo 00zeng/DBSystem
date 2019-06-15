@@ -1,0 +1,156 @@
+﻿@{
+    ViewBag.Title = "培训薪资";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<style type="text/css">
+    tbody table td {
+        padding: 0;
+    }
+
+    .radio + .radio {
+        margin-top: 10px;
+    }
+
+    .table-bordered {
+        border-radius: 4px;
+    }
+</style>
+<form id="form1">
+    <div class="box-header">
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">姓名：</span>
+                <span id="name" class="form-control "></span>
+            </div>
+        </div>
+		<div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">职位：</span>
+                <span id="position_name" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">等级：</span>
+                <span id="grade" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">机构：</span>
+                <span id="company_name" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border">入职时间：</span>
+                <span id="entry_date" class="form-control format_date"></span>
+            </div>
+        </div>
+		<div class="col-xs-12 col-sm-6 col-lg-3">
+                <div class="input-group margin-bottom">
+                    <span class="input-group-addon no-border"> 生效时间</span>
+                    <input id="effect_date" class="form-control" readonly="readonly" onfocus="WdatePicker({dateFmt: 'yyyy-MM' });" />
+                    <div class="checkbox input-group-addon no-border">
+                        <label>
+                            <input type="checkbox" id="effect_now" title="审批通过后立即生效" onclick="Effective(this)" />立即生效
+                        </label>
+                    </div>
+                </div>
+         </div>
+    </div>
+    <div class="box-body" style="padding-bottom:0px;">
+        <div class="col-xs-12 col-sm-12 col-lg-12">
+            <div class="box box-warning">
+                <div class="box-header">
+                    <h3 class="box-title">薪资设置</h3>
+                </div>
+                <div class="box-body" style="background-color:#ecf0f5">
+                    <div class="col-xs-12 col-sm-12 col-lg-6">
+                        <div class="box box-widget">
+                            <div class="box-body">
+                                <div id="EmpCategory"  style="display:none">
+                                    <div class="row margin-bottom">
+                                        <div class="col-sm-3"><span class="form-control no-border text-right">实习工资</span></div>
+                                        <div class="radio col-sm-3">
+                                            <label>
+                                                <input type="radio" id="intern_salary_type" name="intern_salary_type" value="1" checked />按总工资比例
+                                            </label>
+                                        </div>
+                                        <div class="radio col-sm-3">
+                                            <label>
+                                                <input type="radio" name="intern_salary_type" value="2">按固定金额
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row margin-bottom" id="salary_ratio" >
+                                        <div class="col-sm-3"><span class="form-control no-border text-right">实习工资比例</span></div>
+                                        <div class="col-sm-6">
+                                            <div class="input-group">
+												<div class="formValue">
+													<input class="form-control text-center required number" id="intern_ratio_salary" name="intern_ratio_salary">
+                                                </div>
+												<span class="input-group-addon ">&nbsp;&nbsp;%&nbsp;&nbsp;</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row margin-bottom" id="salary_fix" style="display:none">
+                                        <div class="col-sm-3"><span class="form-control no-border text-right">实习工资</span></div>
+                                        <div class="col-sm-6">
+                                            <div class="input-group">
+												<div class="formValue">
+													<input class="form-control text-center required number" id="intern_fix_salary" name="intern_fix_salary">
+                                                </div>
+												<span class="input-group-addon ">元/月</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row margin-bottom">
+                                    <div class="col-sm-3"><span class="form-control no-border text-right">离职押金</span></div>
+                                    <div class="col-sm-6">
+                                        <div class="input-group">
+											<div class="formValue">
+												<input class="form-control text-center required number" id="resign_deposit" name="resign_deposit" />
+											</div>
+                                            <span class="input-group-addon">元/月</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row margin-bottom">
+                                    <div class="col-sm-3"><span class="form-control no-border text-right">交通补贴</span></div>
+                                    <div class="col-sm-6">
+                                        <div class="input-group">
+											<div class="formValue">
+												<input class="form-control text-center required number" id="traffic_subsidy" name="traffic_subsidy" />
+                                            </div>
+											<span class="input-group-addon">&nbsp;&nbsp;元&nbsp;&nbsp;</span>
+                                        </div>
+                                    </div>
+                                </div>
+                               @* <div class="row margin-bottom">
+                                    <div class="col-sm-3"><span class="form-control no-border text-right">生效时间</span></div>
+                                    <div class="col-sm-6">
+                                        <input id="effect_date" class="form-control  text-center" onfocus="WdatePicker({dateFmt: 'yyyy-MM' });" readonly />
+                                    </div>
+                                    <div class="col-sm-3 checkbox">
+                                        <label>
+                                            <input type="checkbox" id="effect_now" title="审批通过后立即生效" onclick="Effective(this)" />立即生效
+                                        </label>
+                                    </div>
+                                </div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="box-footer">
+    <button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+    <button type="submit" class="btn btn-default pull-right" onclick="javascript:history.back(-1);">返回</button>
+</div>
+
+<script src="~/Content/js/detail/FinancialAccounting/employeeSalary/trainer_setting.js"></script>

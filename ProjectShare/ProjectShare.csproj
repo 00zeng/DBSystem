@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F81F0B00-7A36-4F25-ABDD-F96C6103AFCD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProjectShare</RootNamespace>
+    <AssemblyName>ProjectShare</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.0.0.999, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.0.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySqlSugar, Version=3.5.3.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\mySqlSugar.3.5.3.4\lib\net40\MySqlSugar.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.1\lib\net45\NPOI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.1\lib\net45\NPOI.OOXML.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.1\lib\net45\NPOI.OpenXml4Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.1\lib\net45\NPOI.OpenXmlFormats.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Database\daoben_activity_attaining.cs" />
+    <Compile Include="Database\daoben_activity_attaining_alter.cs" />
+    <Compile Include="Database\daoben_activity_attaining_approve.cs" />
+    <Compile Include="Database\daoben_activity_attaining_emp.cs" />
+    <Compile Include="Database\daoben_activity_attaining_product.cs" />
+    <Compile Include="Database\daoben_activity_attaining_product_reward.cs" />
+    <Compile Include="Database\daoben_activity_attaining_reward.cs" />
+    <Compile Include="Database\daoben_activity_pk.cs" />
+    <Compile Include="Database\daoben_activity_pk_alter.cs" />
+    <Compile Include="Database\daoben_activity_pk_approve.cs" />
+    <Compile Include="Database\daoben_activity_pk_emp.cs" />
+    <Compile Include="Database\daoben_activity_pk_product.cs" />
+    <Compile Include="Database\daoben_activity_ranking.cs" />
+    <Compile Include="Database\daoben_activity_ranking_alter.cs" />
+    <Compile Include="Database\daoben_activity_ranking_approve.cs" />
+    <Compile Include="Database\daoben_activity_ranking_emp.cs" />
+    <Compile Include="Database\daoben_activity_ranking_reward.cs" />
+    <Compile Include="Database\daoben_activity_recommendation.cs" />
+    <Compile Include="Database\daoben_activity_recommendation_approve.cs" />
+    <Compile Include="Database\daoben_activity_recommendation_emp.cs" />
+    <Compile Include="Database\daoben_activity_recommendation_product.cs" />
+    <Compile Include="Database\daoben_activity_recommendation_reward.cs" />
+    <Compile Include="Database\daoben_activity_sales_perf.cs" />
+    <Compile Include="Database\daoben_activity_sales_perf_alter.cs" />
+    <Compile Include="Database\daoben_activity_sales_perf_approve.cs" />
+    <Compile Include="Database\daoben_activity_sales_perf_emp.cs" />
+    <Compile Include="Database\daoben_activity_sales_perf_product.cs" />
+    <Compile Include="Database\daoben_distributor_attaining.cs" />
+    <Compile Include="Database\daoben_distributor_attaining_alter.cs" />
+    <Compile Include="Database\daoben_distributor_attaining_approve.cs" />
+    <Compile Include="Database\daoben_distributor_attaining_distributor.cs" />
+    <Compile Include="Database\daoben_distributor_attaining_product.cs" />
+    <Compile Include="Database\daoben_distributor_attaining_product_sec.cs" />
+    <Compile Include="Database\daoben_distributor_attaining_rebate.cs" />
+    <Compile Include="Database\daoben_distributor_attaining_rebate_product.cs" />
+    <Compile Include="Database\daoben_distributor_attaining_res.cs" />
+    <Compile Include="Database\daoben_distributor_attaining_time_sec.cs" />
+    <Compile Include="Database\daoben_distributor_clerk.cs" />
+    <Compile Include="Database\daoben_distributor_clerk_resign.cs" />
+    <Compile Include="Database\daoben_distributor_daily.cs" />
+    <Compile Include="Database\daoben_distributor_guide.cs" />
+    <Compile Include="Database\daoben_distributor_image.cs" />
+    <Compile Include="Database\daoben_distributor_image_alter.cs" />
+    <Compile Include="Database\daoben_distributor_image_approve.cs" />
+    <Compile Include="Database\daoben_distributor_image_file.cs" />
+    <Compile Include="Database\daoben_distributor_image_res.cs" />
+    <Compile Include="Database\daoben_distributor_info.cs" />
+    <Compile Include="Database\daoben_distributor_info_file.cs" />
+    <Compile Include="Database\daoben_distributor_info_history.cs" />
+    <Compile Include="Database\daoben_distributor_recommendation.cs" />
+    <Compile Include="Database\daoben_distributor_recommendation_approve.cs" />
+    <Compile Include="Database\daoben_distributor_recommendation_distributor.cs" />
+    <Compile Include="Database\daoben_distributor_recommendation_product.cs" />
+    <Compile Include="Database\daoben_distributor_recommendation_rebate.cs" />
+    <Compile Include="Database\daoben_distributor_settlement_shipping.cs" />
+    <Compile Include="Database\daoben_distributor_shipping.cs" />
+    <Compile Include="Database\daoben_distributor_shipping_approve.cs" />
+    <Compile Include="Database\daoben_distributor_shipping_detail.cs" />
+    <Compile Include="Database\daoben_distributor_shipping_template.cs" />
+    <Compile Include="Database\daoben_distributor_shipping_template_approve.cs" />
+    <Compile Include="Database\daoben_hr_attendance.cs" />
+    <Compile Include="Database\daoben_hr_attendance_approve.cs" />
+    <Compile Include="Database\daoben_hr_emp_area_history.cs" />
+    <Compile Include="Database\daoben_hr_emp_file.cs" />
+    <Compile Include="Database\daoben_hr_emp_info.cs" />
+    <Compile Include="Database\daoben_hr_emp_job.cs" />
+    <Compile Include="Database\daoben_hr_emp_job_history.cs" />
+    <Compile Include="Database\daoben_hr_emp_resigned_info.cs" />
+    <Compile Include="Database\daoben_hr_emp_resigned_job.cs" />
+    <Compile Include="Database\daoben_hr_grade_change.cs" />
+    <Compile Include="Database\daoben_hr_grade_change_approve.cs" />
+    <Compile Include="Database\daoben_hr_grade_change_file.cs" />
+    <Compile Include="Database\daoben_hr_guide_link.cs" />
+    <Compile Include="Database\daoben_hr_leaving.cs" />
+    <Compile Include="Database\daoben_hr_leaving_approve.cs" />
+    <Compile Include="Database\daoben_hr_leaving_cancel.cs" />
+    <Compile Include="Database\daoben_hr_leaving_cancel_approve.cs" />
+    <Compile Include="Database\daoben_hr_leaving_file.cs" />
+    <Compile Include="Database\daoben_hr_position_change.cs" />
+    <Compile Include="Database\daoben_hr_position_change_approve.cs" />
+    <Compile Include="Database\daoben_hr_position_change_effect.cs" />
+    <Compile Include="Database\daoben_hr_position_change_file.cs" />
+    <Compile Include="Database\daoben_hr_resign.cs" />
+    <Compile Include="Database\daoben_hr_resign_approve.cs" />
+    <Compile Include="Database\daoben_hr_resign_effect.cs" />
+    <Compile Include="Database\daoben_hr_resign_file.cs" />
+    <Compile Include="Database\daoben_kpi_sales.cs" />
+    <Compile Include="Database\daoben_kpi_sales_sn_temp.cs" />
+    <Compile Include="Database\daoben_kpi_sale_approve.cs" />
+    <Compile Include="Database\daoben_kpi_trainer.cs" />
+    <Compile Include="Database\daoben_kpi_trainer_approve.cs" />
+    <Compile Include="Database\daoben_kpi_trainer_detail.cs" />
+    <Compile Include="Database\daoben_ms_account.cs" />
+    <Compile Include="Database\daoben_ms_role.cs" />
+    <Compile Include="Database\daoben_org_area.cs" />
+    <Compile Include="Database\daoben_org_area_history.cs" />
+    <Compile Include="Database\daoben_org_company.cs" />
+    <Compile Include="Database\daoben_org_company_history.cs" />
+    <Compile Include="Database\daoben_org_dept.cs" />
+    <Compile Include="Database\daoben_org_dept_area.cs" />
+    <Compile Include="Database\daoben_org_grade.cs" />
+    <Compile Include="Database\daoben_org_position.cs" />
+    <Compile Include="Database\daoben_payroll_guide.cs" />
+    <Compile Include="Database\daoben_payroll_guide_approve.cs" />
+    <Compile Include="Database\daoben_payroll_guide_sub.cs" />
+    <Compile Include="Database\daoben_payroll_office.cs" />
+    <Compile Include="Database\daoben_payroll_office_approve.cs" />
+    <Compile Include="Database\daoben_payroll_office_sub.cs" />
+    <Compile Include="Database\daoben_payroll_sales.cs" />
+    <Compile Include="Database\daoben_payroll_sales_approve.cs" />
+    <Compile Include="Database\daoben_payroll_sales_sub.cs" />
+    <Compile Include="Database\daoben_payroll_setting.cs" />
+    <Compile Include="Database\daoben_payroll_template.cs" />
+    <Compile Include="Database\daoben_payroll_trainer.cs" />
+    <Compile Include="Database\daoben_payroll_trainer_approve.cs" />
+    <Compile Include="Database\daoben_payroll_trainer_sub.cs" />
+    <Compile Include="Database\daoben_product_commission.cs" />
+    <Compile Include="Database\daoben_product_commission_approve.cs" />
+    <Compile Include="Database\daoben_product_commission_detail.cs" />
+    <Compile Include="Database\daoben_product_commission_effect.cs" />
+    <Compile Include="Database\daoben_product_price.cs" />
+    <Compile Include="Database\daoben_product_price_approve.cs" />
+    <Compile Include="Database\daoben_product_price_effect.cs" />
+    <Compile Include="Database\daoben_product_sn.cs" />
+    <Compile Include="Database\daoben_product_sn_outlay.cs" />
+    <Compile Include="Database\daoben_salary_annualbonus.cs" />
+    <Compile Include="Database\daoben_salary_annualbonus_approve.cs" />
+    <Compile Include="Database\daoben_salary_benefit.cs" />
+    <Compile Include="Database\daoben_salary_benefit_approve.cs" />
+    <Compile Include="Database\daoben_salary_benefit_detail.cs" />
+    <Compile Include="Database\daoben_salary_benefit_pos.cs" />
+    <Compile Include="Database\daoben_salary_emp.cs" />
+    <Compile Include="Database\daoben_salary_emp_approve.cs" />
+    <Compile Include="Database\daoben_salary_emp_general.cs" />
+    <Compile Include="Database\daoben_salary_emp_kpi_subsidy.cs" />
+    <Compile Include="Database\daoben_salary_emp_sales.cs" />
+    <Compile Include="Database\daoben_salary_emp_sales_sub.cs" />
+    <Compile Include="Database\daoben_salary_emp_subsidy.cs" />
+    <Compile Include="Database\daoben_salary_emp_trainer.cs" />
+    <Compile Include="Database\daoben_salary_kpi.cs" />
+    <Compile Include="Database\daoben_salary_kpi_approve.cs" />
+    <Compile Include="Database\daoben_salary_position.cs" />
+    <Compile Include="Database\daoben_salary_position_approve.cs" />
+    <Compile Include="Database\daoben_salary_position_dept.cs" />
+    <Compile Include="Database\daoben_salary_position_grade.cs" />
+    <Compile Include="Database\daoben_salary_position_guide.cs" />
+    <Compile Include="Database\daoben_salary_position_guide_sub.cs" />
+    <Compile Include="Database\daoben_salary_position_other.cs" />
+    <Compile Include="Database\daoben_salary_position_sales.cs" />
+    <Compile Include="Database\daoben_salary_position_sales_sub.cs" />
+    <Compile Include="Database\daoben_salary_position_seniority.cs" />
+    <Compile Include="Database\daoben_salary_position_traffic.cs" />
+    <Compile Include="Database\daoben_salary_position_trainer.cs" />
+    <Compile Include="Database\daoben_salary_position_trainermanager.cs" />
+    <Compile Include="Database\daoben_salary_reward.cs" />
+    <Compile Include="Database\daoben_salary_reward_approve.cs" />
+    <Compile Include="Database\daoben_salary_reward_detail.cs" />
+    <Compile Include="Database\daoben_salary_staysubsidy.cs" />
+    <Compile Include="Database\daoben_salary_staysubsidy_approve.cs" />
+    <Compile Include="Database\daoben_salary_staysubsidy_emp.cs" />
+    <Compile Include="Database\daoben_sale_buyout.cs" />
+    <Compile Include="Database\daoben_sale_buyout_import_approve.cs" />
+    <Compile Include="Database\daoben_sale_buyout_import_temp.cs" />
+    <Compile Include="Database\daoben_sale_buyout_request.cs" />
+    <Compile Include="Database\daoben_sale_buyout_request_approve.cs" />
+    <Compile Include="Database\daoben_sale_buyout_request_sub.cs" />
+    <Compile Include="Database\daoben_sale_exclusive.cs" />
+    <Compile Include="Database\daoben_sale_exclusive_approve.cs" />
+    <Compile Include="Database\daoben_sale_exclusive_detail.cs" />
+    <Compile Include="Database\daoben_sale_month_emp.cs" />
+    <Compile Include="Database\daoben_sale_outstorage.cs" />
+    <Compile Include="Database\daoben_sale_outstorage_approve.cs" />
+    <Compile Include="Database\daoben_sale_refund.cs" />
+    <Compile Include="Database\daoben_sale_refund_approve.cs" />
+    <Compile Include="Database\daoben_sale_return.cs" />
+    <Compile Include="Database\daoben_sale_return_approve.cs" />
+    <Compile Include="Database\daoben_sale_salesinfo.cs" />
+    <Compile Include="Database\daoben_sale_salesinfo_approve.cs" />
+    <Compile Include="Database\daoben_sys_authority.cs" />
+    <Compile Include="Database\daoben_sys_cron.cs" />
+    <Compile Include="Database\daoben_sys_menu.cs" />
+    <Compile Include="Database\daoben_sys_menu_button.cs" />
+    <Compile Include="Database\daoben_sys_notification.cs" />
+    <Compile Include="Database\daoben_sys_task.cs" />
+    <Compile Include="Models\CommonApiModel.cs" />
+    <Compile Include="Models\KeyInfoTree.cs" />
+    <Compile Include="Models\QueryContainer.cs" />
+    <Compile Include="Models\QueryTime.cs" />
+    <Compile Include="Models\UploadFileInfo.cs" />
+    <Compile Include="Models\LoginStat.cs" />
+    <Compile Include="Models\AppCache.cs" />
+    <Compile Include="Models\AuthorityTreeModel.cs" />
+    <Compile Include="Models\ConstData.cs" />
+    <Compile Include="Models\MenuSearch.cs" />
+    <Compile Include="Models\CacheKey.cs" />
+    <Compile Include="Models\CategoryWithProductList.cs" />
+    <Compile Include="Process\ExcelApi.cs" />
+    <Compile Include="Process\SugarDao.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\" />
+    <Folder Include="lib\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

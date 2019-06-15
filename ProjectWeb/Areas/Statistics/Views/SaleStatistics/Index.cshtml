@@ -1,0 +1,85 @@
+﻿@*统计分析*@
+@{
+    ViewBag.Title = "统计分析";
+    Layout = "~/Views/Shared/_Index_v2.cshtml";
+}
+<div class="box-header widt-border">
+    <h3 class="box-title"><i class="fa fa-bar-chart"></i> 销售统计</h3>
+</div>
+<div class="box-header">
+    <div class="row">
+        <div class="col-xs-12 col-sm-3 col-lg-3" hidden>
+            @*暂不开放*@
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border">事业部：</span>
+                <select id="company_l1_id" class="form-control" type="text"></select>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-lg-3">
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border">分公司：</span>
+                <select id="company_l2_id" class="form-control" type="text"></select>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-lg-3">
+            <div class="input-group margin-bottom ">
+                <span class="input-group-addon no-border">经理片区：</span>
+                <select id="area_l1_id" class="form-control"><option value="0">--所有经理片区--</option></select>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-lg-3">
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border">业务片区：</span>
+                <select id="area_l2_id" class="form-control"><option value="0">--所有业务片区--</option></select>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-lg-3">
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border">经销商：</span>
+                <select id="distributor_id" class="form-control"><option value="0">--所有经销商--</option></select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-lg-4">
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border">统计时间：</span>
+                <select id="date_type" class="form-control">
+                    <option value="0">--自定义--</option>
+                    <option value="1">--月度--</option>
+                    @*<option value="2">--季度--</option>*@
+                    <option value="3">--年度--</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-5 col-lg-4">
+            <div class="input-group">
+                <input placeholder="开始统计" id="start_date" name="start_date" type="text" class="form-control" readonly="readonly" onfocus="WdatePicker({ maxDate: '#F{$dp.$D(\'end_date\')|| \'%y-%M-%d\' }', minDate: '#F{$dp.$D(\'end_date\',{M:-3})}' });">
+                <span class="input-group-addon">-</span>
+                <input placeholder="结束统计" id="end_date" name="end_date" type="text" class="form-control" readonly="readonly" onfocus="WdatePicker({ maxDate: '#F{$dp.$D(\'start_date\',{M:3}) && \'%y-%M-%d\' }', minDate: '#F{$dp.$D(\'start_date\')}' });">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-1 col-lg-4">
+            <button type="button" id="querySubmit" class="btn btn-primary">查询</button>
+        </div>
+    </div>
+</div>
+<div class="box-body">
+    <div class="nav-tabs-custom">
+        <!-- Tabs within a box -->
+        <ul class="nav nav-tabs pull-right" id="menu">
+            <li><a href="#buyout-chart" data-toggle="tab">销售额</a></li>
+            <li class="active"><a href="#sale-chart" data-toggle="tab">销量</a></li>
+        </ul>
+
+        <div class="tab-content no-padding">
+            <!-- Morris chart - Sale -->
+            <div class="chart tab-pane col-sm-12" id="buyout-chart" style="height: 500px;"></div>
+            <div class="chart tab-pane col-sm-12 active" id="sale-chart" style="height: 500px;"></div>
+            <h6 class="label label-warning">当实销值为负数时，表示有买断导入但无对应的实销导入</h6>
+        </div>
+
+    </div>
+</div>
+
+<script src="~/Content/js/detail/Statistics/SaleStatistics/index.js"></script>

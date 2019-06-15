@@ -1,0 +1,80 @@
+﻿@* 实销信息导入 *@
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Form_dinf.cshtml";
+}
+
+<header class="panel-heading">
+    <span style="color:#ffffff">实销信息导入</span>
+</header>
+<div class="panel-body" style="background:white;">
+    <div class="row">
+            <div class="col-xs-1">
+            </div>
+            <div class="col-xs-10" style="min-width: 1000px">
+        <div class="form">
+
+            <div class="main-title main-title2">
+                <div class="main-title2-type">
+                </div>
+            </div>
+
+            <div style="margin-top:30px">
+                <div style="width:1000px;height:35px;line-height:35px;margin-bottom:10px;background-color:rgb(134,147,158);">
+                    <span style="font-size:16px;color:#fff;padding-left:10px;">实销信息导入</span>
+                </div>
+                <div class="prove" style="">
+                    <div>
+                        <input id=""  type="file" />
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top:30px">
+                <div style="width:1000px;height:35px;line-height:35px;margin-bottom:10px;background-color:rgb(134,147,158);">
+                    <span style="font-size:16px;color:#fff;padding-left:10px;">导入结果</span>
+                </div>
+                <table class="normal-s" style="white-space:nowrap">
+                    <tr style="height:41px">
+                        <th>经销商</th>
+                        <th>型号</th>
+                        <th>颜色</th>
+                        <th>串码</th>
+                        <th>上报人</th>
+                        <th>状态</th>
+                        <th>业务大区<br />(区域)</th>
+                        <th>二级地区<br />(事业部)</th>
+                        <th>三级地区<br />(分公司)</th>
+                        <th>日期</th>
+                        <th>类型</th>
+                        <th>业务片区<br />(业务员)</th>
+                        <th>导入结果</th>
+                    </tr>
+                    <tr style="height:41px">
+                        <td><span id="opinion1" name="opinion1"></span></td>
+                        <td><span id="name1" name="name1"></span></td>
+                        <td><span id="approve_time1" name="approve_time1"></span></td>
+                        <td><span id="opinion1" name="opinion1"></span></td>
+                        <td><span id="name1" name="name1"></span></td>
+                        <td><span id="approve_time1" name="approve_time1"></span></td>
+                        <td><span id="opinion1" name="opinion1"></span></td>
+                        <td><span id="name1" name="name1"></span></td>
+                        <td><span id="approve_time1" name="approve_time1"></span></td>
+                        <td><span id="opinion1" name="opinion1"></span></td>
+                        <td><span id="name1" name="name1"></span></td>
+                        <td><span id="approve_time1" name="approve_time1"></span></td>
+                        <td>信息有误，请修改</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="main-submit">
+                <a href="/saleManage/buyoutInfo/Index" style="display:block;float:right; width:65px;height:26px;line-height:26px;border-radius:5px;box-shadow:none;border:none;background-color:#ddd;text-align:center;margin-left:5px"> 返回 </a>
+                <a id="btnEdit" onclick="submitForm()" style="display:block;float:right; width:65px;height:26px;line-height:26px;border-radius:5px;box-shadow:none;border:none;color:#fff;background-color:rgba(22,155,213,1);text-align:center;cursor:pointer;">提交</a>
+            </div>
+			</div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/js/detail/saleManage/saleInfo/saleInfoAdd.js"></script>

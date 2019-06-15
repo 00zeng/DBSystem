@@ -1,0 +1,57 @@
+﻿.panel-heading-title{
+    font-family:'微软雅黑';
+    color:#ffffff;
+    float:left;
+    line-height:10px;
+    font-size:16px;
+}
+.panel-heading-div {
+    height:14px;
+    margin-top:8px;
+}
+#nav_tab{
+    float:left;
+    border-bottom:none;
+    margin-left:20px;
+}
+#nav_tab li {
+        margin-left: -3px;
+    }
+#nav_tab li a {
+        line-height: 4px;
+        font-size: 12px;
+        border: 1px solid rgba(121, 121, 121, 1);
+        border-bottom: none;
+        color: white;
+    }
+#nav_tab li.active a {
+        font-family:'微软雅黑';
+        color: black;
+        }
+
+#nav_tab a:hover {
+        color: black;
+}
+.panel-heading .head-left {
+    height: 14px;
+    margin-top: 8px;
+}
+#nav_tab .nav-operate {
+    background-color:rgba(22,155,213,1)
+}
+#nav_tab .nav-operate:hover{
+    background-color:rgba(22,155,213,1);
+    color: white
+}
+#nav_tab .nav-green {
+    background-color:rgba(63, 180, 181,1)
+}
+#nav_tab .nav-green:hover{
+    background-color:rgba(63, 180, 181,1);
+    color: white
+}
+
+.nav_tab_right{
+    float:right;
+    margin-top:-10px;
+}

@@ -1,0 +1,443 @@
+﻿@{
+    ViewBag.Title = "活动-达量奖励";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<link href="~/Content/js/bootstrap-duallistbox/bootstrap-duallistbox.min.css" rel="stylesheet" />
+<style type="text/css">
+    tbody table td {
+        padding: 0;
+    }
+
+    .radio + .radio {
+        margin-top: 10px;
+    }
+
+    .table-bordered {
+        border-radius: 4px;
+    }
+
+    table {
+        border-collapse: collapse;
+    }
+
+        table td {
+            empty-cells: show;
+        }
+</style>
+<form id="form1">
+    <div class="box-header">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-lg-3">
+                <div class="input-group formValue margin-bottom">
+                    <span class="input-group-addon no-border">活动名称</span>
+                    <input type="text" id="name" class="form-control required">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-3">
+                <div class="input-group formValue margin-bottom">
+                    <span class="input-group-addon no-border">分公司</span>
+                    <select id="company" name="company" class="form-control required" tabindex="-1" aria-hidden="true"></select>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-4">
+                <div class="input-group margin-bottom">
+                    <span class="input-group-addon no-border">活动时间</span>
+                    <div class="formValue">
+                        <input id="start_date" name="start_date" class="form-control required" readonly="readonly" onfocus="WdatePicker({ maxDate: '#F{$dp.$D(\'end_date\')}' });" onblur="CheckValid(this)" />
+                    </div>
+                    <span class="input-group-addon">至</span>
+                    <div class="formValue">
+                        <input id="end_date" name="end_date" class="form-control required" readonly="readonly" onfocus="WdatePicker({ minDate: '#F{$dp.$D(\'start_date\')}' });" onblur="CheckValid(this)" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box-body" style="padding-bottom:0px;">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-lg-12">
+                <div class="box box-danger">
+                    <div class="box-header">
+                        <div class="input-group pull-left">
+                            <select class="form-control " name="emp_category" id="emp_category" style="width:130px">
+                                <option value="3">导购员</option>
+                                <option value="20">业务员</option>
+                                <option value="21">业务经理</option>
+                            </select>
+                        </div>
+                        <h6 class="inline margin pull-left">共<span class="margin" id="emp_count">0</span>人</h6>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div>
+                            <div class="col-sm-3">
+                                <table class="table table-bordered text-center" id="EmpTable">
+                                    <thead style="display: table;width:100%;table-layout: fixed;">
+                                        <tr>
+                                            <td class="col-sm-12">
+                                                <div class="pull-left" id="allInput">
+                                                    <input class="form-control" id="findinput" />
+                                                </div>
+                                                <div class="pull-right" id="onlyGuide">
+                                                    <select class="form-control" id="guide_category">
+                                                        <option value="">全部</option>
+                                                        <option value="正职">正职</option>
+                                                        <option value="副职">副职</option>
+                                                        <option value="挂职">挂职</option>
+                                                    </select>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </thead>
+                                    <tbody style="display: block;height:200px;overflow-y:scroll;overflow-x:hidden"></tbody>
+                                </table>
+                            </div>
+                            <div class="col-sm-9">
+                                <table class="table table-bordered text-center">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-sm-2">参赛人员</th>
+                                            <th class="col-sm-2">目标销量</th>
+                                            <th class="col-sm-4"><span name="">比赛详情</span></th>
+                                            <th class="col-sm-2">参赛人员</th>
+                                            <th class="col-sm-2">目标销量</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="race">
+                                        <tr style="height:50px">
+                                            <td class="col-sm-2" name="left" id="target11"></td>
+                                            <td class="col-sm-2">
+                                                <div class="input-group formValue">
+                                                    <input type="text" class="form-control  text-center" id="activity_target" name="activity_target_left">
+                                                    <span class="input-group-addon">
+                                                        台
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td class="col-sm-4">
+                                                <div class="progress-group">
+                                                    <div class="progress sm">
+                                                        <div class="progress-bar progress-bar-blue" style="width: 50%"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="col-sm-2" name="right" id="target12"></td>
+                                            <td class="col-sm-2">
+                                                <div class="input-group formValue">
+                                                    <input type="text" class="form-control  text-center" name="activity_target_right">
+                                                    <span class="input-group-addon">
+                                                        台
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr style="height:50px">
+                                            <td class="col-sm-2" id="target21" name="left"></td>
+                                            <td class="col-sm-2">
+                                                <div class="input-group formValue">
+                                                    <input type="text" class="form-control  text-center" name="activity_target_left">
+                                                    <span class="input-group-addon">
+                                                        台
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td class="col-sm-4">
+                                                <div class="progress-group">
+                                                    <div class="progress sm">
+                                                        <div class="progress-bar progress-bar-blue" style="width: 50%"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="col-sm-2" id="target22" name="right"></td>
+                                            <td class="col-sm-2">
+                                                <div class="input-group formValue">
+                                                    <input type="text" class="form-control text-center" name="activity_target_right">
+                                                    <span class="input-group-addon">
+                                                        台
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr style="height:50px">
+                                            <td class="col-sm-2" id="target31" name="left"></td>
+                                            <td class="col-sm-2">
+                                                <div class="input-group formValue">
+                                                    <input type="text" class="form-control  text-center" name="activity_target_left">
+                                                    <span class="input-group-addon">
+                                                        台
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td class="col-sm-4">
+                                                <div class="progress-group">
+                                                    <div class="progress sm">
+                                                        <div class="progress-bar progress-bar-blue" style="width: 50%"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="col-sm-2" id="target32" name="right"></td>
+                                            <td class="col-sm-2">
+                                                <div class="input-group formValue">
+                                                    <input type="text" class="form-control  text-center" name="activity_target_right">
+                                                    <span class="input-group-addon">
+                                                        台
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <span class="label label-info pull-left margin">点击拖动员工到参赛人员区域</span>
+
+                                <span class="btn btn-primary pull-right margin" onclick="addItem()"><i class="fa fa-plus"></i>新增组</span>
+                                <span class="btn btn-info pull-right margin" onclick="UnifySum()" title="以首个目标销量为统一值">统一目标销量</span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-lg-6">
+                <div class="box box-warning">
+                    <div class="box-header">
+                        <h3 class="box-title">活动机型</h3><h6 id="productCountWrap" class="inline margin" hidden>共<span class="margin" id="product_count">0</span>款</h6>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div style="height: 53px">
+                            <div class="radio col-sm-3">
+                                <label>
+                                    <input name="product_scope" id="all_product" type="radio" value="1" checked>全部机型
+                                </label>
+                            </div>
+                            <div class="radio col-sm-3">
+                                <label onclick="$('#modalProduct').modal('show');">
+                                    <input name="product_scope" type="radio" value="2">指定机型
+                                </label>
+                            </div>
+                        </div>
+                        <div id="targetProductWrap" hidden>
+                            <table id="targetProduct"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-lg-12">
+                <div class="box box-primary">
+                    <div class="box-header">
+                        <h3 class="box-title">活动政策</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body" style="background-color:#ecf0f5">
+                        <div class="col-xs-12 col-sm-12 col-lg-12 ">
+                            <div class="box box-widget">
+                                <div class="box-header with-border">
+                                    <div class="input-group col-sm-5 col-lg-3">
+                                        <h3 class="box-title input-group-addon no-border">奖罚方式</h3>
+                                    </div>
+                                    <div class="box-tools">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+
+                                </div>
+                                <div class="box-body">
+                                    <div class="row">
+                                        <div class="col-sm-8 col-lg-6">
+                                            <div class="col-sm-3"><span class="form-control no-border ">获胜方</span></div>
+                                            <div class="col-sm-9 margin-bottom">
+                                                <div class="input-group formValue">
+                                                    <span class="input-group-addon">
+                                                        <input type="checkbox" checked disabled>
+                                                    </span>
+                                                    <span class="input-group-addon">
+                                                        赢取对方
+                                                    </span>
+                                                    <input type="text" class="form-control text-center number" value="0" id="win_lose" name="win_lose">
+                                                    <span class="input-group-addon">
+                                                        元
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-8 col-lg-6">
+                                            <div class="col-sm-3"><span class="form-control no-border "></span></div>
+                                            <div class="col-sm-9 margin-bottom">
+                                                <div class="input-group  formValue">
+                                                    <span class="input-group-addon">
+                                                        <input type="checkbox" name="win_company" onclick="checkChange()">
+                                                    </span>
+                                                    <span class="input-group-addon">
+                                                        公司奖励获胜方
+                                                    </span>
+                                                    <input type="text" value="0" id="win_company" class="form-control  text-center number">
+                                                    <span class="input-group-addon">
+                                                        元
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4 col-lg-6">
+                                            <div class="form-control radio no-border" style="margin-top:0px">
+                                                <div class="margin-bottom">
+                                                    <label>
+                                                        <input id="win_company_condition" name="win_company_condition" type="radio" value="1" checked>仅当双方完成率都达到100%时
+                                                    </label>
+                                                </div>
+                                                <div class="margin-bottom">
+                                                    <label>
+                                                        <input name="win_company_condition" type="radio" value="2"> 只要获胜方完成率达到100%
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-8 col-lg-6">
+                                            <div class="col-sm-3"><span class="form-control no-border "></span></div>
+                                            <div class="col-sm-9 margin-bottom">
+                                                <div class="input-group formValue">
+                                                    <span class="input-group-addon ">
+                                                        <input type="checkbox" name="win_penalty" onclick="checkChange()">
+                                                    </span>
+                                                    <span class="input-group-addon">
+                                                        获胜方完成率低于100%，罚款
+                                                    </span>
+                                                    <input type="text" class="form-control text-center number" value="0" id="win_penalty">
+                                                    <span class="input-group-addon">
+                                                        元
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row ">
+                                        <div class="col-sm-8 col-lg-6">
+                                            <div class="col-sm-3"><span class="form-control no-border ">失败方</span></div>
+                                            <div class="col-sm-9 margin-bottom">
+                                                <div class="input-group formValue">
+                                                    <span class="input-group-addon">
+                                                        <input type="checkbox" checked disabled>
+                                                    </span>
+                                                    <span class="input-group-addon">
+                                                        输给对方
+                                                    </span>
+                                                    <input type="text" class="form-control text-center number" value="0" id="lose_win">
+                                                    <span class="input-group-addon">
+                                                        元
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-8 col-lg-6">
+                                            <div class="col-sm-3"><span class="form-control no-border "></span></div>
+                                            <div class="col-sm-9 margin-bottom">
+                                                <div class="input-group formValue">
+                                                    <span class="input-group-addon">
+                                                        <input type="checkbox" name="lose_penalty" onclick="checkChange()">
+                                                    </span>
+                                                    <span class="input-group-addon">
+                                                        失败方完成率低于100%，罚款
+                                                    </span>
+                                                    <input type="text" class="form-control text-center number" value="0" id="lose_penalty">
+                                                    <span class="input-group-addon">
+                                                        元
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col-sm-8 col-lg-6">
+                                            <div class="col-sm-3"><span class="form-control no-border ">备注</span></div>
+                                            <div class="col-sm-9 margin-bottom">
+                                                <textarea class="form-control" id="note"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="col-xs-12 col-sm-12 col-lg-12 ">
+                            <div class="box box-widget">
+                                <div class="box-header with-border">
+                                    <div class="input-group col-sm-5 col-lg-3">
+                                        <h3 class="box-title input-group-addon no-border"></h3>
+                                    </div>
+                                    <div class="box-tools">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+
+                                </div>
+                                <div class="box-body">
+                                    <div class="row form-group">
+                                        <div class="col-md-4 col-lg-1 "><span class="form-control no-border ">目标销量</span></div>
+                                        <div class="col-md-6 col-lg-4">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control text-center" value="0" id="activity_target">
+                                                <span class="input-group-addon">
+                                                    台
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col-md-4 col-lg-1 "><span class="form-control no-border ">备注</span></div>
+                                        <div class="col-md-6 col-lg-8">
+                                           <textarea class="form-control" id="note"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+    @*</div>*@
+</form>
+<div class="box-footer">
+    <button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+    <a type="submit" class="btn btn-default pull-right" href="/ActivityManage/PK/Index">返回</a>
+</div>
+
+<div class="modal fade" id="modalProduct" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">请从左侧选择机型</h4>
+            </div>
+            <div class="modal-body">
+                <select multiple="multiple" size="10" id="duallistProduct"></select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/js/bootstrap-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<script src="~/Content/js/jquery/jquery-ui.js"></script>
+<script src="~/Content/js/detail/activityManage/PK/add.js"></script>

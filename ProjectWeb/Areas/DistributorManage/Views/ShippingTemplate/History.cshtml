@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Form_dinf.cshtml";
+}
+<form id="form1">
+    <header class="panel-heading">
+        <span style="color:#ffffff">经销商运费</span>
+    </header>
+    <div class="panel-body" style="background:white;">
+        <div class="row">
+            <div class="col-xs-1">
+            </div>
+            <div class="col-xs-10" style="min-width:1000px">
+                    <div class="form">
+                        <div class="main-title main-title2">
+                            <div class="main-title2-type">
+                                状态：<span id="effect_status1" style="margin-right:60px"></span>
+                                生效时间：<span id="effect_date"class="format_date"></span>
+                            </div>
+                        </div>
+                        <div class="mid-title-wrap">
+                            <div class="mid-title">经销商运费</div>
+                        </div>
+                        <table class="normal-shipping" id="shipping_tr" style="white-space:nowrap">
+                            <tr>
+                                <th>最低运费</th>
+                                <td colspan="3">
+                                    <span id="minimum_fee" type="text"></span> 元   <span style="color:red; float:right">不足最低收费标准时按最低收费标准结算（免运费除外）</span>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="mid-title-wrap">
+                            <div class="mid-title">操作信息</div>
+                        </div>
+                        <table class="normal-show">
+                            <tr>
+                                <th>操作类型</th>
+                                <th>操作人</th>
+                                <th>操作人职位</th>
+                                <th>时间</th>
+                            </tr>
+                            <tr>
+                                <td>提交设置</td>
+                                <td id="creator_name"></td>
+                                <td id="creator_position_name"></td>
+                                <td id="create_time"></td>
+                            </tr>
+                        </table>
+                        <div class="main-submit">
+                            <a class="btn-return" href="/DistributorManage/ShippingTemplate/historyIndex"> 返回 </a>
+                        </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="~/Content/js/detail/DistributorManage/ShippingTemplate/history.js"></script>

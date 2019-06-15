@@ -1,0 +1,62 @@
+﻿@* 出勤导入*@
+@{
+    ViewBag.Title = "出勤导入查看";
+    Layout = "~/Views/Shared/_Form_dinf.cshtml";
+}
+<link href="~/Content/css/dinf-table.css" rel="stylesheet" />
+<form id="form1">
+<header class="panel-heading">
+    <span style="color:#ffffff">出勤导入查看</span>
+</header>
+<div class="panel-body" style="background:white;">
+    <div class="row">
+        <div class="col-xs-1">
+        </div>
+        <div class="col-xs-10" style="min-width:1000px">
+
+        <div class="form">
+            <div class="main-title main-title2">
+                <div class="main-title2-type">
+                    导入文件名：<span id="import_file" style="margin-right:60px"></span>
+					月份:<span id="month" class="format_date"></span>
+                </div>
+            </div>
+
+
+            <div class="main-section">
+                    <div class="mid-title-wrap">
+                        <div class="mid-title">导入结果</div>
+                    </div>
+               <table id="tb_table" style="table-layout:fixed;"></table>
+            </div>
+
+            <div class="mid-title-wrap">
+                    <div class="mid-title">文件导入</div>
+                </div>
+                <table class="normal-s" style="white-space:nowrap">
+                    <tr style="height:41px">
+                        <th>操作类型</th>
+                        <th>操作人</th>
+                        <th>操作人职位</th>
+                        <th>时间</th>
+                    </tr>
+                    <tr>
+                        <td>文件导入</td>
+                        <td><span id="creator_name"></span></td>
+                        <td><span id="creator_position_name"></span></td>
+                        <td><span id="create_time"></span></td>
+                    </tr>
+                </table>
+            </div>
+
+           
+
+            <div class="main-submit">
+			    <a class="btn-return" id="btnReturn" href="javascript:history.go(-1);"> 返回 </a>
+               </div>
+          </div>
+        </div>
+    </div>
+</div>
+</form>
+<script src="~/Content/js/detail/HumanResource/attendance/Show.js"></script>

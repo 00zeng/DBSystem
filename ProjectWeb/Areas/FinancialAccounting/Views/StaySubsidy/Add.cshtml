@@ -1,0 +1,147 @@
+﻿@{
+    ViewBag.Title = "留守补助";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<link href="~/Content/js/bootstrap-duallistbox/bootstrap-duallistbox.min.css" rel="stylesheet" />
+<style type="text/css">
+    tbody table td {
+        padding: 0;
+    }
+
+    .radio + .radio {
+        margin-top: 10px;
+    }
+
+    .table-bordered {
+        border-radius: 4px;
+    }
+</style>
+<form id="form1">
+    <div class="box-header">
+        <div class="col-xs-12 col-sm-4 col-lg-3" id="division" style="display:none">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">机构：</span>
+                <select type="text" id="company_id" class="form-control required"></select>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-lg-3" id="branch" style="display:none">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">机构：</span>
+                <span type="text" id="company_name" class="form-control required"></span>
+            </div>
+        </div>
+		<div class="col-xs-12 col-sm-4 col-lg-3" >
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border">发放月份</span>
+                <input id="month" class="form-control" readonly="readonly" onfocus="WdatePicker({dateFmt: 'yyyy-MM' });" />
+            </div>
+        </div>
+    </div>
+    <div class="box-body" style="padding-bottom:0px;">
+        <div class="col-xs-12 col-sm-12 col-lg-6">
+            <div class="box box-warning">
+                <div class="box-header">
+                    <h3 class="box-title">发放对象</h3><h6 class="inline margin">共<span class="margin" id="emp_count">0</span>人</h6>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div style="height: 40px">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEmp">选择员工</button>
+                    </div>
+                    <table id="targetEmp"></table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-lg-6">
+            <div class="box box-danger">
+                <div class="box-header">
+                    <h3 class="box-title">补助金额</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="box-body">
+                    <div class="row margin-bottom">
+                        <div class="col-sm-3"><span class="form-control no-border text-right"><strong>公司</strong></span></div>
+                        <div class="col-sm-7">
+                            <div class="input-group">
+								<div class="formValue">
+									<input type="text" class="form-control text-center required number" value="0" id="company_amount" name="company_amount" onchange="getSum()">
+                               </div>
+							    <span class="input-group-addon">元</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row margin-bottom">
+                        <div class="col-sm-3"><span class="form-control no-border text-right"><strong>员工</strong></span></div>
+                        <div class="col-sm-7">
+                            <div class="input-group">
+								<div class="formValue">
+									<input type="text" class="form-control text-center required number " value="0" id="emp_amount" name="emp_amount" onchange="getSum()">
+                                </div>
+                                <span class="input-group-addon">元</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row margin-bottom">
+                        <div class="col-sm-3"><span class="form-control no-border text-right"><strong>补助总金额</strong></span></div>
+                        <div class="col-sm-7">
+                            <div class="input-group">
+                                <input type="text" class="form-control text-center" value="0" id="amount" readOnly>
+                                <span class="input-group-addon">元</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>
+<div class="box-footer">
+    <button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+    <a type="submit" class="btn btn-default pull-right" href="/FinancialAccounting/StaySubsidy/Index">返回</a>
+</div>
+
+
+<div class="modal fade" id="modalEmp" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">
+                    请从左侧选择员工
+                </h4>
+                @*<span class="checkbox  ">
+                        <label>
+                            <input type="checkbox" id="exclude_emp_status">已转正
+                        </label>
+                    </span>
+                    <span class="checkbox ">
+                        <label>
+                            <input type="checkbox" id="exclude_entry_date">入职时间在<input type="text" id="entry_date" readonly="readonly" onfocus="WdatePicker({onpicked:change_by_date});" style="width:120px;" />（含）之前
+                        </label>
+                    </span>*@
+            </div>
+            <div class="modal-body">
+                <select multiple="multiple" size="10" id="duallistEmp"></select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/js/bootstrap-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<script src="~/Content/js/detail/FinancialAccounting/StaySubsidy/add.js"></script>

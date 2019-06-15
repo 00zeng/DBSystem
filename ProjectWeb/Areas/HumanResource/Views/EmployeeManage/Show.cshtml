@@ -1,0 +1,553 @@
+﻿@{
+    ViewBag.Title = "员工信息 ";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<div class="panel-body" style="background: white;">
+    <form id="form1">
+
+        <div class="box box-warning ">
+            <div class="box-header widt-border">
+                <h3 class="box-title">职务信息</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" onclick="EditJobInfo()">
+                        <i class="fa fa-pencil" title="修改职务信息"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                        <dt>工号</dt>
+                        <dd>
+                            <span id="work_number"></span>
+                        </dd>
+                    </dl>
+                    <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                        <dt>姓名</dt>
+                        <dd>
+                            <span id="name" name="name"></span>
+                        </dd>
+                    </dl>
+                    <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                        <dt>v2姓名</dt>
+                        <dd>
+                            <span id="name_v2" name="name_v2"></span>
+                        </dd>
+                    </dl>
+                    <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                        <dt>所属机构</dt>
+                        <dd>
+                            <span id="company_linkname" name="company_linkname"></span>
+                        </dd>
+                    </dl>
+                    <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                        <dt>部门</dt>
+                        <dd>
+                            <span id="dept_name" name="dept_name"></span>
+                        </dd>
+                    </dl>
+                    <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                        <dt>职位</dt>
+                        <dd>
+                            <span id="position_name" name="position_name"></span>
+                        </dd>
+                    </dl>
+                    <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                        <dt>职级</dt>
+                        <dd>
+                            <span id="grade" name="grade"></span>
+                        </dd>
+                    </dl>
+                    <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal" hidden id="areaL1Wrap">
+                        <dt>经理片区</dt>
+                        <dd>
+                            <span id="area_l1_name" name="area_l1_name"></span>
+                        </dd>
+                    </dl>
+                    <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal" hidden id="areaL2Wrap">
+                        <dt>业务片区</dt>
+                        <dd>
+                            <span id="area_l2_name" name="area_l2_name"></span>
+                        </dd>
+                    </dl>
+                    <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal" hidden id="distributorWrap">
+                        <dt>经销商</dt>
+                        <dd>
+                            <span id="distributor_name" name="distributor_name"></span>
+                        </dd>
+                    </dl>
+                    <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                        <dt>上级主管姓名</dt>
+                        <dd>
+                            <span id="supervisor_name" name="supervisor_name"></span>
+                        </dd>
+                    </dl>
+                    <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                        <dt>雇员类别</dt>
+                        <dd>
+                            <span id="emp_category" name="emp_category"></span>
+                        </dd>
+                    </dl>
+                    <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                        <dt>入职时间</dt>
+                        <dd>
+                            <span id="entry_date" name="entry_date" class="format_date"></span>
+                        </dd>
+                    </dl>
+                    <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                        <dt>工作地点</dt>
+                        <dd>
+                            <span id="work_addr" name="work_addr"></span>
+                        </dd>
+                    </dl>
+                    <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                        <dt>纳税单位</dt>
+                        <dd>
+                            <span id="tax_unit" name="tax_unit"></span>
+                        </dd>
+                    </dl>
+                    <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                        <dt>是否已购买社保</dt>
+                        <dd>
+                            <span id="insurance_paid" name="insurance_paid"></span>
+                        </dd>
+                    </dl>
+                    <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                        <dt>合同签署日期</dt>
+                        <dd>
+                            <span id="cur_contract_sign" name="cur_contract_sign" class="format_date"></span>
+                        </dd>
+                    </dl>
+                    <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                        <dt>合同到期日期</dt>
+                        <dd>
+                            <span id="cur_contract_expire" name="cur_contract_expire" class="format_date"></span>
+                        </dd>
+                    </dl>
+                    <div id="guideSpecificWrap" hidden>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>导购员类别</dt>
+                            <dd>
+                                <span id="guide_category" name="guide_category"></span>
+                            </dd>
+                        </dl>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>介绍人</dt>
+                            <dd>
+                                <span id="introducer_name" name="introducer_name"></span>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="box box-danger collapsed-box">
+            <div class="box-header widt-border">
+                <h3 class="box-title">个人信息</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" onclick="EditPersonalInfo()">
+                        <i class="fa fa-pencil" title="修改个人信息"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body tab-content">
+                <div class="tab-pane active" id="tab_1">
+                    <div class="row">
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>电话号码</dt>
+                            <dd>
+                                <span id="phone" name="phone"></span>
+                            </dd>
+                        </dl>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>微信号</dt>
+                            <dd>
+                                <span id="wechat"></span>
+                            </dd>
+                        </dl>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>证件类别</dt>
+                            <dd>
+                                <span id="identity_type"></span>
+                            </dd>
+                        </dl>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>证件号码</dt>
+                            <dd>
+                                <span id="identity"></span>
+                            </dd>
+                        </dl>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>证件地址</dt>
+                            <dd>
+                                <span id="identity_address" name="identity_address"></span>
+                            </dd>
+                        </dl>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>证件有效期</dt>
+                            <dd><span id="identity_effect" class="format_date"></span>至<span class="format_date" id="identity_expire"></span></dd>
+                        </dl>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>证件签发机关</dt>
+                            <dd>
+                                <span id="identity_issue"></span>
+                            </dd>
+                        </dl>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>性别</dt>
+                            <dd>
+                                <span id="gender"></span>
+                            </dd>
+                        </dl>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>出生日期</dt>
+                            <dd>
+                                <span id="birthdate" class="format_date"></span>
+                            </dd>
+                        </dl>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>年龄</dt>
+                            <dd>
+                                <span id="age"></span>
+                            </dd>
+                        </dl>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>生日</dt>
+                            <dd>
+                                <span id="birthday" class="format_date"></span>
+                            </dd>
+                        </dl>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>生日类型</dt>
+                            <dd>
+                                <span id="birthday_type"></span>
+                            </dd>
+                        </dl>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>国家或地区</dt>
+                            <dd>
+                                <span id="country"></span>
+                            </dd>
+                        </dl>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>家庭地址</dt>
+                            <dd>
+                                <span id="address" name="address"></span>
+                            </dd>
+                        </dl>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>籍贯</dt>
+                            <dd>
+                                <span id="native"></span>
+                            </dd>
+                        </dl>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>民族</dt>
+                            <dd>
+                                <span id="nation"></span>
+                            </dd>
+                        </dl>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>政治面貌</dt>
+                            <dd>
+                                <span id="political"></span>
+                            </dd>
+                        </dl>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>学历</dt>
+                            <dd>
+                                <span id="education"></span>
+                            </dd>
+                        </dl>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>专业</dt>
+                            <dd>
+                                <span id="profession" class="profession"></span>
+                            </dd>
+                        </dl>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>毕业学校</dt>
+                            <dd>
+                                <span id="graduation_school" class="graduation_school"></span>
+                            </dd>
+                        </dl>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>毕业日期</dt>
+                            <dd>
+                                <span id="graduation_date" class="format_date"></span>
+                            </dd>
+                        </dl>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>婚姻状况</dt>
+                            <dd>
+                                <span id="marriage"></span>
+                            </dd>
+                        </dl>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>子女（个）</dt>
+                            <dd>
+                                <span id="child_count"></span>
+                            </dd>
+                        </dl>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>紧急联系人</dt>
+                            <dd>
+                                <span id="emergency_contact"></span>
+                            </dd>
+                        </dl>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>紧急联系电话</dt>
+                            <dd>
+                                <span id="emergency_contact_phone"></span>
+                            </dd>
+                        </dl>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>健康证有效期</dt>
+                            <dd><span id="health_start" class="format_date"></span>至<span class="format_date" id="health_expire"></span></dd>
+                        </dl>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>银行类别</dt>
+                            <dd>
+                                <span id="bank_type" name="bank_type"></span>
+                            </dd>
+                        </dl>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>开户行</dt>
+                            <dd>
+                                <span id="bank_name" name="bank_name"></span>
+                            </dd>
+                        </dl>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>银行账号</dt>
+                            <dd>
+                                <span id="bank_account" name="bank_account"></span>
+                            </dd>
+                        </dl>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>父母银行卡开户银行</dt>
+                            <dd>
+                                <span id="parents_bank" name="parents_bank"></span>
+                            </dd>
+                        </dl>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>父母银行卡号</dt>
+                            <dd>
+                                <span id="parents_bankaccount" name="parents_bankaccount"></span>
+                            </dd>
+                        </dl>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>父母联系电话</dt>
+                            <dd>
+                                <span id="parents_phone" name="parents_phone"></span>
+                            </dd>
+                        </dl>
+                        <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                            <dt>备注</dt>
+                            <dd>
+                                <span id="note"></span>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box box-success collapsed-box">
+            <div class="box-header widt-border">
+                <h3 class="box-title">账户信息</h3>
+                <div class="box-tools pull-right">
+                    @*<button type="button" class="btn btn-box-tool" onclick="EditAccountInfo()">
+                            <i class="fa fa-pencil" title="修改员工账户信息"></i>
+                        </button>*@
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                        <dt>系统账户</dt>
+                        <dd>
+                            <span id="account" name="account"></span>
+                        </dd>
+                    </dl>
+                    <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                        <dt>账户状态</dt>
+                        <dd>
+                            <span id="account_state" name="account_state"></span>
+                        </dd>
+                    </dl>
+                    <dl class="col-xs-12 col-sm-6 col-lg-4 dl-horizontal">
+                        <dt>角色</dt>
+                        <dd>
+                            <span id="role_name" name="role_name"></span>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div class="box box-default collapsed-box">
+            <div class="box-header widt-border">
+                <h3 class="box-title">图片信息</h3>
+                <div class="box-tools pull-right">
+                    @* 图片修改 上传有问题 功能隐藏 *@
+                    @*<button type="button" class="btn btn-box-tool" onclick="EditPictureInfo()">
+                        <i class="fa fa-pencil" title="修改图片信息"></i>
+                    </button>*@
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="box box-solid">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">合同</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body" name="picbox" style="display: none">
+                                <div class="row mg-t" name="row"></div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="box box-solid">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">入职登记表</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body" name="picbox" style="display: none">
+                                <div class="row mg-t" name="row"></div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="box box-solid">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">身份证</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body" name="picbox" style="display: none">
+                                <div class="row mg-t" name="row"></div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="box box-solid">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">照片</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body" name="picbox" style="display: none">
+                                <div class="row mg-t" name="row"></div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="box box-solid">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">简历</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body" name="picbox" style="display: none">
+                                <div class="row mg-t" name="row"></div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="box box-solid">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">毕业证</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body" name="picbox" style="display: none">
+                                <div class="row mg-t" name="row"></div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="box box-solid">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">学位证</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body" name="picbox" style="display: none">
+                                <div class="row mg-t" name="row"></div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="box-footer">
+    @*<button type="submit" class="btn btn-primary pull-right" onclick="updateForm()">修改</button>*@
+
+    <a class="btn btn-default pull-right" href="/humanResource/employeeManage/Index">返回</a>
+    <button id="btn_edit" type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#modalQuery" style="display:none">
+        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>离职
+    </button>
+</div>
+
+<div class="modal fade" id="modalQuery" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">
+                    离职信息
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form id="queryForm">
+                    <input id="entry_date1" type="text" class='form-control' style="display:none">
+                    <div class="col-sm-12 margin-bottom">
+                        <span class="col-sm-3 text-right lineheight34">离职时间</span>
+                        <div class="input-group col-sm-6">
+                            <input id="leave_time" type="text" class='form-control' readonly="readonly" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd', minDate: '#F{$dp.$D(\'entry_date1\')}', maxDate: '%y-%M-%d' });" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" onclick="SetLeave()" class="btn btn-primary">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/js/detail/HumanResource/employeeManage/show.js"></script>

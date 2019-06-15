@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "奖罚申请";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<style type="text/css">
+    tbody table td {
+        padding: 0;
+    }
+
+    .radio + .radio {
+        margin-top: 10px;
+    }
+
+    .table-bordered {
+        border-radius: 4px;
+    }
+</style>
+<form id="form1">
+    <div class="box-header">
+        <h4><span id="position_name"></span>奖罚</h4>
+    </div>
+    <div class="box-body" style="padding-bottom:0px;">
+        <div class="box box-warning">
+            <div class="box-header">
+                <div class="col-xs-12 col-sm-4 col-lg-3">
+                    <div class="input-group formValue margin-bottom">
+                        <span class="input-group-addon no-border">姓名：</span>
+                        <span type="text" id="name" class="form-control required"></span>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-lg-3">
+                    <div class="input-group formValue margin-bottom">
+                        <span class="input-group-addon no-border">等级：</span>
+                        <span type="text" id="grade" class="form-control required"></span>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-lg-3">
+                    <div class="input-group margin-bottom">
+                        <span class="input-group-addon no-border">月份：</span>
+                        <div class="formValue">
+                            <input id="month" name="month" class="form-control required" readonly="readonly" onfocus="WdatePicker({dateFmt:'yyyy-MM'  });" onblur="CheckValid(this)"  />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="form-group">
+                    <table id="reward_table" class="table table-bordered text-center">
+                        <tr>
+                            <th style="width:20%">名称</th>
+                            <th style="width:20%">金额（元）</th>
+                            <th style="width:50%">备注说明</th>
+                            <th style="width:10%">操作</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="input-single formValue"> <!-- class input-single is for validation only --JIANG -->
+                                    <input class="form-control required text-center" type="text" name="detail_name" />
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-group formValue">
+                                    <div class="input-group-btn">
+                                        <button type="button" class="btn btn-primary " name="category" onclick="Change(this)" title="切换奖/罚">奖</button>
+                                    </div>
+                                    <input type="text" class="form-control text-center required number" name="amount" />
+                                </div>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control text-center" name="note" />
+                            </td>
+                            <td>
+                                <i onclick="addRow(this)" class="fa fa-plus-circle fa-lg margin text-blue "></i>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="box-footer">
+    <button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+    <a type="submit" class="btn btn-default pull-right" href="/FinancialAccounting/Rewards/EmpIndex">返回</a>
+</div>
+
+<script src="~/Content/js/detail/FinancialAccounting/rewards/add.js"></script>

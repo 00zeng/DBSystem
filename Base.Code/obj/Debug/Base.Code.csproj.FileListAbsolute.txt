@@ -1,0 +1,15 @@
+E:\Job1\trunk\DaobenSystem\Base.Code\bin\Debug\Base.Code.dll
+E:\Job1\trunk\DaobenSystem\Base.Code\bin\Debug\Base.Code.pdb
+E:\Job1\trunk\DaobenSystem\Base.Code\bin\Debug\ICSharpCode.SharpZipLib.dll
+E:\Job1\trunk\DaobenSystem\Base.Code\bin\Debug\log4net.dll
+E:\Job1\trunk\DaobenSystem\Base.Code\bin\Debug\Newtonsoft.Json.dll
+E:\Job1\trunk\DaobenSystem\Base.Code\bin\Debug\NPOI.dll
+E:\Job1\trunk\DaobenSystem\Base.Code\bin\Debug\NPOI.OOXML.dll
+E:\Job1\trunk\DaobenSystem\Base.Code\bin\Debug\NPOI.OpenXml4Net.dll
+E:\Job1\trunk\DaobenSystem\Base.Code\bin\Debug\NPOI.OpenXmlFormats.dll
+E:\Job1\trunk\DaobenSystem\Base.Code\bin\Debug\log4net.xml
+E:\Job1\trunk\DaobenSystem\Base.Code\bin\Debug\Newtonsoft.Json.xml
+E:\Job1\trunk\DaobenSystem\Base.Code\bin\Debug\NPOI.xml
+E:\Job1\trunk\DaobenSystem\Base.Code\obj\Debug\Base.Code.dll
+E:\Job1\trunk\DaobenSystem\Base.Code\obj\Debug\Base.Code.pdb
+E:\Job1\trunk\DaobenSystem\Base.Code\obj\Debug\Base.Code.csprojResolveAssemblyReference.cache

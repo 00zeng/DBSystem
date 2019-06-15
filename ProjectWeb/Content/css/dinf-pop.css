@@ -1,0 +1,7 @@
+﻿html, body {
+overflow-x:hidden;
+min-height:100%;
+}
+
+.formValue.has-error .form-control-feedbacks.error { position: absolute;color:#e46f61;top:16px;right:-18px;font-size:16px;
+        line-height:34px;cursor:pointer;z-index: 99999;padding-left: 8px;box-sizing: border-box;}

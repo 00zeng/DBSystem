@@ -1,0 +1,197 @@
+﻿@{
+    ViewBag.Title = "形象返利";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<form id="form1">
+    <div class="box-header">
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">活动名称</span>
+                <input type="text" id="name" class="form-control required">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">分公司</span>
+                <select id="company_id" name="company_id" class="form-control required" tabindex="-1" aria-hidden="true"></select>
+            </div>
+        </div>
+		<div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">经销商</span>
+                <select id="distributor_id" name="distributor_id" class="form-control required" tabindex="-1" aria-hidden="true"></select>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border">活动时间</span>
+                <div class="formValue">
+                    <input id="start_date" name="start_date" class="form-control required" readonly="readonly" onfocus="WdatePicker({ maxDate: '#F{$dp.$D(\'end_date\')}' , onpicked: Month });" onblur="CheckValid(this)" />
+                </div>
+                <span class="input-group-addon">至</span>
+                <div class="formValue">
+                    <input id="end_date" name="end_date" class="form-control required" readonly="readonly" onfocus="WdatePicker({ minDate: '#F{$dp.$D(\'start_date\')}' , onpicked: Month });" onblur="CheckValid(this)" />
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="box-body">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-lg-6">
+                <div class="box box-warning ">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">返利政策</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+
+						<div class="col-sm-6 margin-bottom">
+                                <div class="form-group margin-bottom">
+                                    <label>返利发放</label>
+                                    <div>
+                                        <div class="radio col-sm-6 ">
+                                            <label>
+                                                    <input id="pay_mode" name="pay_mode" type="radio" value="1" checked>一次性发放
+                                            </label>
+                                        </div>
+                                        <div class="radio col-sm-6 " style="margin-top: 10px">
+                                            <label>
+                                                    <input name="pay_mode" type="radio" value="2">按月发放
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                                    </div>
+
+                        <div class="row">
+                            <div class="col-sm-6 margin-bottom">
+                                <label>返利金额</label>
+                                <div class="input-group col-sm-9 formValue">
+                                    <input id="rebate" name="rebate" class="form-control required number">
+                                    <span class="input-group-addon" name='activity_unit'>元</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 margin-bottom">
+                                <div class="form-group margin-bottom">
+                                    <label>返利模式</label>
+                                    <div>
+                                        <div class="radio col-sm-6 ">
+                                            <label>
+                                                <input id="target_mode" name="target_mode" type="radio" value="1" checked>按时间返利
+                                            </label>
+                                        </div>
+                                        <div class="radio col-sm-6 " style="margin-top: 10px">
+                                            <label>
+                                                <input name="target_mode" type="radio" value="2">按销量返利
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*按时间返利*@
+                            @*<div class="col-sm-6" id="mode1">
+                                    <div class="input-group col-sm-6">
+                                        <label>活动结束时间</label>
+                                        <input type="text" id="end_date" class="form-control" readonly="readonly" onfocus="WdatePicker({ onpicked: CalculateDay,minDate: '#F{$dp.$D(\'start_date\')}' })">
+                                    </div>
+                                </div>*@
+                            @*<div class="col-sm-6" id="mode2">
+                                    <div class="input-group col-sm-9">
+                                        <label>活动时长</label>
+                                        <span id="day" class="form-control"></span>
+                                    </div>
+                                </div>*@
+                            @*按销量返利*@
+
+                            <div class="col-sm-6 margin-bottom" id="mode3" style="display: none">
+                                <label>目标销量</label>
+                                <label class="label label-warning">该经销商前三个月月均销量为&nbsp;<span id="sale_avg_before"></span>&nbsp;</label>
+                                <div class="input-group col-sm-9 margin-bottom formValue">
+                                    <input type="text" class="form-control required number" id="activity_target" name="activity_target">
+                                    <span class="input-group-addon">台</span>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 margin-bottom" id="mode4" style="display: none">
+                                <div class="form-group">
+                                    <label>计量方式</label>
+                                    <div>
+                                        <div class="radio col-sm-6">
+                                            <label>
+                                                <input id="target_content" name="target_content" type="radio" value="1" checked>按实销量
+                                            </label>
+                                        </div>
+                                        <div class="radio col-sm-6" style="margin-top: 10px">
+                                            <label>
+                                                <input name="target_content" type="radio" value="2">按下货量
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 margin-bottom">
+                                <div class="form-group">
+                                    <label>备注说明</label>
+                                    <textarea id="note" class="form-control" placeholder="Enter..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-lg-6">
+                <div class="box box-success ">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">图片</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="box box-solid">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">协议文件</h3>
+                                        <button type="button" class="btn bg-primary pull-right" add="upload">上传图片</button>
+                                    </div>
+                                    <div class="box-body" name="picbox" style="display: none">
+                                        <div class="row mg-t" name="row"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="box box-solid">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">其他</h3>
+                                        <button type="button" class="btn bg-primary pull-right" add="upload">上传图片</button>
+                                    </div>
+                                    <div class="box-body" name="picbox" style="display: none">
+                                        <div class="row mg-t" name="row"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="box-footer">
+    <button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+    <a class="btn btn-default pull-right" href="/DistributorManage/image/Index">返回</a>
+</div>
+<script src="~/Content/js/detail/DistributorManage/image/add.js">
+</script>

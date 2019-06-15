@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "机构修改";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<link href="~/Content/js/cityPicker/css/city-picker.css" rel="stylesheet" />
+<div class="box-header widt-border">
+    <h3 class="box-title">修改机构</h3>
+</div>
+<div class="panel-body" style="background:white;">
+    <form id="form1">
+        <div class="box box-default">
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="form-group formValue">
+                            <label for="name">机构名称</label>
+                            <input id="name" name="name" type="text" class="form-control required"  />
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group formValue">
+                            <label for="category">机构类型</label>
+                            <input id="category" name="category" type="text" class="form-control" disabled />
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group formValue">
+                            <label for="parent_id">上级机构</label>
+                            <input id="parent_name" name="parent_id" type="text" class="form-control" disabled />
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group formValue">
+                            <label for="contact_phone">联系电话</label>
+                            <input id="contact_phone" name="contact_phone" type="text" class="form-control" maxlength="32" />
+                        </div>
+                    </div>
+                    <div id="role" class="col-xs-6">
+                        <div class="form-group formValue">
+                            <label for="city">所在城市</label>
+                            <div id="addrCity" class="pos-rlt">
+                                <input id="city" title="" class="form-control" readonly type="text" data-toggle="city-picker">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="role" class="col-xs-12">
+                        <div class="form-group formValue">
+                            <label for="address">详细地址</label>
+                            <input id="address" name="address" type="text" class="form-control" maxlength="128" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group formValue">
+                            <label for="note">备注说明</label>
+                            <textarea style="height:100px;" class="form-control" id="note" rows="4" maxlength="128"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="box-footer">
+        <button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+        <a class="btn btn-default pull-right" href="/OrganizationManage/Company/Index">返回</a>
+    </div>
+
+</div>
+<script src="~/Content/js/cityPicker/city-picker.data.js"></script>
+<script src="~/Content/js/cityPicker/city-picker.js"></script>
+<script src="~/Content/js/detail/OrganizationManage/Company/edit.js"></script>

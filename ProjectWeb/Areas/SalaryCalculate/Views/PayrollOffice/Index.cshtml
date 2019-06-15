@@ -1,0 +1,217 @@
+﻿@*行政工资*@
+@{
+    ViewBag.Title = "行政工资";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<form id="form1">
+    <div class="box-header widt-border">
+
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group margin-bottom formValue">
+                <span class="input-group-addon no-border">机构</span>
+                <select type="text" id="company_id" name="company_id" class="form-control required"></select>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group margin-bottom formValue">
+                <span class="input-group-addon no-border">部门</span>
+                <select type="text" id="dept_id" name="dept_id" class="form-control required"></select>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border">结算日期</span>
+                <span id="start_date" name="start_date" class="form-control format_date "></span>
+                <span class="input-group-addon">至</span>
+                <span id="end_date" name="end_date" class="form-control  format_date "></span>
+            </div>
+        </div>
+    </div>
+    <div class="box-body">
+        <div class="box box-danger">
+            <div class="box-header widt-border">
+                <h3 class="box-title">行政工资结算</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body" style="background-color:#ecf0f5" id="bigBox">
+                @*<div class="box box-widget">
+                        <div class="box-header">
+                            <span style="margin-left:20px;">张三</span>
+                            <span style="margin-left:36px;">总经理</span>
+                            <span style="margin-left:36px;">E1</span>
+                            <span style="margin-left:36px;">入职时间：2019-11-12</span>
+                        </div>
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-lg-2">
+                                    <div class="input-group margin-bottom formValue">
+                                        <span class="input-group-addon no-border">应发工资</span>
+                                        <span id="salary" name="salary" class="form-control"></span>
+                                        <span class="input-group-addon">元</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-lg-2">
+                                    <div class="input-group margin-bottom formValue">
+                                        <span class="input-group-addon no-border  text-blue">实发工资</span>
+                                        <input type="text" id="actual_salary" name="actual_salary" class="form-control required number  text-blue">
+                                        <span class="input-group-addon  text-blue">元</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-lg-4">
+                                    <div class="input-group margin-bottom formValue">
+                                        <span class="input-group-addon  no-border text-blue">备&nbsp;&nbsp;&nbsp;&nbsp;注&nbsp;&nbsp;&nbsp;</span>
+                                        <input type="text" id="note" name="note" class="form-control text-blue"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-lg-2">
+                                    <div class="input-group margin-bottom formValue">
+                                        <span class="input-group-addon  no-border  text-blue">应&nbsp;&nbsp;出&nbsp;&nbsp;勤</span>
+                                        <input type="text" id="work_days" name="work_days" class="form-control required number text-blue" onblur="Work()" value="26" />
+                                        <span class="input-group-addon   text-blue">天</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-lg-2">
+                                    <div class="input-group margin-bottom formValue">
+                                        <span class="input-group-addon  no-border  text-blue">实际出勤</span>
+                                        <input type="text" id="onduty_day" name="onduty_day" class="form-control required number text-blue" onblur="Work()" />
+                                        <span class="input-group-addon  text-blue ">天</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-lg-2">
+                                    <div class="input-group margin-bottom formValue">
+                                        <span class="input-group-addon  no-border  text-blue">请假扣款</span>
+                                        <input type="text" id="leaving_deduction" name="leaving_deduction" class="form-control required number text-blue">
+                                        <span class="input-group-addon  text-blue">元</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-lg-2">
+                                    <div class="input-group margin-bottom formValue">
+                                        <span class="input-group-addon  no-border text-blue">风&nbsp; 险&nbsp;金&nbsp;</span>
+                                        <input type="text" id="resign_deposit" name="resign_deposit" class="form-control required number text-blue">
+                                        <span class="input-group-addon text-blue">元</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-lg-2">
+                                    <div class="input-group margin-bottom formValue">
+                                        <span class="input-group-addon  no-border text-blue">社&nbsp;&nbsp;&nbsp;&nbsp;保&nbsp;&nbsp;&nbsp;</span>
+                                        <input type="text" id="insurance_fee" name="insurance_fee" class="form-control required number text-blue">
+                                        <span class="input-group-addon text-blue">元</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-lg-2">
+                                    <div class="input-group margin-bottom formValue">
+                                        <span class="input-group-addon  no-border text-blue">其&nbsp;&nbsp;&nbsp;&nbsp;他&nbsp;&nbsp;&nbsp;</span>
+                                        <input type="text" name="others" value="0" class="form-control  text-blue" onblur="Others()">
+                                        <span class="input-group-addon text-blue">元</span>
+                                        <span class="input-group-addon no-border"><i class="fa fa-plus text-blue" onclick="addRow(this)"></i></span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-lg-2">
+                                    <div class="input-group margin-bottom formValue">
+                                        <span class="input-group-addon  no-border text-blue">其&nbsp;&nbsp;&nbsp;&nbsp;他&nbsp;&nbsp;&nbsp;</span>
+                                        <input type="text" name="others" value="0" class="form-control  text-blue" onblur="Others()">
+                                        <span class="input-group-addon text-blue">元</span>
+                                        <span class="input-group-addon no-border"><i class="fa fa-plus text-blue" onclick="delRow(this)"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-lg-2">
+                                    <div class="input-group margin-bottom formValue">
+                                        <span class="input-group-addon no-border  ">基本工资</span>
+                                        <input type="text" id="base_salary" name="base_salary" class="form-control required number  ">
+                                        <span class="input-group-addon  ">元</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-lg-2">
+                                    <div class="input-group margin-bottom formValue">
+                                        <span class="input-group-addon no-border  ">岗位工资</span>
+                                        <input type="text" id="position_salary" name="position_salary" class="form-control required number  ">
+                                        <span class="input-group-addon  ">元</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-lg-2">
+                                    <div class="input-group margin-bottom formValue">
+                                        <span class="input-group-addon no-border  ">住房补贴</span>
+                                        <input type="text" id="house_subsidy" name="house_subsidy" class="form-control required number  ">
+                                        <span class="input-group-addon  ">元</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-lg-2">
+                                    <div class="input-group margin-bottom formValue">
+                                        <span class="input-group-addon no-border  ">交通补贴</span>
+                                        <input type="text" id="traffic_subsidy" name="traffic_subsidy" class="form-control required number  ">
+                                        <span class="input-group-addon  ">元</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-lg-2">
+                                    <div class="input-group margin-bottom formValue">
+                                        <span class="input-group-addon no-border  ">工龄工资</span>
+                                        <input type="text" id="seniority_salary" name="seniority_salary" class="form-control required number  ">
+                                        <span class="input-group-addon  ">元</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-lg-2">
+                                    <div class="input-group margin-bottom formValue">
+                                        <span class="input-group-addon no-border  ">特聘补贴</span>
+                                        <input type="text" id="salary_subsidy" name="salary_subsidy" class="form-control required number  ">
+                                        <span class="input-group-addon  ">元</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-lg-2">
+                                    <div class="input-group margin-bottom formValue">
+                                        <span class="input-group-addon no-border  ">KPI&nbsp;工资</span>
+                                        <input type="text" id="kpi" name="kpi" class="form-control required number  ">
+                                        <span class="input-group-addon  ">元</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-lg-2">
+                                    <div class="input-group margin-bottom formValue">
+                                        <span class="input-group-addon no-border  ">全勤奖金</span>
+                                        <input type="text" id="attendance_reward" name="attendance_reward" class="form-control required number  ">
+                                        <span class="input-group-addon  ">元</span>
+                                    </div>
+                                </div>
+                                <div id="staySubsidyWrap">
+                                    <div class="col-xs-12 col-sm-6 col-lg-2">
+                                        <div class="input-group margin-bottom formValue">
+                                            <span class="input-group-addon  no-border">留守补助-公司</span>
+                                            <span id="stay_subsidy_company" name="stay_subsidy_company" class="form-control"></span>
+                                            <span class="input-group-addon">元</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-lg-2">
+                                        <div class="input-group margin-bottom formValue">
+                                            <span class="input-group-addon  no-border">留守补助-个人</span>
+                                            <span id="stay_subsidy_personal" name="stay_subsidy_personal" class="form-control"></span>
+                                            <span class="input-group-addon">元</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
+                <div class="box box-widget " id="orgBox">
+                    <div class="box-body">
+                        <br />
+                        <div class="col-sm-12 col-md-12  text-center  margin-bottom">
+                            <label class="text-red" id="warningMsg">请选择所属机构和部门</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="box-footer">
+    <button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+    <a class="btn btn-default pull-right" href="/SalaryCalculate/PayrollOffice/Index">返回</a>
+</div>
+
+<script src="~/Content/js/detail/SalaryCalculate/PayrollOffice/index.js"></script>

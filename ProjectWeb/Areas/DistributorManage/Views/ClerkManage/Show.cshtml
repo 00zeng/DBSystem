@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Form_dinf.cshtml";
+}
+<form id="form1">
+    <header class="panel-heading">
+        <span style="color:#ffffff">店员查看</span>
+    </header>
+    <div class="panel-body" style="background:white;">
+        <div class="row">
+            <div class="col-xs-1">
+            </div>
+            <div class="col-xs-10" style="min-width: 1000px">
+            <div class="form">
+                <div class="main-title main-title2">
+                    <div class="main-title2-type">
+					姓名：<span id="clerk_name"></span>
+					</div>
+                </div>
+				<div class="mid-title-wrap">
+                    <div class="mid-title">
+					基础信息
+					</div>
+					</div>
+                <table class="normal">
+                    <tr>
+                        <th>姓名</th>
+                        <td><span id="name" ></span></td>
+                        <th>入职时间</th>
+                        <td><span id="entry_date"class="convert_date" ></span></td>
+                    </tr>
+                    <tr>
+                        <th>经销商所属分公司</th>
+                        <td><span id="company_name"></span></td>
+                        <th>经销商</th>
+                        <td><span id="distributor_name"></span></td>
+                    </tr>
+                    <tr>
+                        <th>所在省市</th>
+                        <td>
+                            <span id="city"></span>
+                        </td>
+                        <th>详细地址</th>
+                        <td><span id="address"></span></td>
+                    </tr>
+                    <tr>
+                        <th>手机号</th>
+                        <td><span id="phone"></span></td>
+                        <th>微信号</th>
+                        <td><span id="wechat"></span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="mid-title-wrap">
+                            <div class="mid-title">账户信息</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>系统账户</th>
+                        <td><span id="account" ></span></td>
+                        <th>账户状态</th>
+                        <td><span id="account_state" name="account_state"></span></td>
+                    </tr>
+                </table>
+                <div class="main-submit">
+                    <a class="btn-return" href="javascript:history.go(-1);">返回</a>
+                    <input id="btnDel" type="button" value="删除" class="btn-delete" onclick="Delete()" style="display: none" />
+                    <input id="btnClose" type="button" value="离职" class="btn-delete" onclick="SetClose()" style="display: none" />
+                    <input id="btnActive" type="button" class="btn-delete" onclick="SetState()" />
+                    <input id="btnEdit" type="button" value="修改" class="btn-submit" onclick="Edit()" />
+
+                </div>
+            </div>
+        </div>
+		</div>
+		</div>
+    </div>
+</form>
+<script src="~/Content/js/detail/DistributorManage/Clerk/show.js"></script>

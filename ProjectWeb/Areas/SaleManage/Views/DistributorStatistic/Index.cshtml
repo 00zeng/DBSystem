@@ -1,0 +1,91 @@
+﻿@*统计分析*@
+@{
+    ViewBag.Title = "商品信息";
+    Layout = "~/Views/Shared/_Index.cshtml";
+}
+<style>
+    
+    
+</style>
+<div id="list_area">
+    <header class="panel-heading">
+        <div class="panel-heading-div">
+            <span class="panel-heading-title">统计分析</span>
+            <ul id="nav_tab" class="nav nav-tabs">
+                <li name="authAll" class="active">
+                <a href="Index">
+                    人员分布
+                </a>
+                </li>
+                <li name="authApprove" class='auth'>
+                <a href="Resignation">
+                    离职分析
+                </a>
+                </li>
+            </ul>
+			<div class="nav_tab_right">
+                <a name="refresh" class="btn btn-refresh" href="javascript:location.replace(location.href);">
+                    <i class="fa fa-refresh new_add" title="刷新"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+    <div id="myTabContent" class="tab-content">
+        @*查看所有*@
+        <div class="tab-pane fade in active" id="All">
+            <div class="topPanel">
+                <div class="search">
+                    <table>
+                        <tr>
+                            <td>
+       
+								<div class="input-group">
+                                    <div style="display:inline">
+                                       
+                                        <div class="single">
+                                            <span>机构</span>
+                                            <select id="status">
+                                                <option value="">--请选择--</option>
+                                                <option value="人事部">人事部</option>
+                                                <option value="财务部">财务部</option>
+												<option value="业务部">业务部</option>
+                                            </select>
+                                        </div>
+
+										<div class="single">
+                                            <span class="distance">部门/区域</span>
+                                            <select id="status">
+                                                <option value="">--请选择--</option>
+                                                <option value="人事部">人事部</option>
+                                                <option value="财务部">财务部</option>
+												<option value="业务部">业务部</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <button id="btnSearch" type="button" class="btn btn-primary distance" style="border: 1px solid rgb(43,75,98)">
+                                            <i class="fa fa-search"></i> 查询
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="gridPanel">
+                <div id="charts">
+                    <div id="sex" style="width: 270px; height: 250px; float: left;"></div>
+                    <div id="old" style="width: 270px; height: 250px; float: left;"></div>
+                    <div id="workYear" style="width: 270px; height: 250px; float: left;"></div>
+                    <div id="job" style="width: 270px; height: 250px; float: left;"></div>
+                    <div id="company" style="width: 350px; height: 250px; float: left;"></div>
+                    <div id="area" style="width: 350px; height: 250px; float: left;"></div>
+                    <div id="department" style="width: 350px; height: 250px; float: left;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/js/detail/saleManage/distributorStatistic/index.js"></script>

@@ -1,0 +1,362 @@
+﻿@{
+    ViewBag.Title = "新增机构";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<link href="~/Content/js/cityPicker/css/city-picker.css" rel="stylesheet" />
+<style>
+    .deleteGrade {
+        font-size: 18px;
+        color: red;
+        position: absolute;
+        right: -15px;
+        top: 8px;
+        width: 25px;
+        height: 25px;
+        display: none;
+    }
+
+    .addGrade {
+        font-size: 18px;
+        color: rgba(22,155,213,1);
+        position: absolute;
+        top: 8px;
+    }
+</style>
+
+<div class="box-header widt-border">
+    <h3 class="box-title">新增机构</h3>
+</div>
+<div class="panel-body" style="background:white;">
+    <form id="form1">
+        <div class="box box-danger">
+            <div class="box-header widt-border">
+                <h3 class="box-title">机构信息</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">机构名称<span class="text-red">&nbsp;*</span></span>
+                            <input type="text" id="name" name="name" class="form-control required">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">机构类型<span class="text-red">&nbsp;*</span></span>
+                            <select id="category" name="category" class="form-control required"></select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">上级机构</span>
+                            <select id="parent_id" name="parent_id" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4" id="typeWrap" hidden>
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">经营属性<span class="text-red">&nbsp;*</span></span>
+                            <select id="type" name="type" class="form-control required">
+                                <option value="1">直营</option>
+                                <option value="2">加盟</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">联系电话<span class="text-red">&nbsp;*</span></span>
+                            <input type="text" id="contact_phone" name="contact_phone" class="form-control required">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">所在城市<span class="text-red">&nbsp;*</span></span>
+                            <input type="text" id="city" name="city" class="form-control required" style="position:absolute" data-toggle="city-picker">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom formValue">
+                            <span class="input-group-addon">详细地址<span class="text-red">&nbsp;*</span></span>
+                            <input type="text" id="address" name="address" class="form-control required">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="input-group margin-bottom">
+                            <span class="input-group-addon">备注说明</span>
+                            <input class="form-control" id="note" type="text" maxlength="128">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box box-warning collapsed-box">
+            <div class="box-header widt-border">
+                <h3 class="box-title">职等信息 - 行政管理</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group formValue">
+                            <label for="category">公司层面：</label>
+                            <div class="row">
+                                <div id="grade11" class="gradeListWrap">
+                                    <div class="col-xs-1">
+                                        <input type="text" class="form-control" value="E1" />
+                                    </div>
+                                    <div class="col-xs-1 gradeWrap">
+                                        <input type="text" class="form-control" value="E2" />
+                                        <i class='fa fa-times pull-right deleteGrade'></i>
+                                    </div>
+                                    <div class="col-xs-1 gradeWrap">
+                                        <input type="text" class="form-control" value="F1" />
+                                        <i class='fa fa-times pull-right deleteGrade'></i>
+                                    </div>
+                                    <div class="col-xs-1 gradeWrap">
+                                        <input type="text" class="form-control" value="F2" />
+                                        <i class='fa fa-times pull-right deleteGrade'></i>
+                                    </div>
+                                </div>
+                                <div class="col-xs-1">
+                                    <i class='fa fa-plus pull-left addGrade'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group formValue">
+                            <label for="category">部门层面：</label>
+                            <div class="row">
+                                <div id="grade12" class="gradeListWrap">
+                                    <div class="col-xs-1">
+                                        <input type="text" class="form-control" value="B1" />
+                                    </div>
+                                    <div class="col-xs-1 gradeWrap">
+                                        <input type="text" class="form-control" value="B2" />
+                                        <i class='fa fa-times pull-right deleteGrade'></i>
+                                    </div>
+                                    <div class="col-xs-1 gradeWrap">
+                                        <input type="text" class="form-control" value="B3" />
+                                        <i class='fa fa-times pull-right deleteGrade'></i>
+                                    </div>
+                                    <div class="col-xs-1 gradeWrap">
+                                        <input type="text" class="form-control" value="C1" />
+                                        <i class='fa fa-times pull-right deleteGrade'></i>
+                                    </div>
+                                    <div class="col-xs-1 gradeWrap">
+                                        <input type="text" class="form-control" value="C2" />
+                                        <i class='fa fa-times pull-right deleteGrade'></i>
+                                    </div>
+                                    <div class="col-xs-1 gradeWrap">
+                                        <input type="text" class="form-control" value="C3" />
+                                        <i class='fa fa-times pull-right deleteGrade'></i>
+                                    </div>
+                                    <div class="col-xs-1 gradeWrap">
+                                        <input type="text" class="form-control" value="D1" />
+                                        <i class='fa fa-times pull-right deleteGrade'></i>
+                                    </div>
+                                    <div class="col-xs-1 gradeWrap">
+                                        <input type="text" class="form-control" value="D2" />
+                                        <i class='fa fa-times pull-right deleteGrade'></i>
+                                    </div>
+                                </div>
+                                <div class="col-xs-1">
+                                    <i class='fa fa-plus pull-left addGrade'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="gradeMarketing" class="box box-success collapsed-box" hidden>
+            <div class="box-header widt-border">
+                <h3 class="box-title">职等信息 - 市场销售</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group formValue">
+                            <label for="category">部门层面：</label>
+                            <div class="row">
+                                <div id="grade21" class="gradeListWrap">
+                                    <div class="col-xs-1">
+                                        <input type="text" class="form-control" value="B1" />
+                                    </div>
+                                    <div class="col-xs-1 gradeWrap">
+                                        <input type="text" class="form-control" value="B2" />
+                                        <i class='fa fa-times pull-right deleteGrade'></i>
+                                    </div>
+                                    <div class="col-xs-1 gradeWrap">
+                                        <input type="text" class="form-control" value="B3" />
+                                        <i class='fa fa-times pull-right deleteGrade'></i>
+                                    </div>
+                                    <div class="col-xs-1 gradeWrap">
+                                        <input type="text" class="form-control" value="C1" />
+                                        <i class='fa fa-times pull-right deleteGrade'></i>
+                                    </div>
+                                    <div class="col-xs-1 gradeWrap">
+                                        <input type="text" class="form-control" value="C2" />
+                                        <i class='fa fa-times pull-right deleteGrade'></i>
+                                    </div>
+                                    <div class="col-xs-1 gradeWrap">
+                                        <input type="text" class="form-control" value="C3" />
+                                        <i class='fa fa-times pull-right deleteGrade'></i>
+                                    </div>
+                                    <div class="col-xs-1 gradeWrap">
+                                        <input type="text" class="form-control" value="D1" />
+                                        <i class='fa fa-times pull-right deleteGrade'></i>
+                                    </div>
+                                    <div class="col-xs-1 gradeWrap">
+                                        <input type="text" class="form-control" value="D2" />
+                                        <i class='fa fa-times pull-right deleteGrade'></i>
+                                    </div>
+                                </div>
+                                <div class="col-xs-1">
+                                    <i class='fa fa-plus pull-left addGrade'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="gradeTerminal" class="box box-primary collapsed-box" hidden>
+            <div class="box-header widt-border">
+                <h3 class="box-title">职等信息 - 终端销售</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group formValue">
+                            <label for="category">部门层面：</label>
+                            <div class="row">
+                                <div id="grade31" class="gradeListWrap">
+                                    <div class="col-xs-1">
+                                        <input type="text" class="form-control" value="B1" />
+                                    </div>
+                                    <div class="col-xs-1 gradeWrap">
+                                        <input type="text" class="form-control" value="B2" />
+                                        <i class='fa fa-times pull-right deleteGrade'></i>
+                                    </div>
+                                    <div class="col-xs-1 gradeWrap">
+                                        <input type="text" class="form-control" value="B3" />
+                                        <i class='fa fa-times pull-right deleteGrade'></i>
+                                    </div>
+                                    <div class="col-xs-1 gradeWrap">
+                                        <input type="text" class="form-control" value="C1" />
+                                        <i class='fa fa-times pull-right deleteGrade'></i>
+                                    </div>
+                                    <div class="col-xs-1 gradeWrap">
+                                        <input type="text" class="form-control" value="C2" />
+                                        <i class='fa fa-times pull-right deleteGrade'></i>
+                                    </div>
+                                </div>
+                                <div class="col-xs-1">
+                                    <i class='fa fa-plus pull-left addGrade'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+        <div class="box box-default collapsed-box">
+            <div class="box-header widt-border">
+                <h3 class="box-title">职等信息 - 运营商中心</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group formValue">
+                            <label for="category">公司层面：</label>
+                            <div class="row">
+                                <div id="grade41" class="gradeListWrap">
+                                    <div class="col-xs-1">
+                                        <input type="text" class="form-control" value="E1" />
+                                    </div>
+                                    <div class="col-xs-1 gradeWrap">
+                                        <input type="text" class="form-control" value="E2" />
+                                        <i class='fa fa-times pull-right deleteGrade'></i>
+                                    </div>
+                                </div>
+                                <div class="col-xs-1">
+                                    <i class='fa fa-plus pull-left addGrade'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group formValue">
+                            <label for="category">部门层面：</label>
+                            <div class="row">
+                                <div id="grade42" class="gradeListWrap">
+                                    <div class="col-xs-1">
+                                        <input type="text" class="form-control" value="B1" />
+                                    </div>
+                                    <div class="col-xs-1 gradeWrap">
+                                        <input type="text" class="form-control" value="B2" />
+                                        <i class='fa fa-times pull-right deleteGrade'></i>
+                                    </div>
+                                    <div class="col-xs-1 gradeWrap">
+                                        <input type="text" class="form-control" value="B3" />
+                                        <i class='fa fa-times pull-right deleteGrade'></i>
+                                    </div>
+                                    <div class="col-xs-1 gradeWrap">
+                                        <input type="text" class="form-control" value="C1" />
+                                        <i class='fa fa-times pull-right deleteGrade'></i>
+                                    </div>
+                                    <div class="col-xs-1 gradeWrap">
+                                        <input type="text" class="form-control" value="C2" />
+                                        <i class='fa fa-times pull-right deleteGrade'></i>
+                                    </div>
+                                    <div class="col-xs-1 gradeWrap">
+                                        <input type="text" class="form-control" value="D1" />
+                                        <i class='fa fa-times pull-right deleteGrade'></i>
+                                    </div>
+                                    <div class="col-xs-1 gradeWrap">
+                                        <input type="text" class="form-control" value="D2" />
+                                        <i class='fa fa-times pull-right deleteGrade'></i>
+                                    </div>
+                                </div>
+                                <div class="col-xs-1">
+                                    <i class='fa fa-plus pull-left addGrade'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="box-footer">
+        <button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>
+        <a class="btn btn-default pull-right" href="/OrganizationManage/Company/Index">返回</a>
+    </div>
+</div>
+<script src="~/Content/js/cityPicker/city-picker.data.js"></script>
+<script src="~/Content/js/cityPicker/city-picker.js"></script>
+<script src="~/Content/js/detail/OrganizationManage/Company/add.js"></script>

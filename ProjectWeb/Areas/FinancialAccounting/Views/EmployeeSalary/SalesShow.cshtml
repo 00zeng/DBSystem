@@ -1,0 +1,290 @@
+﻿@{
+    ViewBag.Title = "业务薪资";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<style type="text/css">
+    tbody table td {
+        padding: 0;
+    }
+
+    .radio + .radio {
+        margin-top: 10px;
+    }
+
+    .table-bordered {
+        border-radius: 4px;
+    }
+</style>
+<form id="form1">
+    <div class="box-header">
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">姓名：</span>
+                <span id="name" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">职位：</span>
+                <span id="position_name" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">等级：</span>
+                <span id="grade" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">机构：</span>
+                <span id="company_name" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border">入职时间：</span>
+                <span id="entry_date" class="form-control format_date"></span>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-lg-3">
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border"> 生效时间：</span>
+                <span id="effect_date" class="form-control format_date_ym"></span>
+            </div>
+        </div>
+    </div>
+    <div class="box-body" style="padding-bottom:0px;">
+        <div class="col-xs-12 col-sm-12 col-lg-6">
+            <div class="box box-warning col-lg-12">
+                <div class="box-header">
+                    <div class="row">
+                        <div class="input-group col-sm-5 col-lg-3">
+                            <h3 class="box-title input-group-addon no-border">薪资设置</h3>
+                        </div>
+                    </div>
+                    <div class="box-tools">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div id="EmpType2" style="display:none">
+                        <div class="row margin-bottom">
+                            <div class="col-sm-2 col-lg-3"><span class="form-control no-border text-right">实习工资</span></div>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="form-control text-center" id="salary"></span>
+                                    <span class="input-group-addon" id="salary_type"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <span class="label label-primary" id="intern_salary_type"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="EmpType" style="display:none">
+					<div class="row margin-bottom">
+                        <div class="col-sm-2 col-lg-3"><span class="form-control no-border text-right">基本工资</span></div>
+                        <div class="col-sm-4">
+                            <div class="input-group formValue">
+                                <span class="form-control text-center required number" id="base_salary" name="base_salary"></span>
+                                <span class="input-group-addon">元/月</span>
+                            </div>
+                        </div>
+                    </div>
+					<div class="row margin-bottom">
+                        <div class="col-sm-2 col-lg-3"><span class="form-control no-border text-right">岗位工资</span></div>
+                        <div class="col-sm-4">
+                            <div class="input-group formValue">
+                                <span class="form-control text-center required number" id="position_salary" name="position_salary"></span>
+                                <span class="input-group-addon">元/月</span>
+                            </div>
+                        </div>
+                    </div>
+					<div class="row margin-bottom">
+                        <div class="col-sm-2 col-lg-3"><span class="form-control no-border text-right">住房补贴</span></div>
+                        <div class="col-sm-4">
+                            <div class="input-group formValue">
+                                <span class="form-control text-center required number" id="house_subsidy" name="house_subsidy"></span>
+                                <span class="input-group-addon">元/月</span>
+                            </div>
+                        </div>
+                    </div>
+					<div class="row margin-bottom">
+                        <div class="col-sm-2 col-lg-3"><span class="form-control no-border text-right">全勤奖金</span></div>
+                        <div class="col-sm-4">
+                            <div class="input-group formValue">
+                                <span class="form-control text-center required number" id="attendance_reward" name="attendance_reward"></span>
+                                <span class="input-group-addon">元/月</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row margin-bottom">
+                        <div class="col-sm-2 col-lg-3"><span class="form-control no-border text-right">离职押金</span></div>
+                        <div class="col-sm-4">
+                            <div class="input-group formValue">
+                                <span class="form-control text-center required number" id="resign_deposit" name="resign_deposit"></span>
+                                <span class="input-group-addon">元/月</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row margin-bottom">
+                        <div class="col-sm-2 col-lg-3"><span class="form-control no-border text-right">交通补贴</span></div>
+                        <div class="col-sm-4">
+                            <div class="input-group formValue">
+                                <span class="form-control text-center required number" id="traffic_subsidy" name="traffic_subsidy"></span>
+                                <span class="input-group-addon">&nbsp;&nbsp;元&nbsp;&nbsp;</span>
+                            </div>
+                        </div>
+                    </div>
+					</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-lg-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <div class="input-group col-sm-5 col-lg-3">
+                        <h3 class="box-title input-group-addon no-border">月度考核</h3>
+                        @*<div class="checkbox input-group-addon no-border">
+                            <label class="text-red">
+                                <input type="checkbox" id="reset_all_perf" disabled />将所有个人设置重置为此方案
+                            </label>
+                        </div>*@
+                    </div>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="col-lg-6">
+                        <div class="form-group col-sm-12">
+                            <label>考核内容</label>
+                            <div>
+                                <div class="radio col-sm-3">
+                                    <label>
+                                        <input id="target_content" name="target_content" type="radio" value="1" disabled>按实销量
+                                    </label>
+                                </div>
+                                <div class="radio col-sm-3">
+                                    <label>
+                                        <input name="target_content" type="radio" value="2" disabled>按下货量
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-sm-12">
+                            <label>考核模式</label>
+                            <div>
+                                <div class="radio col-sm-3">
+                                    <label>
+                                        <input id="target_mode" name="target_mode" type="radio" value="1" disabled>按完成率
+                                    </label>
+                                </div>
+                                <div class="radio col-sm-3">
+                                    <label>
+                                        <input name="target_mode" type="radio" value="2" disabled>按台数
+                                    </label>
+                                </div>
+                                <div class="radio col-sm-3">
+                                    <label>
+                                        <input name="target_mode" type="radio" value="3" disabled>按零售价
+                                    </label>
+                                </div>
+                                <div class="radio col-sm-3">
+                                    <label>
+                                        <input name="target_mode" type="radio" value="5" disabled>按批发价
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-sm-12">
+                            <label>正常机提成</label>
+                            <div>
+                                <div class="radio col-sm-3">
+                                    <label>
+                                        <input id="normal_rebate_mode" name="normal_rebate_mode" type="radio" value="1" disabled>每台固定金额
+                                    </label>
+                                </div>
+                                <div class="radio col-sm-3">
+                                    <label>
+                                        <input name="normal_rebate_mode" type="radio" value="2" disabled>每台批发价比例
+                                    </label>
+                                </div>
+                                <div class="radio col-sm-3">
+                                    <label>
+                                        <input name="normal_rebate_mode" type="radio" value="3" disabled>每台零售价比例
+                                    </label>
+                                </div>
+                                <div class="radio col-sm-3">
+                                    <label>
+                                        <input name="normal_rebate_mode" type="radio" value="4" disabled>固定总金额
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-sm-12">
+                            <label>买断机提成</label>
+                            <div>
+                                <div class="radio col-sm-3">
+                                    <label>
+                                        <input id="buyout_rebate_mode" name="buyout_rebate_mode" type="radio" value="1" disabled>每台固定金额
+                                    </label>
+                                </div>
+                                <div class="radio col-sm-3">
+                                    <label>
+                                        <input name="buyout_rebate_mode" type="radio" value="2" disabled>每台批发价比例
+                                    </label>
+                                </div>
+                                <div class="radio col-sm-3">
+                                    <label>
+                                        <input name="buyout_rebate_mode" type="radio" value="3" disabled>每台买断价比例
+                                    </label>
+                                </div>
+                                <div class="radio col-sm-3">
+                                    <label>
+                                        <input name="buyout_rebate_mode" type="radio" value="4" disabled>固定总金额
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="forTargetMode1" style="display:none" class="form-group col-sm-12">
+                            <label>目标销量</label>
+                            <div class="input-group col-sm-3  col-lg-6 formValue">
+                                <span id="activity_target" name="activity_target" class="form-control text-center"></span>
+                                <span class="input-group-addon">台</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group col-sm-12 col-lg-6">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <table id="rebateMode1" class="table table-bordered text-center">
+                                    <tr>
+                                        <th class="col-sm-4 bg-gray-light"><span name="target_mode_change">完成率（%）</span></th>
+                                        <th class="col-sm-4 bg-gray-light">正常机提成<span name="rebate_mode_change"></span></th>
+                                        <th class="col-sm-4 bg-gray-light">买断机提成<span name="rebate_mode_change2"></span></th>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="box-footer">
+    <button type="submit" class="btn btn-default pull-right" onclick="javascript:history.back(-1);">返回</button>
+</div>
+
+
+<script src="~/Content/js/detail/FinancialAccounting/employeeSalary/sales_show.js"></script>

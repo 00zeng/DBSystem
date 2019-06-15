@@ -1,0 +1,484 @@
+﻿@{
+    ViewBag.Title = "达量";
+    Layout = "~/Views/Shared/_Form_v2.cshtml";
+}
+<style type="text/css">
+    tbody table td {
+        padding: 0;
+    }
+
+    .radio + .radio {
+        margin-top: 10px;
+    }
+
+    .table-bordered {
+        border-radius: 4px;
+    }
+</style>
+<form id="form1">
+    <div class="box-header">
+        <div class="col-xs-12 col-sm-4 col-lg-3">
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border">职位类型</span>
+                <span class="form-control">导购员</span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-lg-3">
+            <div class="input-group formValue margin-bottom">
+                <span class="input-group-addon no-border">分公司：</span>
+                <span id="company_name" class="form-control "></span>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-lg-3">
+            <div class="input-group margin-bottom">
+                <span class="input-group-addon no-border">生效时间</span>
+                <span id="effect_date" class="form-control"></span>
+            </div>
+        </div>
+    </div>
+    <div class="box-body" style="padding-bottom:0px;">
+        <div class="col-xs-12 col-sm-12 col-lg-12">
+            <div class="box box-danger">
+                <div class="box-header">
+                    <h3 class="box-title">副职底薪</h3>
+                    <div class="box-tools">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body" style="background-color:#ecf0f5">
+                    <div class="col-xs-12 col-sm-12 col-lg-12 no-padding">
+                        <div class="col-xs-12 col-sm-12 col-lg-12 ">
+                            <div class="box box-widget">
+                                <div class="box-header with-border">
+                                    <div class="input-group col-sm-5 col-lg-3">
+                                        <h3 class="box-title input-group-addon no-border">默认方案设置</h3>
+                                        <div class="checkbox input-group-addon no-border">
+                                            <label class="text-red">
+                                                <input type="checkbox" id="assessment_setting" disabled />将所有个人设置重置为此方案
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="box-tools">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+
+                                </div>
+                                <div class="box-body">
+                                    <div class="row margin-bottom">
+                                        <div class="col-sm-2 col-lg-1"><span class="form-control no-border ">底薪设置</span></div>
+                                        <div class="radio col-sm-2">
+                                            <label>
+                                                <input type="radio" id="guide_base_type" name="guide_base_type" value="0" disabled />0底薪
+                                            </label>
+                                        </div>
+                                        <div class="radio col-sm-2">
+                                            <label>
+                                                <input type="radio" name="guide_base_type" value="2" disabled>星级制
+                                            </label>
+                                        </div>
+                                        <div class="radio col-sm-2">
+                                            <label>
+                                                <input type="radio" name="guide_base_type" value="3" disabled>浮动底薪
+                                            </label>
+                                        </div>
+                                        @*<div class="radio col-sm-2">
+                                                <label>
+                                                    <input type="radio" name="guide_base_type" value="4" disabled>保底工资
+                                                </label>
+                                            </div>*@
+                                        <div class="radio col-sm-2">
+                                            <label>
+                                                <input type="radio" name="guide_base_type" value="1" disabled>达标底薪
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-lg-6 no-padding">
+                        <div class="col-xs-12 col-sm-12 col-lg-12">
+                            <div class="box box-widget">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">星级制</h3>
+                                    <div class="box-tools">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <table class="table table-bordered text-center" id="baseStarlevel_table">
+                                        <tr>
+                                            <th class="col-sm-4 bg-gray-light">星级</th>
+                                            <th class="col-sm-5 bg-gray-light">底薪（元/月）</th>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-lg-6 no-padding">
+                        <div class="col-xs-12 col-sm-12 col-lg-12">
+                            <div class="box box-widget">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">浮动底薪</h3>
+                                    <div class="box-tools">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <table class="table table-bordered text-center">
+                                        <thead style="display: table;width: 99%;table-layout: fixed;">
+                                            <tr>
+                                                <th class="col-sm-7 bg-gray-light">月销量（台）</th>
+                                                <th class="col-sm-5 bg-gray-light">底薪（元/月）</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody style="display: block;height:183px;overflow-y:scroll;overflow-x:hidden" id="float_salary_tr"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-lg-12">
+                        <div class="box box-widget">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">达标底薪</h3>
+                                <div class="box-tools">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="row margin-bottom">
+                                    <div class="col-sm-6 col-lg-3">
+                                        <div class="input-group">
+                                            <span class="input-group-addon  no-border">达标提成金额</span>
+                                            <span class="form-control text-center required number" id="standard_commission" name="standard_commission"></span>
+                                            <span class="input-group-addon ">元/月</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-3">
+                                        <div class="input-group formValue">
+                                            <span class="input-group-addon   no-border">底薪</span>
+                                            <span class="form-control text-center required number" id="standard_salary" name="standard_salary"></span>
+                                            <span class="input-group-addon ">元/月</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*正职底薪*@
+        <div class="col-xs-12 col-sm-12 col-lg-12">
+            <div class="box box-danger">
+                <div class="box-header">
+                    <h3 class="box-title">正职底薪</h3>
+                    <div class="box-tools">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body" style="background-color:#ecf0f5">
+                    <div class="col-xs-12 col-sm-12 col-lg-12">
+                        <div class="box box-widget">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">保底工资</h3>
+                                <div class="box-tools">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="row margin-bottom">
+                                    <div class="col-sm-6 col-lg-3">
+                                        <div class="input-group">
+                                            <span class="input-group-addon  no-border">保底工资</span>
+                                            <span class="form-control text-center" id="guide_salary_base" name="guide_salary_base"></span>
+                                            <span class="input-group-addon ">元/月</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-3">
+                                        <div class="input-group">
+                                            <span class="input-group-addon  no-border">全勤奖</span>
+                                            <div class="formValue">
+                                                <span class="form-control text-center required number" id="" name=""></span>
+                                            </div>
+                                            <span class="input-group-addon ">元/月</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-lg-12">
+            <div class="box box-warning">
+                <div class="box-header">
+                    <h3 class="box-title">年终奖</h3>
+                    <div class="box-tools">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body" style="background-color:#ecf0f5">
+                    <div class="col-xs-12 col-sm-12 col-lg-12 no-padding">
+                        <div class="col-xs-12 col-sm-12 col-lg-12">
+                            <div class="box box-widget">
+                                <div class="box-header with-border">
+                                    <div class="input-group col-sm-5 col-lg-3">
+                                        <h3 class="box-title input-group-addon no-border">默认方案设置</h3>
+                                        <div class="checkbox input-group-addon no-border">
+                                            <label class="text-red">
+                                                <input type="checkbox" id="assessment_setting2" disabled />将所有个人设置重置为此方案
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="box-tools">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <div class="row">
+                                        <div class="col-sm-2 col-lg-1"><span class="form-control no-border">年终奖</span></div>
+                                        <div class="radio col-sm-2">
+                                            <label>
+                                                <input type="radio" id="guide_annualbonus_type" name="guide_annualbonus_type" value="1" disabled />按星级制
+                                            </label>
+                                        </div>
+                                        <div class="radio col-sm-2">
+                                            <label>
+                                                <input type="radio" name="guide_annualbonus_type" value="2" disabled>按销量
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-lg-6">
+                            <div class="box box-widget">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">星级制</h3>
+                                    <div class="box-tools">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <table class="table table-bordered text-center" id="yearStarlevel_table">
+                                        <tr>
+                                            <th class="col-sm-4 bg-gray-light">星级</th>
+                                            <th class="col-sm-5 bg-gray-light">底薪（元/月）</th>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-lg-6">
+                            <div class="box box-widget">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">按销量</h3>
+                                    <div class="box-tools">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <table class="table table-bordered text-center" id="sales_volume_tr">
+                                        <thead style="display: table;width: 99%;table-layout: fixed;">
+                                            <tr>
+                                                <th class="col-sm-7 bg-gray-light">平均月销量（台）</th>
+                                                <th class="col-sm-5 bg-gray-light">奖金（元/台）</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody style="display: block;height:183px;overflow-y:scroll;overflow-x:hidden" id="sales_volume_tr"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*增员奖励*@
+        <div class="col-xs-12 col-sm-12 col-lg-12">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">增员奖励</h3>
+                    <div class="box-tools">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body" style="background-color:#ecf0f5">
+                    <div class="col-xs-12 col-sm-12 col-lg-12">
+                        <div class="box box-widget">
+                            <div class="box-body">
+                                <div class="row margin-bottom">
+                                    <div class="col-sm-3 col-lg-2"><span class="form-control no-border text-right">奖励启用状态</span></div>
+                                    <div class="col-sm-4">
+                                        <div class="radio col-sm-6">
+                                            <label>
+                                                <input type="radio" id="increase_award_status" name="increase_award_status" value="1" disabled>启用
+                                            </label>
+                                        </div>
+                                        <div class="radio col-sm-6">
+                                            <label>
+                                                <input type="radio" name="increase_award_status" value="0" disabled>关闭
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row margin-bottom">
+                                    <div class="col-sm-3 col-lg-2"><span class="form-control no-border text-right">新员工入职月数</span></div>
+                                    <div class="col-sm-4">
+                                        <div class="input-group">
+                                            <span class="form-control text-center" id="increase_month"></span>
+                                            <span class="input-group-addon">个月</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <label class="label label-primary">新员工入职满该月数时介绍人享受介绍费奖励</label>
+                                    </div>
+                                </div>
+                                <div class="row margin-bottom">
+                                    <div class="col-sm-3 col-lg-2"><span class="form-control no-border text-right">保护期</span></div>
+                                    <div class="col-sm-4">
+                                        <div class="input-group">
+                                            <span class="form-control text-center" id="increase_protect"></span>
+                                            <span class="input-group-addon">个月</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <span class="label label-primary">保护期内离职再入职不享受介绍费奖励</span>
+                                    </div>
+                                </div>
+
+                                <div class="row margin-bottom">
+                                    <div class="col-sm-3 col-lg-2"><span class="form-control no-border text-right">介绍费奖金</span></div>
+                                    <div class="col-sm-4">
+                                        <div class="input-group">
+                                            <span class="form-control text-center col-sm-6" id="increase_salary"></span>
+                                            <span class="input-group-addon">&nbsp;&nbsp;元&nbsp;&nbsp;</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row margin-bottom">
+                                    <div class="col-sm-3 col-lg-2"><span class="form-control no-border text-right">增员提成</span></div>
+                                    <div class="col-sm-4">
+                                        <div class="input-group">
+                                            <span class="form-control text-center" id="increase_commission"></span>
+                                            <span class="input-group-addon">元/台</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row margin-bottom">
+                                    <div class="col-sm-3 col-lg-2"><span class="form-control no-border text-right">生效时间</span></div>
+                                    <div class="col-sm-4">
+                                        <span id="increase_effect_time" class="form-control text-center"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*交通补贴*@
+        <div class="=col-xs-12 col-sm-12 col-lg-12" style="display:none">
+            <div class="box box-success">
+                <div class="box-header">
+                    <div class="row">
+                        <div class="input-group col-sm-5 col-lg-3">
+                            <h3 class="box-title input-group-addon no-border">交通补贴</h3>
+                            <div class="checkbox input-group-addon no-border">
+                                <label class="text-red">
+                                    <input type="checkbox" id="assessment_setting3" disabled />将所有个人设置重置为此方案
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-tools">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="row margin-bottom" id="amount">
+                        <div class="col-sm-2 col-lg-1"><span class="form-control no-border">补贴金额</span></div>
+                        <div class="col-sm-3 col-lg-3">
+                            <div class="input-group formValue">
+                                <span class="form-control text-center required number" id="traffic_subsidy"></span>
+                                <span class="input-group-addon ">元</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-lg-12">
+            <div class="box box-default  collapsed-box">
+                <div class="box-header widt-border">
+                    <h3 class="box-title">审批</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <table class="table table-bordered text-center" id="approve">
+                        <tbody>
+                            <tr>
+                                <th width="150px">操作类型</th>
+                                <th width="150px">操作人</th>
+                                <th width="150px">操作人职位</th>
+                                <th width="200px">时间</th>
+                                <th width="200px">结果</th>
+                                <th width="200px">意见</th>
+                            </tr>
+                            <tr>
+                                <td>发起申请</td>
+                                <td><span id="creator_name"></span></td>
+                                <td><span id="creator_position_name"></span></td>
+                                <td><span id="create_time"></span></td>
+                                <td><span id="">--</span></td>
+                                <td><span id="">--</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="box-footer">
+    @*<button type="submit" class="btn btn-primary pull-right" onclick="submitForm()">提交</button>*@
+    <button type="submit" class="btn btn-default pull-right" onclick="javascript:history.back(-1);">返回</button>
+</div>
+
+<script src="~/Content/js/detail/FinancialAccounting/PositionSalary/guide_show.js"></script>

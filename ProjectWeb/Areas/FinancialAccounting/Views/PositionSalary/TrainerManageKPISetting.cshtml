@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Form_dinf.cshtml";
+}
+<form id="form1">
+    <header class="panel-heading">
+        <span style="color:#ffffff"><span id="name"></span>KPI设置</span>
+    </header>
+    <div class="panel-body" style="background:white;">
+        <div class="row">
+            <div class="col-xs-1">
+            </div>
+            <div class="col-xs-10" style="min-width: 1000px">
+            <div class="form">
+                <div class="main-title main-title2">
+                    <div class="main-title2-type" style="white-space:nowrap">
+                        分公司：<span id="company_linkname" style="margin-right:60px"></span>
+                        生效时间：<input id="effect_date" class="Wdate" style="width:140px" readonly="readonly" onfocus="WdatePicker({dateFmt:'yyyy-MM'});" />
+                        <input type="checkbox" style="margin-left:60px" id="effect_now" title="财务经理审批通过后立即生效" onclick="Effective(this)" />立即生效
+                    </div>
+                </div>
+                
+				<div class="mid-title-wrap">
+                    <div class="mid-title">
+					KPI
+					</div>
+                </div>
+                <table class="normal-approve" id="trainerManageKPI_table" style="white-space:nowrap">
+                    <tr>
+                        <th rowspan="2"><span style="font-size:28px;color:rgb(51, 51, 51);">人均产值</span></th>
+                        <th>标准金额（元）</th>
+                        <th>标准台数（台）</th>
+                        <th>KPI（元）</th>
+                    </tr>
+                    <tr>
+                        <td><input id="average_standard_money" /></td>
+                        <td><input id="average_standard_number"/></td>
+                        <td><span>(导购产生销量 / 产生销量导购人数) / 标准台数 * 100% * 标准金额</span> </td>
+                    </tr>
+                    <tr>
+
+                    </tr>
+                    <tr>
+                        <th rowspan="2"><span style="font-size:28px;color:rgb(51, 51, 51);">导购离职率</span></th>
+                        <th>标准金额（元）</th>
+                        <th>标准比率（%）</th>
+                        <th>KPI（元）</th>
+                    </tr>
+                    <tr>
+                        <td><input id="resign_standard_money"/></td>
+                        <td><input id="resign_standard_ratio"/>%</td>
+                        <td>{ 1 - [ 离职人数 / (月底人数 + 离职人数) - 标准比率 ] * 5 } * 标准金额 </td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <th rowspan="2"><span style="font-size:28px;color:rgb(51, 51, 51);">高端机占比</span></th>
+                        <th>标准金额（元）</th>
+                        <th>标准比率（%）</th>
+                        <th>KPI（元）</th>
+                    </tr>
+                    <tr>
+                        <td><input id="product_expensive_money"/></td>
+                        <td><input id="product_expensive_ratio"/>%</td>
+                        <td> [ 1 - ( 标准比率 - 整个区域实销高端机占比 ) * 5 ] * 标准金额</td>
+                    </tr>
+
+                </table>
+               
+                <div class="main-submit">
+                    <a class="btn-return" href="javascript:history.go(-1);"> 返回 </a>
+                    <input type="button" value="提交" class="btn-submit" onclick="submitForm()" />
+                </div>
+            </div>
+			</div>
+        </div>
+    </div>
+</form>
+<script src="~/Content/js/detail/financialAccounting/positionSalary/trainer_manage_kpi_setting.js"></script>
